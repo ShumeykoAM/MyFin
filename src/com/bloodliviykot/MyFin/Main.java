@@ -21,7 +21,7 @@ public class Main
     TabHost.TabSpec tabSpec;
 
     tabSpec = tab_host.newTabSpec("tag_accounts");
-    tabSpec.setIndicator(getString(R.string.tab_accounts));
+    tabSpec.setIndicator(getString(R.string.tab_accounts), getResources().getDrawable(R.drawable.ic_accounts));
     tabSpec.setContent(new Intent(this, Accounts.class));
     tab_host.addTab(tabSpec);
 
