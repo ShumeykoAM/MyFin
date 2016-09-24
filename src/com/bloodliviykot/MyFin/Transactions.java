@@ -6,11 +6,24 @@ import android.os.Bundle;
 /**
  * Created by Kot on 23.09.2016.
  */
-public class Transactions extends Activity
+public class Transactions
+  extends Activity
 {
+  @Override
   protected void onCreate(Bundle savedInstanceState)
   {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.accounts);
+    setContentView(R.layout.transactions);
   }
+  @Override
+  protected void onPause()
+  {
+    super.onPause();
+  }
+  @Override
+  protected void onResume()
+  {
+    super.onResume();
+  }
+
 }

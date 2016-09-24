@@ -11,6 +11,7 @@ import android.widget.TabHost;
 public class Register
   extends TabActivity
 {
+  @Override
   protected void onCreate(Bundle savedInstanceState)
   {
     super.onCreate(savedInstanceState);
@@ -33,5 +34,18 @@ public class Register
     tabSpec.setIndicator(getString(R.string.tab_regular));
     tabSpec.setContent(new Intent(this, Regular.class));
     tab_host.addTab(tabSpec);
+  }
+  @Override
+  protected void onPause()
+  {
+    super.onPause();
+  }
+  @Override
+  protected void onResume()
+  {
+    super.onResume();
+    //Задаем текущую активную вкладку
+    TabHost tab_host = getTabHost();
+    tab_host.setCurrentTabByTag("tag_transactions");
   }
 }
