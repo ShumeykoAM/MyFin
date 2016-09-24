@@ -4,6 +4,7 @@ import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TabHost;
+import com.bloodliviykot.tools.DataBase.MySQLiteOpenHelper;
 
 public class Main
   extends TabActivity
@@ -16,8 +17,13 @@ public class Main
   {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main);
-    TabHost tab_host = getTabHost();
 
+    //Для отладки удалим базу
+    MySQLiteOpenHelper.debugDeleteDB(getApplicationContext());
+
+    setGlobalVars();
+
+    TabHost tab_host = getTabHost();
     TabHost.TabSpec tabSpec;
 
     tabSpec = tab_host.newTabSpec("tag_accounts");
@@ -30,6 +36,11 @@ public class Main
     tabSpec.setContent(new Intent(this, Register.class));
     tab_host.addTab(tabSpec);
 
+
+  }
+  private void setGlobalVars()
+  {
+    GlobalWars.application_context = getApplicationContext();
 
   }
 }
