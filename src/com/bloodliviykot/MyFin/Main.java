@@ -4,7 +4,7 @@ import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TabHost;
-import com.bloodliviykot.tools.DataBase.MySQLiteOpenHelper;
+import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
 
 public class Main
   extends TabActivity

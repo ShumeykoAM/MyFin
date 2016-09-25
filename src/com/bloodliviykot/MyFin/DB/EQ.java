@@ -1,11 +1,11 @@
-package com.bloodliviykot.tools.DataBase;
+package com.bloodliviykot.MyFin.DB;
 
 
 //Перечисление запросов хранящихся в файле res\raw\sql_querys.sql
 //  Порядок запросов в этом файле должен совпадать с порядком соответствующих элементов перечисления EQ
 public enum EQ
 {
-  ACCOUNTS,                 //Получить список счетов
+  ACCOUNTS,                 //Список счетов, кроме счетов сопользователей
 
   EQ_COUNT;
   public final int value;

@@ -1,4 +1,4 @@
-package com.bloodliviykot.tools.DataBase;
+package com.bloodliviykot.MyFin.DB;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 import com.bloodliviykot.MyFin.GlobalWars;
 import com.bloodliviykot.MyFin.R;
+import com.bloodliviykot.tools.DataBase.SQLReader;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -22,8 +23,7 @@ public class MySQLiteOpenHelper
   public static final int VersionDB = 1; //Версия БД
   public static final String DBName = "Client.db";
 
-  public final SQLiteDatabase dbw;
-  public final SQLiteDatabase dbr;
+  public final SQLiteDatabase db;
 
   private SQLReader sql_reader;
   private static String requests[] = null;
@@ -40,8 +40,7 @@ public class MySQLiteOpenHelper
     //Здесь создается или открывается БД
     super(GlobalWars.application_context, DBName, null, VersionDB);
     sql_reader = new SQLReader(GlobalWars.application_context.getResources());
-    dbw = getWritableDatabase();
-    dbr = getReadableDatabase();
+    db = getWritableDatabase();
   }
   //Создаем таблицы базы
   @Override

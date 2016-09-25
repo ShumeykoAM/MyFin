@@ -4,8 +4,17 @@
          title3="  то вместо значения поля пишем ИД_родителя">
     <!-- Пока что просто для примера добавим эту запись -->
     <Currency short_name="RUR"></Currency>
-    <TypeResource name="Карта 4356" id_icon="4355"></TypeResource>
-    <Account _id_currency="1" _id_type_resource="1" name="Карта 4356" balance="23432,54"></Account>
+    <Account _id_currency="1" id_icon="0" name="Карта 4356" balance="2432,54"></Account>
+    <Account _id_currency="1" id_icon="1" name="Карта 5632" balance="232,54"></Account>
+    <Account _id_currency="1" id_icon="2" name="Карта 0945" balance="8762,54"></Account>
+    <Account _id_currency="1" id_icon="3" name="Налик"      balance="347,54"></Account>
+    <Account _id_currency="1" id_icon="4" name="Вклад"      balance="23432,54"></Account>
+    <Account _id_currency="1" id_icon="5" name="Заначка"    balance="0,0"></Account>
+    <Account _id_currency="1" id_icon="0" name="Карта xxx2" balance="0,0"></Account>
+    <Account _id_currency="1" id_icon="1" name="Карта xxx3" balance="0,0"></Account>
+    <Account _id_currency="1" id_icon="2" name="Карта xxx4" balance="0,0"></Account>
+    <Account _id_currency="1" id_icon="3" name="Карта xxx5" balance="0,0"></Account>
+
 
     <!-- пример древовидной иерархии
     <type_detail name="Расходы" trend="0" _id_account="1">
