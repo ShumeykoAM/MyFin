@@ -6,4 +6,8 @@
     <string name="tab_transactions">Транзакции</string>
     <string name="tab_planned">План</string>
     <string name="tab_regular">Регулярные</string>
+    <string name="accounts_d_new_icon">Иконка</string>
+    <string name="accounts_d_new_name">Название</string>
+    <string name="accounts_d_new_balance">Баланс</string>
+    <string name="accounts_d_new_currency">Валюта</string>
 </resources>

@@ -5,10 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
+import android.widget.*;
 import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
 import com.bloodliviykot.MyFin.DB.entities.Account;
@@ -21,6 +18,7 @@ public class Accounts
 {
   private MySQLiteOpenHelper oh;
   private ListView list_accounts;
+  private Button button_create;
 
   @Override
   protected void onCreate(Bundle savedInstanceState)
@@ -30,14 +28,24 @@ public class Accounts
 
     oh = MySQLiteOpenHelper.getMySQLiteOpenHelper();
     list_accounts = (ListView)findViewById(R.id.accounts_listView);
+    button_create = (Button)findViewById(R.id.accounts_create);
+
     //list_accounts.setAdapter();
     Cursor cursor = oh.db.rawQuery(oh.getQuery(EQ.ACCOUNTS), null);
     SimpleCursorAdapter list_adapter = new AccountsItemAdapter(R.layout.accounts_item, cursor,
       new String[]{},
       new int[]{R.id.account_item_image, R.id.account_item_name, R.id.account_item_balance});
-
     list_adapter.changeCursor(cursor);
     list_accounts.setAdapter(list_adapter);
+
+    button_create.setOnClickListener(new View.OnClickListener(){
+      @Override
+      public void onClick(View v)
+      {
+        AccountsDNew accounts_d_new = new AccountsDNew();
+        accounts_d_new.show(getFragmentManager(), null);
+      }
+    });
   }
   @Override
   protected void onPause()

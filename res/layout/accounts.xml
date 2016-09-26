@@ -15,9 +15,9 @@
             android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
             android:id="@+id/accounts_frameLayout">
         <Button
-                android:layout_width="wrap_content"
+                android:layout_width="51dp"
                 android:layout_height="wrap_content"
-                android:text="Счет"
-                android:id="@+id/accounts_button"/>
+                android:text="+"
+                android:id="@+id/accounts_create"/>
     </FrameLayout>
 </RelativeLayout>
