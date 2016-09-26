@@ -9,6 +9,10 @@ import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
 public class Main
   extends TabActivity
 {
+
+  private static boolean IS_DEBUG = true;
+  private static boolean first_run = true;
+
   /**
    * Called when the activity is first created.
    */
@@ -19,7 +23,9 @@ public class Main
     setContentView(R.layout.main);
 
     //Для отладки удалим базу
-    MySQLiteOpenHelper.debugDeleteDB(getApplicationContext());
+    if(IS_DEBUG && first_run)
+      MySQLiteOpenHelper.debugDeleteDB(getApplicationContext());
+    first_run = false;
 
     setGlobalVars();
 

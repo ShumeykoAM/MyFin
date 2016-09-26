@@ -38,11 +38,21 @@ public class Accounts
     list_adapter.changeCursor(cursor);
     list_accounts.setAdapter(list_adapter);
 
-    button_create.setOnClickListener(new View.OnClickListener(){
+    button_create.setOnClickListener(new View.OnClickListener()
+    {
       @Override
       public void onClick(View v)
       {
-        AccountsDNew accounts_d_new = new AccountsDNew();
+        AccountsDNew.RESULT result = AccountsDNew.RESULT.ADDED;
+        AccountsDNew accounts_d_new = new AccountsDNew(new AccountsDNew.I_Resultable()
+        {
+          @Override
+          public void resultHandler(AccountsDNew.RESULT result)
+          {
+            if(result == AccountsDNew.RESULT.ADDED)
+              ;
+          }
+        });
         accounts_d_new.show(getFragmentManager(), null);
       }
     });
