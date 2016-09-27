@@ -10,4 +10,6 @@
     <string name="accounts_d_new_name">Название</string>
     <string name="accounts_d_new_balance">Баланс</string>
     <string name="accounts_d_new_currency">Валюта</string>
+    <string name="button_ok">Ok</string>
+    <string name="button_cansel">Отмена</string>
 </resources>

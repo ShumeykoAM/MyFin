@@ -22,7 +22,7 @@
                     android:text="@string/accounts_d_new_icon"
                     />
             <Spinner
-                    android:layout_width="match_parent"
+                    android:layout_width="162dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/accounts_d_new_icon"
                     android:spinnerMode="dropdown"/>
@@ -47,7 +47,8 @@
     <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true" android:layout_below="@+id/accounts_d_new_relativeLayout1">
+            android:layout_centerHorizontal="true" android:layout_below="@+id/accounts_d_new_relativeLayout1"
+            android:id="@+id/relativeLayout">
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
@@ -81,4 +82,21 @@
                     android:layout_gravity="right" android:spinnerMode="dropdown"/>
         </LinearLayout>
     </RelativeLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" android:layout_below="@+id/relativeLayout">
+        <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/accounts_d_new_cansel"
+                android:text="@string/button_cansel" android:layout_weight="1"/>
+        <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/button_ok"
+                android:id="@+id/accounts_d_new_ok"
+                android:layout_weight="1"/>
+    </LinearLayout>
 </RelativeLayout>
