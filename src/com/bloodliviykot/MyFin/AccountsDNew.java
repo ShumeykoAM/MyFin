@@ -18,21 +18,11 @@ import com.bloodliviykot.MyFin.DB.entities.Account;
  */
 @SuppressLint("ValidFragment")
 public class AccountsDNew
-  extends DialogFragment
+  extends DialogFragment //!!! внимание, наследники DialogFragment должны иметь конструктор без параметров
 {
-  public interface I_Resultable
+  public AccountsDNew()
   {
-    void resultHandler(RESULT result);
-  }
-  public enum RESULT
-  {
-    ADDED,
-    CANSEL
-  }
-  private I_Resultable resultable = null;
-  public AccountsDNew(I_Resultable resultable)
-  {
-    this.resultable = resultable;
+    super();
   }
 
   @Override
@@ -54,8 +44,6 @@ public class AccountsDNew
   public void onDestroyView()
   {
     super.onDestroyView();
-    if(resultable != null)
-      resultable.resultHandler(RESULT.CANSEL);
   }
 
   public class ImageAdapter

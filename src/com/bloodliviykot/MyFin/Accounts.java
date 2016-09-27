@@ -43,16 +43,7 @@ public class Accounts
       @Override
       public void onClick(View v)
       {
-        AccountsDNew.RESULT result = AccountsDNew.RESULT.ADDED;
-        AccountsDNew accounts_d_new = new AccountsDNew(new AccountsDNew.I_Resultable()
-        {
-          @Override
-          public void resultHandler(AccountsDNew.RESULT result)
-          {
-            if(result == AccountsDNew.RESULT.ADDED)
-              ;
-          }
-        });
+        AccountsDNew accounts_d_new = new AccountsDNew();
         accounts_d_new.show(getFragmentManager(), null);
       }
     });
