@@ -41,7 +41,7 @@
             <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/accounts_d_new_name" android:inputType="text"/>
+                    android:id="@+id/accounts_d_new_name" android:inputType="text" android:singleLine="true"/>
         </LinearLayout>
     </RelativeLayout>
     <RelativeLayout
@@ -64,7 +64,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/accounts_d_new_balance"
-                    android:inputType="number"/>
+                    android:inputType="numberDecimal" android:numeric="decimal" android:singleLine="true"/>
         </LinearLayout>
         <LinearLayout
                 android:orientation="vertical"

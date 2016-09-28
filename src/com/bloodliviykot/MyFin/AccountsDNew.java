@@ -7,10 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
+import android.widget.*;
 import com.bloodliviykot.MyFin.DB.entities.Account;
 
 /**
@@ -19,11 +16,17 @@ import com.bloodliviykot.MyFin.DB.entities.Account;
 @SuppressLint("ValidFragment")
 public class AccountsDNew
   extends DialogFragment //!!! внимание, наследники DialogFragment должны иметь конструктор без параметров
+  implements View.OnClickListener
 {
-  public AccountsDNew()
+  public interface I_ResultHandler
   {
-    super();
+    void resultHandler(Bundle result_values);
   }
+  private Spinner icon;
+  private EditText name, balance;
+  private Spinner currency;
+  private Button b_ok, b_cancel;
+  private Account account;
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -31,19 +34,48 @@ public class AccountsDNew
     getDialog().setTitle("Создать счет");
     //getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
     final View v = inflater.inflate(R.layout.accounts_d_new, null);
-    Spinner image = (Spinner)v.findViewById(R.id.accounts_d_new_icon);
+    icon = (Spinner)v.findViewById(R.id.accounts_d_new_icon);
+    name = (EditText)v.findViewById(R.id.accounts_d_new_name);
+    balance = (EditText)v.findViewById(R.id.accounts_d_new_balance);
+    currency = (Spinner)v.findViewById(R.id.accounts_d_new_currency);
+    b_ok     = (Button)v.findViewById(R.id.accounts_d_new_ok);     b_ok.setOnClickListener(this);
+    b_cancel = (Button)v.findViewById(R.id.accounts_d_new_cansel); b_cancel.setOnClickListener(this);
     //Зададим программно, а то в редакторе плохо выглядит
-    image.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-      LinearLayout.LayoutParams.WRAP_CONTENT));
+    icon.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
     ImageAdapter adapter = new ImageAdapter(GlobalWars.application_context);
-    image.setAdapter(adapter);
-
+    icon.setAdapter(adapter);
+    Bundle params = getArguments();
+    if(params.getString("Regime") == "New")
+      account = new Account();
+    else
+    {
+      account = (Account)params.getSerializable("Account");
+      icon.setSelection(account.getIcon().id_db);
+      name.setText(account.getName());
+      balance.setText(((Double)account.getBalance()).toString());
+      //currency.setSelection();
+    }
     return v;
   }
+
   @Override
-  public void onDestroyView()
+  public void onClick(View v)
   {
-    super.onDestroyView();
+    if(v == b_ok)
+      try
+      {
+        Bundle result_values = new Bundle();
+        result_values.putString("Button", "Ok");
+        account.setIcon(Account.E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(icon.getSelectedItemPosition()));
+        account.setName(name.getText().toString());
+        account.setBalance(Double.parseDouble(balance.getText().toString()));
+        //account.setCurrency
+        result_values.putSerializable("Account", account);
+        ((I_ResultHandler)getActivity()).resultHandler(result_values);
+      }
+      catch(ClassCastException e)
+      {   }
+    dismiss();
   }
 
   public class ImageAdapter

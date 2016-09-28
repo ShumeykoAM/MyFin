@@ -15,6 +15,7 @@ import com.bloodliviykot.MyFin.DB.entities.Account;
  */
 public class Accounts
   extends Activity
+  implements AccountsDNew.I_ResultHandler
 {
   private MySQLiteOpenHelper oh;
   private ListView list_accounts;
@@ -44,20 +45,30 @@ public class Accounts
       public void onClick(View v)
       {
         AccountsDNew accounts_d_new = new AccountsDNew();
+        Bundle params = new Bundle();
+        params.putString("Regime", "New");
+        accounts_d_new.setArguments(params);
         accounts_d_new.show(getFragmentManager(), null);
       }
     });
   }
-  @Override
-  protected void onPause()
-  {
-    super.onPause();
 
-  }
+  //Обработчик результата диалога AccountsDNew
   @Override
-  protected void onResume()
+  public void resultHandler(Bundle result_values)
   {
-    super.onResume();
+    if(result_values.containsKey("Button") && result_values.getString("Button") == "Ok")
+    {
+      Account account = (Account)result_values.getSerializable("Account");
+      if(account.getId() == 0)
+      {
+
+      }
+      else
+      {
+
+      }
+    }
   }
 
 
