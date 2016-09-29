@@ -10,6 +10,9 @@ import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
 import com.bloodliviykot.MyFin.DB.entities.Account;
 
+import java.util.Currency;
+import java.util.Locale;
+
 /**
  * Created by Kot on 23.09.2016.
  */
@@ -35,7 +38,7 @@ public class Accounts
     Cursor cursor = oh.db.rawQuery(oh.getQuery(EQ.ACCOUNTS), null);
     SimpleCursorAdapter list_adapter = new AccountsItemAdapter(R.layout.accounts_item, cursor,
       new String[]{},
-      new int[]{R.id.account_item_image, R.id.account_item_name, R.id.account_item_balance});
+      new int[]{R.id.account_item_currency, R.id.account_item_name, R.id.account_item_balance});
     list_adapter.changeCursor(cursor);
     list_accounts.setAdapter(list_adapter);
 
@@ -57,12 +60,21 @@ public class Accounts
   @Override
   public void resultHandler(Bundle result_values)
   {
-    if(result_values.containsKey("Button") && result_values.getString("Button") == "Ok")
+    if(result_values.containsKey("Button") && result_values.getString("Button").equals("Ok"))
     {
       Account account = (Account)result_values.getSerializable("Account");
       if(account.getId() == 0)
       {
+        Locale l = Locale.getDefault();
+        //Locale.setDefault(new Locale("ru"));
+        Locale ls[] = Locale.getAvailableLocales();
 
+        Currency cr3 = Currency.getInstance(Locale.getDefault());
+        Currency cr1 = Currency.getInstance(Locale.US);
+
+
+        int gf0 = 0;
+        gf0++;
       }
       else
       {
@@ -91,7 +103,7 @@ public class Accounts
       double balance = cursor.getDouble(cursor.getColumnIndex("balance"));
 
       //Сопоставляем
-      ImageView iv_image  = (ImageView)view.findViewById(R.id.account_item_image);
+      ImageView iv_image  = (ImageView)view.findViewById(R.id.account_item_currency);
       TextView tv_name    = (TextView)view.findViewById(R.id.account_item_name);
       TextView tv_balance = (TextView)view.findViewById(R.id.account_item_balance);
       iv_image.setImageResource(icon.R_drawable);

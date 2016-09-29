@@ -14,7 +14,7 @@ public class Account
   public enum E_IC_TYPE_RESOURCE
   {
     CASH       (0, R.drawable.ic_cash       ),
-    DEBIT_CARD (1, R.drawable.ic_debet_card ),
+    DEBIT_CARD (1, R.drawable.ic_debit_card ),
     CREDIT_CARD(2, R.drawable.ic_credit_card),
     CONTRACT   (3, R.drawable.ic_contract   ),
     MONEY_BOX  (4, R.drawable.ic_money_box  ),

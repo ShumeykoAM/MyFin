@@ -11,13 +11,13 @@
             android:singleLine="true" android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Название"
             android:gravity="left|center_vertical"
-            android:layout_toRightOf="@+id/account_item_image"
+            android:layout_toRightOf="@+id/account_item_currency"
             android:layout_toLeftOf="@+id/account_item_balance"
             android:layout_centerVertical="true"/>
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/account_item_image" android:layout_centerVertical="true"
+            android:id="@+id/account_item_currency" android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             android:src="@drawable/ic_credit_card"/>
     <TextView
@@ -28,6 +28,6 @@
             android:id="@+id/account_item_balance"
             android:singleLine="true"
             android:gravity="center_vertical|right"
-            android:layout_below="@+id/textView" android:layout_alignParentRight="true"
+            android:layout_below="@+id/account_item_icon" android:layout_alignParentRight="true"
             android:layout_centerVertical="true"/>
 </RelativeLayout>

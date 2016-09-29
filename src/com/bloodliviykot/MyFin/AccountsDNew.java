@@ -45,7 +45,7 @@ public class AccountsDNew
     ImageAdapter adapter = new ImageAdapter(GlobalWars.application_context);
     icon.setAdapter(adapter);
     Bundle params = getArguments();
-    if(params.getString("Regime") == "New")
+    if(params.getString("Regime").equals("New"))
       account = new Account();
     else
     {
@@ -120,7 +120,7 @@ public class AccountsDNew
     {
       if(convertView == null)
         convertView = View.inflate(GlobalWars.application_context, R.layout.accounts_d_new_image_item, null);
-      ImageView image = (ImageView)convertView.findViewById(R.id.account_item_image);
+      ImageView image = (ImageView)convertView.findViewById(R.id.account_item_currency);
       image.setImageResource(Account.E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(position).R_drawable);
       image.setBackgroundColor(getResources().getColor(R.color.black));
       return convertView;
@@ -131,7 +131,7 @@ public class AccountsDNew
     {
       if(convertView == null)
         convertView = View.inflate(GlobalWars.application_context, R.layout.accounts_d_new_image_item, null);
-      ImageView image = (ImageView)convertView.findViewById(R.id.account_item_image);
+      ImageView image = (ImageView)convertView.findViewById(R.id.account_item_currency);
       image.setImageResource(Account.E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(position).R_drawable);
       image.setBackgroundColor(getResources().getColor(R.color.black));
       return convertView;

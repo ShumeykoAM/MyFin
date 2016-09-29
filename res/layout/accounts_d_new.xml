@@ -76,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/accounts_d_new_currency"/>
             <Spinner
-                    android:layout_width="match_parent"
+                    android:layout_width="220dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/accounts_d_new_currency"
                     android:layout_gravity="right" android:spinnerMode="dropdown"/>

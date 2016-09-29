@@ -2,8 +2,12 @@
 <distrib title1="Здесь будем хранить дистрибутивное наполнение файлов БД"
          title2="Если нужно использовать _id родителя для вложенного елемента"
          title3="  то вместо значения поля пишем ИД_родителя">
+    <!-- Основные валюты -->
+    <Currency short_name="RUB" id_icon="0"></Currency>
+    <Currency short_name="USD" id_icon="1"></Currency>
+    <Currency short_name="EUR" id_icon="2"></Currency>
+
     <!-- Пока что просто для примера добавим эту запись -->
-    <Currency short_name="RUR"></Currency>
     <Account _id_currency="1" id_icon="0" name="Карта 4356" balance="2432,54"></Account>
     <Account _id_currency="1" id_icon="1" name="Карта 5632" balance="232,54"></Account>
     <Account _id_currency="1" id_icon="2" name="Карта 0945" balance="8762,54"></Account>

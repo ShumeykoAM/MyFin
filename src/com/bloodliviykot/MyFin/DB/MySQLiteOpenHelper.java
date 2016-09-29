@@ -128,6 +128,7 @@ public class MySQLiteOpenHelper
     {
       e.printStackTrace();
     }
+
   }
 
   //Обновляем таблицы базы
