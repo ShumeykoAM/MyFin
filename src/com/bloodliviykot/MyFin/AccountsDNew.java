@@ -62,7 +62,8 @@ public class AccountsDNew
   public void onClick(View v)
   {
     if(v == b_ok)
-      try
+    {
+      if(checkFields())
       {
         Bundle result_values = new Bundle();
         result_values.putString("Button", "Ok");
@@ -71,11 +72,39 @@ public class AccountsDNew
         account.setBalance(Double.parseDouble(balance.getText().toString()));
         //account.setCurrency
         result_values.putSerializable("Account", account);
-        ((I_ResultHandler)getActivity()).resultHandler(result_values);
+        try
+        {
+          ((I_ResultHandler)getActivity()).resultHandler(result_values);
+        } catch(ClassCastException e)
+        {
+        }
+        dismiss();
       }
-      catch(ClassCastException e)
-      {   }
-    dismiss();
+    }
+    else
+      dismiss();
+  }
+
+  private boolean checkFields()
+  {
+    //icon.getSelectedItemPosition();
+    if(name.getText().toString().equals(""))
+    {
+      Toast.makeText(GlobalWars.application_context, "Не задано имя счета!", Toast.LENGTH_SHORT).show();
+      return false;
+    }
+    if(balance.getText().toString().equals(""))
+    {
+      Toast.makeText(GlobalWars.application_context, "Не задан баланс счета!", Toast.LENGTH_SHORT).show();
+      return false;
+    }
+    int i = currency.getSelectedItemPosition();
+    if(currency.getSelectedItemPosition() == 0)
+    {
+      Toast.makeText(GlobalWars.application_context, "Не задана валюта счета!", Toast.LENGTH_SHORT).show();
+      return false;
+    }
+    return true;
   }
 
   public class ImageAdapter
