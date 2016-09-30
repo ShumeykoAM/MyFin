@@ -31,11 +31,17 @@ public class MySQLiteOpenHelper
   private SQLReader sql_reader;
   private static String requests[] = null;
   private static MySQLiteOpenHelper mySQLiteOpenHelper = null;
+  private static boolean distributive = false;
 
+  synchronized
   public static MySQLiteOpenHelper getMySQLiteOpenHelper()
   {
     if(mySQLiteOpenHelper == null)
+    {
       mySQLiteOpenHelper = new MySQLiteOpenHelper();
+      if(distributive)
+        mySQLiteOpenHelper.fillDistr(mySQLiteOpenHelper.db);
+    }
     return mySQLiteOpenHelper;
   }
   private MySQLiteOpenHelper()
@@ -61,7 +67,7 @@ public class MySQLiteOpenHelper
         String err = e.getMessage();
         err = "";
       }
-    fillDistr(db);
+    distributive = true;
   }
   //Дистрибутивное наполнение таблиц базы
   private static final String SKIP_TAG = "distrib";
@@ -133,7 +139,7 @@ public class MySQLiteOpenHelper
     }
     //Добавим в справочник валют валюту для текущей локализации, если она уже не добавилась из distrib_db.xml
     java.util.Currency util_currency = java.util.Currency.getInstance(Locale.getDefault());
-    Entity currency = (Entity)new Currency(util_currency.getCurrencyCode(), null);
+    Entity currency = (Entity)new Currency(util_currency.getCurrencyCode()+"rer", null);
     currency.insert();
   }
 

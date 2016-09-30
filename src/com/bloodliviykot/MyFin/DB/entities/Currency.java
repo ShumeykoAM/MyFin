@@ -1,5 +1,6 @@
 package com.bloodliviykot.MyFin.DB.entities;
 
+import android.content.ContentValues;
 import com.bloodliviykot.MyFin.R;
 import com.bloodliviykot.tools.DataBase.Entity;
 
@@ -47,23 +48,24 @@ public class Currency
   public void setIcon(E_IC_CURRENCY icon){this.icon = icon;}
 
   @Override
-  public int insert()
+  public String getDataBaseName()
   {
-    return 0;
+    return "Currency";
   }
 
   @Override
-  public boolean update()
+  public ContentValues getContentValues()
   {
-    return false;
+    ContentValues values = new ContentValues();
+    values.put("short_name_lower", this.short_name_lover);
+    values.put("short_name"      , this.short_name);
+    if(this.icon != null)
+      values.put("id_icon"       , this.icon.id_db);
+    return values;
   }
 
-  @Override
-  public boolean delete()
-  {
-    return false;
-  }
 
+  //Поля записи
   private String short_name_lover;
   private String short_name;
   private E_IC_CURRENCY icon;

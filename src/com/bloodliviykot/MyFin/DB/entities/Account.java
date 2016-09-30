@@ -1,5 +1,6 @@
 package com.bloodliviykot.MyFin.DB.entities;
 
+import android.content.ContentValues;
 import com.bloodliviykot.MyFin.R;
 import com.bloodliviykot.tools.DataBase.Entity;
 
@@ -35,15 +36,6 @@ public class Account
     }
   }
 
-  private long  _id;
-  private double balance;
-  //private Currency currency;
-  private String name;
-  //private CoUser co_user;
-  E_IC_TYPE_RESOURCE icon;
-
-  public long getId(){return _id;}
-
   public double getBalance(){return balance;}
   public void setBalance(double balance){this.balance = balance;}
 
@@ -54,21 +46,20 @@ public class Account
   public void setIcon(E_IC_TYPE_RESOURCE icon){this.icon = icon;}
 
   @Override
-  public int insert()
+  public String getDataBaseName()
   {
-
-    return 0;
+    return null;
   }
-
   @Override
-  public boolean update()
+  public ContentValues getContentValues()
   {
-    return false;
+    return null;
   }
 
-  @Override
-  public boolean delete()
-  {
-    return false;
-  }
+  //Поля записи
+  private double balance;
+  //private Currency currency;
+  private String name;
+  //private CoUser co_user;
+  E_IC_TYPE_RESOURCE icon;
 }
