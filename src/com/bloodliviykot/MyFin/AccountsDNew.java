@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.bloodliviykot.MyFin.DB.entities.Account;
+import com.bloodliviykot.MyFin.DB.entities.Currency;
+import com.bloodliviykot.tools.DataBase.Entity;
 
 /**
  * Created by Shumeiko on 26.09.2016.
@@ -46,7 +48,11 @@ public class AccountsDNew
     icon.setAdapter(adapter);
     Bundle params = getArguments();
     if(params.getString("Regime").equals("New"))
-      account = new Account();
+      try
+      {
+        account = new Account(new Currency(1), null, Account.E_IC_TYPE_RESOURCE.CASH, "", 0.0);
+      } catch(Entity.EntityException e)
+      {   }
     else
     {
       account = (Account)params.getSerializable("Account");
@@ -67,8 +73,13 @@ public class AccountsDNew
       {
         Bundle result_values = new Bundle();
         result_values.putString("Button", "Ok");
-        account.setIcon(Account.E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(icon.getSelectedItemPosition()));
-        account.setName(name.getText().toString());
+        try
+        {
+          account.setIcon(Account.E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(icon.getSelectedItemPosition()));
+          account.setName(name.getText().toString());
+        }
+        catch(Entity.EntityException ee)
+        {   }
         account.setBalance(Double.parseDouble(balance.getText().toString()));
         //account.setCurrency
         result_values.putSerializable("Account", account);

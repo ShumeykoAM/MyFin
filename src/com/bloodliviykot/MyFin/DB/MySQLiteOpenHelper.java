@@ -6,6 +6,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
+import com.bloodliviykot.MyFin.DB.entities.Account;
 import com.bloodliviykot.MyFin.DB.entities.Currency;
 import com.bloodliviykot.MyFin.GlobalWars;
 import com.bloodliviykot.MyFin.R;
@@ -139,13 +140,31 @@ public class MySQLiteOpenHelper
     }
     //Добавим в справочник валют валюту для текущей локализации, если она уже не добавилась из distrib_db.xml
     java.util.Currency util_currency = java.util.Currency.getInstance(Locale.getDefault());
-    Entity currency = (Entity)new Currency(util_currency.getCurrencyCode(), null);
-    currency.insert();
+    try
+    {
+      Entity currency = (Entity)new Currency(util_currency.getCurrencyCode(), null);
+      currency.insert();
+    }
+    catch(Entity.EntityException ee)
+    { }
 
 //!!!! удалить
 try
 {
+  Account ac1 = new Account(4);
+  ac1.setName("QQQQQQQQQQQ");
+  ac1.setBalance(23.67);
+  ac1.update();
+  Account ac2 = new Account(4);
+
   Currency c = new Currency(2);
+  c.delete();
+  c = new Currency(3);
+  c.setIcon(null);
+  c.setShort_name("vvbMMM");
+  c.update();
+  Currency c2 = new Currency(3);
+
   c.getId();
 }
 catch(Entity.EntityException ee)

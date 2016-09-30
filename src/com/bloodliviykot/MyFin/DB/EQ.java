@@ -7,6 +7,8 @@ public enum EQ
 {
   //Выборка сущьности по _id
   CURRENCY,
+  ACCOUNT,
+  CO_USER,
 
   ACCOUNTS,                 //Список счетов, кроме счетов сопользователей
 

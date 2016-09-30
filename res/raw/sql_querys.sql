@@ -4,6 +4,15 @@ SELECT Currency._id, Currency.short_name_lower, Currency.short_name, Currency.id
   FROM Currency
   WHERE _id=?;
 
+--ACCOUNT
+SELECT Account._id, Account._id_currency, Account._id_co_user, Account.id_icon, Account.name, Account.balance
+  FROM Account
+  WHERE _id=?;
+
+SELECT CoUser._id, CoUser.name
+  FROM CoUser
+  WHERE _id=?;
+
 -- ACCOUNTS
 SELECT Account._id, Account.id_icon, Account.name, Account.balance
   FROM Account
