@@ -139,8 +139,21 @@ public class MySQLiteOpenHelper
     }
     //Добавим в справочник валют валюту для текущей локализации, если она уже не добавилась из distrib_db.xml
     java.util.Currency util_currency = java.util.Currency.getInstance(Locale.getDefault());
-    Entity currency = (Entity)new Currency(util_currency.getCurrencyCode()+"rer", null);
+    Entity currency = (Entity)new Currency(util_currency.getCurrencyCode(), null);
     currency.insert();
+
+//!!!! удалить
+try
+{
+  Currency c = new Currency(2);
+  c.getId();
+}
+catch(Entity.EntityException ee)
+{
+  int fdfdf=0;
+  fdfdf++;
+}
+
   }
 
   //Обновляем таблицы базы

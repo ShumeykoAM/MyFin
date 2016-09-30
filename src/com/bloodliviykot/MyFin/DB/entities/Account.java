@@ -1,6 +1,7 @@
 package com.bloodliviykot.MyFin.DB.entities;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import com.bloodliviykot.MyFin.R;
 import com.bloodliviykot.tools.DataBase.Entity;
 
@@ -24,15 +25,17 @@ public class Account
     SAFE       (5, R.drawable.ic_safe       );
 
     public final int R_drawable;
-    public final int id_db;
-    private E_IC_TYPE_RESOURCE(int id_db, int R_drawable)
+    public final long id_db;
+    public final int id;
+    private E_IC_TYPE_RESOURCE(long id_db, int R_drawable)
     {
       this.R_drawable = R_drawable;
       this.id_db = id_db;
+      this.id = (int)id_db;
     }
-    public static E_IC_TYPE_RESOURCE getE_IC_TYPE_RESOURCE(int id_db)
+    public static E_IC_TYPE_RESOURCE getE_IC_TYPE_RESOURCE(long id_db)
     {
-      return E_IC_TYPE_RESOURCE.values()[id_db];
+      return E_IC_TYPE_RESOURCE.values()[(int)id_db];
     }
   }
 
@@ -54,6 +57,11 @@ public class Account
   public ContentValues getContentValues()
   {
     return null;
+  }
+  @Override
+  protected void initFromCursor(Cursor cursor)
+  {
+
   }
 
   //Поля записи

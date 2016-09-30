@@ -50,7 +50,7 @@ public class AccountsDNew
     else
     {
       account = (Account)params.getSerializable("Account");
-      icon.setSelection(account.getIcon().id_db);
+      icon.setSelection(account.getIcon().id);
       name.setText(account.getName());
       balance.setText(((Double)account.getBalance()).toString());
       //currency.setSelection();

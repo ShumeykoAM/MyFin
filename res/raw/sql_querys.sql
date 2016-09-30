@@ -1,3 +1,9 @@
+--Сущности по _id
+--CURRENCY
+SELECT Currency._id, Currency.short_name_lower, Currency.short_name, Currency.id_icon
+  FROM Currency
+  WHERE _id=?;
+
 -- ACCOUNTS
 SELECT Account._id, Account.id_icon, Account.name, Account.balance
   FROM Account

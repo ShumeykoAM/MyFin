@@ -1,6 +1,8 @@
 package com.bloodliviykot.MyFin.DB.entities;
 
 import android.content.ContentValues;
+import android.database.Cursor;
+import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.R;
 import com.bloodliviykot.tools.DataBase.Entity;
 
@@ -21,15 +23,17 @@ public class Currency
     EUR (2, R.drawable.ic_curr_eur );
 
     public final int R_drawable;
-    public final int id_db;
-    private E_IC_CURRENCY(int id_db, int R_drawable)
+    public final long id_db;
+    public final int id;
+    private E_IC_CURRENCY(long id_db, int R_drawable)
     {
       this.R_drawable = R_drawable;
       this.id_db = id_db;
+      this.id = (int)id_db;
     }
-    public static E_IC_CURRENCY getE_IC_TYPE_RESOURCE(int id_db)
+    public static E_IC_CURRENCY getE_IC_TYPE_RESOURCE(long id_db)
     {
-      return E_IC_CURRENCY.values()[id_db];
+      return E_IC_CURRENCY.values()[(int)id_db];
     }
   }
 
@@ -38,11 +42,15 @@ public class Currency
     setShort_name(short_name);
     setIcon(icon);
   }
+  public Currency(long _id) throws EntityException
+  {
+    super(_id, EQ.CURRENCY);
+  }
   public String getShort_name(){return short_name;}
   public void setShort_name(String short_name)
   {
     this.short_name = short_name;
-    this.short_name_lover = short_name.toLowerCase();
+    this.short_name_lower = short_name.toLowerCase();
   }
   public E_IC_CURRENCY getIcon(){return icon;}
   public void setIcon(E_IC_CURRENCY icon){this.icon = icon;}
@@ -52,21 +60,28 @@ public class Currency
   {
     return "Currency";
   }
-
   @Override
   public ContentValues getContentValues()
   {
     ContentValues values = new ContentValues();
-    values.put("short_name_lower", this.short_name_lover);
+    values.put("short_name_lower", this.short_name_lower);
     values.put("short_name"      , this.short_name);
     if(this.icon != null)
       values.put("id_icon"       , this.icon.id_db);
     return values;
   }
+  @Override
+  protected void initFromCursor(Cursor cursor)
+  {
+    this.short_name_lower = cursor.getString(cursor.getColumnIndex("short_name_lower"));
+    this.short_name       = cursor.getString(cursor.getColumnIndex("short_name"));
+    if(!cursor.isNull(cursor.getColumnIndex("id_icon")))
+      this.icon = E_IC_CURRENCY.getE_IC_TYPE_RESOURCE(cursor.getLong(cursor.getColumnIndex("id_icon")));
+  }
 
 
   //Поля записи
-  private String short_name_lover;
+  private String short_name_lower;
   private String short_name;
   private E_IC_CURRENCY icon;
 
