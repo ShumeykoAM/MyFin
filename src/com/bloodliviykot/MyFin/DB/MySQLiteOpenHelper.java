@@ -6,8 +6,10 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
+import com.bloodliviykot.MyFin.DB.entities.Currency;
 import com.bloodliviykot.MyFin.GlobalWars;
 import com.bloodliviykot.MyFin.R;
+import com.bloodliviykot.tools.DataBase.Entity;
 import com.bloodliviykot.tools.DataBase.SQLReader;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -15,6 +17,7 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 import java.util.Stack;
 
 public class MySQLiteOpenHelper
@@ -67,7 +70,7 @@ public class MySQLiteOpenHelper
   {
     try
     {
-      //Заполним дистрибутивное содержание данных в БД
+      //Заполним дистрибутивное содержание данных в БД из distrib_db.xml
       Stack<Long> stack_id = new Stack<Long>();
       ContentValues values = new ContentValues();
       long _id = 0;
@@ -128,7 +131,10 @@ public class MySQLiteOpenHelper
     {
       e.printStackTrace();
     }
-
+    //Добавим в справочник валют валюту для текущей локализации, если она уже не добавилась из distrib_db.xml
+    java.util.Currency util_currency = java.util.Currency.getInstance(Locale.getDefault());
+    Entity currency = (Entity)new Currency(util_currency.getCurrencyCode(), null);
+    currency.insert();
   }
 
   //Обновляем таблицы базы

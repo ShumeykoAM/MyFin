@@ -1,6 +1,7 @@
 package com.bloodliviykot.MyFin.DB.entities;
 
 import com.bloodliviykot.MyFin.R;
+import com.bloodliviykot.tools.DataBase.Entity;
 
 import java.io.Serializable;
 
@@ -8,6 +9,7 @@ import java.io.Serializable;
  * Created by Kot on 25.09.2016.
  */
 public class Account
+  extends Entity
   implements Serializable
 {
   //Доступные иконки для счетов
@@ -35,7 +37,7 @@ public class Account
 
   private long  _id;
   private double balance;
-  //private Currency currency; !!!! Есть java.util.Currency, которая как раз определяет валюту
+  //private Currency currency;
   private String name;
   //private CoUser co_user;
   E_IC_TYPE_RESOURCE icon;
@@ -51,4 +53,22 @@ public class Account
   public E_IC_TYPE_RESOURCE getIcon(){return icon;}
   public void setIcon(E_IC_TYPE_RESOURCE icon){this.icon = icon;}
 
+  @Override
+  public int insert()
+  {
+
+    return 0;
+  }
+
+  @Override
+  public boolean update()
+  {
+    return false;
+  }
+
+  @Override
+  public boolean delete()
+  {
+    return false;
+  }
 }

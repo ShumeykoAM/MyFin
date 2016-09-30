@@ -3,9 +3,9 @@
          title2="Если нужно использовать _id родителя для вложенного елемента"
          title3="  то вместо значения поля пишем ИД_родителя">
     <!-- Основные валюты -->
-    <Currency short_name="RUB" id_icon="0"></Currency>
-    <Currency short_name="USD" id_icon="1"></Currency>
-    <Currency short_name="EUR" id_icon="2"></Currency>
+    <Currency short_name="RUB" short_name_lower="rub" id_icon="0"></Currency>
+    <Currency short_name="USD" short_name_lower="usd" id_icon="1"></Currency>
+    <Currency short_name="EUR" short_name_lower="eur" id_icon="2"></Currency>
 
     <!-- Пока что просто для примера добавим эту запись -->
     <Account _id_currency="1" id_icon="0" name="Карта 4356" balance="2432,54"></Account>

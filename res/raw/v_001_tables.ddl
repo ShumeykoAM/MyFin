@@ -1,8 +1,14 @@
 CREATE TABLE Currency
 (
   _id                  INTEGER PRIMARY KEY,
+  short_name_lower     TEXT NOT NULL,
   short_name           TEXT NOT NULL,
   id_icon              INTEGER
+);
+
+CREATE UNIQUE INDEX unique_short_name ON Currency
+(
+  short_name_lower
 );
 
 CREATE TABLE CoUser
