@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 import com.bloodliviykot.MyFin.DB.entities.Account;
+import com.bloodliviykot.MyFin.DB.entities.CoUser;
 import com.bloodliviykot.MyFin.DB.entities.Currency;
 import com.bloodliviykot.MyFin.GlobalWars;
 import com.bloodliviykot.MyFin.R;
@@ -17,6 +18,7 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Stack;
@@ -151,6 +153,22 @@ public class MySQLiteOpenHelper
 //!!!! удалить
 try
 {
+  CoUser coUser = new CoUser(1);
+  coUser.addAccount(new Account(4));
+  coUser.removeAccount(new Account(1));
+  coUser.setName("new_name");
+  coUser.update();
+  CoUser.AccountsCoUser accounts = coUser.getAccountsCoUser();
+  Iterator iterator = accounts.iterator();
+  boolean has = iterator.hasNext();
+  for(Account b : accounts)
+  {
+    int ffff = 0;
+    ffff++;
+  }
+
+
+
   Account ac1 = new Account(4);
   ac1.setName("QQQQQQQQQQQ");
   ac1.setBalance(23.67);

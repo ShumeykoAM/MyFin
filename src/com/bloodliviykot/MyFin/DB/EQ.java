@@ -11,6 +11,7 @@ public enum EQ
   CO_USER,
 
   ACCOUNTS,                 //Список счетов, кроме счетов сопользователей
+  USER_ACCOUNTS,            //Список счетов сопользователя
 
   EQ_COUNT;
   public final int value;

@@ -2,19 +2,19 @@ package com.bloodliviykot.tools.DataBase;
 
 
 import android.database.sqlite.SQLiteDatabase;
+import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
 
 public class SQLTransaction
 {
-  private SQLiteDatabase db;
   private I_Transaction trn_func_execute;
-  public SQLTransaction(SQLiteDatabase _db, I_Transaction _trn_func_execute)
+  public SQLTransaction(I_Transaction _trn_func_execute)
   {
-    db = _db;
     trn_func_execute = _trn_func_execute;
   }
   public boolean runTransaction()
   {
-    boolean result = trn_func_execute != null && db != null;
+    SQLiteDatabase db = MySQLiteOpenHelper.getMySQLiteOpenHelper().db;
+    boolean result = trn_func_execute != null;
     try
     {
       //Запускаем транзакцию

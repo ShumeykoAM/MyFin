@@ -2,24 +2,6 @@
 <distrib title1="Здесь будем хранить дистрибутивное наполнение файлов БД"
          title2="Если нужно использовать _id родителя для вложенного елемента"
          title3="  то вместо значения поля пишем ИД_родителя">
-    <!-- Основные валюты -->
-    <Currency short_name="RUB" short_name_lower="rub" id_icon="0"></Currency>
-    <Currency short_name="USD" short_name_lower="usd" id_icon="1"></Currency>
-    <Currency short_name="EUR" short_name_lower="eur" id_icon="2"></Currency>
-
-    <!-- Пока что просто для примера добавим эту запись -->
-    <Account _id_currency="1" id_icon="0" name="Карта 4356" balance="2432,54"></Account>
-    <Account _id_currency="1" id_icon="1" name="Карта 5632" balance="232,54"></Account>
-    <Account _id_currency="1" id_icon="2" name="Карта 0945" balance="8762,54"></Account>
-    <Account _id_currency="1" id_icon="3" name="Налик"      balance="347,54"></Account>
-    <Account _id_currency="1" id_icon="4" name="Вклад"      balance="23432,54"></Account>
-    <Account _id_currency="1" id_icon="5" name="Заначка"    balance="0,0"></Account>
-    <Account _id_currency="1" id_icon="0" name="Карта xxx2" balance="0,0"></Account>
-    <Account _id_currency="1" id_icon="1" name="Карта xxx3" balance="0,0"></Account>
-    <Account _id_currency="1" id_icon="2" name="Карта xxx4" balance="0,0"></Account>
-    <Account _id_currency="1" id_icon="3" name="Карта xxx5" balance="0,0"></Account>
-
-
     <!-- пример древовидной иерархии
     <type_detail name="Расходы" trend="0" _id_account="1">
         <type_detail _paren_type_detail="ИД_родителя" name="Продукты" trend="0" _id_account="1"></type_detail>
@@ -27,6 +9,27 @@
     -->
 
 
+    <!-- Основные валюты -->
+    <Currency short_name="RUB" short_name_lower="rub" id_icon="0"></Currency>
+    <Currency short_name="USD" short_name_lower="usd" id_icon="1"></Currency>
+    <Currency short_name="EUR" short_name_lower="eur" id_icon="2"></Currency>
 
+
+
+
+    <!-- Пока что просто для примера добавим эту запись -->
+    <CoUser name="Муж1"></CoUser>
+    <CoUser name="Муж2"></CoUser>
+
+    <Account _id_currency="1" id_icon="0" name="Карта 4356" balance="2432,54"></Account>
+    <Account _id_currency="1" id_icon="1" name="Карта 5632" balance="232,54" _id_co_user="1"></Account>
+    <Account _id_currency="1" id_icon="2" name="Карта 0945" balance="8762,54" _id_co_user="1"></Account>
+    <Account _id_currency="1" id_icon="3" name="Налик"      balance="347,54"></Account>
+    <Account _id_currency="1" id_icon="4" name="Вклад"      balance="23432,54"></Account>
+    <Account _id_currency="1" id_icon="5" name="Заначка"    balance="0,0"></Account>
+    <Account _id_currency="1" id_icon="0" name="Карта xxx2" balance="0,0"></Account>
+    <Account _id_currency="1" id_icon="1" name="Карта xxx3" balance="0,0"></Account>
+    <Account _id_currency="1" id_icon="2" name="Карта xxx4" balance="0,0"></Account>
+    <Account _id_currency="1" id_icon="3" name="Карта xxx5" balance="0,0"></Account>
 
 </distrib>
