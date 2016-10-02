@@ -12,4 +12,5 @@
     <string name="accounts_d_new_currency">Валюта</string>
     <string name="button_ok">Ok</string>
     <string name="button_cansel">Отмена</string>
+    <string name="currencies_d_new_code_currency">Код валюты</string>
 </resources>

@@ -4,9 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.DialogFragment;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.*;
 import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
@@ -183,40 +181,21 @@ public class AccountsDNew
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent)
     {
-      if(convertView == null)
-        convertView = View.inflate(GlobalWars.application_context, R.layout.accounts_d_new_currency_item, null);
-      ImageView image = (ImageView)convertView.findViewById(R.id.accounts_d_new_currency_item_icon);
-      TextView name = (TextView)convertView.findViewById(R.id.accounts_d_new_currency_item_name);
-      if(cursor_currencies.moveToPosition(position))
-      {
-        if(cursor_currencies.getLong(cursor_currencies.getColumnIndex("is_added")) == 0)
-        {
-          if(!cursor_currencies.isNull(cursor_currencies.getColumnIndex("id_icon")))
-          {
-            image.setVisibility(View.VISIBLE);
-            image.setImageResource(Currency.E_IC_CURRENCY.getE_IC_TYPE_RESOURCE(cursor_currencies.getLong(cursor_currencies.getColumnIndex("id_icon"))).R_drawable);
-            image.setBackgroundColor(getResources().getColor(R.color.black));
-          }
-          else
-            image.setVisibility(View.INVISIBLE);
-          name.setText(cursor_currencies.getString(cursor_currencies.getColumnIndex("short_name")));
-        }
-        else
-        {
-          image.setVisibility(View.INVISIBLE);
-          name.setText("+");
-        }
-      }
-      return convertView;
+      return prepareView(position, convertView, parent);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent)
     {
+      return prepareView(position, convertView, parent);
+    }
+    private View prepareView(int position, View convertView, ViewGroup parent)
+    {
       if(convertView == null)
         convertView = View.inflate(GlobalWars.application_context, R.layout.accounts_d_new_currency_item, null);
       ImageView image = (ImageView)convertView.findViewById(R.id.accounts_d_new_currency_item_icon);
       TextView name = (TextView)convertView.findViewById(R.id.accounts_d_new_currency_item_name);
+      Button another = (Button)convertView.findViewById(R.id.accounts_d_new_currency_item_button_another);
       if(cursor_currencies.moveToPosition(position))
       {
         if(cursor_currencies.getLong(cursor_currencies.getColumnIndex("is_added")) == 0)
@@ -224,6 +203,8 @@ public class AccountsDNew
           if(!cursor_currencies.isNull(cursor_currencies.getColumnIndex("id_icon")))
           {
             image.setVisibility(View.VISIBLE);
+            name.setVisibility(View.VISIBLE);
+            another.setVisibility(View.INVISIBLE);
             image.setImageResource(Currency.E_IC_CURRENCY.getE_IC_TYPE_RESOURCE(cursor_currencies.getLong(cursor_currencies.getColumnIndex("id_icon"))).R_drawable);
             image.setBackgroundColor(getResources().getColor(R.color.black));
           }
@@ -234,7 +215,26 @@ public class AccountsDNew
         else
         {
           image.setVisibility(View.INVISIBLE);
-          name.setText("+");
+          name.setVisibility(View.INVISIBLE);
+          another.setVisibility(View.VISIBLE);
+          another.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+              currency.post(new Runnable(){
+                @Override
+                public void run()
+                {
+                  currency.setSelection(position, true);
+
+                  //currency.performClick();
+                }
+              });
+
+              CurrenciesDNew currenciesDNew = new CurrenciesDNew();
+              currenciesDNew.show(getFragmentManager(), null);
+            }
+          });
         }
       }
       return convertView;

@@ -12,5 +12,6 @@
     <string name="tab_register">Жкрнал</string>
     <string name="tab_regular">Регулярные</string>
     <string name="tab_transactions">Транзакции</string>
+    <string name="currencies_d_new_code_currency">Код валюты</string>
 
 </resources>

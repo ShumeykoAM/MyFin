@@ -9,7 +9,8 @@
             android:id="@+id/accounts_d_new_currency_item_icon"
             android:layout_alignParentLeft="false"
             android:src="@drawable/ic_curr_rub"
-            />
+            android:layout_alignBottom="@+id/accounts_d_new_currency_item_button_another"
+            android:layout_alignTop="@+id/accounts_d_new_currency_item_button_another"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -18,4 +19,13 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/accounts_d_new_currency_item_icon"
             style="@style/account_d_new_currency_item_name"/>
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="35dp"
+            android:text="Другая"
+            android:id="@+id/accounts_d_new_currency_item_button_another" android:layout_alignParentTop="false"
+            android:layout_alignParentRight="false" android:visibility="invisible"
+            android:layout_centerVertical="true" android:gravity="center_vertical|center_horizontal"
+            android:layout_alignParentBottom="false" android:layout_alignParentLeft="false"
+            android:layout_alignWithParentIfMissing="false" style="?android:attr/buttonStyleSmall"/>
 </RelativeLayout>
