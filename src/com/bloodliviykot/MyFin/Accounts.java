@@ -38,7 +38,7 @@ public class Accounts
     Cursor cursor = oh.db.rawQuery(oh.getQuery(EQ.ACCOUNTS), null);
     SimpleCursorAdapter list_adapter = new AccountsItemAdapter(R.layout.accounts_item, cursor,
       new String[]{},
-      new int[]{R.id.account_item_currency, R.id.account_item_name, R.id.account_item_balance});
+      new int[]{R.id.accounts_d_new_image_item_icon, R.id.account_item_name, R.id.account_item_balance});
     list_adapter.changeCursor(cursor);
     list_accounts.setAdapter(list_adapter);
 
@@ -103,7 +103,7 @@ public class Accounts
       double balance = cursor.getDouble(cursor.getColumnIndex("balance"));
 
       //Сопоставляем
-      ImageView iv_image  = (ImageView)view.findViewById(R.id.account_item_currency);
+      ImageView iv_image  = (ImageView)view.findViewById(R.id.accounts_d_new_image_item_icon);
       TextView tv_name    = (TextView)view.findViewById(R.id.account_item_name);
       TextView tv_balance = (TextView)view.findViewById(R.id.account_item_balance);
       iv_image.setImageResource(icon.R_drawable);

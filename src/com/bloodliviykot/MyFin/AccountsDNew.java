@@ -2,12 +2,14 @@ package com.bloodliviykot.MyFin;
 
 import android.annotation.SuppressLint;
 import android.app.DialogFragment;
-import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import com.bloodliviykot.MyFin.DB.EQ;
+import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
 import com.bloodliviykot.MyFin.DB.entities.Account;
 import com.bloodliviykot.MyFin.DB.entities.Currency;
 import com.bloodliviykot.tools.DataBase.Entity;
@@ -28,7 +30,10 @@ public class AccountsDNew
   private EditText name, balance;
   private Spinner currency;
   private Button b_ok, b_cancel;
+
   private Account account;
+
+  private Cursor cursor_currencies;
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -43,14 +48,20 @@ public class AccountsDNew
     b_ok     = (Button)v.findViewById(R.id.accounts_d_new_ok);     b_ok.setOnClickListener(this);
     b_cancel = (Button)v.findViewById(R.id.accounts_d_new_cansel); b_cancel.setOnClickListener(this);
     //Зададим программно, а то в редакторе плохо выглядит
-    icon.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-    ImageAdapter adapter = new ImageAdapter(GlobalWars.application_context);
-    icon.setAdapter(adapter);
+    icon.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+      LinearLayout.LayoutParams.WRAP_CONTENT));
+    ImageAdapter adapter_icon = new ImageAdapter();
+    icon.setAdapter(adapter_icon);
+    MySQLiteOpenHelper oh = MySQLiteOpenHelper.getMySQLiteOpenHelper();
+    cursor_currencies = oh.db.rawQuery(oh.getQuery(EQ.CURRENCIES), null);
+    CurrencyAdapter adapter_currency = new CurrencyAdapter(cursor_currencies);
+    currency.setAdapter(adapter_currency);
     Bundle params = getArguments();
     if(params.getString("Regime").equals("New"))
       try
       {
         account = new Account(new Currency(1), null, Account.E_IC_TYPE_RESOURCE.CASH, "", 0.0);
+
       } catch(Entity.EntityException e)
       {   }
     else
@@ -59,9 +70,18 @@ public class AccountsDNew
       icon.setSelection(account.getIcon().id);
       name.setText(account.getName());
       balance.setText(((Double)account.getBalance()).toString());
-      //currency.setSelection();
+      setCurrencyCursorPositionFromId(account.getCurrency().getId());
+      currency.setSelection(cursor_currencies.getPosition());
     }
     return v;
+  }
+  private void setCurrencyCursorPositionFromId(long _id_currency)
+  {
+    for(boolean result = cursor_currencies.moveToFirst(); result; result = cursor_currencies.moveToNext())
+    {
+      if(cursor_currencies.getLong(cursor_currencies.getColumnIndex("_id")) == _id_currency)
+        break;
+    }
   }
 
   @Override
@@ -121,9 +141,9 @@ public class AccountsDNew
   public class ImageAdapter
     extends ArrayAdapter<Account.E_IC_TYPE_RESOURCE>
   {
-    ImageAdapter(Context context)
+    ImageAdapter()
     {
-      super(context, R.layout.accounts_d_new_image_item, Account.E_IC_TYPE_RESOURCE.values());
+      super(GlobalWars.application_context, R.layout.accounts_d_new_image_item, Account.E_IC_TYPE_RESOURCE.values());
     }
 
     @Override
@@ -131,7 +151,7 @@ public class AccountsDNew
     {
       if(convertView == null)
         convertView = View.inflate(GlobalWars.application_context, R.layout.accounts_d_new_image_item, null);
-      ImageView image = (ImageView)convertView.findViewById(R.id.account_item_currency);
+      ImageView image = (ImageView)convertView.findViewById(R.id.accounts_d_new_image_item_icon);
       image.setImageResource(Account.E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(position).R_drawable);
       image.setBackgroundColor(getResources().getColor(R.color.black));
       return convertView;
@@ -142,9 +162,81 @@ public class AccountsDNew
     {
       if(convertView == null)
         convertView = View.inflate(GlobalWars.application_context, R.layout.accounts_d_new_image_item, null);
-      ImageView image = (ImageView)convertView.findViewById(R.id.account_item_currency);
+      ImageView image = (ImageView)convertView.findViewById(R.id.accounts_d_new_image_item_icon);
       image.setImageResource(Account.E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(position).R_drawable);
       image.setBackgroundColor(getResources().getColor(R.color.black));
+      return convertView;
+    }
+
+  }
+
+  public class CurrencyAdapter
+    extends SimpleCursorAdapter
+  {
+    CurrencyAdapter(Cursor cursor)
+    {
+      super(GlobalWars.application_context, R.layout.accounts_d_new_currency_item,
+        cursor, new String[]{},
+        new int[]{R.id.accounts_d_new_currency_item_icon, R.id.accounts_d_new_currency_item_name});
+    }
+
+    @Override
+    public View getDropDownView(int position, View convertView, ViewGroup parent)
+    {
+      if(convertView == null)
+        convertView = View.inflate(GlobalWars.application_context, R.layout.accounts_d_new_currency_item, null);
+      ImageView image = (ImageView)convertView.findViewById(R.id.accounts_d_new_currency_item_icon);
+      TextView name = (TextView)convertView.findViewById(R.id.accounts_d_new_currency_item_name);
+      if(cursor_currencies.moveToPosition(position))
+      {
+        if(cursor_currencies.getLong(cursor_currencies.getColumnIndex("is_added")) == 0)
+        {
+          if(!cursor_currencies.isNull(cursor_currencies.getColumnIndex("id_icon")))
+          {
+            image.setVisibility(View.VISIBLE);
+            image.setImageResource(Currency.E_IC_CURRENCY.getE_IC_TYPE_RESOURCE(cursor_currencies.getLong(cursor_currencies.getColumnIndex("id_icon"))).R_drawable);
+            image.setBackgroundColor(getResources().getColor(R.color.black));
+          }
+          else
+            image.setVisibility(View.INVISIBLE);
+          name.setText(cursor_currencies.getString(cursor_currencies.getColumnIndex("short_name")));
+        }
+        else
+        {
+          image.setVisibility(View.INVISIBLE);
+          name.setText("+");
+        }
+      }
+      return convertView;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent)
+    {
+      if(convertView == null)
+        convertView = View.inflate(GlobalWars.application_context, R.layout.accounts_d_new_currency_item, null);
+      ImageView image = (ImageView)convertView.findViewById(R.id.accounts_d_new_currency_item_icon);
+      TextView name = (TextView)convertView.findViewById(R.id.accounts_d_new_currency_item_name);
+      if(cursor_currencies.moveToPosition(position))
+      {
+        if(cursor_currencies.getLong(cursor_currencies.getColumnIndex("is_added")) == 0)
+        {
+          if(!cursor_currencies.isNull(cursor_currencies.getColumnIndex("id_icon")))
+          {
+            image.setVisibility(View.VISIBLE);
+            image.setImageResource(Currency.E_IC_CURRENCY.getE_IC_TYPE_RESOURCE(cursor_currencies.getLong(cursor_currencies.getColumnIndex("id_icon"))).R_drawable);
+            image.setBackgroundColor(getResources().getColor(R.color.black));
+          }
+          else
+            image.setVisibility(View.INVISIBLE);
+          name.setText(cursor_currencies.getString(cursor_currencies.getColumnIndex("short_name")));
+        }
+        else
+        {
+          image.setVisibility(View.INVISIBLE);
+          name.setText("+");
+        }
+      }
       return convertView;
     }
 

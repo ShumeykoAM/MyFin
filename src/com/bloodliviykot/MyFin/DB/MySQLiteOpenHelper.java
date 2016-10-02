@@ -6,8 +6,6 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
-import com.bloodliviykot.MyFin.DB.entities.Account;
-import com.bloodliviykot.MyFin.DB.entities.CoUser;
 import com.bloodliviykot.MyFin.DB.entities.Currency;
 import com.bloodliviykot.MyFin.GlobalWars;
 import com.bloodliviykot.MyFin.R;
@@ -18,7 +16,6 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Stack;
@@ -77,6 +74,29 @@ public class MySQLiteOpenHelper
   private static final String USE_PARENT_ID = "ИД_родителя";
   private void fillDistr(SQLiteDatabase db)
   {
+    //Добавим в справочник валют валюту для текущей локализации
+    java.util.Currency util_currency = java.util.Currency.getInstance(Locale.getDefault());
+    try
+    {
+      boolean rub_inserted = false;
+      String name_currency = util_currency.getCurrencyCode();
+      Currency.E_IC_CURRENCY icon = null;
+      if(name_currency.equals("RUB") || name_currency.equals("RUR"))
+      {
+        icon = Currency.E_IC_CURRENCY.RUB;
+        rub_inserted = true;
+      }
+      if(name_currency.equals("USD"))
+        icon = Currency.E_IC_CURRENCY.USD;
+      if(name_currency.equals("EUR"))
+        icon = Currency.E_IC_CURRENCY.EUR;
+      new Currency(name_currency, icon).insert();
+      if(!rub_inserted)
+        new Currency("RUB", Currency.E_IC_CURRENCY.RUB).insert();
+    }
+    catch(Entity.EntityException ee)
+    { }
+
     try
     {
       //Заполним дистрибутивное содержание данных в БД из distrib_db.xml
@@ -140,57 +160,6 @@ public class MySQLiteOpenHelper
     {
       e.printStackTrace();
     }
-    //Добавим в справочник валют валюту для текущей локализации, если она уже не добавилась из distrib_db.xml
-    java.util.Currency util_currency = java.util.Currency.getInstance(Locale.getDefault());
-    try
-    {
-      Entity currency = (Entity)new Currency(util_currency.getCurrencyCode(), null);
-      currency.insert();
-    }
-    catch(Entity.EntityException ee)
-    { }
-
-//!!!! удалить
-try
-{
-  CoUser coUser = new CoUser(1);
-  coUser.addAccount(new Account(4));
-  coUser.removeAccount(new Account(1));
-  coUser.setName("new_name");
-  coUser.update();
-  CoUser.AccountsCoUser accounts = coUser.getAccountsCoUser();
-  Iterator iterator = accounts.iterator();
-  boolean has = iterator.hasNext();
-  for(Account b : accounts)
-  {
-    int ffff = 0;
-    ffff++;
-  }
-
-
-
-  Account ac1 = new Account(4);
-  ac1.setName("QQQQQQQQQQQ");
-  ac1.setBalance(23.67);
-  ac1.update();
-  Account ac2 = new Account(4);
-
-  Currency c = new Currency(2);
-  c.delete();
-  c = new Currency(3);
-  c.setIcon(null);
-  c.setShort_name("vvbMMM");
-  c.update();
-  Currency c2 = new Currency(3);
-
-  c.getId();
-}
-catch(Entity.EntityException ee)
-{
-  int fdfdf=0;
-  fdfdf++;
-}
-
   }
 
   //Обновляем таблицы базы

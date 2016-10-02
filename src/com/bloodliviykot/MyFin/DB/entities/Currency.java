@@ -42,6 +42,7 @@ public class Currency
       throw new EntityException();
     setShort_name(short_name);
     setIcon(icon);
+    is_added = false;
   }
   public Currency(long _id) throws EntityException
   {
@@ -71,6 +72,7 @@ public class Currency
     values.put("short_name"      , this.short_name);
     if(this.icon != null)
       values.put("id_icon"       , this.icon.id_db);
+    values.put("is_added"        , this.is_added ? 1 : 0);
     return values;
   }
   @Override
@@ -89,6 +91,7 @@ public class Currency
     this.short_name       = cursor.getString(cursor.getColumnIndex("short_name"));
     if(!cursor.isNull(cursor.getColumnIndex("id_icon")))
       this.icon = E_IC_CURRENCY.getE_IC_TYPE_RESOURCE(cursor.getLong(cursor.getColumnIndex("id_icon")));
+    this.is_added         = cursor.getLong(cursor.getColumnIndex("is_added")) == 1;
   }
   @Override
   protected void saveOriginal()
@@ -105,6 +108,7 @@ public class Currency
   private String short_name_lower;
   private String short_name      ;
   private E_IC_CURRENCY icon     ;
+  private boolean is_added       ;//это не пункт это кнопка для добавления новой валюты
   //Оригинальные (как были втавлены\извлечены из базы)
   private static class Original
   {

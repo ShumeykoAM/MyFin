@@ -10,11 +10,11 @@
 
 
     <!-- Основные валюты -->
-    <Currency short_name="RUB" short_name_lower="rub" id_icon="0"></Currency>
-    <Currency short_name="USD" short_name_lower="usd" id_icon="1"></Currency>
-    <Currency short_name="EUR" short_name_lower="eur" id_icon="2"></Currency>
-
-
+    <!-- RUB уже вставлены в коде -->
+    <Currency short_name="USD" short_name_lower="usd" id_icon="1" is_added="0"></Currency>
+    <Currency short_name="EUR" short_name_lower="eur" id_icon="2" is_added="0"></Currency>
+    <!-- Запись - кнопка добавить -->
+    <Currency short_name="ADD_NEW" short_name_lower="add_new" is_added="1"></Currency>
 
 
     <!-- Пока что просто для примера добавим эту запись -->
@@ -25,11 +25,5 @@
     <Account _id_currency="1" id_icon="1" name="Карта 5632" balance="232,54" _id_co_user="1"></Account>
     <Account _id_currency="1" id_icon="2" name="Карта 0945" balance="8762,54" _id_co_user="1"></Account>
     <Account _id_currency="1" id_icon="3" name="Налик"      balance="347,54"></Account>
-    <Account _id_currency="1" id_icon="4" name="Вклад"      balance="23432,54"></Account>
-    <Account _id_currency="1" id_icon="5" name="Заначка"    balance="0,0"></Account>
-    <Account _id_currency="1" id_icon="0" name="Карта xxx2" balance="0,0"></Account>
-    <Account _id_currency="1" id_icon="1" name="Карта xxx3" balance="0,0"></Account>
-    <Account _id_currency="1" id_icon="2" name="Карта xxx4" balance="0,0"></Account>
-    <Account _id_currency="1" id_icon="3" name="Карта xxx5" balance="0,0"></Account>
 
 </distrib>

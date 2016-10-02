@@ -4,15 +4,18 @@
                 android:layout_height="wrap_content" android:gravity="center_vertical"
                 android:id="@+id/accounts_d_new_image_item_image">
     <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:id="@+id/account_item_currency"
-            android:layout_alignParentLeft="true"
-            android:src="@drawable/ic_curr_rub" android:layout_alignBottom="@+id/account_item_icon"/>
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/accounts_d_new_currency_item_icon"
+            android:layout_alignParentLeft="false"
+            android:src="@drawable/ic_curr_rub"
+            />
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="RUB"
-            android:id="@+id/account_item_icon"
-            android:layout_centerVertical="true" android:layout_toRightOf="@+id/account_item_currency"/>
+            android:id="@+id/accounts_d_new_currency_item_name"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/accounts_d_new_currency_item_icon"
+            style="@style/account_d_new_currency_item_name"/>
 </RelativeLayout>
