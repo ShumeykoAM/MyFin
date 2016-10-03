@@ -4,7 +4,9 @@ import android.annotation.SuppressLint;
 import android.app.DialogFragment;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.*;
 import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
@@ -119,18 +121,18 @@ public class AccountsDNew
     //icon.getSelectedItemPosition();
     if(name.getText().toString().equals(""))
     {
-      Toast.makeText(GlobalWars.application_context, "Не задано имя счета!", Toast.LENGTH_SHORT).show();
+      Toast.makeText(Common.application_context, "Не задано имя счета!", Toast.LENGTH_SHORT).show();
       return false;
     }
     if(balance.getText().toString().equals(""))
     {
-      Toast.makeText(GlobalWars.application_context, "Не задан баланс счета!", Toast.LENGTH_SHORT).show();
+      Toast.makeText(Common.application_context, "Не задан баланс счета!", Toast.LENGTH_SHORT).show();
       return false;
     }
     int i = currency.getSelectedItemPosition();
     if(currency.getSelectedItemPosition() == 0)
     {
-      Toast.makeText(GlobalWars.application_context, "Не задана валюта счета!", Toast.LENGTH_SHORT).show();
+      Toast.makeText(Common.application_context, "Не задана валюта счета!", Toast.LENGTH_SHORT).show();
       return false;
     }
     return true;
@@ -141,14 +143,14 @@ public class AccountsDNew
   {
     ImageAdapter()
     {
-      super(GlobalWars.application_context, R.layout.accounts_d_new_image_item, Account.E_IC_TYPE_RESOURCE.values());
+      super(Common.application_context, R.layout.accounts_d_new_image_item, Account.E_IC_TYPE_RESOURCE.values());
     }
 
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent)
     {
       if(convertView == null)
-        convertView = View.inflate(GlobalWars.application_context, R.layout.accounts_d_new_image_item, null);
+        convertView = View.inflate(Common.application_context, R.layout.accounts_d_new_image_item, null);
       ImageView image = (ImageView)convertView.findViewById(R.id.accounts_d_new_image_item_icon);
       image.setImageResource(Account.E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(position).R_drawable);
       image.setBackgroundColor(getResources().getColor(R.color.black));
@@ -159,7 +161,7 @@ public class AccountsDNew
     public View getView(int position, View convertView, ViewGroup parent)
     {
       if(convertView == null)
-        convertView = View.inflate(GlobalWars.application_context, R.layout.accounts_d_new_image_item, null);
+        convertView = View.inflate(Common.application_context, R.layout.accounts_d_new_image_item, null);
       ImageView image = (ImageView)convertView.findViewById(R.id.accounts_d_new_image_item_icon);
       image.setImageResource(Account.E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(position).R_drawable);
       image.setBackgroundColor(getResources().getColor(R.color.black));
@@ -173,7 +175,7 @@ public class AccountsDNew
   {
     CurrencyAdapter(Cursor cursor)
     {
-      super(GlobalWars.application_context, R.layout.accounts_d_new_currency_item,
+      super(Common.application_context, R.layout.accounts_d_new_currency_item,
         cursor, new String[]{},
         new int[]{R.id.accounts_d_new_currency_item_icon, R.id.accounts_d_new_currency_item_name});
     }
@@ -192,7 +194,7 @@ public class AccountsDNew
     private View prepareView(int position, View convertView, ViewGroup parent)
     {
       if(convertView == null)
-        convertView = View.inflate(GlobalWars.application_context, R.layout.accounts_d_new_currency_item, null);
+        convertView = View.inflate(Common.application_context, R.layout.accounts_d_new_currency_item, null);
       ImageView image = (ImageView)convertView.findViewById(R.id.accounts_d_new_currency_item_icon);
       TextView name = (TextView)convertView.findViewById(R.id.accounts_d_new_currency_item_name);
       Button another = (Button)convertView.findViewById(R.id.accounts_d_new_currency_item_button_another);
@@ -225,12 +227,10 @@ public class AccountsDNew
                 @Override
                 public void run()
                 {
-                  currency.setSelection(position, true);
-
-                  //currency.performClick();
+                  currency.setSelection(0, true);
+                  Common.hideSpinnerDropDown(currency);
                 }
               });
-
               CurrenciesDNew currenciesDNew = new CurrenciesDNew();
               currenciesDNew.show(getFragmentManager(), null);
             }

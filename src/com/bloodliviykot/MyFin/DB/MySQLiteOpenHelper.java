@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 import com.bloodliviykot.MyFin.DB.entities.Currency;
-import com.bloodliviykot.MyFin.GlobalWars;
+import com.bloodliviykot.MyFin.Common;
 import com.bloodliviykot.MyFin.R;
 import com.bloodliviykot.tools.DataBase.Entity;
 import com.bloodliviykot.tools.DataBase.SQLReader;
@@ -47,8 +47,8 @@ public class MySQLiteOpenHelper
   private MySQLiteOpenHelper()
   {
     //Здесь создается или открывается БД
-    super(GlobalWars.application_context, DBName, null, VersionDB);
-    sql_reader = new SQLReader(GlobalWars.application_context.getResources());
+    super(Common.application_context, DBName, null, VersionDB);
+    sql_reader = new SQLReader(Common.application_context.getResources());
     db = getWritableDatabase();
   }
   //Создаем таблицы базы
@@ -103,7 +103,7 @@ public class MySQLiteOpenHelper
       Stack<Long> stack_id = new Stack<Long>();
       ContentValues values = new ContentValues();
       long _id = 0;
-      XmlPullParser xpp = GlobalWars.application_context.getResources().getXml(R.xml.distrib_db);
+      XmlPullParser xpp = Common.application_context.getResources().getXml(R.xml.distrib_db);
       while (xpp.getEventType() != XmlPullParser.END_DOCUMENT)
       {
         switch (xpp.getEventType())

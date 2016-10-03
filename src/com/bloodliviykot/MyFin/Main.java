@@ -46,7 +46,7 @@ public class Main
   }
   private void setGlobalVars()
   {
-    GlobalWars.application_context = getApplicationContext();
+    Common.application_context = getApplicationContext();
 
   }
 }
