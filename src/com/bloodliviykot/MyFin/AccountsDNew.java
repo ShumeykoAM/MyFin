@@ -1,7 +1,9 @@
 package com.bloodliviykot.MyFin;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.DialogFragment;
+import android.app.Fragment;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,9 +22,9 @@ import com.bloodliviykot.tools.DataBase.Entity;
 @SuppressLint("ValidFragment")
 public class AccountsDNew
   extends DialogFragment //!!! внимание, наследники DialogFragment должны иметь конструктор без параметров
-  implements View.OnClickListener
+  implements View.OnClickListener, CurrenciesDNew.I_ResultHandlerCurrenciesDNew
 {
-  public interface I_ResultHandler
+  public interface I_ResultHandlerAccountsDNew
   {
     void resultHandler(Bundle result_values);
   }
@@ -34,6 +36,7 @@ public class AccountsDNew
   private Account account;
 
   private Cursor cursor_currencies;
+  private CurrencyAdapter adapter_currency;
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -54,14 +57,13 @@ public class AccountsDNew
     icon.setAdapter(adapter_icon);
     MySQLiteOpenHelper oh = MySQLiteOpenHelper.getMySQLiteOpenHelper();
     cursor_currencies = oh.db.rawQuery(oh.getQuery(EQ.CURRENCIES), null);
-    CurrencyAdapter adapter_currency = new CurrencyAdapter(cursor_currencies);
+    adapter_currency = new CurrencyAdapter(cursor_currencies);
     currency.setAdapter(adapter_currency);
     Bundle params = getArguments();
     if(params.getString("Regime").equals("New"))
       try
       {
         account = new Account(new Currency(1), null, Account.E_IC_TYPE_RESOURCE.CASH, "", 0.0);
-
       } catch(Entity.EntityException e)
       {   }
     else
@@ -101,14 +103,31 @@ public class AccountsDNew
         catch(Entity.EntityException ee)
         {   }
         account.setBalance(Double.parseDouble(balance.getText().toString()));
-        //account.setCurrency
-        result_values.putSerializable("Account", account);
+        cursor_currencies.moveToPosition(currency.getSelectedItemPosition());
         try
         {
-          ((I_ResultHandler)getActivity()).resultHandler(result_values);
-        } catch(ClassCastException e)
+          account.setCurrency(new Currency(cursor_currencies.getLong(cursor_currencies.getColumnIndex("_id"))));
+        } catch(Entity.EntityException e)
+        {   }
+        result_values.putSerializable("Account", account);
+        boolean need_call_activity = true;
+        try
         {
-        }
+          Fragment target = getTargetFragment();
+          if(target != null)
+          {
+            ((I_ResultHandlerAccountsDNew)target).resultHandler(result_values);
+            need_call_activity = false;
+          }
+        }catch(ClassCastException e2)
+        {      }
+        if(need_call_activity)
+          try
+          {
+            Activity a = getActivity();
+            ((I_ResultHandlerAccountsDNew)getActivity()).resultHandler(result_values);
+          } catch(ClassCastException e1)
+          {      }
         dismiss();
       }
     }
@@ -129,13 +148,17 @@ public class AccountsDNew
       Toast.makeText(Common.application_context, "Не задан баланс счета!", Toast.LENGTH_SHORT).show();
       return false;
     }
-    int i = currency.getSelectedItemPosition();
-    if(currency.getSelectedItemPosition() == 0)
-    {
-      Toast.makeText(Common.application_context, "Не задана валюта счета!", Toast.LENGTH_SHORT).show();
-      return false;
-    }
     return true;
+  }
+
+  @Override
+  public void resultHandler(Bundle result_values)
+  {
+    if(cursor_currencies.requery())
+    {
+      adapter_currency.notifyDataSetChanged();
+      setCurrencyCursorPositionFromId(result_values.getLong("_id"));
+    }
   }
 
   public class ImageAdapter
@@ -223,15 +246,17 @@ public class AccountsDNew
             @Override
             public void onClick(View v)
             {
-              currency.post(new Runnable(){
+              currency.post(new Runnable()
+              {
                 @Override
                 public void run()
                 {
-                  currency.setSelection(0, true);
                   Common.hideSpinnerDropDown(currency);
                 }
               });
               CurrenciesDNew currenciesDNew = new CurrenciesDNew();
+              //Что бы результат смог обработаться в текущем фрагменте
+              currenciesDNew.setTargetFragment(AccountsDNew.this, 0);
               currenciesDNew.show(getFragmentManager(), null);
             }
           });

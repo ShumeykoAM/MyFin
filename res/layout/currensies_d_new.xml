@@ -24,13 +24,13 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/button_cansel"
-                android:id="@+id/button"
+                android:id="@+id/currencies_d_new_cancel"
                 android:layout_weight="1"/>
         <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/button_ok"
-                android:id="@+id/button2"
+                android:id="@+id/currencies_d_new_ok"
                 android:layout_weight="1"/>
     </LinearLayout>
 </RelativeLayout>

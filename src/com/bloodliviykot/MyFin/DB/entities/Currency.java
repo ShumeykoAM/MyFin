@@ -6,11 +6,14 @@ import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.R;
 import com.bloodliviykot.tools.DataBase.Entity;
 
+import java.io.Serializable;
+
 /**
  * Created by Kot on 29.09.2016.
  */
 public class Currency
   extends Entity
+  implements Serializable
 {
   /*"€""$""Ք"*/
   //!!!! Есть java.util.Currency, которая как раз определяет валюту

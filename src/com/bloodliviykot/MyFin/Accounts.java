@@ -18,7 +18,7 @@ import java.util.Locale;
  */
 public class Accounts
   extends Activity
-  implements AccountsDNew.I_ResultHandler
+  implements AccountsDNew.I_ResultHandlerAccountsDNew
 {
   private MySQLiteOpenHelper oh;
   private ListView list_accounts;

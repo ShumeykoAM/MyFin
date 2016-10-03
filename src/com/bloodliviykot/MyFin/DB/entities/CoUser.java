@@ -8,6 +8,7 @@ import com.bloodliviykot.tools.DataBase.Entity;
 import com.bloodliviykot.tools.DataBase.I_Transaction;
 import com.bloodliviykot.tools.DataBase.SQLTransaction;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.List;
  */
 public class CoUser
   extends Entity
-  implements I_Transaction
+  implements Serializable, I_Transaction
 {
 
   public CoUser(String name) throws EntityException
