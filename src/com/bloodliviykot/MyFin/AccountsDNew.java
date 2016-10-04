@@ -4,11 +4,13 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.Fragment;
+import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
@@ -37,6 +39,7 @@ public class AccountsDNew
 
   private Cursor cursor_currencies;
   private CurrencyAdapter adapter_currency;
+  private boolean regime_new;
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -63,11 +66,13 @@ public class AccountsDNew
     if(params.getString("Regime").equals("New"))
       try
       {
+        regime_new = true;
         account = new Account(new Currency(1), null, Account.E_IC_TYPE_RESOURCE.CASH, "", 0.0);
       } catch(Entity.EntityException e)
       {   }
     else
     {
+      regime_new = false;
       account = (Account)params.getSerializable("Account");
       icon.setSelection(account.getIcon().id);
       name.setText(account.getName());
@@ -75,6 +80,17 @@ public class AccountsDNew
       setCurrencyCursorPositionFromId(account.getCurrency().getId());
       currency.setSelection(cursor_currencies.getPosition());
     }
+    //Клавиатуру для конкретного view можно корректно вызвать только так
+    name.post(new Runnable(){
+      @Override
+      public void run()
+      {
+        InputMethodManager imm = (InputMethodManager)
+          name.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(name, InputMethodManager.SHOW_IMPLICIT);
+        name.requestFocus();
+      }
+    });
     return v;
   }
   private void setCurrencyCursorPositionFromId(long _id_currency)
@@ -109,6 +125,11 @@ public class AccountsDNew
           account.setCurrency(new Currency(cursor_currencies.getLong(cursor_currencies.getColumnIndex("_id"))));
         } catch(Entity.EntityException e)
         {   }
+        if( (regime_new ? account.insert() == -1 : !account.update()) )
+        {
+          Toast.makeText(Common.application_context, "Ошибка", Toast.LENGTH_SHORT).show();
+          return;
+        }
         result_values.putSerializable("Account", account);
         boolean need_call_activity = true;
         try
@@ -137,7 +158,6 @@ public class AccountsDNew
 
   private boolean checkFields()
   {
-    //icon.getSelectedItemPosition();
     if(name.getText().toString().equals(""))
     {
       Toast.makeText(Common.application_context, "Не задано имя счета!", Toast.LENGTH_SHORT).show();
