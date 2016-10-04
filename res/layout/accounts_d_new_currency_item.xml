@@ -22,7 +22,7 @@
     <Button
             android:layout_width="fill_parent"
             android:layout_height="35dp"
-            android:text="Другая"
+            android:text="@string/accounts_d_new_currency_another"
             android:id="@+id/accounts_d_new_currency_item_button_another" android:layout_alignParentTop="false"
             android:layout_alignParentRight="false" android:visibility="invisible"
             android:layout_centerVertical="true" android:gravity="center_vertical|center_horizontal"

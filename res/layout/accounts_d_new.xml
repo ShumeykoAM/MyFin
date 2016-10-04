@@ -91,7 +91,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/accounts_d_new_cansel"
-                android:text="@string/button_cansel" android:layout_weight="1"/>
+                android:text="@string/button_cancel" android:layout_weight="1"/>
         <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
