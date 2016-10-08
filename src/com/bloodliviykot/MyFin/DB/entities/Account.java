@@ -63,10 +63,10 @@ public class Account
       throw new EntityException();
     this.name = name;
   }
-  public double getBalance(){return balance;}
-  public void setBalance(double balance){this.balance = balance;}
+  public long getBalance(){return balance;}
+  public void setBalance(long balance){this.balance = balance;}
 
-  public Account(Currency currency, CoUser co_user, E_IC_TYPE_RESOURCE icon, String name, double balance) throws EntityException
+  public Account(Currency currency, CoUser co_user, E_IC_TYPE_RESOURCE icon, String name, long balance) throws EntityException
   {
     if(currency == null || icon == null || name == null)
       throw new EntityException();
@@ -118,7 +118,7 @@ public class Account
       this.co_user = new CoUser(cursor.getLong(cursor.getColumnIndex("_id_co_user")));
     this.icon = E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(cursor.getLong(cursor.getColumnIndex("id_icon")));
     this.name = cursor.getString(cursor.getColumnIndex("name"));
-    this.balance = cursor.getDouble(cursor.getColumnIndex("balance"));
+    this.balance = cursor.getLong(cursor.getColumnIndex("balance"));
   }
   @Override
   protected void saveOriginal()
@@ -137,7 +137,7 @@ public class Account
   private CoUser             co_user ;
   private E_IC_TYPE_RESOURCE icon    ;
   private String             name    ;
-  private double             balance ;
+  private long               balance ;
 
   //Оригинальные (как были втавлены\извлечены из базы)
   private static class Original
@@ -146,7 +146,7 @@ public class Account
     CoUser             co_user ;
     E_IC_TYPE_RESOURCE icon    ;
     String             name    ;
-    double             balance ;
+    long               balance ;
   }
   Original original;
 

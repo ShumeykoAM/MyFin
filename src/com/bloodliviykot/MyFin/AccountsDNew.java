@@ -16,6 +16,7 @@ import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
 import com.bloodliviykot.MyFin.DB.entities.Account;
 import com.bloodliviykot.MyFin.DB.entities.Currency;
+import com.bloodliviykot.tools.Common.Money;
 import com.bloodliviykot.tools.DataBase.Entity;
 
 /**
@@ -67,7 +68,7 @@ public class AccountsDNew
       try
       {
         regime_new = true;
-        account = new Account(new Currency(1), null, Account.E_IC_TYPE_RESOURCE.CASH, "", 0.0);
+        account = new Account(new Currency(1), null, Account.E_IC_TYPE_RESOURCE.CASH, "", 0);
       } catch(Entity.EntityException e)
       {   }
     else
@@ -76,7 +77,7 @@ public class AccountsDNew
       account = (Account)params.getSerializable("Account");
       icon.setSelection(account.getIcon().id);
       name.setText(account.getName());
-      balance.setText(((Double)account.getBalance()).toString());
+      balance.setText(new Money(account.getBalance()).toString());
       setCurrencyCursorPositionFromId(account.getCurrency().getId());
       currency.setSelection(cursor_currencies.getPosition());
     }
@@ -91,6 +92,7 @@ public class AccountsDNew
         name.requestFocus();
       }
     });
+    balance.addTextChangedListener(new Common.MoneyWatcher(balance));
     return v;
   }
   private void setCurrencyCursorPositionFromId(long _id_currency)
@@ -118,7 +120,7 @@ public class AccountsDNew
         }
         catch(Entity.EntityException ee)
         {   }
-        account.setBalance(Double.parseDouble(balance.getText().toString()));
+        account.setBalance(new Money(balance.getText().toString()).getLongValue());
         cursor_currencies.moveToPosition(currency.getSelectedItemPosition());
         try
         {
