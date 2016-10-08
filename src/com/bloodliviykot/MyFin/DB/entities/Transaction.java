@@ -2,6 +2,7 @@ package com.bloodliviykot.MyFin.DB.entities;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import com.bloodliviykot.tools.Common.Money;
 import com.bloodliviykot.tools.DataBase.Entity;
 
 import java.io.Serializable;
@@ -66,6 +67,6 @@ public class Transaction
   private Currency currency;
   private long date_time; //Кол-во сек с 70го года
   private TYPE_TRANSACTION type_transaction;
-  private long sum;
+  private Money sum;
 
 }

@@ -68,7 +68,7 @@ public class AccountsDNew
       try
       {
         regime_new = true;
-        account = new Account(new Currency(1), null, Account.E_IC_TYPE_RESOURCE.CASH, "", 0);
+        account = new Account(new Currency(1), null, Account.E_IC_TYPE_RESOURCE.CASH, "", new Money(0));
       } catch(Entity.EntityException e)
       {   }
     else
@@ -77,7 +77,7 @@ public class AccountsDNew
       account = (Account)params.getSerializable("Account");
       icon.setSelection(account.getIcon().id);
       name.setText(account.getName());
-      balance.setText(new Money(account.getBalance()).toString());
+      balance.setText(account.getBalance().toString());
       setCurrencyCursorPositionFromId(account.getCurrency().getId());
       currency.setSelection(cursor_currencies.getPosition());
     }
@@ -120,7 +120,7 @@ public class AccountsDNew
         }
         catch(Entity.EntityException ee)
         {   }
-        account.setBalance(new Money(balance.getText().toString()).getLongValue());
+        account.setBalance(new Money(balance.getText().toString()));
         cursor_currencies.moveToPosition(currency.getSelectedItemPosition());
         try
         {

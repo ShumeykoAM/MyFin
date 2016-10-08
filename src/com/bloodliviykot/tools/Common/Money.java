@@ -33,5 +33,8 @@ public class Money
   {
     return new MyDecimalFormat().double_format(getDoubleValue());
   }
-
+  public boolean equals(Money money)
+  {
+    return value == money.value;
+  }
 }

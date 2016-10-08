@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.R;
+import com.bloodliviykot.tools.Common.Money;
 import com.bloodliviykot.tools.DataBase.Entity;
 
 import java.io.Serializable;
@@ -63,12 +64,12 @@ public class Account
       throw new EntityException();
     this.name = name;
   }
-  public long getBalance(){return balance;}
-  public void setBalance(long balance){this.balance = balance;}
+  public Money getBalance(){return balance;}
+  public void setBalance(Money balance){this.balance = balance;}
 
-  public Account(Currency currency, CoUser co_user, E_IC_TYPE_RESOURCE icon, String name, long balance) throws EntityException
+  public Account(Currency currency, CoUser co_user, E_IC_TYPE_RESOURCE icon, String name, Money balance) throws EntityException
   {
-    if(currency == null || icon == null || name == null)
+    if(currency == null || icon == null || name == null || balance == null)
       throw new EntityException();
     this.currency = currency;
     this.co_user  = co_user ;
@@ -96,7 +97,7 @@ public class Account
       values.put("_id_co_user", this.co_user.getId());
     values.put("id_icon"      , this.icon.id_db     );
     values.put("name"         , this.name           );
-    values.put("balance"      , this.balance        );
+    values.put("balance"      , this.balance.getLongValue());
     return values;
   }
   @Override
@@ -107,7 +108,7 @@ public class Account
     compareInsert(values, original.co_user != null ? original.co_user.getId() : null, co_user != null ? co_user.getId() : null, "_id_co_user");
     compareInsert(values, original.icon.id_db, icon.id_db, "id_icon");
     compareInsert(values, original.name    , name    , "name");
-    compareInsert(values, original.balance , balance , "balance");
+    compareInsert(values, original.balance.getLongValue() , balance.getLongValue() , "balance");
     return values;
   }
   @Override
@@ -118,7 +119,7 @@ public class Account
       this.co_user = new CoUser(cursor.getLong(cursor.getColumnIndex("_id_co_user")));
     this.icon = E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(cursor.getLong(cursor.getColumnIndex("id_icon")));
     this.name = cursor.getString(cursor.getColumnIndex("name"));
-    this.balance = cursor.getLong(cursor.getColumnIndex("balance"));
+    this.balance = new Money(cursor.getLong(cursor.getColumnIndex("balance")));
   }
   @Override
   protected void saveOriginal()
@@ -137,7 +138,7 @@ public class Account
   private CoUser             co_user ;
   private E_IC_TYPE_RESOURCE icon    ;
   private String             name    ;
-  private long               balance ;
+  private Money              balance ;
 
   //Оригинальные (как были втавлены\извлечены из базы)
   private static class Original
@@ -146,7 +147,7 @@ public class Account
     CoUser             co_user ;
     E_IC_TYPE_RESOURCE icon    ;
     String             name    ;
-    long               balance ;
+    Money              balance ;
   }
   Original original;
 
