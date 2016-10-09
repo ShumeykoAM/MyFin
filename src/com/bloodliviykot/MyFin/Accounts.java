@@ -89,7 +89,7 @@ public class Accounts
     AccountsDNew accounts_d_new = new AccountsDNew();
     try
     {
-      Account account = new Account(id);
+      Account account = Account.getAccountFromId(id);
       Bundle params = new Bundle();
       params.putString("Regime", "Edit");
       params.putSerializable("Account", account);

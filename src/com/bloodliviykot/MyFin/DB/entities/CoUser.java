@@ -26,9 +26,13 @@ public class CoUser
     if(name == null)
       throw new EntityException();
   }
-  public CoUser(long _id) throws EntityException
+  private CoUser(long _id) throws EntityException
   {
     super(_id, EQ.CO_USER);
+  }
+  public static CoUser getCoUserFromId(long _id) throws EntityException
+  {
+    return new CoUser(_id);
   }
   public String getName(){return name;}
   public void setName(String name) throws EntityException
@@ -43,15 +47,19 @@ public class CoUser
       accounts = new AccountsCoUser();
      return accounts;
   }
-  //Методы добавления счетов и удаления, в базе изменится после update
-  public void addAccount(Account account)
+  //Методы добавления и удаления счетов, в базе изменится после update
+  public void addAccount(Account account) throws EntityException
   {
+    if(account == null || account.getId() == 0)
+      throw new EntityException();
     if(for_add == null)
       for_add = new ArrayList<Account>();
     for_add.add(account);
   }
-  public void removeAccount(Account account)
+  public void removeAccount(Account account) throws EntityException
   {
+    if(account == null || account.getId() == 0)
+      throw new EntityException();
     if(for_remove == null)
       for_remove = new ArrayList<Account>();
     for_remove.add(account);
@@ -158,7 +166,7 @@ public class CoUser
           first = false;
           try
           {
-            ret_value = new Account(cursor.getLong(cursor.getColumnIndex("_id")));
+            ret_value = Account.getAccountFromId(cursor.getLong(cursor.getColumnIndex("_id")));
           } catch(EntityException e)
           {
             throw new IllegalStateException();

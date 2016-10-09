@@ -44,7 +44,7 @@ public class Account
   public Currency getCurrency(){return currency;}
   public void setCurrency(Currency currency) throws EntityException
   {
-    if(currency == null)
+    if(currency == null || currency.getId() == 0)
       throw new EntityException();
     this.currency = currency;
   }
@@ -69,7 +69,7 @@ public class Account
 
   public Account(Currency currency, CoUser co_user, E_IC_TYPE_RESOURCE icon, String name, Money balance) throws EntityException
   {
-    if(currency == null || icon == null || name == null || balance == null)
+    if(currency == null || currency.getId() == 0 || icon == null || name == null || balance == null)
       throw new EntityException();
     this.currency = currency;
     this.co_user  = co_user ;
@@ -77,10 +77,15 @@ public class Account
     this.name     = name    ;
     this.balance  = balance ;
   }
-  public Account(long _id) throws EntityException
+  private Account(long _id) throws EntityException
   {
     super(_id, EQ.ACCOUNT);
   }
+  public static Account getAccountFromId(long _id) throws EntityException
+  {
+    return new Account(_id);
+  }
+
   @Override
   public String getTableName()
   {
@@ -116,7 +121,7 @@ public class Account
   {
     this.currency = new Currency(cursor.getLong(cursor.getColumnIndex("_id_currency")));
     if(!cursor.isNull(cursor.getColumnIndex("_id_co_user")))
-      this.co_user = new CoUser(cursor.getLong(cursor.getColumnIndex("_id_co_user")));
+      this.co_user = CoUser.getCoUserFromId(cursor.getLong(cursor.getColumnIndex("_id_co_user")));
     this.icon = E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(cursor.getLong(cursor.getColumnIndex("id_icon")));
     this.name = cursor.getString(cursor.getColumnIndex("name"));
     this.balance = new Money(cursor.getLong(cursor.getColumnIndex("balance")));

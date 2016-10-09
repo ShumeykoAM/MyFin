@@ -9,6 +9,7 @@ public enum EQ
   CURRENCY,
   ACCOUNT,
   CO_USER,
+  TRANSACTION,
 
   ACCOUNTS,                 //Список счетов, кроме счетов сопользователей
   USER_ACCOUNTS,            //Список счетов сопользователя

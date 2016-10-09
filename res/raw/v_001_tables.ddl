@@ -58,15 +58,13 @@ CREATE TABLE Account
   FOREIGN KEY (_id_co_user) REFERENCES CoUser (_id)
 );
 
-CREATE TABLE Transaction
+CREATE TABLE Transact
 (
   _id                  INTEGER PRIMARY KEY,
   _id_account          INTEGER NOT NULL,
-  _id_currency         INTEGER NOT NULL,
   date_time            INTEGER NOT NULL,
   type_transaction     INTEGER NOT NULL,
   sum                  INTEGER NOT NULL,
-  FOREIGN KEY (_id_currency) REFERENCES Currency (_id),
   FOREIGN KEY (_id_account) REFERENCES Account (_id)
 );
 
@@ -79,5 +77,5 @@ CREATE TABLE Document
   sum                  INTEGER NOT NULL,
   FOREIGN KEY (_id_event) REFERENCES Event (_id),
   FOREIGN KEY (_id_category) REFERENCES Category (_id),
-  FOREIGN KEY (_id_transaction) REFERENCES Transaction (_id)
+  FOREIGN KEY (_id_transaction) REFERENCES Transact (_id)
 );

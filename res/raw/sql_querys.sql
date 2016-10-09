@@ -14,6 +14,12 @@ SELECT CoUser._id, CoUser.name
   FROM CoUser
   WHERE _id=?;
 
+--TRANSACTION
+SELECT Transact._id, Transact._id_account, Transact.date_time, Transact.type_transaction, Transact.sum
+  FROM Transact
+  WHERE _id=?;
+
+
 -- ACCOUNTS
 SELECT Account._id, Account.id_icon, Account.name, Account.balance
   FROM Account
