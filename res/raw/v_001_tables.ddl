@@ -61,11 +61,13 @@ CREATE TABLE Account
 CREATE TABLE Transact
 (
   _id                  INTEGER PRIMARY KEY,
-  _id_account          INTEGER NOT NULL,
+  _id_account          INTEGER,
   date_time            INTEGER NOT NULL,
   type_transaction     INTEGER NOT NULL,
   sum                  INTEGER NOT NULL,
-  FOREIGN KEY (_id_account) REFERENCES Account (_id)
+  _id_account_contragent INTEGER,
+  FOREIGN KEY (_id_account) REFERENCES Account (_id),
+  FOREIGN KEY (_id_account_contragent) REFERENCES Account (_id)
 );
 
 CREATE TABLE Document

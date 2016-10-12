@@ -40,7 +40,7 @@ public class Transaction
   }
   public void setAccount(Account account) throws EntityException
   {
-    if(account == null || account.getId() == 0)
+    if(account != null && account.getId() == 0)
       throw new EntityException();
     this.account = account;
   }
@@ -77,7 +77,7 @@ public class Transaction
 
   public Transaction(Account account, DateTime date_time, TYPE_TRANSACTION type_transaction, Money sum) throws EntityException
   {
-    if(account == null || account.getId() == 0 || date_time == null || type_transaction == null || sum == null)
+    if(account != null && account.getId() == 0 || date_time == null || type_transaction == null || sum == null)
       throw new EntityException();
     this.account          = account         ;
     this.date_time        = date_time       ;
@@ -104,7 +104,8 @@ public class Transaction
     ContentValues values = new ContentValues();
     if(account.getId() == 0)
       throw new EntityException();
-    values.put("_id_account", account.getId());
+    if(account != null)
+      values.put("_id_account", account.getId());
     values.put("date_time", date_time.getTimeInMillis());
     values.put("type_transaction", type_transaction.id_db);
     values.put("sum", sum.getLongValue());
@@ -114,7 +115,7 @@ public class Transaction
   protected ContentValues getContentValuesChange()
   {
     ContentValues values = new ContentValues();
-    compareInsert(values, original.account.getId(), account.getId(), "_id_account");
+    compareInsert(values, original.account != null ? original.account.getId() : null, account != null ? account.getId() : null, "_id_account");
     compareInsert(values, original.date_time.getTimeInMillis(), date_time.getTimeInMillis(), "date_time");
     compareInsert(values, original.type_transaction.id_db, type_transaction.id_db, "type_transaction");
     compareInsert(values, original.sum.getLongValue(), sum.getLongValue(), "sum");
@@ -123,7 +124,8 @@ public class Transaction
   @Override
   protected void initFromCursor(Cursor cursor) throws EntityException
   {
-    this.account          = Account.getAccountFromId(cursor.getLong(cursor.getColumnIndex("_id_account")));
+    if(!cursor.isNull(cursor.getColumnIndex("_id_account")))
+      this.account          = Account.getAccountFromId(cursor.getLong(cursor.getColumnIndex("_id_account")));
     this.date_time        = new DateTime(cursor.getLong(cursor.getColumnIndex("date_time")));
     this.type_transaction = TYPE_TRANSACTION.getE_IC_TYPE_RESOURCE(cursor.getLong(cursor.getColumnIndex("type_transaction")));
     this.sum              = new Money(cursor.getLong(cursor.getColumnIndex("sum")));

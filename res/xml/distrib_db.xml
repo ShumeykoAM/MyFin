@@ -16,14 +16,27 @@
     <!-- Запись - кнопка добавить -->
     <Currency short_name="ADD_NEW" short_name_lower="add_new" is_added="1"></Currency>
 
+    <!-- Транзакции: с запланированными документами и с регулярными документами-->
+    <Transact date_time="0" type_transaction="1" sum = "0"></Transact>
+    <Transact date_time="0" type_transaction="2" sum = "0"></Transact>
+
 
     <!-- Пока что просто для примера добавим эту запись -->
     <CoUser name="Муж1"></CoUser>
     <CoUser name="Муж2"></CoUser>
 
-    <Account _id_currency="1" id_icon="0" name="Карта 4356" balance="2432,54"></Account>
-    <Account _id_currency="1" id_icon="1" name="Карта 5632" balance="232,54" _id_co_user="1"></Account>
-    <Account _id_currency="1" id_icon="2" name="Карта 0945" balance="8762,54" _id_co_user="1"></Account>
-    <Account _id_currency="1" id_icon="3" name="Налик"      balance="347,54"></Account>
+    <Account _id_currency="1" id_icon="1" name="Карта 4356" balance="2432,54"></Account>
+    <Account _id_currency="1" id_icon="2" name="Карта 5632" balance="232,54" _id_co_user="1"></Account>
+    <Account _id_currency="1" id_icon="1" name="Карта 0945" balance="8762,54" _id_co_user="1"></Account>
+    <Account _id_currency="1" id_icon="0" name="Налик"      balance="347,54"></Account>
+
+    <Transact _id_account="1" date_time="656666533" type_transaction="0" sum = "23460"></Transact>
+    <Transact _id_account="2" date_time="798666533" type_transaction="0" sum = "28760"></Transact>
+    <Transact _id_account="3" date_time="656666533" type_transaction="0" sum = "23987"></Transact>
+    <Transact _id_account="4" date_time="343666533" type_transaction="0" sum = "37800"></Transact>
+    <Transact _id_account="4" date_time="98786533" type_transaction="0" sum = "2140"></Transact>
+    <Transact _id_account="1" date_time="546666533" type_transaction="0" sum = "2360"></Transact>
+    <Transact _id_account="1" date_time="787666533" type_transaction="0" sum = "70864" _id_account_contragent="4"></Transact>
+
 
 </distrib>
