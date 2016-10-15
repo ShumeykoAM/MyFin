@@ -9,16 +9,225 @@
     -->
 
 
-    <!-- Основные валюты -->
-    <!-- RUB уже вставлены в коде -->
-    <Currency short_name="USD" short_name_lower="usd" id_icon="1" is_added="0"></Currency>
-    <Currency short_name="EUR" short_name_lower="eur" id_icon="2" is_added="0"></Currency>
-    <!-- Запись - кнопка добавить -->
-    <Currency short_name="ADD_NEW" short_name_lower="add_new" is_added="1"></Currency>
+    <!-- Валюты -->
+    <Currency cod_ISO="CRC" full_name="Costa Rican Col?n"                    prim="0" ></Currency>
+    <Currency cod_ISO="BWP" full_name="Botswanan Pula"                       prim="0" ></Currency>
+    <Currency cod_ISO="GEL" full_name="Georgian Lari"                        prim="0" ></Currency>
+    <Currency cod_ISO="HRK" full_name="Croatian Kuna"                        prim="0" ></Currency>
+    <Currency cod_ISO="FJD" full_name="Fijian Dollar"                        prim="0" ></Currency>
+    <Currency cod_ISO="GNF" full_name="Guinean Franc"                        prim="0" ></Currency>
+    <Currency cod_ISO="KPW" full_name="North Korean Won"                     prim="0" ></Currency>
+    <Currency cod_ISO="LBP" full_name="Lebanese Pound"                       prim="0" ></Currency>
+    <Currency cod_ISO="MWK" full_name="Malawian Kwacha"                      prim="0" ></Currency>
+    <Currency cod_ISO="CDF" full_name="Congolese Franc"                      prim="0" ></Currency>
+    <Currency cod_ISO="HKD" full_name="Hong Kong Dollar"                     prim="0" ></Currency>
+    <Currency cod_ISO="SIT" full_name="Slovenian Tolar"                      prim="0" ></Currency>
+    <Currency cod_ISO="XTS" full_name="Testing Currency Code"                prim="0" ></Currency>
+    <Currency cod_ISO="CZK" full_name="Czech Republic Koruna"                prim="0" ></Currency>
+    <Currency cod_ISO="BHD" full_name="Bahraini Dinar"                       prim="0" ></Currency>
+    <Currency cod_ISO="ERN" full_name="Eritrean Nakfa"                       prim="0" ></Currency>
+    <Currency cod_ISO="SCR" full_name="Seychellois Rupee"                    prim="0" ></Currency>
+    <Currency cod_ISO="TRY" full_name="Turkish Lira"                         prim="0" ></Currency>
+    <Currency cod_ISO="XFO" full_name="French Gold Franc"                    prim="0" ></Currency>
+    <Currency cod_ISO="SDD" full_name="Sudanese Dinar (1992-2007) "          prim="0" ></Currency>
+    <Currency cod_ISO="XBC" full_name="European Unit of Account (XBC) "      prim="0" ></Currency>
+    <Currency cod_ISO="UYU" full_name="Uruguayan Peso"                       prim="0" ></Currency>
+    <Currency cod_ISO="COP" full_name="Colombian Peso"                       prim="0" ></Currency>
+    <Currency cod_ISO="XFU" full_name="French UIC-Franc"                     prim="0" ></Currency>
+    <Currency cod_ISO="XPD" full_name="Palladium"                            prim="0" ></Currency>
+    <Currency cod_ISO="BYR" full_name="Belarusian Ruble"                     prim="0" ></Currency>
+    <Currency cod_ISO="ETB" full_name="Ethiopian Birr"                       prim="0" ></Currency>
+    <Currency cod_ISO="TRL" full_name="Turkish Lira (1922-2005) "            prim="0" ></Currency>
+    <Currency cod_ISO="STD" full_name="S?o Tom? and Pr?ncipe Dobra"          prim="0" ></Currency>
+    <Currency cod_ISO="BTN" full_name="Bhutanese Ngultrum"                   prim="0" ></Currency>
+    <Currency cod_ISO="NPR" full_name="Nepalese Rupee"                       prim="0" ></Currency>
+    <Currency cod_ISO="NGN" full_name="Nigerian Naira"                       prim="0" ></Currency>
+    <Currency cod_ISO="AUD" full_name="Australian Dollar"                    prim="0" ></Currency>
+    <Currency cod_ISO="GWP" full_name="Guinea-Bissau Peso"                   prim="0" ></Currency>
+    <Currency cod_ISO="LRD" full_name="Liberian Dollar"                      prim="0" ></Currency>
+    <Currency cod_ISO="EEK" full_name="Estonian Kroon"                       prim="0" ></Currency>
+    <Currency cod_ISO="KRW" full_name="South Korean Won"                     prim="0" ></Currency>
+    <Currency cod_ISO="BSD" full_name="Bahamian Dollar"                      prim="0" ></Currency>
+    <Currency cod_ISO="KYD" full_name="Cayman Islands Dollar"                prim="0" ></Currency>
+    <Currency cod_ISO="DKK" full_name="Danish Krone"                         prim="0" ></Currency>
+    <Currency cod_ISO="MKD" full_name="Macedonian Denar"                     prim="0" ></Currency>
+    <Currency cod_ISO="SKK" full_name="Slovak Koruna"                        prim="0" ></Currency>
+    <Currency cod_ISO="MDL" full_name="Moldovan Leu"                         prim="0" ></Currency>
+    <Currency cod_ISO="LAK" full_name="Laotian Kip"                          prim="0" ></Currency>
+    <Currency cod_ISO="TPE" full_name="Timorese Escudo"                      prim="0" ></Currency>
+    <Currency cod_ISO="SDG" full_name="Sudanese Pound"                       prim="0" ></Currency>
+    <Currency cod_ISO="GHC" full_name="Ghanaian Cedi (1979-2007) "           prim="0" ></Currency>
+    <Currency cod_ISO="MXV" full_name="Mexican Investment Unit"              prim="0" ></Currency>
+    <Currency cod_ISO="CVE" full_name="Cape Verdean Escudo"                  prim="0" ></Currency>
+    <Currency cod_ISO="AMD" full_name="Armenian Dram"                        prim="0" ></Currency>
+    <Currency cod_ISO="MAD" full_name="Moroccan Dirham"                      prim="0" ></Currency>
+    <Currency cod_ISO="BAM" full_name="Bosnia-Herzegovina Convertible Mark"  prim="0" ></Currency>
+    <Currency cod_ISO="BMD" full_name="Bermudan Dollar"                      prim="0" ></Currency>
+    <Currency cod_ISO="BIF" full_name="Burundian Franc"                      prim="0" ></Currency>
+    <Currency cod_ISO="UAH" full_name="Ukrainian Hryvnia"                    prim="0" ></Currency>
+    <Currency cod_ISO="XBB" full_name="European Monetary Unit"               prim="0" ></Currency>
+    <Currency cod_ISO="GHS" full_name="Ghanaian Cedi"                        prim="0" ></Currency>
+    <Currency cod_ISO="INR" full_name="Indian Rupee"                         prim="0" ></Currency>
+    <Currency cod_ISO="AZN" full_name="Azerbaijani Manat"                    prim="0" ></Currency>
+    <Currency cod_ISO="ANG" full_name="Netherlands Antillean Guilder"        prim="0" ></Currency>
+    <Currency cod_ISO="QAR" full_name="Qatari Rial"                          prim="0" ></Currency>
+    <Currency cod_ISO="TND" full_name="Tunisian Dinar"                       prim="0" ></Currency>
+    <Currency cod_ISO="RON" full_name="Romanian Leu"                         prim="0" ></Currency>
+    <Currency cod_ISO="KGS" full_name="Kyrgystani Som"                       prim="0" ></Currency>
+    <Currency cod_ISO="TMM" full_name="Turkmenistani Manat (1993-2009) "     prim="0" ></Currency>
+    <Currency cod_ISO="ZMK" full_name="Zambian Kwacha"                       prim="0" ></Currency>
+    <Currency cod_ISO="ISK" full_name="Icelandic Kr?na"                      prim="0" ></Currency>
+    <Currency cod_ISO="NOK" full_name="Norwegian Krone"                      prim="0" ></Currency>
+    <Currency cod_ISO="YUM" full_name="Yugoslavian New Dinar (1994-2002) "   prim="0" ></Currency>
+    <Currency cod_ISO="PGK" full_name="Papua New Guinean Kina"               prim="0" ></Currency>
+    <Currency cod_ISO="NAD" full_name="Namibian Dollar"                      prim="0" ></Currency>
+    <Currency cod_ISO="SGD" full_name="Singapore Dollar"                     prim="0" ></Currency>
+    <Currency cod_ISO="EUR" full_name="Euro"                                 prim="1" ></Currency>
+    <Currency cod_ISO="ZWR" full_name="Zimbabwean Dollar (2008) "            prim="0" ></Currency>
+    <Currency cod_ISO="FRF" full_name="French Franc"                         prim="0" ></Currency>
+    <Currency cod_ISO="IEP" full_name="Irish Pound"                          prim="0" ></Currency>
+    <Currency cod_ISO="UGX" full_name="Ugandan Shilling"                     prim="0" ></Currency>
+    <Currency cod_ISO="ZWL" full_name="Zimbabwean Dollar (2009) "            prim="0" ></Currency>
+    <Currency cod_ISO="ADP" full_name="Andorran Peseta"                      prim="0" ></Currency>
+    <Currency cod_ISO="LKR" full_name="Sri Lankan Rupee"                     prim="0" ></Currency>
+    <Currency cod_ISO="SAR" full_name="Saudi Riyal"                          prim="0" ></Currency>
+    <Currency cod_ISO="EGP" full_name="Egyptian Pound"                       prim="0" ></Currency>
+    <Currency cod_ISO="XDR" full_name="Special Drawing Rights"               prim="0" ></Currency>
+    <Currency cod_ISO="CLP" full_name="Chilean Peso"                         prim="0" ></Currency>
+    <Currency cod_ISO="MVR" full_name="Maldivian Rufiyaa"                    prim="0" ></Currency>
+    <Currency cod_ISO="ITL" full_name="Italian Lira"                         prim="0" ></Currency>
+    <Currency cod_ISO="TZS" full_name="Tanzanian Shilling"                   prim="0" ></Currency>
+    <Currency cod_ISO="AFN" full_name="Afghan Afghani"                       prim="0" ></Currency>
+    <Currency cod_ISO="BEF" full_name="Belgian Franc"                        prim="0" ></Currency>
+    <Currency cod_ISO="IDR" full_name="Indonesian Rupiah"                    prim="0" ></Currency>
+    <Currency cod_ISO="ARS" full_name="Argentine Peso"                       prim="0" ></Currency>
+    <Currency cod_ISO="DJF" full_name="Djiboutian Franc"                     prim="0" ></Currency>
+    <Currency cod_ISO="XAU" full_name="Gold"                                 prim="0" ></Currency>
+    <Currency cod_ISO="BGL" full_name="Bulgarian Hard Lev"                   prim="0" ></Currency>
+    <Currency cod_ISO="MTL" full_name="Maltese Lira"                         prim="0" ></Currency>
+    <Currency cod_ISO="XOF" full_name="CFA Franc BCEAO"                      prim="0" ></Currency>
+    <Currency cod_ISO="XBD" full_name="European Unit of Account (XBD) "      prim="0" ></Currency>
+    <Currency cod_ISO="GMD" full_name="Gambian Dalasi"                       prim="0" ></Currency>
+    <Currency cod_ISO="RSD" full_name="Serbian Dinar"                        prim="0" ></Currency>
+    <Currency cod_ISO="HNL" full_name="Honduran Lempira"                     prim="0" ></Currency>
+    <Currency cod_ISO="SBD" full_name="Solomon Islands Dollar"               prim="0" ></Currency>
+    <Currency cod_ISO="WST" full_name="Samoan Tala"                          prim="0" ></Currency>
+    <Currency cod_ISO="CHE" full_name="CHE"                                  prim="0" ></Currency>
+    <Currency cod_ISO="BRL" full_name="Brazilian Real"                       prim="0" ></Currency>
+    <Currency cod_ISO="ALL" full_name="Albanian Lek"                         prim="0" ></Currency>
+    <Currency cod_ISO="NLG" full_name="Dutch Guilder"                        prim="0" ></Currency>
+    <Currency cod_ISO="AFA" full_name="Afghan Afghani (1927-2002) "          prim="0" ></Currency>
+    <Currency cod_ISO="SRG" full_name="Surinamese Guilder"                   prim="0" ></Currency>
+    <Currency cod_ISO="JPY" full_name="Japanese Yen"                         prim="0" ></Currency>
+    <Currency cod_ISO="PEN" full_name="Peruvian Nuevo Sol"                   prim="0" ></Currency>
+    <Currency cod_ISO="BDT" full_name="Bangladeshi Taka"                     prim="0" ></Currency>
+    <Currency cod_ISO="NZD" full_name="New Zealand Dollar"                   prim="0" ></Currency>
+    <Currency cod_ISO="LSL" full_name="Lesotho Loti"                         prim="0" ></Currency>
+    <Currency cod_ISO="BGN" full_name="Bulgarian Lev"                        prim="0" ></Currency>
+    <Currency cod_ISO="GTQ" full_name="Guatemalan Quetzal"                   prim="0" ></Currency>
+    <Currency cod_ISO="VEB" full_name="Venezuelan Bol?var (1871-2008) "      prim="0" ></Currency>
+    <Currency cod_ISO="MXN" full_name="Mexican Peso"                         prim="0" ></Currency>
+    <Currency cod_ISO="SYP" full_name="Syrian Pound"                         prim="0" ></Currency>
+    <Currency cod_ISO="MZM" full_name="Mozambican Metical (1980-2006) "      prim="0" ></Currency>
+    <Currency cod_ISO="CAD" full_name="Canadian Dollar"                      prim="0" ></Currency>
+    <Currency cod_ISO="TOP" full_name="Tongan Pa?anga"                       prim="0" ></Currency>
+    <Currency cod_ISO="PTE" full_name="Portuguese Escudo"                    prim="0" ></Currency>
+    <Currency cod_ISO="VUV" full_name="Vanuatu Vatu"                         prim="0" ></Currency>
+    <Currency cod_ISO="OMR" full_name="Omani Rial"                           prim="0" ></Currency>
+    <Currency cod_ISO="CHF" full_name="Swiss Franc"                          prim="0" ></Currency>
+    <Currency cod_ISO="SRD" full_name="Surinamese Dollar"                    prim="0" ></Currency>
+    <Currency cod_ISO="XAF" full_name="CFA Franc BEAC"                       prim="0" ></Currency>
+    <Currency cod_ISO="SVC" full_name="Salvadoran Col?n"                     prim="0" ></Currency>
+    <Currency cod_ISO="ATS" full_name="Austrian Schilling"                   prim="0" ></Currency>
+    <Currency cod_ISO="HUF" full_name="Hungarian Forint"                     prim="0" ></Currency>
+    <Currency cod_ISO="IQD" full_name="Iraqi Dinar"                          prim="0" ></Currency>
+    <Currency cod_ISO="XCD" full_name="East Caribbean Dollar"                prim="0" ></Currency>
+    <Currency cod_ISO="AOA" full_name="Angolan Kwanza"                       prim="0" ></Currency>
+    <Currency cod_ISO="BOV" full_name="Bolivian Mvdol"                       prim="0" ></Currency>
+    <Currency cod_ISO="XXX" full_name="Unknown Currency"                     prim="0" ></Currency>
+    <Currency cod_ISO="TTD" full_name="Trinidad and Tobago Dollar"           prim="0" ></Currency>
+    <Currency cod_ISO="UZS" full_name="Uzbekistan Som"                       prim="0" ></Currency>
+    <Currency cod_ISO="USN" full_name="US Dollar (Next day) "                prim="0" ></Currency>
+    <Currency cod_ISO="AWG" full_name="Aruban Florin"                        prim="0" ></Currency>
+    <Currency cod_ISO="ILS" full_name="Israeli New Sheqel"                   prim="0" ></Currency>
+    <Currency cod_ISO="RUB" full_name="Russian Ruble"                        prim="0" ></Currency>
+    <Currency cod_ISO="GBP" full_name="British Pound Sterling"               prim="0" ></Currency>
+    <Currency cod_ISO="DZD" full_name="Algerian Dinar"                       prim="0" ></Currency>
+    <Currency cod_ISO="SZL" full_name="Swazi Lilangeni"                      prim="0" ></Currency>
+    <Currency cod_ISO="GIP" full_name="Gibraltar Pound"                      prim="0" ></Currency>
+    <Currency cod_ISO="XPF" full_name="CFP Franc"                            prim="0" ></Currency>
+    <Currency cod_ISO="KHR" full_name="Cambodian Riel"                       prim="0" ></Currency>
+    <Currency cod_ISO="CUP" full_name="Cuban Peso"                           prim="0" ></Currency>
+    <Currency cod_ISO="TWD" full_name="New Taiwan Dollar"                    prim="0" ></Currency>
+    <Currency cod_ISO="MNT" full_name="Mongolian Tugrik"                     prim="0" ></Currency>
+    <Currency cod_ISO="FKP" full_name="Falkland Islands Pound"               prim="0" ></Currency>
+    <Currency cod_ISO="MUR" full_name="Mauritian Rupee"                      prim="0" ></Currency>
+    <Currency cod_ISO="GYD" full_name="Guyanaese Dollar"                     prim="0" ></Currency>
+    <Currency cod_ISO="AED" full_name="United Arab Emirates Dirham"          prim="0" ></Currency>
+    <Currency cod_ISO="KZT" full_name="Kazakhstani Tenge"                    prim="0" ></Currency>
+    <Currency cod_ISO="MZN" full_name="Mozambican Metical"                   prim="0" ></Currency>
+    <Currency cod_ISO="XAG" full_name="Silver"                               prim="0" ></Currency>
+    <Currency cod_ISO="VEF" full_name="Venezuelan Bol?var"                   prim="0" ></Currency>
+    <Currency cod_ISO="TJS" full_name="Tajikistani Somoni"                   prim="0" ></Currency>
+    <Currency cod_ISO="DEM" full_name="German Mark"                          prim="0" ></Currency>
+    <Currency cod_ISO="CHW" full_name="CHW"                                  prim="0" ></Currency>
+    <Currency cod_ISO="LVL" full_name="Latvian Lats"                         prim="0" ></Currency>
+    <Currency cod_ISO="XBA" full_name="European Composite Unit"              prim="0" ></Currency>
+    <Currency cod_ISO="SLL" full_name="Sierra Leonean Leone"                 prim="0" ></Currency>
+    <Currency cod_ISO="ZAR" full_name="South African Rand"                   prim="0" ></Currency>
+    <Currency cod_ISO="KMF" full_name="Comorian Franc"                       prim="0" ></Currency>
+    <Currency cod_ISO="CUC" full_name="Cuban Convertible Peso"               prim="0" ></Currency>
+    <Currency cod_ISO="ZWD" full_name="Zimbabwean Dollar (1980-2008) "       prim="0" ></Currency>
+    <Currency cod_ISO="CSD" full_name="Serbian Dinar (2002-2006) "           prim="0" ></Currency>
+    <Currency cod_ISO="PLN" full_name="Polish Zloty"                         prim="0" ></Currency>
+    <Currency cod_ISO="CYP" full_name="Cypriot Pound"                        prim="0" ></Currency>
+    <Currency cod_ISO="AZM" full_name="Azerbaijani Manat (1993-2006) "       prim="0" ></Currency>
+    <Currency cod_ISO="UYI" full_name="UYI"                                  prim="0" ></Currency>
+    <Currency cod_ISO="LYD" full_name="Libyan Dinar"                         prim="0" ></Currency>
+    <Currency cod_ISO="MRO" full_name="Mauritanian Ouguiya"                  prim="0" ></Currency>
+    <Currency cod_ISO="COU" full_name="COU"                                  prim="0" ></Currency>
+    <Currency cod_ISO="JOD" full_name="Jordanian Dinar"                      prim="0" ></Currency>
+    <Currency cod_ISO="LTL" full_name="Lithuanian Litas"                     prim="0" ></Currency>
+    <Currency cod_ISO="GRD" full_name="Greek Drachma"                        prim="0" ></Currency>
+    <Currency cod_ISO="THB" full_name="Thai Baht"                            prim="0" ></Currency>
+    <Currency cod_ISO="PKR" full_name="Pakistani Rupee"                      prim="0" ></Currency>
+    <Currency cod_ISO="BZD" full_name="Belize Dollar"                        prim="0" ></Currency>
+    <Currency cod_ISO="USS" full_name="US Dollar (Same day) "                prim="0" ></Currency>
+    <Currency cod_ISO="MYR" full_name="Malaysian Ringgit"                    prim="0" ></Currency>
+    <Currency cod_ISO="LUF" full_name="Luxembourgian Franc"                  prim="0" ></Currency>
+    <Currency cod_ISO="BYB" full_name="Belarusian New Ruble (1994-1999) "    prim="0" ></Currency>
+    <Currency cod_ISO="DOP" full_name="Dominican Peso"                       prim="0" ></Currency>
+    <Currency cod_ISO="MOP" full_name="Macanese Pataca"                      prim="0" ></Currency>
+    <Currency cod_ISO="PYG" full_name="Paraguayan Guarani"                   prim="0" ></Currency>
+    <Currency cod_ISO="YER" full_name="Yemeni Rial"                          prim="0" ></Currency>
+    <Currency cod_ISO="JMD" full_name="Jamaican Dollar"                      prim="0" ></Currency>
+    <Currency cod_ISO="PHP" full_name="Philippine Peso"                      prim="0" ></Currency>
+    <Currency cod_ISO="PAB" full_name="Panamanian Balboa"                    prim="0" ></Currency>
+    <Currency cod_ISO="MGF" full_name="Malagasy Franc"                       prim="0" ></Currency>
+    <Currency cod_ISO="KES" full_name="Kenyan Shilling"                      prim="0" ></Currency>
+    <Currency cod_ISO="SOS" full_name="Somali Shilling"                      prim="0" ></Currency>
+    <Currency cod_ISO="SEK" full_name="Swedish Krona"                        prim="0" ></Currency>
+    <Currency cod_ISO="MGA" full_name="Malagasy Ariary"                      prim="0" ></Currency>
+    <Currency cod_ISO="ROL" full_name="Romanian Leu (1952-2006) "            prim="0" ></Currency>
+    <Currency cod_ISO="VND" full_name="Vietnamese Dong"                      prim="0" ></Currency>
+    <Currency cod_ISO="IRR" full_name="Iranian Rial"                         prim="0" ></Currency>
+    <Currency cod_ISO="CLF" full_name="Chilean Unit of Account (UF) "        prim="0" ></Currency>
+    <Currency cod_ISO="HTG" full_name="Haitian Gourde"                       prim="0" ></Currency>
+    <Currency cod_ISO="NIO" full_name="Nicaraguan C?rdoba"                   prim="0" ></Currency>
+    <Currency cod_ISO="TMT" full_name="Turkmenistani Manat"                  prim="0" ></Currency>
+    <Currency cod_ISO="BOB" full_name="Bolivian Boliviano"                   prim="0" ></Currency>
+    <Currency cod_ISO="SHP" full_name="Saint Helena Pound"                   prim="0" ></Currency>
+    <Currency cod_ISO="RWF" full_name="Rwandan Franc"                        prim="0" ></Currency>
+    <Currency cod_ISO="ESP" full_name="Spanish Peseta"                       prim="0" ></Currency>
+    <Currency cod_ISO="CNY" full_name="Chinese Yuan"                         prim="0" ></Currency>
+    <Currency cod_ISO="XPT" full_name="Platinum"                             prim="0" ></Currency>
+    <Currency cod_ISO="USD" full_name="US Dollar"                            prim="1" ></Currency>
+    <Currency cod_ISO="BND" full_name="Brunei Dollar"                        prim="0" ></Currency>
+    <Currency cod_ISO="KWD" full_name="Kuwaiti Dinar"                        prim="0" ></Currency>
+    <Currency cod_ISO="BBD" full_name="Barbadian Dollar"                     prim="0" ></Currency>
+    <Currency cod_ISO="MMK" full_name="Myanma Kyat"                          prim="0" ></Currency>
+    <Currency cod_ISO="FIM" full_name="Finnish Markka"                       prim="0" ></Currency>
 
-    <!-- Транзакции: с запланированными документами и с регулярными документами-->
-    <Transact date_time="0" type_transaction="1" sum = "0"></Transact>
-    <Transact date_time="0" type_transaction="2" sum = "0"></Transact>
 
 
     <!-- Пока что просто для примера добавим эту запись -->
@@ -30,13 +239,13 @@
     <Account _id_currency="1" id_icon="1" name="Карта 0945" balance="8762,54" _id_co_user="1"></Account>
     <Account _id_currency="1" id_icon="0" name="Налик"      balance="347,54"></Account>
 
-    <Transact _id_account="1" date_time="656666533" type_transaction="0" sum = "23460"></Transact>
-    <Transact _id_account="2" date_time="798666533" type_transaction="0" sum = "28760"></Transact>
-    <Transact _id_account="3" date_time="656666533" type_transaction="0" sum = "23987"></Transact>
-    <Transact _id_account="4" date_time="343666533" type_transaction="0" sum = "37800"></Transact>
-    <Transact _id_account="4" date_time="98786533" type_transaction="0" sum = "2140"></Transact>
-    <Transact _id_account="1" date_time="546666533" type_transaction="0" sum = "2360"></Transact>
-    <Transact _id_account="1" date_time="787666533" type_transaction="0" sum = "70864" _id_account_contragent="4"></Transact>
+    <Transact _id_account="1" date_time="656666533" sum = "23460" trend="0"></Transact>
+    <Transact _id_account="2" date_time="798666533" sum = "28760" trend="1"></Transact>
+    <Transact _id_account="3" date_time="656666533" sum = "23987" trend="0"></Transact>
+    <Transact _id_account="4" date_time="343666533" sum = "37800" trend="1"></Transact>
+    <Transact _id_account="4" date_time="98786533"  sum = "2140"  trend="0"></Transact>
+    <Transact _id_account="1" date_time="546666533" sum = "2360"  trend="1"></Transact>
+    <Transact _id_account="1" date_time="787666533" sum = "70864" trend="2" _id_correlative_account="1" correlative_sum="654"></Transact>
 
 
 </distrib>

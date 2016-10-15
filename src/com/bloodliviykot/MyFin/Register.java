@@ -22,7 +22,7 @@ public class Register
 
     tabSpec = tab_host.newTabSpec("tag_transactions");
     tabSpec.setIndicator(getString(R.string.tab_transactions));
-    tabSpec.setContent(new Intent(this, Transactions.class));
+    tabSpec.setContent(new Intent(this, TransactionsPayed.class));
     tab_host.addTab(tabSpec);
 
     tabSpec = tab_host.newTabSpec("tag_planned");

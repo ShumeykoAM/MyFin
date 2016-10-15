@@ -3,7 +3,7 @@ package com.bloodliviykot.MyFin.DB.entities;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.bloodliviykot.MyFin.DB.EQ;
-import com.bloodliviykot.MyFin.R;
+import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
 import com.bloodliviykot.tools.DataBase.Entity;
 
 import java.io.Serializable;
@@ -18,49 +18,57 @@ public class Currency
   /*"€""$""Ք"*/
   //!!!! Есть java.util.Currency, которая как раз определяет валюту
 
-  //Иконки основных валют
-  public enum E_IC_CURRENCY
+  public Currency(String cod_ISO, long primary, String full_name) throws EntityException
   {
-    RUB (0, R.drawable.ic_curr_rub ),
-    USD (1, R.drawable.ic_curr_usd ),
-    EUR (2, R.drawable.ic_curr_eur );
-
-    public final int R_drawable;
-    public final long id_db;
-    public final int id;
-    private E_IC_CURRENCY(long id_db, int R_drawable)
-    {
-      this.R_drawable = R_drawable;
-      this.id_db = id_db;
-      this.id = (int)id_db;
-    }
-    public static E_IC_CURRENCY getE_IC_TYPE_RESOURCE(long id_db)
-    {
-      return E_IC_CURRENCY.values()[(int)id_db];
-    }
-  }
-  public Currency(String short_name, E_IC_CURRENCY icon) throws EntityException
-  {
-    if(short_name == null)
+    if(cod_ISO == null || full_name == null)
       throw new EntityException();
-    setShort_name(short_name);
-    setIcon(icon);
-    is_added = false;
+    this.cod_ISO   = cod_ISO  ;
+    this.primary   = primary  ;
+    this.full_name = full_name;
   }
-  public Currency(long _id) throws EntityException
+  private Currency(long _id) throws EntityException
   {
     super(_id, EQ.CURRENCY);
   }
-  public String getShort_name(){return short_name;}
-  public void setShort_name(String short_name) throws EntityException
+  public static Currency getCurrency(long _id) throws EntityException
   {
-    if(short_name == null)
-      throw new EntityException();
-    this.short_name = short_name;
-    this.short_name_lower = short_name.toLowerCase();
+    return new Currency(_id);
   }
-  public E_IC_CURRENCY getIcon(){return icon;}
-  public void setIcon(E_IC_CURRENCY icon){this.icon = icon;}
+  public static Currency getCurrency(String cod_ISO) throws EntityException
+  {
+    MySQLiteOpenHelper oh = MySQLiteOpenHelper.getMySQLiteOpenHelper();
+    Cursor cursor = oh.db.rawQuery(oh.getQuery(EQ.CURRENCY_COD_ISO), new String[]{cod_ISO});
+    if(!cursor.moveToFirst())
+      throw new EntityException();
+    return new Currency(cursor.getLong(cursor.getColumnIndex("_id")));
+  }
+
+  public String getCod_ISO(){return cod_ISO;}
+  public void setShort_name(String cod_ISO) throws EntityException
+  {
+    if(cod_ISO == null)
+      throw new EntityException();
+    this.cod_ISO = cod_ISO;
+  }
+  public long getPrimary(){return primary;}
+  public void setPrimary(long primary){this.primary = primary;}
+  public String getFullName(){return full_name;}
+  public void setFullName(String full_name) throws EntityException
+  {
+    if(full_name == null)
+      throw new EntityException();
+    this.full_name = full_name;
+  }
+  public String getSymbol()
+  {
+    String result;
+    if(cod_ISO == "EUR")
+      result = "€";
+    if(cod_ISO == "USD")
+      result = "$";
+    else result = java.util.Currency.getInstance(cod_ISO).getSymbol();
+    return result;
+  }
 
   @Override
   public String getTableName()
@@ -71,53 +79,48 @@ public class Currency
   protected ContentValues getContentValues()
   {
     ContentValues values = new ContentValues();
-    values.put("short_name_lower", this.short_name_lower);
-    values.put("short_name"      , this.short_name);
-    if(this.icon != null)
-      values.put("id_icon"       , this.icon.id_db);
-    values.put("is_added"        , this.is_added ? 1 : 0);
+    values.put("cod_ISO"  , this.cod_ISO  );
+    values.put("prim"     , this.primary  );
+    values.put("full_name", this.full_name);
     return values;
   }
   @Override
   protected ContentValues getContentValuesChange()
   {
     ContentValues values = new ContentValues();
-    compareInsert(values, original.short_name_lower, short_name_lower, "short_name_lower");
-    compareInsert(values, original.short_name, short_name, "short_name");
-    compareInsert(values, original.icon != null ? original.icon.id_db : null, icon != null ? icon.id_db : null, "id_icon");
+    compareInsert(values, original.cod_ISO  , cod_ISO  , "cod_ISO"  );
+    compareInsert(values, original.primary  , primary  , "prim"  );
+    compareInsert(values, original.full_name, full_name, "full_name");
     return values;
   }
   @Override
   protected void initFromCursor(Cursor cursor)
   {
-    this.short_name_lower = cursor.getString(cursor.getColumnIndex("short_name_lower"));
-    this.short_name       = cursor.getString(cursor.getColumnIndex("short_name"));
-    if(!cursor.isNull(cursor.getColumnIndex("id_icon")))
-      this.icon = E_IC_CURRENCY.getE_IC_TYPE_RESOURCE(cursor.getLong(cursor.getColumnIndex("id_icon")));
-    this.is_added         = cursor.getLong(cursor.getColumnIndex("is_added")) == 1;
+    this.cod_ISO   = cursor.getString(cursor.getColumnIndex("cod_ISO"));
+    this.primary   = cursor.getLong(cursor.getColumnIndex("prim"));
+    this.full_name = cursor.getString(cursor.getColumnIndex("full_name"));
   }
   @Override
   protected void saveOriginal()
   {
     if(original == null)
       original = new Original();
-    original.short_name_lower = short_name_lower;
-    original.short_name = short_name;
-    original.icon = icon;
+    original.cod_ISO   = cod_ISO  ;
+    original.primary   = primary  ;
+    original.full_name = full_name;
   }
 
-
   //Поля записи
-  private String short_name_lower;
-  private String short_name      ;
-  private E_IC_CURRENCY icon     ;
-  private boolean is_added       ;//это не пункт это кнопка для добавления новой валюты
+  private String cod_ISO  ;
+  private long   primary ;
+  private String full_name;
+
   //Оригинальные (как были втавлены\извлечены из базы)
   private static class Original
   {
-    public String short_name_lower;
-    public String short_name      ;
-    public E_IC_CURRENCY icon     ;
+    public String cod_ISO  ;
+    public long   primary ;
+    public String full_name;
   }
   Original original;
 

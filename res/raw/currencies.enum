@@ -1,0 +1,450 @@
+﻿<Currency code="CRC" full_name="Costa Rican Col?n"                    prim="0" ></Currency>
+<Currency code="BWP" full_name="Botswanan Pula"                       prim="0" ></Currency>
+<Currency code="GEL" full_name="Georgian Lari"                        prim="0" ></Currency>
+<Currency code="HRK" full_name="Croatian Kuna"                        prim="0" ></Currency>
+<Currency code="FJD" full_name="Fijian Dollar"                        prim="0" ></Currency>
+<Currency code="GNF" full_name="Guinean Franc"                        prim="0" ></Currency>
+<Currency code="KPW" full_name="North Korean Won"                     prim="0" ></Currency>
+<Currency code="LBP" full_name="Lebanese Pound"                       prim="0" ></Currency>
+<Currency code="MWK" full_name="Malawian Kwacha"                      prim="0" ></Currency>
+<Currency code="CDF" full_name="Congolese Franc"                      prim="0" ></Currency>
+<Currency code="HKD" full_name="Hong Kong Dollar"                     prim="0" ></Currency>
+<Currency code="SIT" full_name="Slovenian Tolar"                      prim="0" ></Currency>
+<Currency code="XTS" full_name="Testing Currency Code"                prim="0" ></Currency>
+<Currency code="CZK" full_name="Czech Republic Koruna"                prim="0" ></Currency>
+<Currency code="BHD" full_name="Bahraini Dinar"                       prim="0" ></Currency>
+<Currency code="ERN" full_name="Eritrean Nakfa"                       prim="0" ></Currency>
+<Currency code="SCR" full_name="Seychellois Rupee"                    prim="0" ></Currency>
+<Currency code="TRY" full_name="Turkish Lira"                         prim="0" ></Currency>
+<Currency code="XFO" full_name="French Gold Franc"                    prim="0" ></Currency>
+<Currency code="SDD" full_name="Sudanese Dinar (1992-2007) "          prim="0" ></Currency>
+<Currency code="XBC" full_name="European Unit of Account (XBC) "      prim="0" ></Currency>
+<Currency code="UYU" full_name="Uruguayan Peso"                       prim="0" ></Currency>
+<Currency code="COP" full_name="Colombian Peso"                       prim="0" ></Currency>
+<Currency code="XFU" full_name="French UIC-Franc"                     prim="0" ></Currency>
+<Currency code="XPD" full_name="Palladium"                            prim="0" ></Currency>
+<Currency code="BYR" full_name="Belarusian Ruble"                     prim="0" ></Currency>
+<Currency code="ETB" full_name="Ethiopian Birr"                       prim="0" ></Currency>
+<Currency code="TRL" full_name="Turkish Lira (1922-2005) "            prim="0" ></Currency>
+<Currency code="STD" full_name="S?o Tom? and Pr?ncipe Dobra"          prim="0" ></Currency>
+<Currency code="BTN" full_name="Bhutanese Ngultrum"                   prim="0" ></Currency>
+<Currency code="NPR" full_name="Nepalese Rupee"                       prim="0" ></Currency>
+<Currency code="ZMW" full_name="ZMW"                                  prim="0" ></Currency>
+<Currency code="NGN" full_name="Nigerian Naira"                       prim="0" ></Currency>
+<Currency code="AUD" full_name="Australian Dollar"                    prim="0" ></Currency>
+<Currency code="GWP" full_name="Guinea-Bissau Peso"                   prim="0" ></Currency>
+<Currency code="LRD" full_name="Liberian Dollar"                      prim="0" ></Currency>
+<Currency code="EEK" full_name="Estonian Kroon"                       prim="0" ></Currency>
+<Currency code="KRW" full_name="South Korean Won"                     prim="0" ></Currency>
+<Currency code="BSD" full_name="Bahamian Dollar"                      prim="0" ></Currency>
+<Currency code="KYD" full_name="Cayman Islands Dollar"                prim="0" ></Currency>
+<Currency code="DKK" full_name="Danish Krone"                         prim="0" ></Currency>
+<Currency code="MKD" full_name="Macedonian Denar"                     prim="0" ></Currency>
+<Currency code="SKK" full_name="Slovak Koruna"                        prim="0" ></Currency>
+<Currency code="MDL" full_name="Moldovan Leu"                         prim="0" ></Currency>
+<Currency code="LAK" full_name="Laotian Kip"                          prim="0" ></Currency>
+<Currency code="TPE" full_name="Timorese Escudo"                      prim="0" ></Currency>
+<Currency code="SDG" full_name="Sudanese Pound"                       prim="0" ></Currency>
+<Currency code="GHC" full_name="Ghanaian Cedi (1979-2007) "           prim="0" ></Currency>
+<Currency code="MXV" full_name="Mexican Investment Unit"              prim="0" ></Currency>
+<Currency code="CVE" full_name="Cape Verdean Escudo"                  prim="0" ></Currency>
+<Currency code="AMD" full_name="Armenian Dram"                        prim="0" ></Currency>
+<Currency code="MAD" full_name="Moroccan Dirham"                      prim="0" ></Currency>
+<Currency code="XSU" full_name="Sucre"                                prim="0" ></Currency>
+<Currency code="BAM" full_name="Bosnia-Herzegovina Convertible Mark"  prim="0" ></Currency>
+<Currency code="BMD" full_name="Bermudan Dollar"                      prim="0" ></Currency>
+<Currency code="BIF" full_name="Burundian Franc"                      prim="0" ></Currency>
+<Currency code="UAH" full_name="Ukrainian Hryvnia"                    prim="0" ></Currency>
+<Currency code="XBB" full_name="European Monetary Unit"               prim="0" ></Currency>
+<Currency code="GHS" full_name="Ghanaian Cedi"                        prim="0" ></Currency>
+<Currency code="INR" full_name="Indian Rupee"                         prim="0" ></Currency>
+<Currency code="XUA" full_name="ADB Unit of Account"                  prim="0" ></Currency>
+<Currency code="AZN" full_name="Azerbaijani Manat"                    prim="0" ></Currency>
+<Currency code="ANG" full_name="Netherlands Antillean Guilder"        prim="0" ></Currency>
+<Currency code="QAR" full_name="Qatari Rial"                          prim="0" ></Currency>
+<Currency code="TND" full_name="Tunisian Dinar"                       prim="0" ></Currency>
+<Currency code="RON" full_name="Romanian Leu"                         prim="0" ></Currency>
+<Currency code="KGS" full_name="Kyrgystani Som"                       prim="0" ></Currency>
+<Currency code="TMM" full_name="Turkmenistani Manat (1993-2009) "     prim="0" ></Currency>
+<Currency code="ZMK" full_name="Zambian Kwacha"                       prim="0" ></Currency>
+<Currency code="ISK" full_name="Icelandic Kr?na"                      prim="0" ></Currency>
+<Currency code="NOK" full_name="Norwegian Krone"                      prim="0" ></Currency>
+<Currency code="YUM" full_name="Yugoslavian New Dinar (1994-2002) "   prim="0" ></Currency>
+<Currency code="PGK" full_name="Papua New Guinean Kina"               prim="0" ></Currency>
+<Currency code="NAD" full_name="Namibian Dollar"                      prim="0" ></Currency>
+<Currency code="SGD" full_name="Singapore Dollar"                     prim="0" ></Currency>
+<Currency code="EUR" full_name="Euro"                                 prim="1" ></Currency>
+<Currency code="ZWR" full_name="Zimbabwean Dollar (2008) "            prim="0" ></Currency>
+<Currency code="FRF" full_name="French Franc"                         prim="0" ></Currency>
+<Currency code="IEP" full_name="Irish Pound"                          prim="0" ></Currency>
+<Currency code="UGX" full_name="Ugandan Shilling"                     prim="0" ></Currency>
+<Currency code="ZWL" full_name="Zimbabwean Dollar (2009) "            prim="0" ></Currency>
+<Currency code="ADP" full_name="Andorran Peseta"                      prim="0" ></Currency>
+<Currency code="LKR" full_name="Sri Lankan Rupee"                     prim="0" ></Currency>
+<Currency code="SAR" full_name="Saudi Riyal"                          prim="0" ></Currency>
+<Currency code="EGP" full_name="Egyptian Pound"                       prim="0" ></Currency>
+<Currency code="XDR" full_name="Special Drawing Rights"               prim="0" ></Currency>
+<Currency code="CLP" full_name="Chilean Peso"                         prim="0" ></Currency>
+<Currency code="MVR" full_name="Maldivian Rufiyaa"                    prim="0" ></Currency>
+<Currency code="ITL" full_name="Italian Lira"                         prim="0" ></Currency>
+<Currency code="TZS" full_name="Tanzanian Shilling"                   prim="0" ></Currency>
+<Currency code="AFN" full_name="Afghan Afghani"                       prim="0" ></Currency>
+<Currency code="BEF" full_name="Belgian Franc"                        prim="0" ></Currency>
+<Currency code="IDR" full_name="Indonesian Rupiah"                    prim="0" ></Currency>
+<Currency code="ARS" full_name="Argentine Peso"                       prim="0" ></Currency>
+<Currency code="DJF" full_name="Djiboutian Franc"                     prim="0" ></Currency>
+<Currency code="XAU" full_name="Gold"                                 prim="0" ></Currency>
+<Currency code="BGL" full_name="Bulgarian Hard Lev"                   prim="0" ></Currency>
+<Currency code="MTL" full_name="Maltese Lira"                         prim="0" ></Currency>
+<Currency code="XOF" full_name="CFA Franc BCEAO"                      prim="0" ></Currency>
+<Currency code="XBD" full_name="European Unit of Account (XBD) "      prim="0" ></Currency>
+<Currency code="GMD" full_name="Gambian Dalasi"                       prim="0" ></Currency>
+<Currency code="RSD" full_name="Serbian Dinar"                        prim="0" ></Currency>
+<Currency code="HNL" full_name="Honduran Lempira"                     prim="0" ></Currency>
+<Currency code="SBD" full_name="Solomon Islands Dollar"               prim="0" ></Currency>
+<Currency code="WST" full_name="Samoan Tala"                          prim="0" ></Currency>
+<Currency code="CHE" full_name="CHE"                                  prim="0" ></Currency>
+<Currency code="BRL" full_name="Brazilian Real"                       prim="0" ></Currency>
+<Currency code="ALL" full_name="Albanian Lek"                         prim="0" ></Currency>
+<Currency code="NLG" full_name="Dutch Guilder"                        prim="0" ></Currency>
+<Currency code="AFA" full_name="Afghan Afghani (1927-2002) "          prim="0" ></Currency>
+<Currency code="SRG" full_name="Surinamese Guilder"                   prim="0" ></Currency>
+<Currency code="JPY" full_name="Japanese Yen"                         prim="0" ></Currency>
+<Currency code="PEN" full_name="Peruvian Nuevo Sol"                   prim="0" ></Currency>
+<Currency code="BDT" full_name="Bangladeshi Taka"                     prim="0" ></Currency>
+<Currency code="NZD" full_name="New Zealand Dollar"                   prim="0" ></Currency>
+<Currency code="LSL" full_name="Lesotho Loti"                         prim="0" ></Currency>
+<Currency code="BGN" full_name="Bulgarian Lev"                        prim="0" ></Currency>
+<Currency code="GTQ" full_name="Guatemalan Quetzal"                   prim="0" ></Currency>
+<Currency code="VEB" full_name="Venezuelan Bol?var (1871-2008) "      prim="0" ></Currency>
+<Currency code="MXN" full_name="Mexican Peso"                         prim="0" ></Currency>
+<Currency code="SYP" full_name="Syrian Pound"                         prim="0" ></Currency>
+<Currency code="MZM" full_name="Mozambican Metical (1980-2006) "      prim="0" ></Currency>
+<Currency code="CAD" full_name="Canadian Dollar"                      prim="0" ></Currency>
+<Currency code="TOP" full_name="Tongan Pa?anga"                       prim="0" ></Currency>
+<Currency code="PTE" full_name="Portuguese Escudo"                    prim="0" ></Currency>
+<Currency code="VUV" full_name="Vanuatu Vatu"                         prim="0" ></Currency>
+<Currency code="OMR" full_name="Omani Rial"                           prim="0" ></Currency>
+<Currency code="CHF" full_name="Swiss Franc"                          prim="0" ></Currency>
+<Currency code="SRD" full_name="Surinamese Dollar"                    prim="0" ></Currency>
+<Currency code="руб" full_name="Russian Ruble"                        prim="0" ></Currency>
+<Currency code="XAF" full_name="CFA Franc BEAC"                       prim="0" ></Currency>
+<Currency code="SVC" full_name="Salvadoran Col?n"                     prim="0" ></Currency>
+<Currency code="ATS" full_name="Austrian Schilling"                   prim="0" ></Currency>
+<Currency code="HUF" full_name="Hungarian Forint"                     prim="0" ></Currency>
+<Currency code="IQD" full_name="Iraqi Dinar"                          prim="0" ></Currency>
+<Currency code="XCD" full_name="East Caribbean Dollar"                prim="0" ></Currency>
+<Currency code="AOA" full_name="Angolan Kwanza"                       prim="0" ></Currency>
+<Currency code="BOV" full_name="Bolivian Mvdol"                       prim="0" ></Currency>
+<Currency code="XXX" full_name="Unknown Currency"                     prim="0" ></Currency>
+<Currency code="TTD" full_name="Trinidad and Tobago Dollar"           prim="0" ></Currency>
+<Currency code="UZS" full_name="Uzbekistan Som"                       prim="0" ></Currency>
+<Currency code="USN" full_name="US Dollar (Next day) "                prim="0" ></Currency>
+<Currency code="AWG" full_name="Aruban Florin"                        prim="0" ></Currency>
+<Currency code="ILS" full_name="Israeli New Sheqel"                   prim="0" ></Currency>
+<Currency code="RUB" full_name="Russian Ruble"                        prim="0" ></Currency>
+<Currency code="GBP" full_name="British Pound Sterling"               prim="0" ></Currency>
+<Currency code="DZD" full_name="Algerian Dinar"                       prim="0" ></Currency>
+<Currency code="SZL" full_name="Swazi Lilangeni"                      prim="0" ></Currency>
+<Currency code="GIP" full_name="Gibraltar Pound"                      prim="0" ></Currency>
+<Currency code="XPF" full_name="CFP Franc"                            prim="0" ></Currency>
+<Currency code="KHR" full_name="Cambodian Riel"                       prim="0" ></Currency>
+<Currency code="CUP" full_name="Cuban Peso"                           prim="0" ></Currency>
+<Currency code="TWD" full_name="New Taiwan Dollar"                    prim="0" ></Currency>
+<Currency code="MNT" full_name="Mongolian Tugrik"                     prim="0" ></Currency>
+<Currency code="FKP" full_name="Falkland Islands Pound"               prim="0" ></Currency>
+<Currency code="MUR" full_name="Mauritian Rupee"                      prim="0" ></Currency>
+<Currency code="GYD" full_name="Guyanaese Dollar"                     prim="0" ></Currency>
+<Currency code="AED" full_name="United Arab Emirates Dirham"          prim="0" ></Currency>
+<Currency code="KZT" full_name="Kazakhstani Tenge"                    prim="0" ></Currency>
+<Currency code="MZN" full_name="Mozambican Metical"                   prim="0" ></Currency>
+<Currency code="XAG" full_name="Silver"                               prim="0" ></Currency>
+<Currency code="VEF" full_name="Venezuelan Bol?var"                   prim="0" ></Currency>
+<Currency code="TJS" full_name="Tajikistani Somoni"                   prim="0" ></Currency>
+<Currency code="DEM" full_name="German Mark"                          prim="0" ></Currency>
+<Currency code="CHW" full_name="CHW"                                  prim="0" ></Currency>
+<Currency code="LVL" full_name="Latvian Lats"                         prim="0" ></Currency>
+<Currency code="XBA" full_name="European Composite Unit"              prim="0" ></Currency>
+<Currency code="SLL" full_name="Sierra Leonean Leone"                 prim="0" ></Currency>
+<Currency code="SSP" full_name="South Sudanese Pound"                 prim="0" ></Currency>
+<Currency code="ZAR" full_name="South African Rand"                   prim="0" ></Currency>
+<Currency code="KMF" full_name="Comorian Franc"                       prim="0" ></Currency>
+<Currency code="CUC" full_name="Cuban Convertible Peso"               prim="0" ></Currency>
+<Currency code="ZWD" full_name="Zimbabwean Dollar (1980-2008) "       prim="0" ></Currency>
+<Currency code="CSD" full_name="Serbian Dinar (2002-2006) "           prim="0" ></Currency>
+<Currency code="PLN" full_name="Polish Zloty"                         prim="0" ></Currency>
+<Currency code="CYP" full_name="Cypriot Pound"                        prim="0" ></Currency>
+<Currency code="AZM" full_name="Azerbaijani Manat (1993-2006) "       prim="0" ></Currency>
+<Currency code="UYI" full_name="UYI"                                  prim="0" ></Currency>
+<Currency code="LYD" full_name="Libyan Dinar"                         prim="0" ></Currency>
+<Currency code="MRO" full_name="Mauritanian Ouguiya"                  prim="0" ></Currency>
+<Currency code="COU" full_name="COU"                                  prim="0" ></Currency>
+<Currency code="JOD" full_name="Jordanian Dinar"                      prim="0" ></Currency>
+<Currency code="LTL" full_name="Lithuanian Litas"                     prim="0" ></Currency>
+<Currency code="GRD" full_name="Greek Drachma"                        prim="0" ></Currency>
+<Currency code="THB" full_name="Thai Baht"                            prim="0" ></Currency>
+<Currency code="AYM" full_name="AYM"                                  prim="0" ></Currency>
+<Currency code="PKR" full_name="Pakistani Rupee"                      prim="0" ></Currency>
+<Currency code="BZD" full_name="Belize Dollar"                        prim="0" ></Currency>
+<Currency code="USS" full_name="US Dollar (Same day) "                prim="0" ></Currency>
+<Currency code="MYR" full_name="Malaysian Ringgit"                    prim="0" ></Currency>
+<Currency code="LUF" full_name="Luxembourgian Franc"                  prim="0" ></Currency>
+<Currency code="BYB" full_name="Belarusian New Ruble (1994-1999) "    prim="0" ></Currency>
+<Currency code="DOP" full_name="Dominican Peso"                       prim="0" ></Currency>
+<Currency code="MOP" full_name="Macanese Pataca"                      prim="0" ></Currency>
+<Currency code="PYG" full_name="Paraguayan Guarani"                   prim="0" ></Currency>
+<Currency code="YER" full_name="Yemeni Rial"                          prim="0" ></Currency>
+<Currency code="JMD" full_name="Jamaican Dollar"                      prim="0" ></Currency>
+<Currency code="PHP" full_name="Philippine Peso"                      prim="0" ></Currency>
+<Currency code="PAB" full_name="Panamanian Balboa"                    prim="0" ></Currency>
+<Currency code="MGF" full_name="Malagasy Franc"                       prim="0" ></Currency>
+<Currency code="KES" full_name="Kenyan Shilling"                      prim="0" ></Currency>
+<Currency code="SOS" full_name="Somali Shilling"                      prim="0" ></Currency>
+<Currency code="SEK" full_name="Swedish Krona"                        prim="0" ></Currency>
+<Currency code="MGA" full_name="Malagasy Ariary"                      prim="0" ></Currency>
+<Currency code="ROL" full_name="Romanian Leu (1952-2006) "            prim="0" ></Currency>
+<Currency code="VND" full_name="Vietnamese Dong"                      prim="0" ></Currency>
+<Currency code="IRR" full_name="Iranian Rial"                         prim="0" ></Currency>
+<Currency code="CLF" full_name="Chilean Unit of Account (UF) "        prim="0" ></Currency>
+<Currency code="HTG" full_name="Haitian Gourde"                       prim="0" ></Currency>
+<Currency code="NIO" full_name="Nicaraguan C?rdoba"                   prim="0" ></Currency>
+<Currency code="TMT" full_name="Turkmenistani Manat"                  prim="0" ></Currency>
+<Currency code="BOB" full_name="Bolivian Boliviano"                   prim="0" ></Currency>
+<Currency code="SHP" full_name="Saint Helena Pound"                   prim="0" ></Currency>
+<Currency code="RWF" full_name="Rwandan Franc"                        prim="0" ></Currency>
+<Currency code="ESP" full_name="Spanish Peseta"                       prim="0" ></Currency>
+<Currency code="CNY" full_name="Chinese Yuan"                         prim="0" ></Currency>
+<Currency code="XPT" full_name="Platinum"                             prim="0" ></Currency>
+<Currency code="USD" full_name="US Dollar"                            prim="1" ></Currency>
+<Currency code="BND" full_name="Brunei Dollar"                        prim="0" ></Currency>
+<Currency code="KWD" full_name="Kuwaiti Dinar"                        prim="0" ></Currency>
+<Currency code="ZWN" full_name="ZWN"                                  prim="0" ></Currency>
+<Currency code="BBD" full_name="Barbadian Dollar"                     prim="0" ></Currency>
+<Currency code="MMK" full_name="Myanma Kyat"                          prim="0" ></Currency>
+<Currency code="FIM" full_name="Finnish Markka"                       prim="0" ></Currency>
+
+
+CRC   188   Costa Rican Col?n
+BWP   72   Botswanan Pula
+GEL   981   Georgian Lari
+HRK   191   Croatian Kuna
+FJD   242   Fijian Dollar
+GNF   324   Guinean Franc
+KPW   408   North Korean Won
+LBP   422   Lebanese Pound
+MWK   454   Malawian Kwacha
+CDF   976   Congolese Franc
+HKD   344   Hong Kong Dollar
+SIT   705   Slovenian Tolar
+XTS   963   Testing Currency Code
+CZK   203   Czech Republic Koruna
+BHD   48   Bahraini Dinar
+ERN   232   Eritrean Nakfa
+SCR   690   Seychellois Rupee
+TRY   949   Turkish Lira
+XFO   0   French Gold Franc
+SDD   736   Sudanese Dinar (1992-2007)
+XBC   957   European Unit of Account (XBC)
+UYU   858   Uruguayan Peso
+COP   170   Colombian Peso
+XFU   0   French UIC-Franc
+XPD   964   Palladium
+BYR   974   Belarusian Ruble
+ETB   230   Ethiopian Birr
+TRL   792   Turkish Lira (1922-2005)
+STD   678   S?o Tom? and Pr?ncipe Dobra
+BTN   64   Bhutanese Ngultrum
+NPR   524   Nepalese Rupee
+ZMW   967   ZMW
+NGN   566   Nigerian Naira
+AUD   36   Australian Dollar
+GWP   624   Guinea-Bissau Peso
+LRD   430   Liberian Dollar
+EEK   233   Estonian Kroon
+KRW   410   South Korean Won
+BSD   44   Bahamian Dollar
+KYD   136   Cayman Islands Dollar
+DKK   208   Danish Krone
+MKD   807   Macedonian Denar
+SKK   703   Slovak Koruna
+MDL   498   Moldovan Leu
+LAK   418   Laotian Kip
+TPE   626   Timorese Escudo
+SDG   938   Sudanese Pound
+GHC   288   Ghanaian Cedi (1979-2007)
+MXV   979   Mexican Investment Unit
+CVE   132   Cape Verdean Escudo
+AMD   51   Armenian Dram
+MAD   504   Moroccan Dirham
+XSU   994   Sucre
+BAM   977   Bosnia-Herzegovina Convertible Mark
+BMD   60   Bermudan Dollar
+BIF   108   Burundian Franc
+UAH   980   Ukrainian Hryvnia
+XBB   956   European Monetary Unit
+GHS   936   Ghanaian Cedi
+INR   356   Indian Rupee
+XUA   965   ADB Unit of Account
+AZN   944   Azerbaijani Manat
+ANG   532   Netherlands Antillean Guilder
+QAR   634   Qatari Rial
+TND   788   Tunisian Dinar
+RON   946   Romanian Leu
+KGS   417   Kyrgystani Som
+TMM   795   Turkmenistani Manat (1993-2009)
+ZMK   894   Zambian Kwacha
+ISK   352   Icelandic Kr?na
+NOK   578   Norwegian Krone
+YUM   891   Yugoslavian New Dinar (1994-2002)
+PGK   598   Papua New Guinean Kina
+NAD   516   Namibian Dollar
+SGD   702   Singapore Dollar
+EUR   978   Euro
+ZWR   935   Zimbabwean Dollar (2008)
+FRF   250   French Franc
+IEP   372   Irish Pound
+UGX   800   Ugandan Shilling
+ZWL   932   Zimbabwean Dollar (2009)
+ADP   20   Andorran Peseta
+LKR   144   Sri Lankan Rupee
+SAR   682   Saudi Riyal
+EGP   818   Egyptian Pound
+XDR   960   Special Drawing Rights
+CLP   152   Chilean Peso
+MVR   462   Maldivian Rufiyaa
+ITL   380   Italian Lira
+TZS   834   Tanzanian Shilling
+AFN   971   Afghan Afghani
+BEF   56   Belgian Franc
+IDR   360   Indonesian Rupiah
+ARS   32   Argentine Peso
+DJF   262   Djiboutian Franc
+XAU   959   Gold
+BGL   100   Bulgarian Hard Lev
+MTL   470   Maltese Lira
+XOF   952   CFA Franc BCEAO
+XBD   958   European Unit of Account (XBD)
+GMD   270   Gambian Dalasi
+RSD   941   Serbian Dinar
+HNL   340   Honduran Lempira
+SBD   90   Solomon Islands Dollar
+WST   882   Samoan Tala
+CHE   947   CHE
+BRL   986   Brazilian Real
+ALL   8   Albanian Lek
+NLG   528   Dutch Guilder
+AFA   4   Afghan Afghani (1927-2002)
+SRG   740   Surinamese Guilder
+JPY   392   Japanese Yen
+PEN   604   Peruvian Nuevo Sol
+BDT   50   Bangladeshi Taka
+NZD   554   New Zealand Dollar
+LSL   426   Lesotho Loti
+BGN   975   Bulgarian Lev
+GTQ   320   Guatemalan Quetzal
+VEB   862   Venezuelan Bol?var (1871-2008)
+MXN   484   Mexican Peso
+SYP   760   Syrian Pound
+MZM   508   Mozambican Metical (1980-2006)
+CAD   124   Canadian Dollar
+TOP   776   Tongan Pa?anga
+PTE   620   Portuguese Escudo
+VUV   548   Vanuatu Vatu
+OMR   512   Omani Rial
+CHF   756   Swiss Franc
+SRD   968   Surinamese Dollar
+руб.  643   Russian Ruble
+XAF   950   CFA Franc BEAC
+SVC   222   Salvadoran Col?n
+ATS   40   Austrian Schilling
+HUF   348   Hungarian Forint
+IQD   368   Iraqi Dinar
+XCD   951   East Caribbean Dollar
+AOA   973   Angolan Kwanza
+BOV   984   Bolivian Mvdol
+XXX   999   Unknown Currency
+TTD   780   Trinidad and Tobago Dollar
+UZS   860   Uzbekistan Som
+USN   997   US Dollar (Next day)
+AWG   533   Aruban Florin
+ILS   376   Israeli New Sheqel
+RUR   810   Russian Ruble (1991-1998)
+GBP   826   British Pound Sterling
+DZD   12   Algerian Dinar
+SZL   748   Swazi Lilangeni
+GIP   292   Gibraltar Pound
+XPF   953   CFP Franc
+KHR   116   Cambodian Riel
+CUP   192   Cuban Peso
+TWD   901   New Taiwan Dollar
+MNT   496   Mongolian Tugrik
+FKP   238   Falkland Islands Pound
+MUR   480   Mauritian Rupee
+GYD   328   Guyanaese Dollar
+AED   784   United Arab Emirates Dirham
+KZT   398   Kazakhstani Tenge
+MZN   943   Mozambican Metical
+XAG   961   Silver
+VEF   937   Venezuelan Bol?var
+TJS   972   Tajikistani Somoni
+DEM   276   German Mark
+CHW   948   CHW
+LVL   428   Latvian Lats
+XBA   955   European Composite Unit
+SLL   694   Sierra Leonean Leone
+SSP   728   South Sudanese Pound
+ZAR   710   South African Rand
+KMF   174   Comorian Franc
+CUC   931   Cuban Convertible Peso
+ZWD   716   Zimbabwean Dollar (1980-2008)
+CSD   891   Serbian Dinar (2002-2006)
+PLN   985   Polish Zloty
+CYP   196   Cypriot Pound
+AZM   31   Azerbaijani Manat (1993-2006)
+UYI   940   UYI
+LYD   434   Libyan Dinar
+MRO   478   Mauritanian Ouguiya
+COU   970   COU
+JOD   400   Jordanian Dinar
+LTL   440   Lithuanian Litas
+GRD   300   Greek Drachma
+THB   764   Thai Baht
+AYM   945   AYM
+PKR   586   Pakistani Rupee
+BZD   84   Belize Dollar
+USS   998   US Dollar (Same day)
+MYR   458   Malaysian Ringgit
+LUF   442   Luxembourgian Franc
+BYB   112   Belarusian New Ruble (1994-1999)
+DOP   214   Dominican Peso
+MOP   446   Macanese Pataca
+PYG   600   Paraguayan Guarani
+YER   886   Yemeni Rial
+JMD   388   Jamaican Dollar
+PHP   608   Philippine Peso
+PAB   590   Panamanian Balboa
+MGF   450   Malagasy Franc
+KES   404   Kenyan Shilling
+SOS   706   Somali Shilling
+SEK   752   Swedish Krona
+MGA   969   Malagasy Ariary
+ROL   946   Romanian Leu (1952-2006)
+VND   704   Vietnamese Dong
+IRR   364   Iranian Rial
+CLF   990   Chilean Unit of Account (UF)
+HTG   332   Haitian Gourde
+NIO   558   Nicaraguan C?rdoba
+TMT   934   Turkmenistani Manat
+BOB   68   Bolivian Boliviano
+SHP   654   Saint Helena Pound
+RWF   646   Rwandan Franc
+ESP   724   Spanish Peseta
+CNY   156   Chinese Yuan
+XPT   962   Platinum
+USD   840   US Dollar
+BND   96   Brunei Dollar
+KWD   414   Kuwaiti Dinar
+ZWN   942   ZWN
+BBD   52   Barbadian Dollar
+MMK   104   Myanma Kyat
+FIM   246   Finnish Markka

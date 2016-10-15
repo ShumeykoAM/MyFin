@@ -119,7 +119,7 @@ public class Account
   @Override
   protected void initFromCursor(Cursor cursor) throws EntityException
   {
-    this.currency = new Currency(cursor.getLong(cursor.getColumnIndex("_id_currency")));
+    this.currency = Currency.getCurrency(cursor.getLong(cursor.getColumnIndex("_id_currency")));
     if(!cursor.isNull(cursor.getColumnIndex("_id_co_user")))
       this.co_user = CoUser.getCoUserFromId(cursor.getLong(cursor.getColumnIndex("_id_co_user")));
     this.icon = E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(cursor.getLong(cursor.getColumnIndex("id_icon")));

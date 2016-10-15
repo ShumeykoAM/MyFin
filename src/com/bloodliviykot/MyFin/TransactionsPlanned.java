@@ -6,7 +6,7 @@ import android.os.Bundle;
 /**
  * Created by Kot on 23.09.2016.
  */
-public class Transactions
+public class TransactionsPlanned
   extends Activity
 {
   @Override

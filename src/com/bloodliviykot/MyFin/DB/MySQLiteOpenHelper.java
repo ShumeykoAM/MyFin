@@ -2,12 +2,13 @@ package com.bloodliviykot.MyFin.DB;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
-import com.bloodliviykot.MyFin.DB.entities.Currency;
 import com.bloodliviykot.MyFin.Common;
+import com.bloodliviykot.MyFin.DB.entities.Currency;
 import com.bloodliviykot.MyFin.R;
 import com.bloodliviykot.tools.DataBase.Entity;
 import com.bloodliviykot.tools.DataBase.SQLReader;
@@ -16,6 +17,7 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Stack;
@@ -40,7 +42,7 @@ public class MySQLiteOpenHelper
     {
       mySQLiteOpenHelper = new MySQLiteOpenHelper();
       if(distributive)
-        mySQLiteOpenHelper.fillDistr(mySQLiteOpenHelper.db);
+        mySQLiteOpenHelper.fillDistributive(mySQLiteOpenHelper.db);
     }
     return mySQLiteOpenHelper;
   }
@@ -72,31 +74,8 @@ public class MySQLiteOpenHelper
   //Дистрибутивное наполнение таблиц базы
   private static final String SKIP_TAG = "distrib";
   private static final String USE_PARENT_ID = "ИД_родителя";
-  private void fillDistr(SQLiteDatabase db)
+  private void fillDistributive(SQLiteDatabase db)
   {
-    //Добавим в справочник валют валюту для текущей локализации
-    java.util.Currency util_currency = java.util.Currency.getInstance(Locale.getDefault());
-    try
-    {
-      boolean rub_inserted = false;
-      String name_currency = util_currency.getCurrencyCode();
-      Currency.E_IC_CURRENCY icon = null;
-      if(name_currency.equals("RUB") || name_currency.equals("RUR"))
-      {
-        icon = Currency.E_IC_CURRENCY.RUB;
-        rub_inserted = true;
-      }
-      if(name_currency.equals("USD"))
-        icon = Currency.E_IC_CURRENCY.USD;
-      if(name_currency.equals("EUR"))
-        icon = Currency.E_IC_CURRENCY.EUR;
-      new Currency(name_currency, icon).insert();
-      if(!rub_inserted)
-        new Currency("RUB", Currency.E_IC_CURRENCY.RUB).insert();
-    }
-    catch(Entity.EntityException ee)
-    { }
-
     try
     {
       //Заполним дистрибутивное содержание данных в БД из distrib_db.xml
@@ -160,6 +139,48 @@ public class MySQLiteOpenHelper
     {
       e.printStackTrace();
     }
+    currenciesDistributive();
+  }
+  void currenciesDistributive()
+  {
+    //В справочнике валют валюту для текущей локализации сделаем первой в списке валют
+    java.util.Currency util_currency = java.util.Currency.getInstance(Locale.getDefault());
+    try
+    {
+      Currency currency = Currency.getCurrency(util_currency.getCurrencyCode());
+      currency.setPrimary(2);
+      currency.update();
+    } catch(Entity.EntityException e)
+    {
+      try
+      {
+        Currency currency = new Currency(util_currency.getCurrencyCode(), 2, util_currency.getCurrencyCode());
+        currency.insert();
+      } catch(Entity.EntityException e1)
+      {      }
+    }
+    MySQLiteOpenHelper oh = MySQLiteOpenHelper.getMySQLiteOpenHelper();
+    Cursor currencies = oh.db.rawQuery(oh.getQuery(EQ.CURRENCIES), null);
+    List<Long> ids = new ArrayList<>();
+    for(boolean status = currencies.moveToFirst(); status; status = currencies.moveToNext())
+    {
+      try
+      {
+        java.util.Currency.getInstance(currencies.getString(currencies.getColumnIndex("cod_ISO")));
+      }
+      catch(Exception e)
+      {
+        ids.add(currencies.getLong(currencies.getColumnIndex("_id")));
+      }
+    }
+    for(Long id : ids)
+      try
+      {
+        Currency.getCurrency(id).delete();
+      } catch(Entity.EntityException e)
+      {
+        e.printStackTrace();
+      }
   }
 
   //Обновляем таблицы базы

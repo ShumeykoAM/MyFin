@@ -1,15 +1,9 @@
 CREATE TABLE Currency
 (
   _id                  INTEGER PRIMARY KEY,
-  short_name_lower     TEXT NOT NULL,
-  short_name           TEXT NOT NULL,
-  id_icon              INTEGER,
-  is_added             INTEGER NOT NULL
-);
-
-CREATE UNIQUE INDEX unique_short_name ON Currency
-(
-  short_name_lower
+  cod_ISO              TEXT NOT NULL,
+  prim                 INTEGER NOT NULL,
+  full_name            TEXT NOT NULL
 );
 
 CREATE TABLE Rate
@@ -61,23 +55,24 @@ CREATE TABLE Account
 CREATE TABLE Transact
 (
   _id                  INTEGER PRIMARY KEY,
-  _id_account          INTEGER,
+  _id_account          INTEGER NOT NULL,
   date_time            INTEGER NOT NULL,
-  type_transaction     INTEGER NOT NULL,
   sum                  INTEGER NOT NULL,
-  _id_account_contragent INTEGER,
+  trend                INTEGER NOT NULL,
+  _id_correlative_account INTEGER,
+  correlative_sum      INTEGER,
   FOREIGN KEY (_id_account) REFERENCES Account (_id),
-  FOREIGN KEY (_id_account_contragent) REFERENCES Account (_id)
+  FOREIGN KEY (_id_correlative_account) REFERENCES Account (_id)
 );
 
 CREATE TABLE Document
 (
   _id                  INTEGER PRIMARY KEY,
-  _id_transaction      INTEGER NOT NULL,
+  _id_transact         INTEGER,
   _id_category         INTEGER NOT NULL,
   _id_event            INTEGER,
   sum                  INTEGER NOT NULL,
   FOREIGN KEY (_id_event) REFERENCES Event (_id),
   FOREIGN KEY (_id_category) REFERENCES Category (_id),
-  FOREIGN KEY (_id_transaction) REFERENCES Transact (_id)
+  FOREIGN KEY (_id_transact) REFERENCES Transact (_id)
 );

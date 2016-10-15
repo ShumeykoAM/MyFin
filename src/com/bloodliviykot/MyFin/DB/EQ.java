@@ -14,6 +14,9 @@ public enum EQ
   ACCOUNTS,                 //Список счетов, кроме счетов сопользователей
   USER_ACCOUNTS,            //Список счетов сопользователя
   CURRENCIES,               //Список валют
+  TRANSACTIONS,             //Транзакции
+  CURRENCY_COD_ISO,         //Валюта по коду ISO
+
 
   EQ_COUNT;
   public final int value;

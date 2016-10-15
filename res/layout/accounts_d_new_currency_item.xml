@@ -2,30 +2,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:gravity="center_vertical"
-                android:id="@+id/accounts_d_new_image_item_image">
-    <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:id="@+id/accounts_d_new_currency_item_icon"
-            android:layout_alignParentLeft="false"
-            android:src="@drawable/ic_curr_rub"
-            android:layout_alignBottom="@+id/accounts_d_new_currency_item_button_another"
-            android:layout_alignTop="@+id/accounts_d_new_currency_item_button_another"/>
+                android:id="@+id/accounts_d_new_image_item_symbol">
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RUB"
-            android:id="@+id/accounts_d_new_currency_item_name"
+            android:text="Российский рубль"
+            android:id="@+id/accounts_d_new_currency_item_full_name"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/accounts_d_new_currency_item_icon"
-            style="@style/account_d_new_currency_item_name"/>
-    <Button
-            android:layout_width="fill_parent"
-            android:layout_height="35dp"
-            android:text="@string/accounts_d_new_currency_another"
-            android:id="@+id/accounts_d_new_currency_item_button_another" android:layout_alignParentTop="false"
-            android:layout_alignParentRight="false" android:visibility="invisible"
-            android:layout_centerVertical="true" android:gravity="center_vertical|center_horizontal"
-            android:layout_alignParentBottom="false" android:layout_alignParentLeft="false"
-            android:layout_alignWithParentIfMissing="false" style="?android:attr/buttonStyleSmall"/>
+            style="@style/account_d_new_currency_item_name"
+            android:layout_toRightOf="@+id/accounts_d_new_currency_item_symbol"/>
+    <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="руб."
+            android:id="@+id/accounts_d_new_currency_item_symbol" android:layout_alignTop="@+id/accounts_d_new_currency_item_full_name"
+            android:layout_alignParentLeft="true" style="@style/account_d_new_currency_item_name"/>
 </RelativeLayout>

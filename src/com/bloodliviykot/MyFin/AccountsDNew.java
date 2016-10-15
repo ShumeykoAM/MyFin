@@ -25,7 +25,7 @@ import com.bloodliviykot.tools.DataBase.Entity;
 @SuppressLint("ValidFragment")
 public class AccountsDNew
   extends DialogFragment //!!! внимание, наследники DialogFragment должны иметь конструктор без параметров
-  implements View.OnClickListener, CurrenciesDNew.I_ResultHandlerCurrenciesDNew
+  implements View.OnClickListener
 {
   public interface I_ResultHandlerAccountsDNew
   {
@@ -68,7 +68,7 @@ public class AccountsDNew
       try
       {
         regime_new = true;
-        account = new Account(new Currency(1), null, Account.E_IC_TYPE_RESOURCE.CASH, "", new Money(0));
+        account = new Account(Currency.getCurrency(1), null, Account.E_IC_TYPE_RESOURCE.CASH, "", new Money(0));
       } catch(Entity.EntityException e)
       {   }
     else
@@ -124,7 +124,7 @@ public class AccountsDNew
         cursor_currencies.moveToPosition(currency.getSelectedItemPosition());
         try
         {
-          account.setCurrency(new Currency(cursor_currencies.getLong(cursor_currencies.getColumnIndex("_id"))));
+          account.setCurrency(Currency.getCurrency(cursor_currencies.getLong(cursor_currencies.getColumnIndex("_id"))));
         } catch(Entity.EntityException e)
         {   }
         if( (regime_new ? account.insert() == -1 : !account.update()) )
@@ -173,16 +173,6 @@ public class AccountsDNew
     return true;
   }
 
-  @Override
-  public void resultHandler(Bundle result_values)
-  {
-    if(cursor_currencies.requery())
-    {
-      adapter_currency.notifyDataSetChanged();
-      setCurrencyCursorPositionFromId(result_values.getLong("_id"));
-    }
-  }
-
   public class ImageAdapter
     extends ArrayAdapter<Account.E_IC_TYPE_RESOURCE>
   {
@@ -222,68 +212,32 @@ public class AccountsDNew
     {
       super(Common.application_context, R.layout.accounts_d_new_currency_item,
         cursor, new String[]{},
-        new int[]{R.id.accounts_d_new_currency_item_icon, R.id.accounts_d_new_currency_item_name});
+        new int[]{R.id.accounts_d_new_currency_item_symbol, R.id.accounts_d_new_currency_item_full_name});
     }
 
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent)
     {
-      return prepareView(position, convertView, parent);
+      if(convertView == null)
+        convertView = View.inflate(Common.application_context, R.layout.accounts_d_new_currency_item, null);
+      TextView symbol = (TextView)convertView.findViewById(R.id.accounts_d_new_currency_item_symbol);
+      TextView full_name = (TextView)convertView.findViewById(R.id.accounts_d_new_currency_item_full_name);
+      cursor_currencies.moveToPosition(position);
+      full_name.setText(cursor_currencies.getString(cursor_currencies.getColumnIndex("full_name")));
+      symbol.setText(java.util.Currency.getInstance(cursor_currencies.getString(cursor_currencies.getColumnIndex("cod_ISO"))).getSymbol());
+      return convertView;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent)
     {
-      return prepareView(position, convertView, parent);
-    }
-    private View prepareView(int position, View convertView, ViewGroup parent)
-    {
       if(convertView == null)
         convertView = View.inflate(Common.application_context, R.layout.accounts_d_new_currency_item, null);
-      ImageView image = (ImageView)convertView.findViewById(R.id.accounts_d_new_currency_item_icon);
-      TextView name = (TextView)convertView.findViewById(R.id.accounts_d_new_currency_item_name);
-      Button another = (Button)convertView.findViewById(R.id.accounts_d_new_currency_item_button_another);
-      if(cursor_currencies.moveToPosition(position))
-      {
-        if(cursor_currencies.getLong(cursor_currencies.getColumnIndex("is_added")) == 0)
-        {
-          if(!cursor_currencies.isNull(cursor_currencies.getColumnIndex("id_icon")))
-          {
-            image.setVisibility(View.VISIBLE);
-            name.setVisibility(View.VISIBLE);
-            another.setVisibility(View.INVISIBLE);
-            image.setImageResource(Currency.E_IC_CURRENCY.getE_IC_TYPE_RESOURCE(cursor_currencies.getLong(cursor_currencies.getColumnIndex("id_icon"))).R_drawable);
-            image.setBackgroundColor(getResources().getColor(R.color.black));
-          }
-          else
-            image.setVisibility(View.INVISIBLE);
-          name.setText(cursor_currencies.getString(cursor_currencies.getColumnIndex("short_name")));
-        }
-        else
-        {
-          image.setVisibility(View.INVISIBLE);
-          name.setVisibility(View.INVISIBLE);
-          another.setVisibility(View.VISIBLE);
-          another.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v)
-            {
-              currency.post(new Runnable()
-              {
-                @Override
-                public void run()
-                {
-                  Common.hideSpinnerDropDown(currency);
-                }
-              });
-              CurrenciesDNew currenciesDNew = new CurrenciesDNew();
-              //Что бы результат смог обработаться в текущем фрагменте
-              currenciesDNew.setTargetFragment(AccountsDNew.this, 0);
-              currenciesDNew.show(getFragmentManager(), null);
-            }
-          });
-        }
-      }
+      TextView symbol = (TextView)convertView.findViewById(R.id.accounts_d_new_currency_item_symbol);
+      TextView full_name = (TextView)convertView.findViewById(R.id.accounts_d_new_currency_item_full_name);
+      cursor_currencies.moveToPosition(position);
+      full_name.setVisibility(View.GONE);
+      symbol.setText(java.util.Currency.getInstance(cursor_currencies.getString(cursor_currencies.getColumnIndex("cod_ISO"))).getSymbol());
       return convertView;
     }
 
