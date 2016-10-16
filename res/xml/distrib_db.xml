@@ -230,22 +230,31 @@
 
 
 
-    <!-- Пока что просто для примера добавим эту запись -->
-    <CoUser name="Муж1"></CoUser>
-    <CoUser name="Муж2"></CoUser>
+    <!-- Отладочные данные -->
+    <CoUser name="Муж"></CoUser>
+    <CoUser name="Сын"></CoUser>
 
-    <Account _id_currency="1" id_icon="1" name="Карта 4356" balance="2432,54"></Account>
-    <Account _id_currency="1" id_icon="2" name="Карта 5632" balance="232,54" _id_co_user="1"></Account>
-    <Account _id_currency="1" id_icon="1" name="Карта 0945" balance="8762,54" _id_co_user="1"></Account>
-    <Account _id_currency="1" id_icon="0" name="Налик"      balance="347,54"></Account>
+    <Account _id_currency="141" id_icon="1" name="Карта 4356" balance="2432,54"></Account>
+    <Account _id_currency="212" id_icon="0" name="Наличные доллар" balance="2432,54"></Account>
+    <Account _id_currency="141" id_icon="0" name="Наличные" balance="2432,54"></Account>
 
-    <Transact _id_account="1" date_time="656666533" sum = "23460" trend="0"></Transact>
-    <Transact _id_account="2" date_time="798666533" sum = "28760" trend="1"></Transact>
-    <Transact _id_account="3" date_time="656666533" sum = "23987" trend="0"></Transact>
-    <Transact _id_account="4" date_time="343666533" sum = "37800" trend="1"></Transact>
-    <Transact _id_account="4" date_time="98786533"  sum = "2140"  trend="0"></Transact>
-    <Transact _id_account="1" date_time="546666533" sum = "2360"  trend="1"></Transact>
-    <Transact _id_account="1" date_time="787666533" sum = "70864" trend="2" _id_correlative_account="1" correlative_sum="654"></Transact>
+    <Account _id_currency="141" id_icon="0" name="Наличные" balance="232,54" _id_co_user="1"></Account>
+    <Account _id_currency="141" id_icon="0" name="Наличные" balance="8762,54" _id_co_user="2"></Account>
+
+    <Transact _id_account="1" date_time="1476523965" sum = "23460" trend="0"></Transact>
+    <Transact _id_account="1" date_time="1476621165" sum = "23460" trend="1"></Transact>
+
+    <Transact _id_account="4" date_time="1476556485" sum = "23460" trend="0"></Transact>
+    <Transact _id_account="5" date_time="1476567285" sum = "23460" trend="1"></Transact>
+
+    <Transact _id_account="1" date_time="1476696068" sum = "70864" trend="2" _id_correlative_account="4" correlative_sum="654"></Transact>
+    <Transact _id_account="4" date_time="1476696068" sum = "70864" trend="2" _id_correlative_account="2" correlative_sum="654"></Transact>
+    <Transact _id_account="3" date_time="1476696068" sum = "70864" trend="2" _id_correlative_account="5" correlative_sum="654"></Transact>
+    <Transact _id_account="4" date_time="1476696068" sum = "70864" trend="2" _id_correlative_account="5" correlative_sum="654"></Transact>
+    <Transact _id_account="5" date_time="1476696068" sum = "70864" trend="2" _id_correlative_account="1" correlative_sum="654"></Transact>
+    <Transact _id_account="1" date_time="1476696068" sum = "70864" trend="2" _id_correlative_account="2" correlative_sum="654"></Transact>
+    <Transact _id_account="2" date_time="1476696068" sum = "70864" trend="2" _id_correlative_account="3" correlative_sum="654"></Transact>
+    <Transact _id_account="3" date_time="1476696068" sum = "70864" trend="2" _id_correlative_account="1" correlative_sum="654"></Transact>
 
 
 </distrib>

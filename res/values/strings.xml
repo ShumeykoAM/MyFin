@@ -14,4 +14,5 @@
     <string name="button_cancel">Отмена</string>
     <string name="currencies_d_new_code_currency">Код валюты</string>
     <string name="accounts_d_new_currency_another">Another</string>
+    <string name="transaction_payed_remittance_contents">перевод</string>
 </resources>

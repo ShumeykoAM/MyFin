@@ -5,11 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
+import android.widget.*;
 import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
+import com.bloodliviykot.MyFin.DB.entities.Account;
+import com.bloodliviykot.MyFin.DB.entities.Transaction;
+import com.bloodliviykot.tools.Common.DateTime;
+import com.bloodliviykot.tools.Common.Money;
 
 /**
  * Created by Kot on 10.10.2016.
@@ -43,6 +45,46 @@ public class TransactionsPayed
     list_transactions.setAdapter(list_adapter);
   }
 
+  public static class TransactionPayed
+  {
+    TransactionPayed(Cursor cursor)
+    {
+      _id       = cursor.getLong(cursor.getColumnIndex("_id"));
+      date_time = new DateTime(cursor.getLong(cursor.getColumnIndex("date_time")));
+      sum       = new Money(cursor.getLong(cursor.getColumnIndex("sum")));
+      trend     = Transaction.TREND.getTREND(cursor.getLong(cursor.getColumnIndex("trend")));
+      account_icon = Account.E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(cursor.getLong(cursor.getColumnIndex("account_icon")));
+      account_name = cursor.getString(cursor.getColumnIndex("account_name"));
+      symbol    = cursor.getString(cursor.getColumnIndex("symbol"));
+      if(!cursor.isNull(cursor.getColumnIndex("correlative_sum")))
+        correlative_sum = new Money(cursor.getLong(cursor.getColumnIndex("correlative_sum")));
+      if(!cursor.isNull(cursor.getColumnIndex("co_user_name")))
+        co_user_name = cursor.getString(cursor.getColumnIndex("co_user_name"));
+      if(!cursor.isNull(cursor.getColumnIndex("corr_acc_icon")))
+        corr_acc_icon = Account.E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(cursor.getLong(cursor.getColumnIndex("corr_acc_icon")));
+      if(!cursor.isNull(cursor.getColumnIndex("corr_acc_name")))
+        corr_acc_name = cursor.getString(cursor.getColumnIndex("corr_acc_name"));
+      if(!cursor.isNull(cursor.getColumnIndex("corr_co_user_name")))
+        corr_co_user_name = cursor.getString(cursor.getColumnIndex("corr_co_user_name"));
+      if(!cursor.isNull(cursor.getColumnIndex("corr_symbol")))
+        corr_symbol = cursor.getString(cursor.getColumnIndex("corr_symbol"));
+    }
+    public long _id;
+    public DateTime date_time;
+    public Money sum;
+    public Transaction.TREND trend;
+    public Account.E_IC_TYPE_RESOURCE account_icon;
+    public String account_name;
+    public String symbol;
+    //nullable
+    public Money correlative_sum;
+    public String co_user_name;
+    public Account.E_IC_TYPE_RESOURCE corr_acc_icon;
+    public String corr_acc_name;
+    public String corr_co_user_name;
+    public String corr_symbol;
+  }
+
   //Переопределим SimpleCursorAdapter что бы форматировать данные из базы нужным образом
   private class TransactionPayedItemAdapter
     extends SimpleCursorAdapter
@@ -60,70 +102,49 @@ public class TransactionsPayed
     {
       View item = view.findViewById(R.id.transaction_payed_item);
       View remittance = view.findViewById(R.id.transaction_payed_remittance);
-
-      /*
-      Account.E_IC_TYPE_RESOURCE icon_from = Account.E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(
-        (int)cursor.getLong(cursor.getColumnIndex("id_icon")));
-      String account_from = cursor.getString(cursor.getColumnIndex("account_name"));
-      String sum_from = new Money(cursor.getLong(cursor.getColumnIndex("sum"))).toString();
-      TREND trend = TREND.getTREND(cursor.getLong(cursor.getColumnIndex("trend")));
-      String date_time = new DateTime(cursor.getLong(cursor.getColumnIndex("date_time"))).getSDateTime();
-      int R_drawable_icon_trend = R.drawable.ic_conversion;
-      if(trend == TREND.DEBIT)
-        R_drawable_icon_trend = R.drawable.ic_debit;
-      else
-        R_drawable_icon_trend = R.drawable.ic_credit;
-      Currency currency_from = null;
-      try
-      {
-        currency_from = Currency.getCurrency(cursor.getLong(cursor.getColumnIndex("currency_id")));
-      } catch(Entity.EntityException e)
-      {
-        e.printStackTrace();
-      }
-
-      if(trend == TREND.CONVERSION)
+      TransactionPayed tp = new TransactionPayed(cursor);
+      String plus_minus = tp.trend == Transaction.TREND.CREDIT || tp.trend == Transaction.TREND.CONVERSION ? "-" : "+";
+      ImageView icon_from;
+      TextView name_from ;
+      TextView sum_from  ;
+      TextView date      ;
+      TextView time      ;
+      if(tp.trend == Transaction.TREND.CONVERSION)
       {
         item.setVisibility(View.GONE);
         remittance.setVisibility(View.VISIBLE);
-
+        icon_from = (ImageView)view.findViewById(R.id.transaction_payed_remittance_icon_from);
+        name_from = (TextView)view.findViewById(R.id.transaction_payed_remittance_from);
+        sum_from  = (TextView)view.findViewById(R.id.transaction_payed_remittance_sum_from);
+        date      = (TextView)view.findViewById(R.id.transaction_payed_remittance_date);
+        time      = (TextView)view.findViewById(R.id.transaction_payed_remittance_time);
+        ImageView icon_to = (ImageView)view.findViewById(R.id.transaction_payed_remittance_icon_to);
+        TextView name_to = (TextView)view.findViewById(R.id.transaction_payed_remittance_to);
+        TextView sum_to = (TextView)view.findViewById(R.id.transaction_payed_remittance_sum_to);
+        icon_to.setImageResource(tp.corr_co_user_name == null ? tp.corr_acc_icon.R_drawable : R.drawable.ic_group);
+        name_to.setText(tp.corr_co_user_name == null ? tp.corr_acc_name : tp.corr_co_user_name);
+        sum_to.setText("+" + tp.correlative_sum.toString() + tp.corr_symbol);
       }
       else
       {
         item.setVisibility(View.VISIBLE);
         remittance.setVisibility(View.GONE);
-
-        ImageView item_icon   = (ImageView)view.findViewById(R.id.transaction_payed_item_icon);
-        TextView item_name    = (TextView)view.findViewById(R.id.transaction_payed_item_name);
-        TextView item_sum     = (TextView)view.findViewById(R.id.transaction_payed_item_sum);
-        TextView item_date_time    = (TextView)view.findViewById(R.id.transaction_payed_item_date_time);
-        ImageView image_trend = (ImageView)view.findViewById(R.id.transaction_payed_item_trend);
-        TextView contents     = (TextView)view.findViewById(R.id.transaction_payed_item_contents);
-
-        item_icon.setImageResource(icon_from.R_drawable);
-        item_name.setText(account_from);
-        item_sum.setText((trend == TREND.CREDIT ? "-" : "+") + sum_from + currency_from.getSymbol());
-        item_date_time.setText(date_time);
-        image_trend.setImageResource(R_drawable_icon_trend);
-
-
+        icon_from = (ImageView)view.findViewById(R.id.transaction_payed_item_icon);
+        name_from = (TextView)view.findViewById(R.id.transaction_payed_item_name);
+        sum_from  = (TextView)view.findViewById(R.id.transaction_payed_item_sum);
+        date      = (TextView)view.findViewById(R.id.transaction_payed_item_date);
+        time      = (TextView)view.findViewById(R.id.transaction_payed_item_time);
+        ImageView trend_icon = (ImageView)view.findViewById(R.id.transaction_payed_item_trend);
+        TextView content = (TextView)view.findViewById(R.id.transaction_payed_item_contents);
+        int R_drawable_trend_icon = tp.trend == Transaction.TREND.CREDIT ? R.drawable.ic_credit : R.drawable.ic_debit;
+        trend_icon.setImageResource(R_drawable_trend_icon);
+        content.setText("Контент надо доделать");
       }
-      */
-
-      /*
-      Account.E_IC_TYPE_RESOURCE icon = Account.E_IC_TYPE_RESOURCE.getTYPE_TRANSACTION(
-        (int)cursor.getLong(cursor.getColumnIndex("id_icon")));
-      String name = cursor.getString(cursor.getColumnIndex("name"));
-      double balance = cursor.getDouble(cursor.getColumnIndex("balance"));
-
-      //Сопоставляем
-      ImageView iv_image  = (ImageView)view.findViewById(R.id.accounts_d_new_image_item_icon);
-      TextView tv_name    = (TextView)view.findViewById(R.id.account_item_name);
-      TextView tv_balance = (TextView)view.findViewById(R.id.account_item_balance);
-      iv_image.setImageResource(icon.R_drawable);
-      tv_name.setText(name);
-      tv_balance.setText(new Double(balance).toString());
-      */
+      icon_from.setImageResource(tp.co_user_name == null ? tp.account_icon.R_drawable : R.drawable.ic_group);
+      name_from.setText(tp.co_user_name == null ? tp.account_name : tp.co_user_name);
+      sum_from.setText(plus_minus + tp.sum.toString() + tp.symbol);
+      date.setText(tp.date_time.getSDate());
+      time.setText(tp.date_time.getSTime());
     }
 
   }
