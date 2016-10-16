@@ -5,12 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
-import com.bloodliviykot.MyFin.DB.entities.Account;
-import com.bloodliviykot.tools.Common.DateTime;
-import com.bloodliviykot.tools.Common.Money;
 
 /**
  * Created by Kot on 10.10.2016.
@@ -61,7 +60,29 @@ public class TransactionsPayed
     {
       View item = view.findViewById(R.id.transaction_payed_item);
       View remittance = view.findViewById(R.id.transaction_payed_remittance);
-      if(!cursor.isNull(cursor.getColumnIndex("co_user_name")))
+
+      /*
+      Account.E_IC_TYPE_RESOURCE icon_from = Account.E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(
+        (int)cursor.getLong(cursor.getColumnIndex("id_icon")));
+      String account_from = cursor.getString(cursor.getColumnIndex("account_name"));
+      String sum_from = new Money(cursor.getLong(cursor.getColumnIndex("sum"))).toString();
+      TREND trend = TREND.getTREND(cursor.getLong(cursor.getColumnIndex("trend")));
+      String date_time = new DateTime(cursor.getLong(cursor.getColumnIndex("date_time"))).getSDateTime();
+      int R_drawable_icon_trend = R.drawable.ic_conversion;
+      if(trend == TREND.DEBIT)
+        R_drawable_icon_trend = R.drawable.ic_debit;
+      else
+        R_drawable_icon_trend = R.drawable.ic_credit;
+      Currency currency_from = null;
+      try
+      {
+        currency_from = Currency.getCurrency(cursor.getLong(cursor.getColumnIndex("currency_id")));
+      } catch(Entity.EntityException e)
+      {
+        e.printStackTrace();
+      }
+
+      if(trend == TREND.CONVERSION)
       {
         item.setVisibility(View.GONE);
         remittance.setVisibility(View.VISIBLE);
@@ -72,22 +93,22 @@ public class TransactionsPayed
         item.setVisibility(View.VISIBLE);
         remittance.setVisibility(View.GONE);
 
-        Account.E_IC_TYPE_RESOURCE icon = Account.E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(
-          (int)cursor.getLong(cursor.getColumnIndex("id_icon")));
-
         ImageView item_icon   = (ImageView)view.findViewById(R.id.transaction_payed_item_icon);
         TextView item_name    = (TextView)view.findViewById(R.id.transaction_payed_item_name);
         TextView item_sum     = (TextView)view.findViewById(R.id.transaction_payed_item_sum);
-        TextView date_time    = (TextView)view.findViewById(R.id.transaction_payed_item_date_time);
-        TextView contents     = (TextView)view.findViewById(R.id.transaction_payed_item_contents);
+        TextView item_date_time    = (TextView)view.findViewById(R.id.transaction_payed_item_date_time);
         ImageView image_trend = (ImageView)view.findViewById(R.id.transaction_payed_item_trend);
+        TextView contents     = (TextView)view.findViewById(R.id.transaction_payed_item_contents);
 
-        item_icon.setImageResource(icon.R_drawable);
-        item_name.setText(cursor.getString(cursor.getColumnIndex("account_name")));
-        item_sum.setText(new Money(cursor.getLong(cursor.getColumnIndex("sum"))).toString());
-        date_time.setText(new DateTime(cursor.getLong(cursor.getColumnIndex("date_time"))).getSDateTime());
+        item_icon.setImageResource(icon_from.R_drawable);
+        item_name.setText(account_from);
+        item_sum.setText((trend == TREND.CREDIT ? "-" : "+") + sum_from + currency_from.getSymbol());
+        item_date_time.setText(date_time);
+        image_trend.setImageResource(R_drawable_icon_trend);
+
 
       }
+      */
 
       /*
       Account.E_IC_TYPE_RESOURCE icon = Account.E_IC_TYPE_RESOURCE.getTYPE_TRANSACTION(

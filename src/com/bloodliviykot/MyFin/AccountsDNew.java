@@ -224,7 +224,7 @@ public class AccountsDNew
       TextView full_name = (TextView)convertView.findViewById(R.id.accounts_d_new_currency_item_full_name);
       cursor_currencies.moveToPosition(position);
       full_name.setText(cursor_currencies.getString(cursor_currencies.getColumnIndex("full_name")));
-      symbol.setText(java.util.Currency.getInstance(cursor_currencies.getString(cursor_currencies.getColumnIndex("cod_ISO"))).getSymbol());
+      symbol.setText(cursor_currencies.getString(cursor_currencies.getColumnIndex("symbol")));
       return convertView;
     }
 
@@ -237,7 +237,7 @@ public class AccountsDNew
       TextView full_name = (TextView)convertView.findViewById(R.id.accounts_d_new_currency_item_full_name);
       cursor_currencies.moveToPosition(position);
       full_name.setVisibility(View.GONE);
-      symbol.setText(java.util.Currency.getInstance(cursor_currencies.getString(cursor_currencies.getColumnIndex("cod_ISO"))).getSymbol());
+      symbol.setText(cursor_currencies.getString(cursor_currencies.getColumnIndex("symbol")));
       return convertView;
     }
 

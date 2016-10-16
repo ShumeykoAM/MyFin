@@ -3,7 +3,8 @@ CREATE TABLE Currency
   _id                  INTEGER PRIMARY KEY,
   cod_ISO              TEXT NOT NULL,
   prim                 INTEGER NOT NULL,
-  full_name            TEXT NOT NULL
+  full_name            TEXT NOT NULL,
+  symbol               TEXT NOT NULL
 );
 
 CREATE TABLE Rate

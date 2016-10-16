@@ -18,13 +18,14 @@ public class Currency
   /*"€""$""Ք"*/
   //!!!! Есть java.util.Currency, которая как раз определяет валюту
 
-  public Currency(String cod_ISO, long primary, String full_name) throws EntityException
+  public Currency(String cod_ISO, long primary, String full_name, String symbol) throws EntityException
   {
-    if(cod_ISO == null || full_name == null)
+    if(cod_ISO == null || full_name == null || symbol == null)
       throw new EntityException();
     this.cod_ISO   = cod_ISO  ;
     this.primary   = primary  ;
     this.full_name = full_name;
+    this.symbol    = symbol   ;
   }
   private Currency(long _id) throws EntityException
   {
@@ -44,7 +45,7 @@ public class Currency
   }
 
   public String getCod_ISO(){return cod_ISO;}
-  public void setShort_name(String cod_ISO) throws EntityException
+  public void setCod_ISO(String cod_ISO) throws EntityException
   {
     if(cod_ISO == null)
       throw new EntityException();
@@ -61,13 +62,13 @@ public class Currency
   }
   public String getSymbol()
   {
-    String result;
-    if(cod_ISO == "EUR")
-      result = "€";
-    if(cod_ISO == "USD")
-      result = "$";
-    else result = java.util.Currency.getInstance(cod_ISO).getSymbol();
-    return result;
+    return symbol;
+  }
+  public void setSymbol(String symbol) throws EntityException
+  {
+    if(symbol == null)
+      throw new EntityException();
+    this.symbol = symbol;
   }
 
   @Override
@@ -82,6 +83,7 @@ public class Currency
     values.put("cod_ISO"  , this.cod_ISO  );
     values.put("prim"     , this.primary  );
     values.put("full_name", this.full_name);
+    values.put("symbol"   , this.symbol   );
     return values;
   }
   @Override
@@ -89,8 +91,9 @@ public class Currency
   {
     ContentValues values = new ContentValues();
     compareInsert(values, original.cod_ISO  , cod_ISO  , "cod_ISO"  );
-    compareInsert(values, original.primary  , primary  , "prim"  );
+    compareInsert(values, original.primary  , primary  , "prim"     );
     compareInsert(values, original.full_name, full_name, "full_name");
+    compareInsert(values, original.symbol   , symbol   , "symbol"   );
     return values;
   }
   @Override
@@ -99,6 +102,7 @@ public class Currency
     this.cod_ISO   = cursor.getString(cursor.getColumnIndex("cod_ISO"));
     this.primary   = cursor.getLong(cursor.getColumnIndex("prim"));
     this.full_name = cursor.getString(cursor.getColumnIndex("full_name"));
+    this.symbol    = cursor.getString(cursor.getColumnIndex("symbol"));
   }
   @Override
   protected void saveOriginal()
@@ -108,12 +112,14 @@ public class Currency
     original.cod_ISO   = cod_ISO  ;
     original.primary   = primary  ;
     original.full_name = full_name;
+    original.symbol    = symbol;
   }
 
   //Поля записи
   private String cod_ISO  ;
   private long   primary ;
   private String full_name;
+  private String symbol;
 
   //Оригинальные (как были втавлены\извлечены из базы)
   private static class Original
@@ -121,6 +127,7 @@ public class Currency
     public String cod_ISO  ;
     public long   primary ;
     public String full_name;
+    public String symbol;
   }
   Original original;
 

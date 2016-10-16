@@ -85,28 +85,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="445e4891-3518-4b84-be65-084c2993ce99" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/TransactionsPeriodical.java" />
-      <change type="DELETED" beforePath="D:\Projects\OurBudget\trunk\client\res\layout\currensies_d_new.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Projects\OurBudget\trunk\client\res\layout\transactions_payed_remittance.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Projects\OurBudget\trunk\client\src\com\bloodliviykot\MyFin\CurrenciesDNew.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/entities/Account.java" afterPath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/entities/Account.java" />
+      <change type="DELETED" beforePath="D:\Projects\OurBudget\trunk\client\res\drawable-ldpi\ic_curr_eur.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Projects\OurBudget\trunk\client\res\drawable-ldpi\ic_curr_rub.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Projects\OurBudget\trunk\client\res\drawable-ldpi\ic_curr_usd.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-ldpi/ic_credit.png" afterPath="$PROJECT_DIR$/res/drawable-ldpi/ic_credit.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-ldpi/ic_debit.png" afterPath="$PROJECT_DIR$/res/drawable-ldpi/ic_debit.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/AccountsDNew.java" afterPath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/AccountsDNew.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/entities/Currency.java" afterPath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/entities/Currency.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/EQ.java" afterPath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/EQ.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/MySQLiteOpenHelper.java" afterPath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/MySQLiteOpenHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Register.java" afterPath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Register.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/entities/Transaction.java" afterPath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/entities/Transaction.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/TransactionsPayed.java" afterPath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/TransactionsPayed.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/accounts_d_new_currency_item.xml" afterPath="$PROJECT_DIR$/res/layout/accounts_d_new_currency_item.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/xml/distrib_db.xml" afterPath="$PROJECT_DIR$/res/xml/distrib_db.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/raw/sql_querys.sql" afterPath="$PROJECT_DIR$/res/raw/sql_querys.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/transactions_payed_item.xml" afterPath="$PROJECT_DIR$/res/layout/transactions_payed_item.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/raw/v_001_tables.ddl" afterPath="$PROJECT_DIR$/res/raw/v_001_tables.ddl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\Projects\OurBudget\trunk\client\res\xml\currencies.xml" afterPath="$PROJECT_DIR$/res/raw/currencies.enum" />
-      <change type="MOVED" beforePath="D:\Projects\OurBudget\trunk\client\src\com\bloodliviykot\MyFin\Transactions.java" afterPath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/TransactionsPlanned.java" />
     </list>
     <ignored path="MyFin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -156,18 +147,8 @@
       <file leaf-file-name="TransactionsPayed.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/TransactionsPayed.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25692964">
-              <caret line="71" column="61" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AccountsDNew.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/AccountsDNew.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="226" column="0" selection-start-line="226" selection-start-column="0" selection-end-line="226" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.16311301">
+              <caret line="48" column="44" selection-start-line="48" selection-start-column="3" selection-end-line="48" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -234,18 +215,18 @@
         <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/TransactionsPeriodical.java" />
         <option value="$PROJECT_DIR$/res/layout/transactions_payed_remittance.xml" />
         <option value="$PROJECT_DIR$/res/layout/transactions_payed_item.xml" />
-        <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/TransactionsPayed.java" />
         <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/entities/Transaction.java" />
         <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/entities/Account.java" />
         <option value="$PROJECT_DIR$/res/raw/currencies.enum" />
-        <option value="$PROJECT_DIR$/res/raw/v_001_tables.ddl" />
-        <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/entities/Currency.java" />
         <option value="$PROJECT_DIR$/res/layout/accounts_d_new_currency_item.xml" />
-        <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/MySQLiteOpenHelper.java" />
-        <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/AccountsDNew.java" />
         <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/EQ.java" />
-        <option value="$PROJECT_DIR$/res/raw/sql_querys.sql" />
+        <option value="$PROJECT_DIR$/res/raw/v_001_tables.ddl" />
         <option value="$PROJECT_DIR$/res/xml/distrib_db.xml" />
+        <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/entities/Currency.java" />
+        <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/MySQLiteOpenHelper.java" />
+        <option value="$PROJECT_DIR$/res/raw/sql_querys.sql" />
+        <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/AccountsDNew.java" />
+        <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/TransactionsPayed.java" />
       </list>
     </option>
   </component>
@@ -930,12 +911,12 @@
       <workItem from="1476304846848" duration="113000" />
       <workItem from="1476304968922" duration="34000" />
       <workItem from="1476376923026" duration="22903000" />
-      <workItem from="1476546737330" duration="9122000" />
+      <workItem from="1476546737330" duration="18055000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="308084000" />
+    <option name="totallyTimeSpent" value="317017000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
@@ -949,12 +930,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874617" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1633888" sideWeight="0.5198777" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.114605546" sideWeight="0.52380955" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919255" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874617" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.114605546" sideWeight="0.48012233" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.114605546" sideWeight="0.47619048" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12846482" sideWeight="0.382263" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18123667" sideWeight="0.5412844" order="3" side_tool="false" content_ui="tabs" />
@@ -991,23 +972,18 @@
           <properties />
           <option name="timeStamp" value="347" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/entities/Currency.java</url>
-          <line>64</line>
-          <properties />
-          <option name="timeStamp" value="373" />
-        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="397" />
+      <option name="time" value="405" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="ЬнАшт">
         <watch expression="id_db" />
         <watch expression="detailMessage" />
         <watch expression="e" />
+        <watch expression="sum_from" />
       </configuration>
     </watches-manager>
   </component>
@@ -1016,27 +992,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/android/sdk/sources/android-15/java/lang/Object.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3326226">
-          <caret line="189" column="26" selection-start-line="189" selection-start-column="4" selection-end-line="189" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/tools/Common/Money.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="1" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/android/sdk/sources/android-15/java/util/TimeZone.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3326226">
-          <caret line="125" column="40" selection-start-line="125" selection-start-column="40" selection-end-line="125" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/android/sdk/sources/android-15/java/util/Calendar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1196,7 +1151,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="2" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1253,28 +1208,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/entities/Transaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="182" column="24" selection-start-line="182" selection-start-column="24" selection-end-line="182" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#627#628#0" expanded="false" />
-            <element signature="e#659#660#0" expanded="false" />
-            <element signature="e#1001#1002#0" expanded="false" />
-            <element signature="e#1033#1034#0" expanded="false" />
-            <element signature="e#1170#1171#0" expanded="false" />
-            <element signature="e#1194#1195#0" expanded="false" />
-            <element signature="e#1414#1415#0" expanded="false" />
-            <element signature="e#1440#1441#0" expanded="false" />
-            <element signature="e#1638#1639#0" expanded="false" />
-            <element signature="e#1658#1659#0" expanded="false" />
-            <element signature="e#3448#3449#0" expanded="false" />
-            <element signature="e#3475#3476#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="dbDummy://dbtable:/9032057a/ae4bab8e-2c34-4f0b-8c40-da80b0d9f9fe/..Category">
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1296,19 +1229,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/9032057a/ae4bab8e-2c34-4f0b-8c40-da80b0d9f9fe/..Currency">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1321,14 +1241,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.673774">
           <caret line="786" column="0" selection-start-line="786" selection-start-column="0" selection-end-line="786" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/entities/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1360,75 +1272,152 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/entities/Currency.java">
+    <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/entities/Account.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/tools/DataBase/Entity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71321964">
-          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-          <folding />
-        </state>
+    <entry file="file://$PROJECT_DIR$/res/drawable-ldpi/ic_debit.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
-    <entry file="file://C:/android/sdk/sources/android-15/android/app/ActivityThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34221748">
-          <caret line="1953" column="0" selection-start-line="1953" selection-start-column="0" selection-end-line="1953" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/raw/sql_querys.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/EQ.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
-          <folding />
-        </state>
+    <entry file="file://$PROJECT_DIR$/res/drawable-ldpi/ic_remittance.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/raw/v_001_tables.ddl">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="62" column="17" selection-start-line="62" selection-start-column="2" selection-end-line="62" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.108742006">
+          <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/xml/distrib_db.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6705757">
-          <caret line="235" column="0" selection-start-line="235" selection-start-column="0" selection-end-line="235" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.19936034">
+          <caret line="200" column="108" selection-start-line="200" selection-start-column="108" selection-end-line="200" selection-end-column="108" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/android/sdk/sources/android-15/android/app/ActivityThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1953" column="0" selection-start-line="1953" selection-start-column="0" selection-end-line="1953" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/9032057a/ae4bab8e-2c34-4f0b-8c40-da80b0d9f9fe/..Transact">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/9032057a/ae4bab8e-2c34-4f0b-8c40-da80b0d9f9fe/..Account">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/9032057a/ae4bab8e-2c34-4f0b-8c40-da80b0d9f9fe/..CoUser">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/9032057a/ae4bab8e-2c34-4f0b-8c40-da80b0d9f9fe/..Currency">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/entities/Currency.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="3" selection-start-line="32" selection-start-column="3" selection-end-line="32" selection-end-column="3" />
+          <folding>
+            <element signature="method#setCod_ISO#0;class#Currency#0" expanded="false" />
+            <element signature="method#setFullName#0;class#Currency#0" expanded="false" />
+            <element signature="e#1961#1962#0" expanded="true" />
+            <element signature="e#1984#1985#0" expanded="true" />
+            <element signature="e#2186#2187#0" expanded="true" />
+            <element signature="e#2213#2214#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/tools/DataBase/Entity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/MySQLiteOpenHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38059703">
-          <caret line="146" column="3" selection-start-line="146" selection-start-column="3" selection-end-line="146" selection-end-column="3" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="183" column="22" selection-start-line="183" selection-start-column="22" selection-end-line="183" selection-end-column="22" />
           <folding>
             <element signature="e#2438#2444#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/res/raw/sql_querys.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23880596">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/EQ.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.271855">
+          <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/AccountsDNew.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.52878463">
           <caret line="226" column="0" selection-start-line="226" selection-start-column="0" selection-end-line="226" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1436,11 +1425,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/entities/Transaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3326226">
+          <caret line="36" column="14" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/TransactionsPayed.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25692964">
-          <caret line="71" column="61" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
-          <folding />
+        <state vertical-scroll-proportion="0.16311301">
+          <caret line="48" column="44" selection-start-line="48" selection-start-column="3" selection-end-line="48" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -154,7 +154,7 @@ public class MySQLiteOpenHelper
     {
       try
       {
-        Currency currency = new Currency(util_currency.getCurrencyCode(), 2, util_currency.getCurrencyCode());
+        Currency currency = new Currency(util_currency.getCurrencyCode(), 2, util_currency.getCurrencyCode(), util_currency.getSymbol());
         currency.insert();
       } catch(Entity.EntityException e1)
       {      }
@@ -166,7 +166,15 @@ public class MySQLiteOpenHelper
     {
       try
       {
-        java.util.Currency.getInstance(currencies.getString(currencies.getColumnIndex("cod_ISO")));
+        util_currency = java.util.Currency.getInstance(currencies.getString(currencies.getColumnIndex("cod_ISO")));
+        Currency currency = Currency.getCurrency(currencies.getLong(currencies.getColumnIndex("_id")));
+        String symbol = util_currency.getSymbol();
+        if(currency.getCod_ISO().equals("EUR"))
+          symbol = "€";
+        if(currency.getCod_ISO().equals("USD"))
+          symbol = "$";
+        currency.setSymbol(symbol);
+        currency.update();
       }
       catch(Exception e)
       {

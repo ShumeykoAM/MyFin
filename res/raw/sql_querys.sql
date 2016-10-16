@@ -1,6 +1,6 @@
 --Сущности по _id
 --CURRENCY
-SELECT Currency._id, Currency.cod_ISO, Currency.prim, Currency.full_name
+SELECT Currency._id, Currency.cod_ISO, Currency.prim, Currency.full_name, Currency.symbol
   FROM Currency
   WHERE _id=?;
 
@@ -33,16 +33,22 @@ SELECT Account._id
   ORDER BY Account.id_icon;
 
 -- CURRENCIES
-SELECT Currency._id, Currency.cod_ISO, Currency.full_name
+SELECT Currency._id, Currency.cod_ISO, Currency.full_name, Currency.symbol
   FROM Currency
   ORDER BY Currency.prim DESC, Currency.full_name ASC;
 
 --TRANSACTIONS
-SELECT Transact._id, Account.id_icon, Account.name AS account_name, CoUser.name AS co_user_name, Transact.sum,
-  Transact.date_time, Transact.trend, Transact._id_correlative_account, Transact.correlative_sum
-  FROM Transact, Account
-  LEFT OUTER JOIN CoUser ON CoUser._id=Account._id_co_user
-  WHERE Account._id=Transact._id_account
+SELECT Transact._id, Transact.date_time, Transact.sum, Transact.trend, Transact.correlative_sum,
+  Acc.id_icon AS account_icon, Acc.name AS account_name, CoUserAcc.name AS co_user_name, Curr.symbol,
+  CorrAcc.id_icon AS corr_acc_icon, CorrAcc.name AS corr_acc_name, CorrCoUser.name AS corr_co_user_name,
+  CorrCurr.symbol AS corr_symbol
+  FROM Transact, Account Acc, Currency Curr
+  LEFT JOIN CoUser CoUserAcc ON CoUserAcc._id=Acc._id_co_user
+  LEFT JOIN Account CorrAcc ON CorrAcc._id=Transact._id_correlative_account
+  LEFT JOIN CoUser CorrCoUser ON CorrCoUser._id=CorrAcc._id_co_user
+  LEFT JOIN Currency CorrCurr ON CorrCurr._id=CorrAcc._id_currency
+  WHERE Acc._id=Transact._id_account AND Curr._id=Acc._id_currency AND
+        (co_user_name IS NULL OR corr_co_user_name IS NULL)
   ORDER BY Transact.date_time DESC;
 
 --CURRENCY_COD_ISO
