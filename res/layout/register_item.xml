@@ -6,74 +6,74 @@
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" android:id="@+id/transaction_payed_item"
+            android:layout_height="fill_parent" android:id="@+id/register_item"
             android:background="@drawable/rectangle" android:layout_marginBottom="1dp">
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                         android:layout_width="fill_parent" android:layout_height="wrap_content"
-                        android:gravity="center_vertical" android:id="@+id/transaction_payed_rel"
+                        android:gravity="center_vertical" android:id="@+id/register_rel"
                         android:visibility="visible">
             <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                       android:id="@+id/transaction_payed_item_icon" android:layout_centerVertical="true"
+                       android:id="@+id/register_item_icon" android:layout_centerVertical="true"
                        android:layout_alignParentLeft="true" android:src="@drawable/ic_credit_card"
                        android:layout_marginLeft="2dp"/>
             <LinearLayout android:orientation="vertical" android:layout_width="wrap_content"
                           android:layout_height="wrap_content" android:layout_centerVertical="true"
-                          android:layout_toRightOf="@+id/transaction_payed_item_icon"
-                          android:id="@+id/transaction_payed_item_linearLayoutLeft"
-                          android:layout_toLeftOf="@+id/transaction_payed_item_LinearLayoutRight">
+                          android:layout_toRightOf="@+id/register_item_icon"
+                          android:id="@+id/register_item_linearLayoutLeft"
+                          android:layout_toLeftOf="@+id/register_item_LinearLayoutRight">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                           android:textAppearance="?android:attr/textAppearanceSmall" android:text="Кредитка 3545"
-                          android:id="@+id/transaction_payed_item_name" android:singleLine="true"/>
+                          android:id="@+id/register_item_name" android:singleLine="true"/>
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                           android:textAppearance="?android:attr/textAppearanceMedium" android:text="-1 343.45руб."
-                          android:id="@+id/transaction_payed_item_sum" android:singleLine="true"/>
+                          android:id="@+id/register_item_sum" android:singleLine="true"/>
             </LinearLayout>
             <LinearLayout android:orientation="vertical" android:layout_width="wrap_content"
                           android:layout_height="wrap_content" android:layout_centerVertical="true"
                           android:layout_alignParentRight="true"
-                          android:gravity="right" android:id="@+id/transaction_payed_item_LinearLayoutRight">
+                          android:gravity="right" android:id="@+id/register_item_LinearLayoutRight">
                 <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content"
                               android:layout_height="wrap_content" android:gravity="center_vertical">
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="14:23"
-                            android:id="@+id/transaction_payed_item_time" android:layout_gravity="left|center_horizontal"/>
+                            android:id="@+id/register_item_time" android:layout_gravity="left|center_horizontal"/>
                     <ImageView android:layout_width="18dp" android:layout_height="18dp"
-                               android:id="@+id/transaction_payed_item_trend"
+                               android:id="@+id/register_item_trend"
                                android:src="@drawable/ic_debit" android:layout_gravity="center_vertical"
                                android:layout_marginRight="2dp"/>
                 </LinearLayout>
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                           android:textAppearance="?android:attr/textAppearanceSmall"
-                          android:text="22 Сен. 2016г." android:id="@+id/transaction_payed_item_date"
+                          android:text="22 Сен. 2016г." android:id="@+id/register_item_date"
                           android:layout_gravity="center_vertical|right" android:singleLine="true"
                           android:layout_marginRight="2dp"/>
             </LinearLayout>
         </RelativeLayout>
         <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
                   android:textAppearance="?android:attr/textAppearanceSmall"
-                  android:text="Продукты, авто" android:id="@+id/transaction_payed_item_contents"
+                  android:text="Продукты, авто" android:id="@+id/register_item_contents"
                   android:singleLine="true" android:layout_marginLeft="2dp" android:layout_marginRight="2dp"/>
     </LinearLayout>
     <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" android:id="@+id/transaction_payed_remittance"
+            android:layout_height="match_parent" android:id="@+id/register_remittance"
             android:background="@drawable/rectangle" android:layout_marginBottom="1dp">
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left|center_vertical"
-                android:id="@+id/transaction_payed_remittance_LinearLayoutLeft"
+                android:id="@+id/register_remittance_LinearLayoutLeft"
                 android:layout_alignWithParentIfMissing="false" android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@+id/transaction_payed_remittance_linearLayoutRight">
+                android:layout_toLeftOf="@+id/register_remittance_linearLayoutRight">
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/transaction_payed_remittance_linearLayoutFrom"
+                    android:id="@+id/register_remittance_linearLayoutFrom"
                     android:gravity="left">
                 <LinearLayout
                         android:orientation="horizontal"
@@ -82,32 +82,32 @@
                     <ImageView
                             android:layout_width="22dp"
                             android:layout_height="22dp"
-                            android:id="@+id/transaction_payed_remittance_icon_from" android:src="@drawable/ic_group"
+                            android:id="@+id/register_remittance_icon_from" android:src="@drawable/ic_group"
                             android:layout_marginLeft="2dp"/>
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Муж"
-                            android:id="@+id/transaction_payed_remittance_from" android:singleLine="true"/>
+                            android:id="@+id/register_remittance_from" android:singleLine="true"/>
                 </LinearLayout>
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="-1 543руб."
-                        android:id="@+id/transaction_payed_remittance_sum_from" android:singleLine="true"
+                        android:id="@+id/register_remittance_sum_from" android:singleLine="true"
                         android:layout_marginLeft="2dp"/>
             </LinearLayout>
             <ImageView
                     android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:id="@+id/transaction_payed_remittance_arrow" android:src="@drawable/ic_remittance"/>
+                    android:id="@+id/register_remittance_arrow" android:src="@drawable/ic_remittance"/>
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="left" android:id="@+id/transaction_payed_remittance_LinearLayoutTo">
+                    android:gravity="left" android:id="@+id/register_remittance_LinearLayoutTo">
                 <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="wrap_content"
@@ -116,20 +116,20 @@
                     <ImageView
                             android:layout_width="22dp"
                             android:layout_height="22dp"
-                            android:id="@+id/transaction_payed_remittance_icon_to" android:src="@drawable/ic_cash"/>
+                            android:id="@+id/register_remittance_icon_to" android:src="@drawable/ic_cash"/>
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:text="Наличные"
-                            android:id="@+id/transaction_payed_remittance_to" android:singleLine="true"/>
+                            android:id="@+id/register_remittance_to" android:singleLine="true"/>
                 </LinearLayout>
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="+1 543руб."
-                        android:id="@+id/transaction_payed_remittance_sum_to"
+                        android:id="@+id/register_remittance_sum_to"
                         android:singleLine="true"/>
             </LinearLayout>
         </LinearLayout>
@@ -139,7 +139,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:gravity="center_vertical|right" android:id="@+id/transaction_payed_remittance_linearLayoutRight"
+                android:gravity="center_vertical|right" android:id="@+id/register_remittance_linearLayoutRight"
                 android:layout_alignParentTop="true">
             <LinearLayout
                     android:orientation="vertical"
@@ -153,11 +153,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="14:23"
-                            android:id="@+id/transaction_payed_remittance_time" android:layout_gravity="left|center_horizontal"/>
+                            android:id="@+id/register_remittance_time" android:layout_gravity="left|center_horizontal"/>
                     <ImageView
                             android:layout_width="18dp"
                             android:layout_height="18dp"
-                            android:id="@+id/transaction_payed_remittance_date_trend" android:src="@drawable/ic_conversion"
+                            android:id="@+id/register_remittance_date_trend" android:src="@drawable/ic_conversion"
                             android:layout_gravity="center_vertical" android:layout_marginRight="2dp"/>
                 </LinearLayout>
                 <TextView
@@ -165,7 +165,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="22 Сен. 2016г."
-                        android:id="@+id/transaction_payed_remittance_date" android:layout_gravity="left|center_vertical"
+                        android:id="@+id/register_remittance_date" android:layout_gravity="left|center_vertical"
                         android:singleLine="true" android:layout_marginRight="2dp"/>
             </LinearLayout>
         </LinearLayout>

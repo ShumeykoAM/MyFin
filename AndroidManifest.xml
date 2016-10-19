@@ -19,19 +19,7 @@
         <activity android:name=".Register"
                   android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".TransactionsPayed"
-                  android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".TransactionsPlanned"
-                  android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".TransactionsPeriodical"
-                  android:screenOrientation="portrait">
-        </activity>
         <activity android:name=".Planned"
-                  android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".Regular"
                   android:screenOrientation="portrait">
         </activity>
     </application>

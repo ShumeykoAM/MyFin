@@ -1,51 +1,151 @@
 package com.bloodliviykot.MyFin;
 
-import android.app.TabActivity;
-import android.content.Intent;
+import android.app.Activity;
+import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
-import android.widget.TabHost;
+import android.view.View;
+import android.widget.*;
+import com.bloodliviykot.MyFin.DB.EQ;
+import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
+import com.bloodliviykot.MyFin.DB.entities.Account;
+import com.bloodliviykot.MyFin.DB.entities.Transaction;
+import com.bloodliviykot.tools.Common.DateTime;
+import com.bloodliviykot.tools.Common.Money;
 
 /**
  * Created by Kot on 23.09.2016.
  */
 public class Register
-  extends TabActivity
+  extends Activity
 {
+  private MySQLiteOpenHelper oh;
+  private ListView list_transactions;
+  private Button button_create;
+
+  private Cursor cursor;
+  private SimpleCursorAdapter list_adapter;
+
   @Override
   protected void onCreate(Bundle savedInstanceState)
   {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.register);
-    TabHost tab_host = getTabHost();
 
-    TabHost.TabSpec tabSpec;
+    oh = MySQLiteOpenHelper.getMySQLiteOpenHelper();
+    list_transactions = (ListView)findViewById(R.id.transactions_payed_listView);
+    button_create = (Button)findViewById(R.id.transactions_payed_create);
 
-    tabSpec = tab_host.newTabSpec("tag_transactions");
-    tabSpec.setIndicator(getString(R.string.tab_transactions));
-    tabSpec.setContent(new Intent(this, TransactionsPayed.class));
-    tab_host.addTab(tabSpec);
-
-    tabSpec = tab_host.newTabSpec("tag_planned");
-    tabSpec.setIndicator(getString(R.string.tab_planned));
-    tabSpec.setContent(new Intent(this, Planned.class));
-    tab_host.addTab(tabSpec);
-
-    tabSpec = tab_host.newTabSpec("tag_planned");
-    tabSpec.setIndicator(getString(R.string.tab_regular));
-    tabSpec.setContent(new Intent(this, Regular.class));
-    tab_host.addTab(tabSpec);
+    //list_accounts.setAdapter();
+    cursor = oh.db.rawQuery(oh.getQuery(EQ.TRANSACTIONS), null);
+    list_adapter = new TransactionPayedItemAdapter(R.layout.register_item, cursor,
+      new String[]{},
+      new int[]{});
+    list_adapter.changeCursor(cursor);
+    list_transactions.setAdapter(list_adapter);
   }
-  @Override
-  protected void onPause()
+
+  public static class TransactionPayed
   {
-    super.onPause();
+    TransactionPayed(Cursor cursor)
+    {
+      _id       = cursor.getLong(cursor.getColumnIndex("_id"));
+      date_time = new DateTime(cursor.getLong(cursor.getColumnIndex("date_time")));
+      sum       = new Money(cursor.getLong(cursor.getColumnIndex("sum")));
+      trend     = Transaction.TREND.getTREND(cursor.getLong(cursor.getColumnIndex("trend")));
+      account_icon = Account.E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(cursor.getLong(cursor.getColumnIndex("account_icon")));
+      account_name = cursor.getString(cursor.getColumnIndex("account_name"));
+      symbol    = cursor.getString(cursor.getColumnIndex("symbol"));
+      if(!cursor.isNull(cursor.getColumnIndex("correlative_sum")))
+        correlative_sum = new Money(cursor.getLong(cursor.getColumnIndex("correlative_sum")));
+      if(!cursor.isNull(cursor.getColumnIndex("co_user_name")))
+        co_user_name = cursor.getString(cursor.getColumnIndex("co_user_name"));
+      if(!cursor.isNull(cursor.getColumnIndex("corr_acc_icon")))
+        corr_acc_icon = Account.E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(cursor.getLong(cursor.getColumnIndex("corr_acc_icon")));
+      if(!cursor.isNull(cursor.getColumnIndex("corr_acc_name")))
+        corr_acc_name = cursor.getString(cursor.getColumnIndex("corr_acc_name"));
+      if(!cursor.isNull(cursor.getColumnIndex("corr_co_user_name")))
+        corr_co_user_name = cursor.getString(cursor.getColumnIndex("corr_co_user_name"));
+      if(!cursor.isNull(cursor.getColumnIndex("corr_symbol")))
+        corr_symbol = cursor.getString(cursor.getColumnIndex("corr_symbol"));
+    }
+    public long _id;
+    public DateTime date_time;
+    public Money sum;
+    public Transaction.TREND trend;
+    public Account.E_IC_TYPE_RESOURCE account_icon;
+    public String account_name;
+    public String symbol;
+    //nullable
+    public Money correlative_sum;
+    public String co_user_name;
+    public Account.E_IC_TYPE_RESOURCE corr_acc_icon;
+    public String corr_acc_name;
+    public String corr_co_user_name;
+    public String corr_symbol;
   }
-  @Override
-  protected void onResume()
+
+  //Переопределим SimpleCursorAdapter что бы форматировать данные из базы нужным образом
+  private class TransactionPayedItemAdapter
+    extends SimpleCursorAdapter
   {
-    super.onResume();
-    //Задаем текущую активную вкладку
-    TabHost tab_host = getTabHost();
-    tab_host.setCurrentTabByTag("tag_transactions");
+
+    public TransactionPayedItemAdapter(int layout, Cursor cursor, String[] from, int[] to)
+    {
+      super(Common.application_context, layout, cursor, from, to);
+
+    }
+
+    boolean b = true;
+    @Override
+    public void bindView(View view, Context context, Cursor cursor)
+    {
+      View item = view.findViewById(R.id.register_item);
+      View remittance = view.findViewById(R.id.register_remittance);
+      TransactionPayed tp = new TransactionPayed(cursor);
+      String plus_minus = tp.trend == Transaction.TREND.CREDIT || tp.trend == Transaction.TREND.CONVERSION ? "-" : "+";
+      ImageView icon_from;
+      TextView name_from ;
+      TextView sum_from  ;
+      TextView date      ;
+      TextView time      ;
+      if(tp.trend == Transaction.TREND.CONVERSION)
+      {
+        item.setVisibility(View.GONE);
+        remittance.setVisibility(View.VISIBLE);
+        icon_from = (ImageView)view.findViewById(R.id.register_remittance_icon_from);
+        name_from = (TextView)view.findViewById(R.id.register_remittance_from);
+        sum_from  = (TextView)view.findViewById(R.id.register_remittance_sum_from);
+        date      = (TextView)view.findViewById(R.id.register_remittance_date);
+        time      = (TextView)view.findViewById(R.id.register_remittance_time);
+        ImageView icon_to = (ImageView)view.findViewById(R.id.register_remittance_icon_to);
+        TextView name_to = (TextView)view.findViewById(R.id.register_remittance_to);
+        TextView sum_to = (TextView)view.findViewById(R.id.register_remittance_sum_to);
+        icon_to.setImageResource(tp.corr_co_user_name == null ? tp.corr_acc_icon.R_drawable : R.drawable.ic_group);
+        name_to.setText(tp.corr_co_user_name == null ? tp.corr_acc_name : tp.corr_co_user_name);
+        sum_to.setText("+" + tp.correlative_sum.toString() + tp.corr_symbol);
+      }
+      else
+      {
+        item.setVisibility(View.VISIBLE);
+        remittance.setVisibility(View.GONE);
+        icon_from = (ImageView)view.findViewById(R.id.register_item_icon);
+        name_from = (TextView)view.findViewById(R.id.register_item_name);
+        sum_from  = (TextView)view.findViewById(R.id.register_item_sum);
+        date      = (TextView)view.findViewById(R.id.register_item_date);
+        time      = (TextView)view.findViewById(R.id.register_item_time);
+        ImageView trend_icon = (ImageView)view.findViewById(R.id.register_item_trend);
+        TextView content = (TextView)view.findViewById(R.id.register_item_contents);
+        int R_drawable_trend_icon = tp.trend == Transaction.TREND.CREDIT ? R.drawable.ic_credit : R.drawable.ic_debit;
+        trend_icon.setImageResource(R_drawable_trend_icon);
+        content.setText("Контент надо доделать");
+      }
+      icon_from.setImageResource(tp.co_user_name == null ? tp.account_icon.R_drawable : R.drawable.ic_group);
+      name_from.setText(tp.co_user_name == null ? tp.account_name : tp.co_user_name);
+      sum_from.setText(plus_minus + tp.sum.toString() + tp.symbol);
+      date.setText(tp.date_time.getSDate());
+      time.setText(tp.date_time.getSTime());
+    }
+
   }
 }
