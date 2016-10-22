@@ -36,6 +36,11 @@ CREATE TABLE Category
   FOREIGN KEY (_id_parent) REFERENCES Category (_id)
 );
 
+CREATE UNIQUE INDEX unique_name_lower_case ON Category
+(
+  name_lower_case
+);
+
 CREATE TABLE CoUser
 (
   _id                  INTEGER PRIMARY KEY,
