@@ -19,6 +19,11 @@ SELECT Transact._id, Transact._id_account, Transact.date_time, Transact.type_tra
   FROM Transact
   WHERE _id=?;
 
+--CATEGORY
+SELECT Category._id, Category._id_parent, Category.trend, Category.name, Category.name_lower_case
+  FROM Category
+  WHERE Category._id=?;
+
 -- Другие запросы
 -- ACCOUNTS
 SELECT Account._id, Account.id_icon, Account.name, Account.balance
@@ -55,3 +60,8 @@ SELECT Transact._id, Transact.date_time, Transact.sum, Transact.trend, Transact.
 SELECT Currency._id
   FROM Currency
   WHERE Currency.cod_ISO=?;
+
+--CATEGORIES
+SELECT Category._id, Category._id_parent, Category.trend, Category.name, Category.name_lower_case
+  FROM Category
+  ORDER BY Category._id_parent ASC, Category.name_lower_case ASC;

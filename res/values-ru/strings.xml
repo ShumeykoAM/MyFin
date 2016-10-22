@@ -9,9 +9,10 @@
     <string name="button_ok">Ok</string>
     <string name="tab_accounts">Счета</string>
     <string name="tab_planned">План</string>
-    <string name="tab_register">Жкрнал</string>
+    <string name="tab_register">Журнал</string>
     <string name="tab_transactions">Транзакции</string>
     <string name="currencies_d_new_code_currency">Код валюты</string>
     <string name="accounts_d_new_currency_another">Другая</string>
+    <string name="tab_categories">Категории</string>
 
 </resources>

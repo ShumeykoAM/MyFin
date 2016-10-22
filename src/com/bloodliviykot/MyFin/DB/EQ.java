@@ -5,18 +5,19 @@ package com.bloodliviykot.MyFin.DB;
 //  Порядок запросов в этом файле должен совпадать с порядком соответствующих элементов перечисления EQ
 public enum EQ
 {
-  //Выборка сущьности по _id
+  //Выборка сущности по _id
   CURRENCY,
   ACCOUNT,
   CO_USER,
   TRANSACTION,
+  CATEGORY,
 
   ACCOUNTS,                 //Список счетов, кроме счетов сопользователей
   USER_ACCOUNTS,            //Список счетов сопользователя
   CURRENCIES,               //Список валют
   TRANSACTIONS,             //Транзакции
   CURRENCY_COD_ISO,         //Валюта по коду ISO
-
+  CATEGORIES,               //Дерево всех категорий и подкатегорий
 
   EQ_COUNT;
   public final int value;

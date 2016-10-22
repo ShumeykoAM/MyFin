@@ -35,7 +35,6 @@ public class Accounts
     list_accounts = (ListView)findViewById(R.id.accounts_listView);
     button_create = (Button)findViewById(R.id.accounts_create);
 
-    //list_accounts.setAdapter();
     cursor = oh.db.rawQuery(oh.getQuery(EQ.ACCOUNTS), null);
     list_adapter = new AccountsItemAdapter(R.layout.accounts_item, cursor,
       new String[]{},

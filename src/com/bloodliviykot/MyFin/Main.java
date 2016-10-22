@@ -47,6 +47,10 @@ public class Main
     tabSpec.setContent(new Intent(this, Planned.class));
     tab_host.addTab(tabSpec);
 
+    tabSpec = tab_host.newTabSpec("tag_category");
+    tabSpec.setIndicator(getString(R.string.tab_categories));
+    tabSpec.setContent(new Intent(this, Categories.class));
+    tab_host.addTab(tabSpec);
 
   }
   private void setGlobalVars()

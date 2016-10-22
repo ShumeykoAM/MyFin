@@ -2,7 +2,7 @@
 <distrib title1="Здесь будем хранить дистрибутивное наполнение файлов БД"
          title2="Если нужно использовать _id родителя для вложенного елемента"
          title3="  то вместо значения поля пишем ИД_родителя">
-    <!-- пример древовидной иерархии
+    <!-- пример древовидной иерархии или зависимых сущностей
     <type_detail name="Расходы" trend="0" _id_account="1">
         <type_detail _paren_type_detail="ИД_родителя" name="Продукты" trend="0" _id_account="1"></type_detail>
     </type_detail>
@@ -240,6 +240,30 @@
 
     <Account _id_currency="141" id_icon="0" name="Наличные" balance="232,54" _id_co_user="1"></Account>
     <Account _id_currency="141" id_icon="0" name="Наличные" balance="8762,54" _id_co_user="2"></Account>
+
+    <Category trend="0" name="Продукты" name_lower_case="продукты">
+        <Category trend="0" name="Мучное" name_lower_case="мучное"  _id_parent="ИД_родителя">
+            <Category trend="0" name="Хлеб" name_lower_case="хлеб"  _id_parent="ИД_родителя">
+                <Category trend="0" name="Черный" name_lower_case="черный"  _id_parent="ИД_родителя"></Category>
+                <Category trend="0" name="Белый" name_lower_case="белый"  _id_parent="ИД_родителя"></Category>
+            </Category>
+            <Category trend="0" name="Батон" name_lower_case="батон" _id_parent="ИД_родителя"></Category>
+        </Category>
+        <Category trend="0" name="Масло" name_lower_case="масло" _id_parent="ИД_родителя"></Category>
+    </Category>
+    <Category trend="0" name="Автомобиль" name_lower_case="автомобиль">
+        <Category trend="0" name="Масло" name_lower_case="масло" _id_parent="ИД_родителя"></Category>
+        <Category trend="0" name="Бензин" name_lower_case="бензин" _id_parent="ИД_родителя">
+            <Category trend="0" name="Лукойл" name_lower_case="лукойл" _id_parent="ИД_родителя"></Category>
+            <Category trend="0" name="Газпром" name_lower_case="газпром" _id_parent="ИД_родителя"></Category>
+        </Category>
+        <Category trend="0" name="Тормозные колодки" name_lower_case="тормозные колодки" _id_parent="ИД_родителя"></Category>
+    </Category>
+    <Category trend="1" name="Прибыль" name_lower_case="прибыль">
+        <Category trend="1" name="Зарплата" name_lower_case="зарплата" _id_parent="ИД_родителя"></Category>
+        <Category trend="1" name="Аванс" name_lower_case="аванс" _id_parent="ИД_родителя"></Category>
+    </Category>
+
 
     <Transact _id_account="1" date_time="1476523965" sum = "23460" trend="0"></Transact>
     <Transact _id_account="1" date_time="1476621165" sum = "23460" trend="1"></Transact>

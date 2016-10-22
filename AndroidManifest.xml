@@ -22,5 +22,8 @@
         <activity android:name=".Planned"
                   android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".Categories"
+                  android:screenOrientation="portrait">
+        </activity>
     </application>
 </manifest>

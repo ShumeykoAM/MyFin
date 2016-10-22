@@ -30,8 +30,9 @@ CREATE TABLE Category
 (
   _id                  INTEGER PRIMARY KEY,
   _id_parent           INTEGER,
-  type_category        INTEGER NOT NULL,
+  trend                INTEGER NOT NULL,
   name                 TEXT NOT NULL,
+  name_lower_case      TEXT NOT NULL,
   FOREIGN KEY (_id_parent) REFERENCES Category (_id)
 );
 

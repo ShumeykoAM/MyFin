@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">MyFin</string>
     <string name="tab_accounts">Счета</string>
-    <string name="tab_register">Журнал</string>
+    <string name="tab_register">Log</string>
     <string name="tab_transactions">Транзакции</string>
     <string name="tab_planned">План</string>
     <string name="accounts_d_new_icon">Иконка</string>
@@ -13,4 +13,5 @@
     <string name="button_cancel">Отмена</string>
     <string name="currencies_d_new_code_currency">Код валюты</string>
     <string name="accounts_d_new_currency_another">Another</string>
+    <string name="tab_categories">Categories</string>
 </resources>
