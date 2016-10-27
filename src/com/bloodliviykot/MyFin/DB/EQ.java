@@ -17,7 +17,8 @@ public enum EQ
   CURRENCIES,               //Список валют
   TRANSACTIONS,             //Транзакции
   CURRENCY_COD_ISO,         //Валюта по коду ISO
-  CATEGORIES,               //Дерево всех категорий и подкатегорий
+  CATEGORIES,               //Категории определенного родителя
+  CATEGORIES_NO_PARENT,     //Головные категории
 
   EQ_COUNT;
   public final int value;

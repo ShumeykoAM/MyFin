@@ -62,6 +62,13 @@ SELECT Currency._id
   WHERE Currency.cod_ISO=?;
 
 --CATEGORIES
-SELECT Category._id, Category._id_parent, Category.trend, Category.name, Category.name_lower_case
+SELECT Category._id, Category._id_parent AS _pid, Category.trend, Category.name, Category.name_lower_case
   FROM Category
+  WHERE Category._id_parent=?
   ORDER BY Category._id_parent ASC, Category.name_lower_case ASC;
+
+--CATEGORIES_NO_PARENT
+SELECT Category._id, Category._id_parent AS _pid, Category.trend, Category.name, Category.name_lower_case
+FROM Category
+WHERE Category._id_parent IS NULL
+ORDER BY Category._id_parent ASC, Category.name_lower_case ASC;

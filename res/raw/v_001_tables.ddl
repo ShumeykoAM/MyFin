@@ -36,6 +36,11 @@ CREATE TABLE Category
   FOREIGN KEY (_id_parent) REFERENCES Category (_id)
 );
 
+CREATE INDEX quick_pid ON Category
+(
+  _id_parent
+);
+
 CREATE UNIQUE INDEX unique_name_lower_case ON Category
 (
   name_lower_case
