@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.*;
 import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
+import com.bloodliviykot.tools.widget.TreeListView;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,7 +25,7 @@ import java.util.Map;
 public class Categories
   extends Activity
 {
-  ListView categories;
+  TreeListView categories;
 
   private MySQLiteOpenHelper oh;
   private SimpleCursorAdapter list_adapter;
@@ -393,7 +394,7 @@ public class Categories
 
     oh = MySQLiteOpenHelper.getMySQLiteOpenHelper();
     cursor = new TreeCursor(oh.db.rawQuery(oh.getQuery(EQ.CATEGORIES_NO_PARENT), null));
-    categories = (ListView)findViewById(R.id.categories_list_view);
+    categories = (TreeListView)findViewById(R.id.categories_list_view);
     list_adapter = new CategoriesItemAdapter(R.layout.categories_item, cursor,
       new String[]{},
       new int[]{R.id.categories_item_name});
