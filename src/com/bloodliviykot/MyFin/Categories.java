@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.*;
 import com.bloodliviykot.MyFin.DB.EQ;
@@ -91,37 +92,38 @@ public class Categories
         }
         return count;
       }
-      Node getSubNode(int position) throws NodeException
+      Pair<Node, Cursor> getSubNode(int position) throws NodeException
       {
+        Pair<Node, Cursor> result = null;
         int count_expanded = getCountExpanded();
-        if(position-1 > count_expanded)
+        if(position > count_expanded-1)
           throw new NodeException();
-        Node node = null;
         for(Boolean status = cursor.moveToFirst(); status; status = cursor.moveToNext())
         {
-          node = sub_nodes.get(cursor.getLong(cursor.getColumnIndex("_id")));
+          result = new Pair<Node, Cursor>(sub_nodes.get(cursor.getLong(cursor.getColumnIndex("_id"))), cursor) ;
           if(position == 0)
             break;
-          count_expanded = node.getCountExpanded();
+          count_expanded = result.first.getCountExpanded();
           if(position <= count_expanded)
           {
-            node = node.getSubNode(position-1);
+            result = result.first.getSubNode(position-1);
             break;
           }
-          position--;
+          position = position - 1 - count_expanded;
         }
-        return node;
+
+        return result;
       }
     }
 
-    Node node;
+    Node head_node;
     boolean changeExpand(int position) //Возвращает true если состояние изменилось
     {
       boolean change_expand = false;
       Node subnode_node;
       try
       {
-        if( (subnode_node = node.getSubNode(position)) != null)
+        if( (subnode_node = head_node.getSubNode(position).first) != null)
           change_expand = subnode_node.change_expand();
       } catch(Node.NodeException e)
       {
@@ -134,241 +136,251 @@ public class Categories
     {
       if(cursor == null)
         throw new NullPointerException();
-      node = new Node(null, cursor);
+      head_node = new Node(null, cursor);
     }
 
+
+    int position;
+    Pair<Node, Cursor> current;
     @Override
     public int getCount()
     {
-      return node.getCountExpanded();
+      return head_node.getCountExpanded();
     }
 
     @Override
     public int getPosition()
     {
-      return node.cursor.getPosition();
+      return head_node.cursor.getPosition();
     }
 
     @Override
     public boolean move(int offset)
     {
-      return node.cursor.move(offset);
+      return head_node.cursor.move(offset);
     }
 
     @Override
     public boolean moveToPosition(int position)
     {
-      return node.cursor.moveToPosition(position);
+      try
+      {
+        current = head_node.getSubNode(this.position = position);
+        return true;
+      } catch(Node.NodeException e)
+      {
+        return false;
+      }
     }
 
     @Override
     public boolean moveToFirst()
     {
-      return node.cursor.moveToFirst();
+      return head_node.cursor.moveToFirst();
     }
 
     @Override
     public boolean moveToLast()
     {
-      return node.cursor.moveToLast();
+      return head_node.cursor.moveToLast();
     }
 
     @Override
     public boolean moveToNext()
     {
-      return node.cursor.moveToNext();
+      return head_node.cursor.moveToNext();
     }
 
     @Override
     public boolean moveToPrevious()
     {
-      return node.cursor.moveToPrevious();
+      return head_node.cursor.moveToPrevious();
     }
 
     @Override
     public boolean isFirst()
     {
-      return node.cursor.isFirst();
+      return head_node.cursor.isFirst();
     }
 
     @Override
     public boolean isLast()
     {
-      return node.cursor.isLast();
+      return head_node.cursor.isLast();
     }
 
     @Override
     public boolean isBeforeFirst()
     {
-      return node.cursor.isBeforeFirst();
+      return head_node.cursor.isBeforeFirst();
     }
 
     @Override
     public boolean isAfterLast()
     {
-      return node.cursor.isAfterLast();
+      return head_node.cursor.isAfterLast();
     }
 
     @Override
     public int getColumnIndex(String columnName)
     {
-      return node.cursor.getColumnIndex(columnName);
+      return current.second.getColumnIndex(columnName);
     }
 
     @Override
     public int getColumnIndexOrThrow(String columnName) throws IllegalArgumentException
     {
-      return node.cursor.getColumnIndexOrThrow(columnName);
+      return head_node.cursor.getColumnIndexOrThrow(columnName);
     }
 
     @Override
     public String getColumnName(int columnIndex)
     {
-      return node.cursor.getColumnName(columnIndex);
+      return head_node.cursor.getColumnName(columnIndex);
     }
 
     @Override
     public String[] getColumnNames()
     {
-      return node.cursor.getColumnNames();
+      return head_node.cursor.getColumnNames();
     }
 
     @Override
     public int getColumnCount()
     {
-      return node.cursor.getColumnCount();
+      return head_node.cursor.getColumnCount();
     }
 
     @Override
     public byte[] getBlob(int columnIndex)
     {
-      return node.cursor.getBlob(columnIndex);
+      return current.second.getBlob(columnIndex);
     }
 
     @Override
     public String getString(int columnIndex)
     {
-      return node.cursor.getString(columnIndex);
+      return current.second.getString(columnIndex);
     }
 
     @Override
     public void copyStringToBuffer(int columnIndex, CharArrayBuffer buffer)
     {
-      node.cursor.copyStringToBuffer(columnIndex, buffer);
+      current.second.copyStringToBuffer(columnIndex, buffer);
     }
 
     @Override
     public short getShort(int columnIndex)
     {
-      return node.cursor.getShort(columnIndex);
+      return current.second.getShort(columnIndex);
     }
 
     @Override
     public int getInt(int columnIndex)
     {
-      return node.cursor.getInt(columnIndex);
+      return current.second.getInt(columnIndex);
     }
 
     @Override
     public long getLong(int columnIndex)
     {
-      return node.cursor.getLong(columnIndex);
+      return current.second.getLong(columnIndex);
     }
 
     @Override
     public float getFloat(int columnIndex)
     {
-      return node.cursor.getFloat(columnIndex);
+      return current.second.getFloat(columnIndex);
     }
 
     @Override
     public double getDouble(int columnIndex)
     {
-      return node.cursor.getDouble(columnIndex);
+      return current.second.getDouble(columnIndex);
     }
 
     @Override
     public int getType(int columnIndex)
     {
-      return node.cursor.getType(columnIndex);
+      return current.second.getType(columnIndex);
     }
 
     @Override
     public boolean isNull(int columnIndex)
     {
-      return node.cursor.isNull(columnIndex);
+      return current.second.isNull(columnIndex);
     }
 
     @Override
     public void deactivate()
     {
-      node.cursor.deactivate();
+      head_node.cursor.deactivate();
     }
 
     @Override
     public boolean requery()
     {
-      return node.cursor.requery();
+      return head_node.cursor.requery();
     }
 
     @Override
     public void close()
     {
-      node.cursor.close();
+      head_node.cursor.close();
     }
 
     @Override
     public boolean isClosed()
     {
-      return node.cursor.isClosed();
+      return head_node.cursor.isClosed();
     }
 
     @Override
     public void registerContentObserver(ContentObserver observer)
     {
-      node.cursor.registerContentObserver(observer);
+      head_node.cursor.registerContentObserver(observer);
     }
 
     @Override
     public void unregisterContentObserver(ContentObserver observer)
     {
-      node.cursor.unregisterContentObserver(observer);
+      head_node.cursor.unregisterContentObserver(observer);
     }
 
     @Override
     public void registerDataSetObserver(DataSetObserver observer)
     {
-      node.cursor.registerDataSetObserver(observer);
+      head_node.cursor.registerDataSetObserver(observer);
     }
 
     @Override
     public void unregisterDataSetObserver(DataSetObserver observer)
     {
-      node.cursor.unregisterDataSetObserver(observer);
+      head_node.cursor.unregisterDataSetObserver(observer);
     }
 
     @Override
     public void setNotificationUri(ContentResolver cr, Uri uri)
     {
-      node.cursor.setNotificationUri(cr, uri);
+      head_node.cursor.setNotificationUri(cr, uri);
     }
 
     @Override
     public boolean getWantsAllOnMoveCalls()
     {
-      return node.cursor.getWantsAllOnMoveCalls();
+      return head_node.cursor.getWantsAllOnMoveCalls();
     }
 
     @Override
     public Bundle getExtras()
     {
-      return node.cursor.getExtras();
+      return head_node.cursor.getExtras();
     }
 
     @Override
     public Bundle respond(Bundle extras)
     {
-      return node.cursor.respond(extras);
+      return head_node.cursor.respond(extras);
     }
   }
 
@@ -414,6 +426,7 @@ public class Categories
       //Сопоставляем
       TextView tv_name    = (TextView)view.findViewById(R.id.categories_item_name);
       LinearLayout ll = (LinearLayout)view;
+      String nm = cursor.getString(cursor.getColumnIndex("name"));
       tv_name.setText(cursor.getString(cursor.getColumnIndex("name")));
 
     }

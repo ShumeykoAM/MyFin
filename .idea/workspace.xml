@@ -84,10 +84,6 @@
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="445e4891-3518-4b84-be65-084c2993ce99" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java" afterPath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/EQ.java" afterPath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/EQ.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/xml/distrib_db.xml" afterPath="$PROJECT_DIR$/res/xml/distrib_db.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/raw/sql_querys.sql" afterPath="$PROJECT_DIR$/res/raw/sql_querys.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/raw/v_001_tables.ddl" afterPath="$PROJECT_DIR$/res/raw/v_001_tables.ddl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MyFin.iws" />
@@ -115,14 +111,6 @@
         <option name="myItemId" />
         <option name="myItemType" value="com.intellij.database.view.DbRootNodeDescriptor" />
       </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="Android SQLite" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
     </PATH>
   </component>
   <component name="ErrorTreeViewConfiguration">
@@ -135,29 +123,88 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Categories.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Categories.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33226836">
-              <caret line="128" column="52" selection-start-line="128" selection-start-column="7" selection-end-line="128" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="141" column="0" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#975#987#0" expanded="true" />
-                <element signature="e#3786#3787#0" expanded="true" />
-                <element signature="e#3830#3831#0" expanded="true" />
-                <element signature="e#4097#4098#0" expanded="true" />
-                <element signature="e#4154#4155#0" expanded="true" />
-                <element signature="e#5012#5013#0" expanded="true" />
-                <element signature="e#5071#5072#0" expanded="true" />
-                <element signature="e#5767#5768#0" expanded="true" />
-                <element signature="e#5822#5823#0" expanded="true" />
-                <element signature="e#6848#6849#0" expanded="true" />
-                <element signature="e#6886#6887#0" expanded="true" />
-                <element signature="e#7023#7024#0" expanded="true" />
-                <element signature="e#7056#7057#0" expanded="true" />
-                <element signature="e#7827#7828#0" expanded="true" />
-                <element signature="e#7880#7881#0" expanded="true" />
+                <element signature="method#changeExpand#0;class#TreeCursor#0;class#Categories#0" expanded="false" />
+                <element signature="method#TreeCursor#0;class#TreeCursor#0;class#Categories#0" expanded="false" />
+                <element signature="e#4000#4001#0" expanded="true" />
+                <element signature="e#4049#4050#0" expanded="true" />
+                <element signature="e#4099#4100#0" expanded="true" />
+                <element signature="e#4150#4151#0" expanded="true" />
+                <element signature="e#4207#4208#0" expanded="true" />
+                <element signature="e#4257#4258#0" expanded="true" />
+                <element signature="e#4565#4566#0" expanded="true" />
+                <element signature="e#4616#4617#0" expanded="true" />
+                <element signature="e#4669#4670#0" expanded="true" />
+                <element signature="e#4719#4720#0" expanded="true" />
+                <element signature="e#4772#4773#0" expanded="true" />
+                <element signature="e#4822#4823#0" expanded="true" />
+                <element signature="e#4879#4880#0" expanded="true" />
+                <element signature="e#4933#4934#0" expanded="true" />
+                <element signature="e#4983#4984#0" expanded="true" />
+                <element signature="e#5030#5031#0" expanded="true" />
+                <element signature="e#5079#5080#0" expanded="true" />
+                <element signature="e#5125#5126#0" expanded="true" />
+                <element signature="e#5181#5182#0" expanded="true" />
+                <element signature="e#5234#5235#0" expanded="true" />
+                <element signature="e#5288#5289#0" expanded="true" />
+                <element signature="e#5339#5340#0" expanded="true" />
+                <element signature="e#5409#5410#0" expanded="true" />
+                <element signature="e#5471#5472#0" expanded="true" />
+                <element signature="e#5721#5722#0" expanded="true" />
+                <element signature="e#5785#5786#0" expanded="true" />
+                <element signature="e#5843#5844#0" expanded="true" />
+                <element signature="e#5897#5898#0" expanded="true" />
+                <element signature="e#5950#5951#0" expanded="true" />
+                <element signature="e#6004#6005#0" expanded="true" />
+                <element signature="e#6068#6069#0" expanded="true" />
+                <element signature="e#6124#6125#0" expanded="true" />
+                <element signature="e#6190#6191#0" expanded="true" />
+                <element signature="e#6248#6249#0" expanded="true" />
+                <element signature="e#6477#6478#0" expanded="true" />
+                <element signature="e#6534#6535#0" expanded="true" />
+                <element signature="e#6594#6595#0" expanded="true" />
+                <element signature="e#6649#6650#0" expanded="true" />
+                <element signature="e#6711#6712#0" expanded="true" />
+                <element signature="e#6767#6768#0" expanded="true" />
+                <element signature="e#6831#6832#0" expanded="true" />
+                <element signature="e#6888#6889#0" expanded="true" />
+                <element signature="e#6954#6955#0" expanded="true" />
+                <element signature="e#7012#7013#0" expanded="true" />
+                <element signature="e#7073#7074#0" expanded="true" />
+                <element signature="e#7129#7130#0" expanded="true" />
+                <element signature="e#7193#7194#0" expanded="true" />
+                <element signature="e#7248#7249#0" expanded="true" />
+                <element signature="e#7298#7299#0" expanded="true" />
+                <element signature="e#7341#7342#0" expanded="true" />
+                <element signature="e#7391#7392#0" expanded="true" />
+                <element signature="e#7438#7439#0" expanded="true" />
+                <element signature="e#7483#7484#0" expanded="true" />
+                <element signature="e#7521#7522#0" expanded="true" />
+                <element signature="e#7572#7573#0" expanded="true" />
+                <element signature="e#7620#7621#0" expanded="true" />
+                <element signature="e#8440#8441#0" expanded="true" />
+                <element signature="e#8502#8503#0" expanded="true" />
+                <element signature="e#8553#8554#0" expanded="true" />
+                <element signature="e#8602#8603#0" expanded="true" />
+                <element signature="e#8664#8665#0" expanded="true" />
+                <element signature="e#8717#8718#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="distrib_db.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/res/xml/distrib_db.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.38321996">
+              <caret line="253" column="4" selection-start-line="253" selection-start-column="4" selection-end-line="253" selection-end-column="4" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -228,12 +275,12 @@
         <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Planned.java" />
         <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/entities/Category.java" />
         <option value="$PROJECT_DIR$/res/layout/categories_item.xml" />
-        <option value="$PROJECT_DIR$/res/xml/distrib_db.xml" />
         <option value="$PROJECT_DIR$/res/raw/v_001_tables.ddl" />
         <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/EQ.java" />
         <option value="$PROJECT_DIR$/res/raw/sql_querys.sql" />
         <option value="$PROJECT_DIR$/res/layout/categories.xml" />
         <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java" />
+        <option value="$PROJECT_DIR$/res/xml/distrib_db.xml" />
       </list>
     </option>
   </component>
@@ -254,8 +301,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="784" />
+    <option name="width" value="1296" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -284,6 +331,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -417,7 +465,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -429,7 +476,7 @@
     <property name="ToolWindowVersion Control.ShowToolbar" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="127.0.0.1:5556" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="2" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_S_API_15" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager2.WIDTH" value="320" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager2.SHOW" value="true" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -649,38 +696,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="ScalaTestRunConfiguration" factoryName="ScalaTest">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <extension name="scalaCoverage" />
-      <module name="" />
-      <setting name="path" value="" />
-      <setting name="package" value="" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workingDirectory" value="" />
-      <setting name="searchForTest" value="Across module dependencies" />
-      <setting name="testName" value="" />
-      <setting name="testKind" value="Class" />
-      <setting name="showProgressMessages" value="true" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="Specs2RunConfiguration" factoryName="Specs2">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <extension name="scalaCoverage" />
-      <module name="" />
-      <setting name="path" value="" />
-      <setting name="package" value="" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workingDirectory" value="" />
-      <setting name="searchForTest" value="Across module dependencies" />
-      <setting name="testName" value="" />
-      <setting name="testKind" value="Class" />
-      <setting name="showProgressMessages" value="true" />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -730,22 +745,6 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <configuration default="true" type="uTestRunConfiguration" factoryName="utest">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <extension name="scalaCoverage" />
-      <module name="" />
-      <setting name="path" value="" />
-      <setting name="package" value="" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workingDirectory" value="" />
-      <setting name="searchForTest" value="Across module dependencies" />
-      <setting name="testName" value="" />
-      <setting name="testKind" value="Class" />
-      <setting name="showProgressMessages" value="true" />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="false" name="ЬнАшт" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="MyFin" />
       <option name="ACTIVITY_CLASS" value="com.bloodliviykot.MyFin.Main" />
@@ -777,27 +776,27 @@
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration" cleanupOnStartRun="true">
-    <configuration>C:\Users\Kot\AppData\Roaming\Subversion</configuration>
+    <configuration>C:\Users\Shumeiko.BRYANSK\AppData\Roaming\Subversion</configuration>
     <supportedVersion>125</supportedVersion>
   </component>
   <component name="SvnFileUrlMappingImpl">
     <option name="myMappingRoots">
       <list>
         <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="D:\Projects\OurBudget\trunk\client" />
-          <option name="myCopyRoot" value="D:\Projects\OurBudget\trunk\client" />
+          <option name="myVcsRoot" value="D:\ALEXANDR\projects\OurBudget\trunk\client" />
+          <option name="myCopyRoot" value="D:\ALEXANDR\projects\OurBudget\trunk\client" />
         </SvnCopyRootSimple>
         <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="D:\Projects\OurBudget\trunk\client\.idea" />
-          <option name="myCopyRoot" value="D:\Projects\OurBudget\trunk\client\.idea" />
+          <option name="myVcsRoot" value="D:\ALEXANDR\projects\OurBudget\trunk\client\.idea" />
+          <option name="myCopyRoot" value="D:\ALEXANDR\projects\OurBudget\trunk\client\.idea" />
         </SvnCopyRootSimple>
       </list>
     </option>
     <option name="myMoreRealMappingRoots">
       <list>
         <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="D:\Projects\OurBudget\trunk\client" />
-          <option name="myCopyRoot" value="D:\Projects\OurBudget\trunk\client" />
+          <option name="myVcsRoot" value="D:\ALEXANDR\projects\OurBudget\trunk\client" />
+          <option name="myCopyRoot" value="D:\ALEXANDR\projects\OurBudget\trunk\client" />
         </SvnCopyRootSimple>
       </list>
     </option>
@@ -845,14 +844,15 @@
       <workItem from="1477414743100" duration="2477000" />
       <workItem from="1477504388300" duration="9700000" />
       <workItem from="1477588543264" duration="4842000" />
+      <workItem from="1477639446100" duration="3501000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="375308000" />
+    <option name="totallyTimeSpent" value="378809000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <frame x="-8" y="-8" width="1296" height="1040" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -868,14 +868,14 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32815734" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13842663" sideWeight="0.59327215" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1407767" sideWeight="0.59327215" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12632374" sideWeight="0.5489297" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1262136" sideWeight="0.5489297" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18123667" sideWeight="0.5412844" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21588486" sideWeight="0.3768116" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21633889" sideWeight="0.6231884" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17071198" sideWeight="0.6231884" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -901,195 +901,195 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
-          <line>148</line>
+          <line>153</line>
           <properties />
-          <option name="timeStamp" value="426" />
+          <option name="timeStamp" value="514" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
-          <line>154</line>
+          <line>159</line>
           <properties />
-          <option name="timeStamp" value="427" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
-          <line>166</line>
-          <properties />
-          <option name="timeStamp" value="429" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
-          <line>172</line>
-          <properties />
-          <option name="timeStamp" value="430" />
+          <option name="timeStamp" value="515" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
           <line>178</line>
           <properties />
-          <option name="timeStamp" value="431" />
+          <option name="timeStamp" value="517" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
           <line>184</line>
           <properties />
-          <option name="timeStamp" value="432" />
+          <option name="timeStamp" value="518" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
           <line>190</line>
           <properties />
-          <option name="timeStamp" value="433" />
+          <option name="timeStamp" value="519" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
           <line>196</line>
           <properties />
-          <option name="timeStamp" value="434" />
+          <option name="timeStamp" value="520" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
           <line>202</line>
           <properties />
-          <option name="timeStamp" value="435" />
+          <option name="timeStamp" value="521" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
           <line>208</line>
           <properties />
-          <option name="timeStamp" value="436" />
+          <option name="timeStamp" value="522" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
-          <line>226</line>
+          <line>214</line>
           <properties />
-          <option name="timeStamp" value="439" />
+          <option name="timeStamp" value="523" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
+          <line>220</line>
+          <properties />
+          <option name="timeStamp" value="524" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
           <line>238</line>
           <properties />
-          <option name="timeStamp" value="441" />
+          <option name="timeStamp" value="527" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
           <line>244</line>
           <properties />
-          <option name="timeStamp" value="442" />
+          <option name="timeStamp" value="528" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
+          <line>250</line>
+          <properties />
+          <option name="timeStamp" value="529" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
           <line>256</line>
           <properties />
-          <option name="timeStamp" value="444" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
-          <line>262</line>
-          <properties />
-          <option name="timeStamp" value="445" />
+          <option name="timeStamp" value="530" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
           <line>268</line>
           <properties />
-          <option name="timeStamp" value="446" />
+          <option name="timeStamp" value="532" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
+          <line>274</line>
+          <properties />
+          <option name="timeStamp" value="533" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
           <line>280</line>
           <properties />
-          <option name="timeStamp" value="448" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
-          <line>286</line>
-          <properties />
-          <option name="timeStamp" value="449" />
+          <option name="timeStamp" value="535" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
           <line>292</line>
           <properties />
-          <option name="timeStamp" value="450" />
+          <option name="timeStamp" value="537" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
           <line>298</line>
           <properties />
-          <option name="timeStamp" value="451" />
+          <option name="timeStamp" value="538" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
           <line>304</line>
           <properties />
-          <option name="timeStamp" value="452" />
+          <option name="timeStamp" value="539" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
           <line>310</line>
           <properties />
-          <option name="timeStamp" value="453" />
+          <option name="timeStamp" value="540" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
           <line>316</line>
           <properties />
-          <option name="timeStamp" value="454" />
+          <option name="timeStamp" value="542" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
           <line>322</line>
           <properties />
-          <option name="timeStamp" value="455" />
+          <option name="timeStamp" value="543" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
+          <line>328</line>
+          <properties />
+          <option name="timeStamp" value="544" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
           <line>334</line>
           <properties />
-          <option name="timeStamp" value="457" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
-          <line>352</line>
-          <properties />
-          <option name="timeStamp" value="460" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
-          <line>358</line>
-          <properties />
-          <option name="timeStamp" value="461" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
-          <line>364</line>
-          <properties />
-          <option name="timeStamp" value="462" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
-          <line>370</line>
-          <properties />
-          <option name="timeStamp" value="463" />
+          <option name="timeStamp" value="546" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
           <line>346</line>
           <properties />
-          <option name="timeStamp" value="487" />
+          <option name="timeStamp" value="547" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
-          <line>394</line>
+          <line>358</line>
           <properties />
-          <option name="timeStamp" value="505" />
+          <option name="timeStamp" value="549" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
+          <line>364</line>
+          <properties />
+          <option name="timeStamp" value="550" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
+          <line>370</line>
+          <properties />
+          <option name="timeStamp" value="551" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
+          <line>376</line>
+          <properties />
+          <option name="timeStamp" value="552" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java</url>
+          <line>382</line>
+          <properties />
+          <option name="timeStamp" value="553" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="506" />
+      <option name="time" value="561" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="ЬнАшт">
@@ -1104,6 +1104,80 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#changeExpand#0;class#TreeCursor#0;class#Categories#0" expanded="false" />
+            <element signature="method#TreeCursor#0;class#TreeCursor#0;class#Categories#0" expanded="false" />
+            <element signature="e#4000#4001#0" expanded="true" />
+            <element signature="e#4049#4050#0" expanded="true" />
+            <element signature="e#4099#4100#0" expanded="true" />
+            <element signature="e#4150#4151#0" expanded="true" />
+            <element signature="e#4207#4208#0" expanded="true" />
+            <element signature="e#4257#4258#0" expanded="true" />
+            <element signature="e#4565#4566#0" expanded="true" />
+            <element signature="e#4616#4617#0" expanded="true" />
+            <element signature="e#4669#4670#0" expanded="true" />
+            <element signature="e#4719#4720#0" expanded="true" />
+            <element signature="e#4772#4773#0" expanded="true" />
+            <element signature="e#4822#4823#0" expanded="true" />
+            <element signature="e#4879#4880#0" expanded="true" />
+            <element signature="e#4933#4934#0" expanded="true" />
+            <element signature="e#4983#4984#0" expanded="true" />
+            <element signature="e#5030#5031#0" expanded="true" />
+            <element signature="e#5079#5080#0" expanded="true" />
+            <element signature="e#5125#5126#0" expanded="true" />
+            <element signature="e#5181#5182#0" expanded="true" />
+            <element signature="e#5234#5235#0" expanded="true" />
+            <element signature="e#5288#5289#0" expanded="true" />
+            <element signature="e#5339#5340#0" expanded="true" />
+            <element signature="e#5409#5410#0" expanded="true" />
+            <element signature="e#5471#5472#0" expanded="true" />
+            <element signature="e#5721#5722#0" expanded="true" />
+            <element signature="e#5785#5786#0" expanded="true" />
+            <element signature="e#5843#5844#0" expanded="true" />
+            <element signature="e#5897#5898#0" expanded="true" />
+            <element signature="e#5950#5951#0" expanded="true" />
+            <element signature="e#6004#6005#0" expanded="true" />
+            <element signature="e#6068#6069#0" expanded="true" />
+            <element signature="e#6124#6125#0" expanded="true" />
+            <element signature="e#6190#6191#0" expanded="true" />
+            <element signature="e#6248#6249#0" expanded="true" />
+            <element signature="e#6477#6478#0" expanded="true" />
+            <element signature="e#6534#6535#0" expanded="true" />
+            <element signature="e#6594#6595#0" expanded="true" />
+            <element signature="e#6649#6650#0" expanded="true" />
+            <element signature="e#6711#6712#0" expanded="true" />
+            <element signature="e#6767#6768#0" expanded="true" />
+            <element signature="e#6831#6832#0" expanded="true" />
+            <element signature="e#6888#6889#0" expanded="true" />
+            <element signature="e#6954#6955#0" expanded="true" />
+            <element signature="e#7012#7013#0" expanded="true" />
+            <element signature="e#7073#7074#0" expanded="true" />
+            <element signature="e#7129#7130#0" expanded="true" />
+            <element signature="e#7193#7194#0" expanded="true" />
+            <element signature="e#7248#7249#0" expanded="true" />
+            <element signature="e#7298#7299#0" expanded="true" />
+            <element signature="e#7341#7342#0" expanded="true" />
+            <element signature="e#7391#7392#0" expanded="true" />
+            <element signature="e#7438#7439#0" expanded="true" />
+            <element signature="e#7483#7484#0" expanded="true" />
+            <element signature="e#7521#7522#0" expanded="true" />
+            <element signature="e#7572#7573#0" expanded="true" />
+            <element signature="e#7620#7621#0" expanded="true" />
+            <element signature="e#8440#8441#0" expanded="true" />
+            <element signature="e#8502#8503#0" expanded="true" />
+            <element signature="e#8553#8554#0" expanded="true" />
+            <element signature="e#8602#8603#0" expanded="true" />
+            <element signature="e#8664#8665#0" expanded="true" />
+            <element signature="e#8717#8718#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/project.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1330,67 +1404,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/android/sdk/sources/android-15/android/view/ViewGroup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5290" column="0" selection-start-line="5290" selection-start-column="0" selection-end-line="5290" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/android/sdk/sources/android-15/android/view/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2038" column="36" selection-start-line="2038" selection-start-column="36" selection-end-line="2038" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/android/sdk/sources/android-15/android/database/ContentObserver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.9329073">
-          <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/android/sdk/sources/android-15/android/app/ActivityThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3326226">
-          <caret line="1953" column="0" selection-start-line="1953" selection-start-column="0" selection-end-line="1953" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/xml/distrib_db.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22068231">
-          <caret line="265" column="33" selection-start-line="265" selection-start-column="33" selection-end-line="265" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/raw/v_001_tables.ddl">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.47441363">
           <caret line="40" column="7" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/android/sdk/sources/android-15/android/widget/SimpleCursorTreeAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="257" column="97" selection-start-line="256" selection-start-column="4" selection-end-line="257" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/android/sdk/sources/android-15/android/database/sqlite/SQLiteCursor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="182" column="0" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/android/sdk/sources/android-15/android/database/AbstractWindowedCursor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1420,7 +1437,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="72" column="33" selection-start-line="72" selection-start-column="33" selection-end-line="72" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1432,89 +1448,118 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/android/sdk/sources/android-15/android/database/sqlite/SQLiteDatabase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1537" column="0" selection-start-line="1537" selection-start-column="0" selection-end-line="1537" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/android/sdk/sources/android-15/android/database/Cursor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="94" column="12" selection-start-line="94" selection-start-column="12" selection-end-line="94" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/EQ.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/android/sdk/sources/android-15/java/lang/Throwable.java">
+    <entry file="file://C:/Android/android-sdk/sources/android-15/android/database/sqlite/SQLiteCursor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="14" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/android/sdk/sources/android-15/java/util/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33226836">
-          <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
+          <caret line="204" column="0" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/android/sdk/sources/android-15/com/android/internal/os/ZygoteInit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5111821">
-          <caret line="786" column="0" selection-start-line="786" selection-start-column="0" selection-end-line="786" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/android/sdk/sources/android-15/android/widget/SimpleCursorAdapter.java">
+    <entry file="file://C:/Android/android-sdk/sources/android-15/android/widget/TextView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-          <folding />
+          <caret line="3137" column="0" selection-start-line="3137" selection-start-column="0" selection-end-line="3137" selection-end-column="0" />
+          <folding>
+            <element signature="e#110148#110149#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/android/sdk/sources/android-15/android/widget/CursorAdapter.java">
+    <entry file="file://C:/Android/android-sdk/sources/android-15/android/widget/CursorAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="195" column="0" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
+          <caret line="244" column="0" selection-start-line="244" selection-start-column="0" selection-end-line="244" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33226836">
-          <caret line="128" column="52" selection-start-line="128" selection-start-column="7" selection-end-line="128" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="141" column="0" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#975#987#0" expanded="true" />
-            <element signature="e#3786#3787#0" expanded="true" />
-            <element signature="e#3830#3831#0" expanded="true" />
-            <element signature="e#4097#4098#0" expanded="true" />
-            <element signature="e#4154#4155#0" expanded="true" />
-            <element signature="e#5012#5013#0" expanded="true" />
-            <element signature="e#5071#5072#0" expanded="true" />
-            <element signature="e#5767#5768#0" expanded="true" />
-            <element signature="e#5822#5823#0" expanded="true" />
-            <element signature="e#6848#6849#0" expanded="true" />
-            <element signature="e#6886#6887#0" expanded="true" />
-            <element signature="e#7023#7024#0" expanded="true" />
-            <element signature="e#7056#7057#0" expanded="true" />
-            <element signature="e#7827#7828#0" expanded="true" />
-            <element signature="e#7880#7881#0" expanded="true" />
+            <element signature="method#changeExpand#0;class#TreeCursor#0;class#Categories#0" expanded="false" />
+            <element signature="method#TreeCursor#0;class#TreeCursor#0;class#Categories#0" expanded="false" />
+            <element signature="e#4000#4001#0" expanded="true" />
+            <element signature="e#4049#4050#0" expanded="true" />
+            <element signature="e#4099#4100#0" expanded="true" />
+            <element signature="e#4150#4151#0" expanded="true" />
+            <element signature="e#4207#4208#0" expanded="true" />
+            <element signature="e#4257#4258#0" expanded="true" />
+            <element signature="e#4565#4566#0" expanded="true" />
+            <element signature="e#4616#4617#0" expanded="true" />
+            <element signature="e#4669#4670#0" expanded="true" />
+            <element signature="e#4719#4720#0" expanded="true" />
+            <element signature="e#4772#4773#0" expanded="true" />
+            <element signature="e#4822#4823#0" expanded="true" />
+            <element signature="e#4879#4880#0" expanded="true" />
+            <element signature="e#4933#4934#0" expanded="true" />
+            <element signature="e#4983#4984#0" expanded="true" />
+            <element signature="e#5030#5031#0" expanded="true" />
+            <element signature="e#5079#5080#0" expanded="true" />
+            <element signature="e#5125#5126#0" expanded="true" />
+            <element signature="e#5181#5182#0" expanded="true" />
+            <element signature="e#5234#5235#0" expanded="true" />
+            <element signature="e#5288#5289#0" expanded="true" />
+            <element signature="e#5339#5340#0" expanded="true" />
+            <element signature="e#5409#5410#0" expanded="true" />
+            <element signature="e#5471#5472#0" expanded="true" />
+            <element signature="e#5721#5722#0" expanded="true" />
+            <element signature="e#5785#5786#0" expanded="true" />
+            <element signature="e#5843#5844#0" expanded="true" />
+            <element signature="e#5897#5898#0" expanded="true" />
+            <element signature="e#5950#5951#0" expanded="true" />
+            <element signature="e#6004#6005#0" expanded="true" />
+            <element signature="e#6068#6069#0" expanded="true" />
+            <element signature="e#6124#6125#0" expanded="true" />
+            <element signature="e#6190#6191#0" expanded="true" />
+            <element signature="e#6248#6249#0" expanded="true" />
+            <element signature="e#6477#6478#0" expanded="true" />
+            <element signature="e#6534#6535#0" expanded="true" />
+            <element signature="e#6594#6595#0" expanded="true" />
+            <element signature="e#6649#6650#0" expanded="true" />
+            <element signature="e#6711#6712#0" expanded="true" />
+            <element signature="e#6767#6768#0" expanded="true" />
+            <element signature="e#6831#6832#0" expanded="true" />
+            <element signature="e#6888#6889#0" expanded="true" />
+            <element signature="e#6954#6955#0" expanded="true" />
+            <element signature="e#7012#7013#0" expanded="true" />
+            <element signature="e#7073#7074#0" expanded="true" />
+            <element signature="e#7129#7130#0" expanded="true" />
+            <element signature="e#7193#7194#0" expanded="true" />
+            <element signature="e#7248#7249#0" expanded="true" />
+            <element signature="e#7298#7299#0" expanded="true" />
+            <element signature="e#7341#7342#0" expanded="true" />
+            <element signature="e#7391#7392#0" expanded="true" />
+            <element signature="e#7438#7439#0" expanded="true" />
+            <element signature="e#7483#7484#0" expanded="true" />
+            <element signature="e#7521#7522#0" expanded="true" />
+            <element signature="e#7572#7573#0" expanded="true" />
+            <element signature="e#7620#7621#0" expanded="true" />
+            <element signature="e#8440#8441#0" expanded="true" />
+            <element signature="e#8502#8503#0" expanded="true" />
+            <element signature="e#8553#8554#0" expanded="true" />
+            <element signature="e#8602#8603#0" expanded="true" />
+            <element signature="e#8664#8665#0" expanded="true" />
+            <element signature="e#8717#8718#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/xml/distrib_db.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38321996">
+          <caret line="253" column="4" selection-start-line="253" selection-start-column="4" selection-end-line="253" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
