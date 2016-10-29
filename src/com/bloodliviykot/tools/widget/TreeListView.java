@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Pair;
+import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -18,7 +19,7 @@ import android.widget.SimpleCursorAdapter;
 import java.util.HashMap;
 import java.util.Map;
 
-
+//Многоуровневое дерево
 public class TreeListView
   extends ListView
 {
@@ -38,17 +39,11 @@ public class TreeListView
   @Override
   public void setAdapter(ListAdapter adapter)
   {
-    throw new UnsupportedOperationException();
-  }
-  public void setAdapter(TreeListAdapter adapter)
-  {
+    TreeListAdapter tree_adapter = (TreeListAdapter)adapter; //Должно приводиться
     super.setAdapter(adapter);
   }
 
-
-
-
-
+  //Нужно реализовать адаптер для многоуровневого дерева
   public static abstract class TreeListAdapter
     extends SimpleCursorAdapter
   {
@@ -56,61 +51,84 @@ public class TreeListView
     {
       super(context, layout, c, from, to);
     }
-
+    @Override
+    public void bindView(View view, Context context, Cursor cursor)
+    {
+      bindView(view, context, (TreeCursor)cursor);
+    }
+    public abstract void bindView(View view, Context context, TreeCursor cursor);
   }
 
+  //Курсор по БД для многоуровневого дерева
   public static class TreeCursor
     implements Cursor
   {
-    class Node
+    //Внутренний вспомогательный класс
+    private class Node
     {
       public class NodeException
         extends Throwable
       {     }
       private Long _id;
       private Cursor cursor;
+      private int deep;
+      private boolean is_last_inGroup, is_expandable, is_expanded;
       private Map<Long, Node> sub_nodes = new HashMap<Long, Node>();
-      public Node(Long _id, Cursor cursor)
+      public Node(Long _id, Cursor cursor, int deep, boolean is_last_inGroup, boolean is_expandable)
       {
         this._id = _id;
         this.cursor = cursor;
+        this.deep = deep;
+        this.is_last_inGroup = is_last_inGroup;
+        this.is_expandable = is_expandable;
+        this.is_expanded = false;
         if(_id == null)
-          for(Boolean status = cursor.moveToFirst(); status; status = cursor.moveToNext())
-          {
-            long id = cursor.getLong(cursor.getColumnIndex("_id"));
-            sub_nodes.put(id, new Node(id, null));
-          }
+          fillSubNodes();
       }
-      boolean change_expand() //Возвращает true если состояние изменилось
+      public boolean change_expand() //Возвращает true если состояние изменилось
       {
         if(_id == null)
           return false;
         if(cursor == null)
         {
-          cursor = db.rawQuery(sql_query_child, new String[]{_id.toString()});
-          if(cursor.getCount() != 0)
+          if(is_expandable)
           {
-            for(Boolean status = cursor.moveToFirst(); status; status = cursor.moveToNext())
+            cursor = db.rawQuery(sql_query_child, new String[]{_id.toString()});
+            if(cursor.getCount() != 0)
             {
-              long _id = cursor.getLong(cursor.getColumnIndex("_id"));
-              sub_nodes.put(_id, new Node(_id, null));
+              fillSubNodes();
+              is_expanded = true;
+              return true;
+            } else
+            {
+              cursor = null;
+              return false;
             }
-            return true;
           }
           else
-          {
-            sub_nodes.clear();
-            cursor = null;
             return false;
-          }
         }
         else
         {
           cursor = null;
+          is_expanded = false;
           return true;
         }
       }
-      int getCountExpanded()
+      private void fillSubNodes()
+      {
+        sub_nodes.clear();
+        Node last_node_in_group = null;
+        for(Boolean status = cursor.moveToFirst(); status; status = cursor.moveToNext())
+        {
+          Long id = cursor.getLong(cursor.getColumnIndex("_id"));
+          sub_nodes.put(id, last_node_in_group = new Node(id, null, deep + 1, false,
+            (db.rawQuery(sql_query_exist_child, new String[]{id.toString()}).getCount() != 0)));
+        }
+        if(last_node_in_group != null)
+          last_node_in_group.is_last_inGroup = true;
+      }
+      public int getCountExpanded()
       {
         int count = 0;
         if(cursor != null)
@@ -121,7 +139,7 @@ public class TreeListView
         }
         return count;
       }
-      Pair<Node, Cursor> getSubNode(int position) throws NodeException
+      public Pair<Node, Cursor> getSubNode(int position) throws NodeException
       {
         Pair<Node, Cursor> result = null;
         int count_expanded = getCountExpanded();
@@ -143,10 +161,27 @@ public class TreeListView
 
         return result;
       }
+      public int getDeep()
+      {
+        return deep;
+      }
+      public boolean isLastInGroup()
+      {
+        return is_last_inGroup;
+      }
+      public boolean isExpandable()
+      {
+        return is_expandable;
+      }
+      public boolean isExpanded()
+      {
+        return is_expanded;
+      }
     }
 
     private SQLiteDatabase db;
     private String sql_query_head;
+    private String head_args[];
     private String sql_query_child;
     private String sql_query_exist_child;
 
@@ -154,14 +189,21 @@ public class TreeListView
     private int position;
     private Pair<Node, Cursor> current;
 
-    public TreeCursor(SQLiteDatabase db, String sql_query_head, String sql_query_child, String sql_query_exist_child)
+    //Конструктор курсора
+    public TreeCursor(SQLiteDatabase db,           //БД
+                      String sql_query_head,       //строка запроса для выборки головных элементов дерева, должна содержать поле _id
+                      String head_args[],          //  параметры, если надо, для запроса sql_query_head
+                      String sql_query_child,      //строка запроса для выборки под элементов, должна содержать поля _id и _pid, и условие _pid=?
+                      String sql_query_exist_child)//строка очень быстрого запроса, который возвращает хотя бы одну строку с под элементом, должна содержать условие _pid=?
     {
+      if(db == null || sql_query_head == null || sql_query_child == null || sql_query_exist_child == null)
+        throw new NullPointerException();
       this.db                    = db                   ;
       this.sql_query_head        = sql_query_head       ;
+      this.head_args             = head_args            ;
       this.sql_query_child       = sql_query_child      ;
       this.sql_query_exist_child = sql_query_exist_child;
-
-      head_node = new Node(null, db.rawQuery(sql_query_head, null));
+      head_node = new Node(null, db.rawQuery(sql_query_head, head_args), -1, true, true);
     }
     public boolean changeExpand(int position) //Возвращает true если состояние изменилось
     {
@@ -176,6 +218,22 @@ public class TreeListView
         e.printStackTrace();
       }
       return change_expand;
+    }
+    public int getDeep()
+    {
+      return current.first.getDeep();
+    }
+    public boolean isLastInGroup()
+    {
+      return current.first.isLastInGroup();
+    }
+    public boolean isExpandable()
+    {
+      return current.first.isExpandable();
+    }
+    public boolean isExpanded()
+    {
+      return current.first.isExpanded();
     }
 
     @Override
