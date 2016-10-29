@@ -4,10 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.LinearLayout;
-import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
+import android.widget.*;
 import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
 import com.bloodliviykot.tools.widget.TreeListView;
@@ -40,15 +37,6 @@ public class Categories
       new int[]{R.id.categories_item_name});
     list_adapter.changeCursor(cursor);
     categories.setAdapter(list_adapter);
-    categories.setOnItemClickListener(new AdapterView.OnItemClickListener()
-    {
-      @Override
-      public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-      {
-        if(cursor.changeExpand(position))
-          list_adapter.notifyDataSetChanged();
-      }
-    });
   }
 
   //Переопределим SimpleCursorAdapter что бы форматировать данные из базы нужным образом
@@ -61,29 +49,49 @@ public class Categories
       super(Common.application_context, layout, cursor, from, to);
     }
 
+    private abstract class OnClickListenerExpand
+      implements View.OnClickListener
+    {
+      int position;
+      public OnClickListenerExpand(int position)
+      {
+        this.position = position;
+      }
+    }
     @Override
     public void bindView(View view, Context context, TreeListView.TreeCursor cursor)
     {
       //Сопоставляем
       TextView tv_name    = (TextView)view.findViewById(R.id.categories_item_name);
+      ImageView iv_image  = (ImageView)view.findViewById(R.id.categories_item_image_expand);
+      iv_image.setOnClickListener(new OnClickListenerExpand(cursor.getPosition())
+      {
+        @Override
+        public void onClick(View v)
+        {
+          if(cursor.changeExpand(position))
+            list_adapter.notifyDataSetChanged();
+        }
+      });
       LinearLayout ll = (LinearLayout)view;
-      String tabs = "";
-      int deep;
-      for(int dp = cursor.getDeep(); dp!=0; dp--)
-        tabs += "  ";
+      int padding = cursor.getDeep() * 42;
+      iv_image.setPadding(padding, 0, 0, 0);
       if(cursor.isExpandable())
       {
         if(cursor.isExpanded())
-          tabs = tabs + "- ";
+        {
+          iv_image.setVisibility(view.VISIBLE);
+          iv_image.setImageResource(R.drawable.expanded_on);
+        }
         else
-          tabs = tabs + "+ ";
+        {
+          iv_image.setVisibility(view.VISIBLE);
+          iv_image.setImageResource(R.drawable.expanded_off);
+        }
       }
       else
-        tabs = tabs + "  ";
-      tv_name.setText(tabs + cursor.getString(cursor.getColumnIndex("name")));
-
-
-
+        iv_image.setVisibility(view.INVISIBLE);
+      tv_name.setText(cursor.getString(cursor.getColumnIndex("name")));
     }
 
   }

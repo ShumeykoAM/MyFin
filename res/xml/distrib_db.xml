@@ -263,34 +263,6 @@
         <Category trend="1" name="Зарплата" name_lower_case="зарплата" _id_parent="ИД_родителя"></Category>
         <Category trend="1" name="Аванс" name_lower_case="аванс" _id_parent="ИД_родителя"></Category>
     </Category>
-    <Category trend="0" name="я1 " name_lower_case="я1 "></Category>
-    <Category trend="0" name="я2 " name_lower_case="я2 "></Category>
-    <Category trend="0" name="я3 " name_lower_case="я3 "></Category>
-    <Category trend="0" name="я4 " name_lower_case="я4 "></Category>
-    <Category trend="0" name="я5 " name_lower_case="я5 "></Category>
-    <Category trend="0" name="я6 " name_lower_case="я6 "></Category>
-    <Category trend="0" name="я7 " name_lower_case="я7 "></Category>
-    <Category trend="0" name="я8 " name_lower_case="я8 "></Category>
-    <Category trend="0" name="я9 " name_lower_case="я9 "></Category>
-    <Category trend="0" name="я10" name_lower_case="я10"></Category>
-    <Category trend="0" name="я11" name_lower_case="я11"></Category>
-    <Category trend="0" name="я12" name_lower_case="я12"></Category>
-    <Category trend="0" name="я13" name_lower_case="я13"></Category>
-    <Category trend="0" name="я14" name_lower_case="я14"></Category>
-    <Category trend="0" name="я15" name_lower_case="я15"></Category>
-    <Category trend="0" name="я16" name_lower_case="я16"></Category>
-    <Category trend="0" name="я17" name_lower_case="я17"></Category>
-    <Category trend="0" name="я18" name_lower_case="я18"></Category>
-    <Category trend="0" name="я19" name_lower_case="я19"></Category>
-    <Category trend="0" name="я20" name_lower_case="я20"></Category>
-    <Category trend="0" name="я21" name_lower_case="я21"></Category>
-    <Category trend="0" name="я22" name_lower_case="я22"></Category>
-    <Category trend="0" name="я23" name_lower_case="я23"></Category>
-    <Category trend="0" name="я24" name_lower_case="я24"></Category>
-    <Category trend="0" name="я25" name_lower_case="я25"></Category>
-    <Category trend="0" name="я26" name_lower_case="я26"></Category>
-    <Category trend="0" name="я27" name_lower_case="я27"></Category>
-
 
     <Transact _id_account="1" date_time="1476523965" sum = "23460" trend="0"></Transact>
     <Transact _id_account="1" date_time="1476621165" sum = "23460" trend="1"></Transact>

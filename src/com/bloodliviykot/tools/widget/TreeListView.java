@@ -244,7 +244,7 @@ public class TreeListView
     @Override
     public int getPosition()
     {
-      return head_node.cursor.getPosition();
+      return position;
     }
     @Override
     public boolean move(int offset)
