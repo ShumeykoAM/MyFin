@@ -21,6 +21,7 @@ public enum EQ
   SUB_CATEGORIES,           //Категории определенного родителя
   CATEGORIES_NO_PARENT,     //Головные категории
   EXIST_SUB_CATEGORY,       //Возвращает одну запись если есть под категории или ни одной если нету
+  PLANNED,                  //Запланированные документы
 
   EQ_COUNT;
   public final int value;

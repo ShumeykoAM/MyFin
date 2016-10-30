@@ -1,20 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content" android:gravity="center_vertical">
+              android:layout_height="wrap_content"
+              android:gravity="center_vertical">
 
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
-            android:id="@+id/textView"/>
-    <NumberPicker
+            android:text="Хлеб"
+            android:id="@+id/planned_item_name"
+            android:layout_centerVertical="true" android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/planned_item_count"/>
+    <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/numberPicker1"/>
+            android:inputType="numberDecimal"
+            android:id="@+id/planned_item_count" android:text="4"
+            android:layout_alignParentTop="false"
+            android:layout_centerVertical="true" android:minWidth="60dp" android:gravity="center|right"
+            android:layout_toLeftOf="@+id/planned_item_unit"/>
     <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/checkBox"/>
-</LinearLayout>
+            android:id="@+id/planned_item_choose"
+            android:layout_alignWithParentIfMissing="false"
+            android:layout_centerVertical="true" android:layout_alignParentRight="true"
+            android:paddingTop="20dp" android:paddingBottom="20dp"
+            />
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="шт."
+            android:id="@+id/planned_item_unit"
+            android:layout_toLeftOf="@+id/planned_item_choose" android:layout_centerVertical="true"
+            android:paddingTop="8dp" android:paddingRight="4dp"/>
+</RelativeLayout>

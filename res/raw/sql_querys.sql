@@ -84,3 +84,8 @@ SELECT Category._id
   FROM Category
   WHERE Category._id_parent=?
   LIMIT 1;
+
+--PLANNED
+SELECT Document._id, Category.name, Document.count, Document.id_unit
+  FROM Category, Document
+  WHERE Category._id=Document._id_category AND Document._id_transact IS NULL;
