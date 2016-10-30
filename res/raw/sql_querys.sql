@@ -24,6 +24,12 @@ SELECT Category._id, Category._id_parent, Category.trend, Category.name, Categor
   FROM Category
   WHERE Category._id=?;
 
+--DOCUMENT
+SELECT Document._id, Document._id_transact, Document._id_category, Document._id_event, Document.sum,
+  Document.count, Document.id_unit
+  FROM Document
+  WHERE Document._id=?;
+
 -- Другие запросы
 -- ACCOUNTS
 SELECT Account._id, Account.id_icon, Account.name, Account.balance

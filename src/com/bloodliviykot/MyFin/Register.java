@@ -9,7 +9,7 @@ import android.widget.*;
 import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
 import com.bloodliviykot.MyFin.DB.entities.Account;
-import com.bloodliviykot.MyFin.DB.entities.Transaction;
+import com.bloodliviykot.MyFin.DB.entities.Transact;
 import com.bloodliviykot.tools.Common.DateTime;
 import com.bloodliviykot.tools.Common.Money;
 
@@ -52,7 +52,7 @@ public class Register
       _id       = cursor.getLong(cursor.getColumnIndex("_id"));
       date_time = new DateTime(cursor.getLong(cursor.getColumnIndex("date_time")));
       sum       = new Money(cursor.getLong(cursor.getColumnIndex("sum")));
-      trend     = Transaction.TREND.getTREND(cursor.getLong(cursor.getColumnIndex("trend")));
+      trend     = Transact.TREND.getTREND(cursor.getLong(cursor.getColumnIndex("trend")));
       account_icon = Account.E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(cursor.getLong(cursor.getColumnIndex("account_icon")));
       account_name = cursor.getString(cursor.getColumnIndex("account_name"));
       symbol    = cursor.getString(cursor.getColumnIndex("symbol"));
@@ -72,7 +72,7 @@ public class Register
     public long _id;
     public DateTime date_time;
     public Money sum;
-    public Transaction.TREND trend;
+    public Transact.TREND trend;
     public Account.E_IC_TYPE_RESOURCE account_icon;
     public String account_name;
     public String symbol;
@@ -103,13 +103,13 @@ public class Register
       View item = view.findViewById(R.id.register_item);
       View remittance = view.findViewById(R.id.register_remittance);
       TransactionPayed tp = new TransactionPayed(cursor);
-      String plus_minus = tp.trend == Transaction.TREND.CREDIT || tp.trend == Transaction.TREND.CONVERSION ? "-" : "+";
+      String plus_minus = tp.trend == Transact.TREND.CREDIT || tp.trend == Transact.TREND.CONVERSION ? "-" : "+";
       ImageView icon_from;
       TextView name_from ;
       TextView sum_from  ;
       TextView date      ;
       TextView time      ;
-      if(tp.trend == Transaction.TREND.CONVERSION)
+      if(tp.trend == Transact.TREND.CONVERSION)
       {
         item.setVisibility(View.GONE);
         remittance.setVisibility(View.VISIBLE);
@@ -136,7 +136,7 @@ public class Register
         time      = (TextView)view.findViewById(R.id.register_item_time);
         ImageView trend_icon = (ImageView)view.findViewById(R.id.register_item_trend);
         TextView content = (TextView)view.findViewById(R.id.register_item_contents);
-        int R_drawable_trend_icon = tp.trend == Transaction.TREND.CREDIT ? R.drawable.ic_credit : R.drawable.ic_debit;
+        int R_drawable_trend_icon = tp.trend == Transact.TREND.CREDIT ? R.drawable.ic_credit : R.drawable.ic_debit;
         trend_icon.setImageResource(R_drawable_trend_icon);
         content.setText("Контент надо доделать");
       }

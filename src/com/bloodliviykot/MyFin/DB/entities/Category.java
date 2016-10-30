@@ -23,11 +23,11 @@ public class Category
   {
     this._id_parent = parent.getId();
   }
-  public Transaction.TREND getTrend()
+  public Transact.TREND getTrend()
   {
     return trend;
   }
-  public void setTrend(Transaction.TREND trend) throws EntityException
+  public void setTrend(Transact.TREND trend) throws EntityException
   {
     if(trend == null)
       throw new EntityException();
@@ -45,7 +45,7 @@ public class Category
     this.name_lower_case = name.toLowerCase();
   }
 
-  public Category(Category parent, Transaction.TREND trend, String name) throws EntityException
+  public Category(Category parent, Transact.TREND trend, String name) throws EntityException
   {
     if(trend == null || name == null)
       throw new EntityException();
@@ -98,7 +98,7 @@ public class Category
   {
     if(!cursor.isNull(cursor.getColumnIndex("_id_parent")))
       this._id_parent = cursor.getLong(cursor.getColumnIndex("_id_parent"));
-    this.trend = Transaction.TREND.getTREND(cursor.getLong(cursor.getColumnIndex("trend")));
+    this.trend = Transact.TREND.getTREND(cursor.getLong(cursor.getColumnIndex("trend")));
     this.name  = cursor.getString(cursor.getColumnIndex("name"));
     this.name_lower_case = cursor.getString(cursor.getColumnIndex("name_lower_case"));
   }
@@ -115,7 +115,7 @@ public class Category
   }
 
   private Long              _id_parent      ;  //Хранить ссылку на сам объект не будем так как это загрузит все дерево категорий
-  private Transaction.TREND trend           ;
+  private Transact.TREND trend           ;
   private String            name            ;
   private String            name_lower_case ;
 
@@ -123,7 +123,7 @@ public class Category
   private static class Original
   {
     Long              _id_parent      ;
-    Transaction.TREND trend           ;
+    Transact.TREND trend           ;
     String            name            ;
     String            name_lower_case ;
   }

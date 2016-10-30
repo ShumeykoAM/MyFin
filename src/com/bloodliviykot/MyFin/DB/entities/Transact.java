@@ -12,7 +12,7 @@ import java.io.Serializable;
 /**
  * Created by Kot on 05.10.2016.
  */
-public class Transaction
+public class Transact
   extends Entity
   implements Serializable
 {
@@ -108,8 +108,7 @@ public class Transaction
     this.correlative_sum = correlativeSum;
   }
 
-  public Transaction(Account account, DateTime date_time, TYPE_TRANSACTION type_transaction, Money sum,
-                     TREND trend, Account correlative_account, Money correlative_sum) throws EntityException
+  public Transact(Account account, DateTime date_time, TYPE_TRANSACTION type_transaction, Money sum, TREND trend, Account correlative_account, Money correlative_sum) throws EntityException
   {
     if(account == null || account.getId() == 0 || date_time == null || type_transaction == null || sum == null ||
       trend == null || correlative_account != null && correlative_account.getId() == 0 || correlative_sum == null)
@@ -121,13 +120,13 @@ public class Transaction
     this.correlative_account  = correlative_account;
     this.correlative_sum      = correlative_sum    ;
   }
-  private Transaction(long _id) throws EntityException
+  private Transact(long _id) throws EntityException
   {
     super(_id, EQ.TRANSACTION);
   }
-  public static Transaction getTransactionFromId(long _id) throws EntityException
+  public static Transact getTransactFromId(long _id) throws EntityException
   {
-    return new Transaction(_id);
+    return new Transact(_id);
   }
 
   @Override

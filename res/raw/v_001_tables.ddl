@@ -83,7 +83,9 @@ CREATE TABLE Document
   _id_transact         INTEGER,
   _id_category         INTEGER NOT NULL,
   _id_event            INTEGER,
-  sum                  INTEGER NOT NULL,
+  sum                  INTEGER,
+  count                REAL NOT NULL,
+  id_unit              INTEGER NOT NULL,
   FOREIGN KEY (_id_event) REFERENCES Event (_id),
   FOREIGN KEY (_id_category) REFERENCES Category (_id),
   FOREIGN KEY (_id_transact) REFERENCES Transact (_id)

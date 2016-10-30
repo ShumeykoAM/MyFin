@@ -11,6 +11,7 @@ public enum EQ
   CO_USER,
   TRANSACTION,
   CATEGORY,
+  DOCUMENT,
 
   ACCOUNTS,                 //Список счетов, кроме счетов сопользователей
   USER_ACCOUNTS,            //Список счетов сопользователя
