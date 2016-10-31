@@ -4,10 +4,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.*;
+import android.widget.CheckBox;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
+import com.bloodliviykot.MyFin.DB.entities.Document;
 import com.bloodliviykot.MyFin.DB.entities.Unit;
 import com.bloodliviykot.tools.DataBase.Entity;
 
@@ -54,15 +59,9 @@ public class Planned
     public void bindView(View view, Context context, Cursor cursor)
     {
       TextView name = (TextView)view.findViewById(R.id.planned_item_name);
-      view.setOnClickListener(new View.OnClickListener(){
-        @Override
-        public void onClick(View v)
-        {
-          int i = 0;
-          i++;
-        }
-      });
-      EditText count = (EditText)view.findViewById(R.id.planned_item_count);
+      TextView count = (TextView)view.findViewById(R.id.planned_item_count);
+      view.setOnTouchListener(new OnTouch(count, cursor.getLong(cursor.getColumnIndex("_id"))));
+
       TextView unit = (TextView)view.findViewById(R.id.planned_item_unit);
       CheckBox choose = (CheckBox)view.findViewById(R.id.planned_item_choose);
 
@@ -73,8 +72,52 @@ public class Planned
         unit.setText(Unit.getUnitFromId(cursor.getLong(cursor.getColumnIndex("id_unit"))).getName());
       } catch(Entity.EntityException e)
       {   }
-
     }
-
+    private class OnTouch
+      implements View.OnTouchListener
+    {
+      Float start = null;
+      double cur_count;
+      TextView count;
+      long _id;
+      OnTouch(TextView count, long _id)
+      {
+        this.count = count;
+        this._id = _id;
+      }
+      @Override
+      public boolean onTouch(View v, MotionEvent event)
+      {
+        switch(event.getAction())
+        {
+          case MotionEvent.ACTION_DOWN:
+            start = event.getX();
+            cur_count = Double.parseDouble(count.getText().toString());
+            break;
+          case MotionEvent.ACTION_MOVE:
+            if(start != null)
+            {
+              int sub = (int)((event.getX() - start) / 50);
+              count.setText(new Double(cur_count + sub).toString());
+            }
+            break;
+          case MotionEvent.ACTION_UP:
+            start = null;
+            try
+            {
+              if(Document.getDocumentFromId(_id).setCount(Double.parseDouble(count.getText().toString())).update())
+              {
+                cursor.requery();
+                list_adapter.notifyDataSetChanged();
+              }
+            } catch(Entity.EntityException e)
+            {
+              e.printStackTrace();
+            }
+            break;
+        }
+        return true;
+      }
+    }
   }
 }

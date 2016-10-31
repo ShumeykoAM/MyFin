@@ -20,57 +20,63 @@ public class Document
   {
     return transact;
   }
-  public void setTransact(Transact transact) throws EntityException
+  public Document setTransact(Transact transact) throws EntityException
   {
     if(transact != null && transact.getId() == 0)
       throw new EntityException();
     this.transact = transact;
+    return this;
   }
   public Category getCategory()
   {
     return category;
   }
-  public void setCategory(Category category) throws EntityException
+  public Document setCategory(Category category) throws EntityException
   {
     if(category == null || category.getId() == 0)
       throw new EntityException();
     this.category = category;
+    return this;
   }
   public Event getEvent()
   {
     return event;
   }
-  public void setEvent(Event event) throws EntityException
+  public Document setEvent(Event event) throws EntityException
   {
     if(event != null && event.getId() == 0)
       throw new EntityException();
     this.event = event;
+    return this;
   }
   public Money getSum()
   {
     return sum;
   }
-  public void setSum(Money sum) throws EntityException
+  public Document setSum(Money sum) throws EntityException
   {
     this.sum = sum;
+    return this;
   }
   public double getCount()
   {
     return count;
   }
-  public void setCount(double count)
+  public Document setCount(double count)
   {
     this.count = count;
+    return this;
   }
   public Unit getUnit()
   {
     return unit;
   }
-  public void setUnit(Unit unit) throws EntityException
+  public Document setUnit(Unit unit) throws EntityException
   {
     if(unit == null)
       throw new EntityException();
     this.unit = unit;
+    return this;
   }
 
   public Document(Transact transact, Category category, Event event, Money sum, double count, Unit unit) throws EntityException
