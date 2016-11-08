@@ -15,14 +15,6 @@ public class Category
   implements Serializable
 {
 
-  public Category getParent() throws EntityException
-  {
-    return _id_parent != null ? Category.getCategoryFromId(_id_parent) : null;
-  }
-  public void setParent(Category parent)
-  {
-    this._id_parent = parent.getId();
-  }
   public Transact.TREND getTrend()
   {
     return trend;
@@ -49,8 +41,6 @@ public class Category
   {
     if(trend == null || name == null)
       throw new EntityException();
-    if(parent != null)
-      this._id_parent = parent.getId();
     this.trend      = trend;
     this.name       = name;
     this.name_lower_case = name.toLowerCase();
@@ -74,8 +64,6 @@ public class Category
   protected ContentValues getContentValues() throws EntityException
   {
     ContentValues values = new ContentValues();
-    if(_id_parent != null)
-      values.put("_id_parent", _id_parent);
     values.put("trend", trend.id_db);
     values.put("name", name);
     values.put("name_lower_case", name_lower_case);
@@ -86,7 +74,6 @@ public class Category
   protected ContentValues getContentValuesChange()
   {
     ContentValues values = new ContentValues();
-    compareInsert(values, original._id_parent, _id_parent, "_id_parent");
     compareInsert(values, original.trend.id_db, trend.id_db, "trend");
     compareInsert(values, original.name, name, "name");
     compareInsert(values, original.name_lower_case, name_lower_case, "name_lower_case");
@@ -96,8 +83,6 @@ public class Category
   @Override
   protected void initFromCursor(Cursor cursor) throws EntityException
   {
-    if(!cursor.isNull(cursor.getColumnIndex("_id_parent")))
-      this._id_parent = cursor.getLong(cursor.getColumnIndex("_id_parent"));
     this.trend = Transact.TREND.getTREND(cursor.getLong(cursor.getColumnIndex("trend")));
     this.name  = cursor.getString(cursor.getColumnIndex("name"));
     this.name_lower_case = cursor.getString(cursor.getColumnIndex("name_lower_case"));
@@ -108,22 +93,20 @@ public class Category
   {
     if(original == null)
       original = new Original();
-    original._id_parent      = _id_parent     ;
     original.trend           = trend          ;
     original.name            = name           ;
     original.name_lower_case = name_lower_case;
   }
 
   private Long              _id_parent      ;  //Хранить ссылку на сам объект не будем так как это загрузит все дерево категорий
-  private Transact.TREND trend           ;
+  private Transact.TREND    trend           ;
   private String            name            ;
   private String            name_lower_case ;
 
   //Оригинальные (как были втавлены\извлечены из базы)
   private static class Original
   {
-    Long              _id_parent      ;
-    Transact.TREND trend           ;
+    Transact.TREND trend              ;
     String            name            ;
     String            name_lower_case ;
   }

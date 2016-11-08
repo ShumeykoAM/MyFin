@@ -13,17 +13,16 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".Accounts"
-                  android:screenOrientation="portrait">
+        <activity android:name=".Accounts">
         </activity>
-        <activity android:name=".Register"
-                  android:screenOrientation="portrait">
+        <activity android:name=".Register">
         </activity>
-        <activity android:name=".Planned"
-                  android:screenOrientation="portrait">
+        <activity android:name=".Planned">
         </activity>
-        <activity android:name=".Categories"
-                  android:screenOrientation="portrait">
+        <activity android:name=".Categories">
+        </activity>
+        <activity android:name=".ChooseCategories"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
     </application>
 </manifest>

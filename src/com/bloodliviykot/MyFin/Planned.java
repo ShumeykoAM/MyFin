@@ -2,6 +2,7 @@ package com.bloodliviykot.MyFin;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -60,7 +61,16 @@ public class Planned
     {
       TextView name = (TextView)view.findViewById(R.id.planned_item_name);
       TextView count = (TextView)view.findViewById(R.id.planned_item_count);
-      view.setOnTouchListener(new OnTouch(count, cursor.getLong(cursor.getColumnIndex("_id"))));
+      //view.setOnTouchListener(new OnTouch(count, cursor.getLong(cursor.getColumnIndex("_id"))));
+      view.setOnClickListener(new View.OnClickListener(){
+        @Override
+        public void onClick(View v)
+        {
+          Intent intent = new Intent(Common.application_context, ChooseCategories.class);
+          //intent.putExtra(getString(R.string.intent_purchases_id), id);
+          startActivityForResult(intent, R.layout.choose_categories_list); //Запуск активности с onActivityResult
+        }
+      });
 
       TextView unit = (TextView)view.findViewById(R.id.planned_item_unit);
       CheckBox choose = (CheckBox)view.findViewById(R.id.planned_item_choose);

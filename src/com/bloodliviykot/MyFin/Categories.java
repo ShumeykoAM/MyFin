@@ -29,7 +29,7 @@ public class Categories
 
     oh = MySQLiteOpenHelper.getMySQLiteOpenHelper();
 
-    cursor = new TreeListView.TreeCursor(oh.db, oh.getQuery(EQ.CATEGORIES_NO_PARENT), null,
+    cursor = new TreeListView.TreeCursor(oh.db, oh.getQuery(EQ.ROOT_CATEGORIES), null,
       oh.getQuery(EQ.SUB_CATEGORIES), oh.getQuery(EQ.EXIST_SUB_CATEGORY));
     categories = (TreeListView)findViewById(R.id.categories_list_view);
     list_adapter = new CategoriesItemAdapter(R.layout.categories_item, cursor,

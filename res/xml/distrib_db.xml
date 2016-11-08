@@ -258,47 +258,34 @@
     <Transact _id_account="3" date_time="1476696068" sum = "70864" trend="2" _id_correlative_account="1" correlative_sum="654"></Transact>
 
 
-    <Category trend="0" name="Продукты" name_lower_case="продукты">
-        <Document _id_transact="1" _id_category="ИД_родителя" sum="43425" count="2" id_unit="1"></Document>
-        <Category trend="0" name="Мучное" name_lower_case="мучное"  _id_parent="ИД_родителя">
-            <Category trend="0" name="Хлеб" name_lower_case="хлеб"  _id_parent="ИД_родителя">
-                <Document _id_category="ИД_родителя" sum="2100" count="1" id_unit="1"></Document>
-                <Category trend="0" name="Черный" name_lower_case="черный"  _id_parent="ИД_родителя"></Category>
-                <Category trend="0" name="Белый" name_lower_case="белый"  _id_parent="ИД_родителя"></Category>
-            </Category>
-            <Category trend="0" name="Батон" name_lower_case="батон" _id_parent="ИД_родителя">
-                <Document _id_category="ИД_родителя" sum="4800" count="2" id_unit="2"></Document>
-                <Document _id_category="ИД_родителя" sum="4800" count="2" id_unit="2"></Document>
-                <Document _id_category="ИД_родителя" sum="4800" count="2" id_unit="2"></Document>
-                <Document _id_category="ИД_родителя" sum="4800" count="2" id_unit="2"></Document>
-                <Document _id_category="ИД_родителя" sum="4800" count="2" id_unit="2"></Document>
-                <Document _id_category="ИД_родителя" sum="4800" count="2" id_unit="2"></Document>
-                <Document _id_category="ИД_родителя" sum="4800" count="2" id_unit="2"></Document>
-                <Document _id_category="ИД_родителя" sum="4800" count="2" id_unit="2"></Document>
-                <Document _id_category="ИД_родителя" sum="4800" count="2" id_unit="2"></Document>
-                <Document _id_category="ИД_родителя" sum="4800" count="2" id_unit="2"></Document>
-                <Document _id_category="ИД_родителя" sum="4800" count="2" id_unit="2"></Document>
-                <Document _id_category="ИД_родителя" sum="4800" count="2" id_unit="2"></Document>
-                <Document _id_category="ИД_родителя" sum="4800" count="2" id_unit="2"></Document>
-                <Document _id_category="ИД_родителя" sum="4800" count="2" id_unit="2"></Document>
-                <Document _id_category="ИД_родителя" sum="4800" count="2" id_unit="2"></Document>
-                <Document _id_category="ИД_родителя" sum="4800" count="2" id_unit="2"></Document>
-                <Document _id_category="ИД_родителя" sum="4800" count="2" id_unit="2"></Document>
-            </Category>
-        </Category>
-        <Category trend="0" name="Масло" name_lower_case="масло" _id_parent="ИД_родителя"></Category>
-    </Category>
-    <Category trend="0" name="Автомобиль" name_lower_case="автомобиль">
-        <Category trend="0" name="Масло" name_lower_case="масло" _id_parent="ИД_родителя"></Category>
-        <Category trend="0" name="Бензин" name_lower_case="бензин" _id_parent="ИД_родителя">
-            <Category trend="0" name="Лукойл" name_lower_case="лукойл" _id_parent="ИД_родителя"></Category>
-            <Category trend="0" name="Газпром" name_lower_case="газпром" _id_parent="ИД_родителя"></Category>
-        </Category>
-        <Category trend="0" name="Тормозные колодки" name_lower_case="тормозные колодки" _id_parent="ИД_родителя"></Category>
-    </Category>
-    <Category trend="1" name="Прибыль" name_lower_case="прибыль">
-        <Category trend="1" name="Зарплата" name_lower_case="зарплата" _id_parent="ИД_родителя"></Category>
-        <Category trend="1" name="Аванс" name_lower_case="аванс" _id_parent="ИД_родителя"></Category>
-    </Category>
+    <Category trend="0" name="Кура мираторг" name_lower_case="кура мираторг"></Category>
+    <Category trend="0" name="Ножки буша"    name_lower_case="ножки буша"></Category>
+    <Category trend="0" name="Свинья"        name_lower_case="свинья"></Category>
+    <Category trend="0" name="Курица"        name_lower_case="курица"></Category>
+    <Category trend="0" name="Батон"         name_lower_case="батон"></Category>
+    <Category trend="0" name="Хлеб"          name_lower_case="хлеб"></Category>
+    <Category trend="0" name="Мучное"        name_lower_case="мучное"></Category>
+    <Category trend="0" name="Продукты"      name_lower_case="продукты"></Category>
+    <Category trend="0" name="Бензин"        name_lower_case="бензин"></Category>
+    <Category trend="0" name="Мясное"        name_lower_case="мясное"></Category>
+
+    <AllParents _id="1" _id_parent="4" remote="1"></AllParents>
+    <AllParents _id="1" _id_parent="10" remote="2"></AllParents>
+    <AllParents _id="1" _id_parent="8" remote="3"></AllParents>
+    <AllParents _id="2" _id_parent="4" remote="1"></AllParents>
+    <AllParents _id="2" _id_parent="10" remote="2"></AllParents>
+    <AllParents _id="2" _id_parent="8" remote="3"></AllParents>
+    <AllParents _id="4" _id_parent="10" remote="1"></AllParents>
+    <AllParents _id="4" _id_parent="8" remote="2"></AllParents>
+    <AllParents _id="3" _id_parent="10" remote="1"></AllParents>
+    <AllParents _id="3" _id_parent="8" remote="2"></AllParents>
+    <AllParents _id="5" _id_parent="7" remote="1"></AllParents>
+    <AllParents _id="5" _id_parent="8" remote="2"></AllParents>
+    <AllParents _id="6" _id_parent="7" remote="1"></AllParents>
+    <AllParents _id="6" _id_parent="8" remote="2"></AllParents>
+    <AllParents _id="7" _id_parent="8" remote="1"></AllParents>
+    <AllParents _id="10" _id_parent="8" remote="1"></AllParents>
+
+
 
 </distrib>

@@ -67,22 +67,28 @@ SELECT Currency._id
   FROM Currency
   WHERE Currency.cod_ISO=?;
 
---SUB_CATEGORIES
-SELECT Category._id, Category._id_parent, Category.trend, Category.name, Category.name_lower_case
-  FROM Category
-  WHERE Category._id_parent=?
-  ORDER BY Category._id_parent ASC, Category.name_lower_case ASC;
-
---CATEGORIES_NO_PARENT
+--ROOT_CATEGORIES Все корневые категории
 SELECT Category._id, Category.trend, Category.name, Category.name_lower_case
-FROM Category
-WHERE Category._id_parent IS NULL
-ORDER BY Category._id_parent ASC, Category.name_lower_case ASC;
-
---EXIST_SUB_CATEGORY
-SELECT Category._id
   FROM Category
-  WHERE Category._id_parent=?
+  WHERE Category._id NOT IN(SELECT AllParents._id FROM AllParents WHERE AllParents._id=Category._id)
+  ORDER BY Category.name_lower_case ASC;
+
+-- SUB_CATEGORIES Подкатегории указанного родителя, только перове колено
+SELECT Category._id, Category.trend, Category.name, Category.name_lower_case
+  FROM Category, AllParents
+  WHERE AllParents._id_parent=? AND Category._id=AllParents._id AND AllParents.remote=1
+  ORDER BY Category.name_lower_case ASC;
+
+--ALL_SUB_CATEGORIES Все подкатегории указанного родителя, включая под под и т.д.
+SELECT Category._id, Category.trend, Category.name, Category.name_lower_case
+  FROM Category, AllParents
+  WHERE AllParents._id_parent=? AND Category._id=AllParents._id
+  ORDER BY AllParents.remote ASC, Category.name_lower_case ASC;
+
+--EXIST_SUB_CATEGORY Возвращает одну строку если есть подкатегории у указанной категории иначе не возвращает ни одной строки
+SELECT AllParents._id
+  FROM AllParents
+  WHERE AllParents._id_parent=?
   LIMIT 1;
 
 --PLANNED

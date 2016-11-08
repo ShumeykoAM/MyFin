@@ -29,21 +29,31 @@ CREATE TABLE Event
 CREATE TABLE Category
 (
   _id                  INTEGER PRIMARY KEY,
-  _id_parent           INTEGER,
   trend                INTEGER NOT NULL,
   name                 TEXT NOT NULL,
-  name_lower_case      TEXT NOT NULL,
-  FOREIGN KEY (_id_parent) REFERENCES Category (_id)
-);
-
-CREATE INDEX quick_pid ON Category
-(
-  _id_parent
+  name_lower_case      TEXT NOT NULL
 );
 
 CREATE UNIQUE INDEX unique_name_lower_case ON Category
 (
   name_lower_case
+);
+
+CREATE TABLE AllParents
+(
+  _id                  INTEGER NOT NULL,
+  _id_parent           INTEGER NOT NULL,
+  remote               INTEGER NOT NULL,
+  PRIMARY KEY (_id,_id_parent),
+  FOREIGN KEY (_id) REFERENCES Category (_id),
+  FOREIGN KEY (_id_parent) REFERENCES Category (_id)
+);
+
+CREATE UNIQUE INDEX AllParentsLevel ON AllParents
+(
+  _id,
+  _id_parent,
+  remote
 );
 
 CREATE TABLE CoUser
