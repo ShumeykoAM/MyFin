@@ -258,7 +258,10 @@
     <Transact _id_account="3" date_time="1476696068" sum = "70864" trend="2" _id_correlative_account="1" correlative_sum="654"></Transact>
 
 
-    <Category trend="0" name="Кура мираторг" name_lower_case="кура мираторг"></Category>
+    <Category trend="0" name="Кура мираторг" name_lower_case="кура мираторг">
+        <Document _id_transact="1" _id_category="ИД_родителя" sum="43425" count="2" id_unit="1"></Document>
+        <Document _id_category="ИД_родителя" sum="43425" count="2" id_unit="1"></Document>
+    </Category>
     <Category trend="0" name="Ножки буша"    name_lower_case="ножки буша"></Category>
     <Category trend="0" name="Свинья"        name_lower_case="свинья"></Category>
     <Category trend="0" name="Курица"        name_lower_case="курица"></Category>

@@ -1,9 +1,11 @@
 package com.bloodliviykot.MyFin;
 
 import android.app.Activity;
+import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.*;
+import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
 
 import java.util.ArrayList;
@@ -78,9 +80,20 @@ public class ChooseCategories
     button_params.rightMargin = 0;
     navigation_last.setLayoutParams(button_params);
 
+    cursor = oh.db.rawQuery(oh.getQuery(EQ.ALL_CATEGORIES_LIKE), new String[]{"0", "%"});
+    //list_adapter =
+
     int fdfdf=0;
   }
 
+  private class AccountsItemAdapter
+    extends SimpleCursorAdapter
+  {
 
+    public AccountsItemAdapter(Context context, int layout, Cursor c, String[] from, int[] to, int flags)
+    {
+      super(Common.application_context, layout, c, from, to, flags);
+    }
+  }
 
 }
