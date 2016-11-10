@@ -57,6 +57,10 @@ public class ChooseCategories
 
     oh = MySQLiteOpenHelper.getMySQLiteOpenHelper();
 
+    //Установить цвет текста SearchView
+    int autoCompleteTextViewID = getResources().getIdentifier("android:id/search_src_text", null, null);
+    AutoCompleteTextView search_tv = (AutoCompleteTextView)search.findViewById(autoCompleteTextViewID);
+    search_tv.setTextColor(getResources().getColor(R.color.grey));
 
     navigation_buttons.add((Button)(getLayoutInflater().inflate(R.layout.arrow_button, navigation_linear, false)));
     navigation_buttons.add((Button)(getLayoutInflater().inflate(R.layout.arrow_button, navigation_linear, false)));
