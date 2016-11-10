@@ -4,4 +4,5 @@
         android:layout_height="wrap_content"
         android:text="Все" android:background="@drawable/ic_arrow_button"
         android:layout_marginRight="-10dp"
-        xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/arrow_button"/>
+        xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/arrow_button"
+        android:clickable="true"/>
