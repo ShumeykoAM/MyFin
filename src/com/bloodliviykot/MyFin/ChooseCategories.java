@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.*;
 import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
+import com.bloodliviykot.MyFin.DB.entities.Transact;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,6 +97,12 @@ public class ChooseCategories
     list.setAdapter(list_adapter);
 
     int fdfdf=0;
+  }
+
+  private void buildScrollPath(Transact.TREND trend, Long _id_parent)
+  {
+    //if()
+
   }
 
   private class ChooseItemAdapter
