@@ -2,6 +2,7 @@ package com.bloodliviykot.MyFin;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -34,12 +35,15 @@ public class ChooseCategories
   private MySQLiteOpenHelper oh;
   private Cursor cursor;
   private SimpleCursorAdapter list_adapter;
+  private Transact.TREND trend;
 
   @Override
   protected void onCreate(Bundle savedInstanceState)
   {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.choose_categories_list);
+    Bundle extras = getIntent().getExtras();
+    trend = (Transact.TREND)extras.get("TREND");
 
     HorizontalScrollView horizontal_scroll = (HorizontalScrollView)findViewById(R.id.choose_categories_navigation_line);
     horizontal_scroll.post(new Runnable()
@@ -57,7 +61,6 @@ public class ChooseCategories
     list = (ListView)findViewById(R.id.choose_categories_list);
     tree = (Button)findViewById(R.id.choose_categories_tree);
     ok = (Button)findViewById(R.id.choose_categories_ok);
-
     oh = MySQLiteOpenHelper.getMySQLiteOpenHelper();
 
     //Установить цвет текста SearchView
@@ -65,17 +68,13 @@ public class ChooseCategories
     AutoCompleteTextView search_tv = (AutoCompleteTextView)search.findViewById(autoCompleteTextViewID);
     search_tv.setTextColor(getResources().getColor(R.color.grey));
 
-    //buildScrollPath(Transact.TREND.CREDIT, null);
-    buildScrollPath(Transact.TREND.CREDIT, 10L);
-
-    cursor = oh.db.rawQuery(oh.getQuery(EQ.ALL_CATEGORIES_LIKE), new String[]{"0", "%"});
+    buildScrollPath(null);
+    cursor = oh.db.rawQuery(oh.getQuery(EQ.ALL_CATEGORIES_LIKE), new String[]{new Long(trend.id_db).toString(), "%"});
     list_adapter = new ChooseItemAdapter(cursor);
     list.setAdapter(list_adapter);
-
-    int fdfdf=0;
   }
 
-  private void buildScrollPath(Transact.TREND trend, Long _id_parent)
+  private void buildScrollPath(Long _id_parent)
   {
     //Удалить дочерние
     boolean is_first = true;
@@ -128,10 +127,20 @@ public class ChooseCategories
         public void onClick(View v)
         {
           Long _id = ((ButtonID)v).getID();
-            buildScrollPath(trend, _id);
+            buildScrollPath(_id);
         }
       });
   }
+
+  @Override
+  public void finish()
+  {
+    Intent ires = new Intent();
+    //ires.putExtra("PurchaseIsDeleted", purchase_is_deleted);
+    setResult(RESULT_OK, ires); //RESULT_CANCELED
+    super.finish();
+  }
+
 
   private class ChooseItemAdapter
     extends SimpleCursorAdapter

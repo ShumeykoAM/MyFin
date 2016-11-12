@@ -103,19 +103,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="445e4891-3518-4b84-be65-084c2993ce99" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/bloodliviykot/tools/widget/ButtonID.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java" afterPath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/entities/Category.java" afterPath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/entities/Category.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/ChooseCategories.java" afterPath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/ChooseCategories.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/EQ.java" afterPath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/EQ.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/arrow_button.xml" afterPath="$PROJECT_DIR$/res/layout/arrow_button.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/categories_item.xml" afterPath="$PROJECT_DIR$/res/layout/categories_item.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/raw/sql_querys.sql" afterPath="$PROJECT_DIR$/res/raw/sql_querys.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Planned.java" afterPath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Planned.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/planned.xml" afterPath="$PROJECT_DIR$/res/layout/planned.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\Projects\OurBudget\trunk\client\res\drawable-ldpi\expanded_off.png" afterPath="$PROJECT_DIR$/res/drawable-ldpi/ic_expanded_off.png" />
-      <change type="MOVED" beforePath="D:\Projects\OurBudget\trunk\client\res\drawable-ldpi\expanded_on.png" afterPath="$PROJECT_DIR$/res/drawable-ldpi/ic_expanded_on.png" />
-      <change type="MOVED" beforePath="D:\Projects\OurBudget\trunk\client\res\drawable-ldpi\ic_arrow_all_credit.9.png" afterPath="$PROJECT_DIR$/res/drawable-ldpi/ic_arrow_all_credit.png" />
-      <change type="MOVED" beforePath="D:\Projects\OurBudget\trunk\client\res\drawable-ldpi\ic_arrow_all_debit.9.png" afterPath="$PROJECT_DIR$/res/drawable-ldpi/ic_arrow_all_debit.png" />
     </list>
     <ignored path="MyFin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -165,13 +156,37 @@
       <file leaf-file-name="ChooseCategories.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/ChooseCategories.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.21246007">
-              <caret line="90" column="40" selection-start-line="90" selection-start-column="31" selection-end-line="90" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.48402557">
+              <caret line="135" column="34" selection-start-line="135" selection-start-column="22" selection-end-line="135" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#893#903#0" expanded="true" />
+                <element signature="e#924#934#0" expanded="true" />
+                <element signature="method#buildScrollPath#0;class#ChooseCategories#0" expanded="false" />
                 <element signature="class#ChooseItemAdapter#0;class#ChooseCategories#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Planned.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Planned.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="planned.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/planned.xml">
+          <provider selected="true" editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -234,19 +249,19 @@
         <option value="$PROJECT_DIR$/res/drawable/arrow.xml" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-        <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Planned.java" />
         <option value="$PROJECT_DIR$/res/raw/v_001_tables.ddl" />
         <option value="$PROJECT_DIR$/res/xml/distrib_db.xml" />
         <option value="$PROJECT_DIR$/res/layout/choose_categories_list_item.xml" />
         <option value="$PROJECT_DIR$/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/res/layout/choose_categories_list.xml" />
-        <option value="$PROJECT_DIR$/res/layout/planned.xml" />
         <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/EQ.java" />
         <option value="$PROJECT_DIR$/res/raw/sql_querys.sql" />
         <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/entities/Category.java" />
         <option value="$PROJECT_DIR$/src/com/bloodliviykot/tools/widget/ButtonID.java" />
         <option value="$PROJECT_DIR$/res/layout/arrow_button.xml" />
+        <option value="$PROJECT_DIR$/res/layout/planned.xml" />
+        <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Planned.java" />
         <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/ChooseCategories.java" />
       </list>
     </option>
@@ -916,7 +931,7 @@
       <workItem from="1478770611327" duration="3417000" />
       <workItem from="1478800770029" duration="10081000" />
       <workItem from="1478870884874" duration="2118000" />
-      <workItem from="1478946004153" duration="11948000" />
+      <workItem from="1478946004153" duration="14994000" />
     </task>
     <task id="LOCAL-00001">
       <created>1478710417404</created>
@@ -928,7 +943,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="511996000" />
+    <option name="totallyTimeSpent" value="515042000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -936,7 +951,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2813187" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2798165" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16513762" sideWeight="0.5061162" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32712215" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -998,11 +1013,17 @@
           <properties />
           <option name="timeStamp" value="553" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Planned.java</url>
+          <line>73</line>
+          <properties />
+          <option name="timeStamp" value="676" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="668" />
+      <option name="time" value="678" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="ЬнАшт">
@@ -1019,31 +1040,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Accounts.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="125" column="5" selection-start-line="110" selection-start-column="4" selection-end-line="125" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/choose_categories_list_item.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="47" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/raw/sql_querys.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="99" column="34" selection-start-line="99" selection-start-column="34" selection-end-line="99" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Categories.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1066,7 +1062,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#893#903#0" expanded="true" />
+            <element signature="e#924#934#0" expanded="true" />
+            <element signature="method#buildScrollPath#0;class#ChooseCategories#0" expanded="false" />
             <element signature="class#ChooseItemAdapter#0;class#ChooseCategories#0" expanded="false" />
           </folding>
         </state>
@@ -1076,6 +1073,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="105" column="23" selection-start-line="105" selection-start-column="23" selection-end-line="105" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1244,6 +1242,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.32108626">
           <caret line="109" column="21" selection-start-line="109" selection-start-column="5" selection-end-line="109" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1263,13 +1262,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="47" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Planned.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19009584">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1311,17 +1303,6 @@
     <entry file="file://$PROJECT_DIR$/res/drawable-ldpi/ic_add_debit.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/planned.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DB/EQ.java">
@@ -1449,13 +1430,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/planned.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/android/sdk/sources/android-15/android/os/Bundle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35942492">
+          <caret line="602" column="0" selection-start-line="602" selection-start-column="0" selection-end-line="602" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/android/sdk/sources/android-15/android/content/Intent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.413738">
+          <caret line="4970" column="0" selection-start-line="4970" selection-start-column="0" selection-end-line="4970" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Planned.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/android/sdk/sources/android-15/android/app/Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33226836">
+          <caret line="637" column="28" selection-start-line="637" selection-start-column="28" selection-end-line="637" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/ChooseCategories.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21246007">
-          <caret line="90" column="40" selection-start-line="90" selection-start-column="31" selection-end-line="90" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.48402557">
+          <caret line="135" column="34" selection-start-line="135" selection-start-column="22" selection-end-line="135" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#893#903#0" expanded="true" />
+            <element signature="e#924#934#0" expanded="true" />
+            <element signature="method#buildScrollPath#0;class#ChooseCategories#0" expanded="false" />
             <element signature="class#ChooseItemAdapter#0;class#ChooseCategories#0" expanded="false" />
           </folding>
         </state>

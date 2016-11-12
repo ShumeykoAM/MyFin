@@ -7,13 +7,11 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
+import android.widget.*;
 import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
 import com.bloodliviykot.MyFin.DB.entities.Document;
+import com.bloodliviykot.MyFin.DB.entities.Transact;
 import com.bloodliviykot.MyFin.DB.entities.Unit;
 import com.bloodliviykot.tools.DataBase.Entity;
 
@@ -22,11 +20,14 @@ import com.bloodliviykot.tools.DataBase.Entity;
  */
 public class Planned
   extends Activity
+  implements View.OnClickListener
 {
   private Cursor cursor;
   private ListView list_planned;
   private SimpleCursorAdapter list_adapter;
   private MySQLiteOpenHelper oh;
+  private Button add_debit;
+  private Button add_credit;
 
   @Override
   protected void onCreate(Bundle savedInstanceState)
@@ -36,6 +37,9 @@ public class Planned
 
     oh = MySQLiteOpenHelper.getMySQLiteOpenHelper();
     list_planned = (ListView)findViewById(R.id.planned_list_view);
+    (add_debit = (Button)findViewById(R.id.planned_add_debit)).setOnClickListener(this);
+    (add_credit = (Button)findViewById(R.id.planned_add_credit)).setOnClickListener(this);
+
 
     cursor = oh.db.rawQuery(oh.getQuery(EQ.PLANNED), null);
     list_adapter = new PlannedItemAdapter(R.layout.planned_item, cursor,
@@ -44,6 +48,29 @@ public class Planned
     list_adapter.changeCursor(cursor);
     list_planned.setAdapter(list_adapter);
 
+  }
+
+  @Override
+  public void onClick(View v)
+  {
+    Intent intent = new Intent(Common.application_context, ChooseCategories.class);
+    if(add_credit == v)
+      intent.putExtra("TREND", Transact.TREND.CREDIT);
+    else// if(add_debit == v)
+      intent.putExtra("TREND", Transact.TREND.DEBIT);
+    Transact.TREND tr = (Transact.TREND)intent.getExtras().get("TREND");
+    startActivityForResult(intent, R.layout.choose_categories_list); //Запуск активности с onActivityResult
+  }
+
+  @Override
+  public void onActivityResult(int requestCode, int resultCode, Intent data)
+  {
+    switch(requestCode)
+    {
+      case R.layout.choose_categories_list:
+
+        break;
+    }
   }
 
   //Переопределим SimpleCursorAdapter что бы форматировать данные из базы нужным образом
@@ -61,16 +88,15 @@ public class Planned
     {
       TextView name = (TextView)view.findViewById(R.id.planned_item_name);
       TextView count = (TextView)view.findViewById(R.id.planned_item_count);
-      //view.setOnTouchListener(new OnTouch(count, cursor.getLong(cursor.getColumnIndex("_id"))));
-      view.setOnClickListener(new View.OnClickListener(){
+      view.setOnTouchListener(new OnTouch(count, cursor.getLong(cursor.getColumnIndex("_id"))));
+      /*view.setOnClickListener(new View.OnClickListener(){
         @Override
         public void onClick(View v)
         {
-          Intent intent = new Intent(Common.application_context, ChooseCategories.class);
-          //intent.putExtra(getString(R.string.intent_purchases_id), id);
-          startActivityForResult(intent, R.layout.choose_categories_list); //Запуск активности с onActivityResult
+
         }
       });
+      */
 
       TextView unit = (TextView)view.findViewById(R.id.planned_item_unit);
       CheckBox choose = (CheckBox)view.findViewById(R.id.planned_item_choose);
