@@ -81,12 +81,12 @@ public class Categories
         if(cursor.isExpanded())
         {
           iv_image.setVisibility(view.VISIBLE);
-          iv_image.setImageResource(R.drawable.expanded_on);
+          iv_image.setImageResource(R.drawable.ic_expanded_on);
         }
         else
         {
           iv_image.setVisibility(view.VISIBLE);
-          iv_image.setImageResource(R.drawable.expanded_off);
+          iv_image.setImageResource(R.drawable.ic_expanded_off);
         }
       }
       else

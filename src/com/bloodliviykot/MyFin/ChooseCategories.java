@@ -8,7 +8,10 @@ import android.view.View;
 import android.widget.*;
 import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
+import com.bloodliviykot.MyFin.DB.entities.Category;
 import com.bloodliviykot.MyFin.DB.entities.Transact;
+import com.bloodliviykot.tools.DataBase.Entity;
+import com.bloodliviykot.tools.widget.ButtonID;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,15 +22,14 @@ import java.util.List;
 public class ChooseCategories
   extends Activity
 {
-
   private LinearLayout navigation_linear;
-  private Button root;
+  private ButtonID root;
   private Button add_new;
   private SearchView search;
   private ListView list;
   private Button tree;
   private Button ok;
-  private List<Button> navigation_buttons = new ArrayList<Button>();
+  private List<ButtonID> navigation_buttons = new ArrayList<ButtonID>();
 
   private MySQLiteOpenHelper oh;
   private Cursor cursor;
@@ -49,7 +51,7 @@ public class ChooseCategories
       }
     });
     navigation_linear = (LinearLayout)findViewById(R.id.choose_categories_navigation_linear);
-    root = (Button)navigation_linear.findViewById(R.id.arrow_button);
+    root = (ButtonID)navigation_linear.findViewById(R.id.arrow_button);
     add_new = (Button)findViewById(R.id.choose_categories_add_new);
     search = (SearchView)findViewById(R.id.choose_categories_search);
     list = (ListView)findViewById(R.id.choose_categories_list);
@@ -63,34 +65,8 @@ public class ChooseCategories
     AutoCompleteTextView search_tv = (AutoCompleteTextView)search.findViewById(autoCompleteTextViewID);
     search_tv.setTextColor(getResources().getColor(R.color.grey));
 
-    navigation_buttons.add((Button)(getLayoutInflater().inflate(R.layout.arrow_button, navigation_linear, false)));
-    navigation_buttons.add((Button)(getLayoutInflater().inflate(R.layout.arrow_button, navigation_linear, false)));
-    navigation_buttons.add((Button)(getLayoutInflater().inflate(R.layout.arrow_button, navigation_linear, false)));
-    navigation_buttons.add((Button)(getLayoutInflater().inflate(R.layout.arrow_button, navigation_linear, false)));
-    navigation_buttons.add((Button)(getLayoutInflater().inflate(R.layout.arrow_button, navigation_linear, false)));
-    navigation_buttons.add((Button)(getLayoutInflater().inflate(R.layout.arrow_button, navigation_linear, false)));
-    Button b = (Button)(getLayoutInflater().inflate(R.layout.arrow_button, navigation_linear, false));
-    navigation_buttons.add(navigation_buttons.size(),b);
-    b.setText("Последний");
-    b.setOnClickListener(new View.OnClickListener(){
-      @Override
-      public void onClick(View v)
-      {
-        int ff = 0;
-        ff++;
-      }
-    });
-
-    for(Button bb : navigation_buttons)
-      navigation_linear.addView(bb);
-
-    root.setText("Первый");
-    navigation_buttons.add(0, b);
-
-    Button navigation_last = navigation_buttons.get(navigation_buttons.size() - 1);
-    LinearLayout.LayoutParams button_params = (LinearLayout.LayoutParams)navigation_last.getLayoutParams();
-    button_params.rightMargin = 0;
-    navigation_last.setLayoutParams(button_params);
+    //buildScrollPath(Transact.TREND.CREDIT, null);
+    buildScrollPath(Transact.TREND.CREDIT, 10L);
 
     cursor = oh.db.rawQuery(oh.getQuery(EQ.ALL_CATEGORIES_LIKE), new String[]{"0", "%"});
     list_adapter = new ChooseItemAdapter(cursor);
@@ -101,8 +77,60 @@ public class ChooseCategories
 
   private void buildScrollPath(Transact.TREND trend, Long _id_parent)
   {
-    //if()
+    //Удалить дочерние
+    boolean is_first = true;
+    for(ButtonID bb : navigation_buttons)
+    {
+      if(is_first)
+      {
+        is_first = false;
+        continue;
+      }
+      navigation_linear.removeView(bb);
+    }
+    navigation_buttons.clear();
 
+    if(trend == Transact.TREND.DEBIT)
+      root.setBackgroundResource(R.drawable.ic_arrow_all_debit);
+    else if(trend == Transact.TREND.CREDIT)
+      root.setBackgroundResource(R.drawable.ic_arrow_all_credit);
+    ButtonID next_button;
+    if(_id_parent != null)
+    {
+      Cursor cursor_parents = oh.db.rawQuery(oh.getQuery(EQ.ALL_PARENTS), new String[]{_id_parent.toString()});
+      for(boolean cursor_status = cursor_parents.moveToFirst();
+          cursor_status;
+          cursor_status = cursor_parents.moveToNext())
+      {
+        navigation_buttons.add(next_button = (ButtonID)(getLayoutInflater().inflate(R.layout.arrow_button, navigation_linear, false)));
+        next_button.setText(cursor_parents.getString(cursor_parents.getColumnIndex("name")));
+        next_button.setID(cursor_parents.getLong(cursor_parents.getColumnIndex("_id")));
+      }
+      try
+      {
+        Category category = Category.getCategoryFromId(_id_parent);
+        navigation_buttons.add(next_button = (ButtonID)(getLayoutInflater().inflate(R.layout.arrow_button, navigation_linear, false)));
+        next_button.setText(category.getName());
+        next_button.setID(category.getId());
+      }catch(Entity.EntityException e)
+      {     }
+    }
+    for(Button bb : navigation_buttons)
+      navigation_linear.addView(bb);
+    navigation_buttons.add(0, root);
+    Button navigation_last = navigation_buttons.get(navigation_buttons.size() - 1);
+    LinearLayout.LayoutParams button_params = (LinearLayout.LayoutParams)navigation_last.getLayoutParams();
+    button_params.rightMargin = 0;
+    navigation_last.setLayoutParams(button_params);
+    for(Button bb : navigation_buttons)
+      bb.setOnClickListener(new View.OnClickListener(){
+        @Override
+        public void onClick(View v)
+        {
+          Long _id = ((ButtonID)v).getID();
+            buildScrollPath(trend, _id);
+        }
+      });
   }
 
   private class ChooseItemAdapter

@@ -9,7 +9,7 @@
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/categories_item_image_expand" android:src="@drawable/expanded_off"/>
+            android:id="@+id/categories_item_image_expand" android:src="@drawable/ic_expanded_off"/>
     <TextView
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"

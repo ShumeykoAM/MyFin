@@ -20,7 +20,7 @@ SELECT Transact._id, Transact._id_account, Transact.date_time, Transact.type_tra
   WHERE _id=?;
 
 --CATEGORY
-SELECT Category._id, Category._id_parent, Category.trend, Category.name, Category.name_lower_case
+SELECT Category._id, Category.trend, Category.name, Category.name_lower_case
   FROM Category
   WHERE Category._id=?;
 
@@ -108,3 +108,9 @@ SELECT Category._id, Category.name
   WHERE AllParents._id_parent=? AND Category.trend=? AND
         Category._id=AllParents._id AND Category.name_lower_case LIKE ?
   ORDER BY Category.name_lower_case ASC;
+
+--ALL_PARENTS Все родительские категории указанной категории начиная с корневой
+SELECT Category._id, Category.name
+  FROM Category, AllParents
+  WHERE AllParents._id=? AND Category._id=AllParents._id_parent
+  ORDER BY AllParents.remote DESC;

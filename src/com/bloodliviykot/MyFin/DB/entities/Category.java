@@ -106,9 +106,9 @@ public class Category
   //Оригинальные (как были втавлены\извлечены из базы)
   private static class Original
   {
-    Transact.TREND trend              ;
-    String            name            ;
-    String            name_lower_case ;
+    Transact.TREND trend           ;
+    String         name            ;
+    String         name_lower_case ;
   }
   Original original;
 
