@@ -5,6 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.*;
@@ -14,6 +17,10 @@ import com.bloodliviykot.MyFin.DB.entities.Document;
 import com.bloodliviykot.MyFin.DB.entities.Transact;
 import com.bloodliviykot.MyFin.DB.entities.Unit;
 import com.bloodliviykot.tools.DataBase.Entity;
+
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Created by Kot on 23.09.2016.
@@ -50,6 +57,57 @@ public class Planned
 
   }
 
+  public static class Chooses
+    implements Parcelable
+  {
+    public final long _id_category;
+    public final double count;
+    public final Unit unit;
+    public Chooses(long _id_category, double count, Unit unit)
+    {
+      this._id_category = _id_category;
+      this.count = count;
+      this.unit = unit;
+    }
+
+    //Parcelable
+    public Chooses(Parcel in) throws Entity.EntityException
+    {
+      this._id_category = in.readLong();
+      this.count = in.readDouble();
+      this.unit = Unit.getUnitFromId(in.readLong());
+    }
+    @Override
+    public int describeContents()
+    {
+      return 0;
+    }
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator()
+    {
+      public Chooses createFromParcel(Parcel in)
+      {
+        try
+        {
+          return new Chooses(in);
+        } catch(Entity.EntityException e)
+        {
+          return null;
+        }
+      }
+      public Chooses[] newArray(int size)
+      {
+        return new Chooses[size];
+      }
+    };
+    @Override
+    public void writeToParcel(Parcel dest, int flags)
+    {
+      dest.writeLong(_id_category);
+      dest.writeDouble(count);
+      dest.writeLong(unit.getId());
+    }
+  }
+
   @Override
   public void onClick(View v)
   {
@@ -58,7 +116,15 @@ public class Planned
       intent.putExtra("TREND", Transact.TREND.CREDIT);
     else// if(add_debit == v)
       intent.putExtra("TREND", Transact.TREND.DEBIT);
-    Transact.TREND tr = (Transact.TREND)intent.getExtras().get("TREND");
+    ArrayList<Chooses> chooses = new ArrayList<Chooses>();
+    for(boolean cursor_status = cursor.moveToFirst(); cursor_status; cursor_status = cursor.moveToNext())
+      try
+      {
+        chooses.add(new Chooses(cursor.getLong(cursor.getColumnIndex("_id")), cursor.getDouble(cursor.getColumnIndex("count")),
+          Unit.getUnitFromId(cursor.getLong(cursor.getColumnIndex("id_unit")))));
+      } catch(Entity.EntityException e)
+      {      }
+    intent.putParcelableArrayListExtra("chooses", chooses);
     startActivityForResult(intent, R.layout.choose_categories_list); //Запуск активности с onActivityResult
   }
 
@@ -68,7 +134,15 @@ public class Planned
     switch(requestCode)
     {
       case R.layout.choose_categories_list:
+        if(resultCode == RESULT_OK)
+        {
+          Map<Long, Pair<Double, Unit>> chooses = new TreeMap<>();
+          ArrayList<Planned.Chooses> arr_chooses = data.getExtras().getParcelableArrayList("chooses");
+          for(Planned.Chooses choose : arr_chooses)
+            chooses.put(choose._id_category, new Pair<>(choose.count, choose.unit));
+          //Перезапишем запланированные документы
 
+        }
         break;
     }
   }

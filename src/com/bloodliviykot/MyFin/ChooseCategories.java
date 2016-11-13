@@ -5,17 +5,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.*;
 import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
 import com.bloodliviykot.MyFin.DB.entities.Category;
 import com.bloodliviykot.MyFin.DB.entities.Transact;
+import com.bloodliviykot.MyFin.DB.entities.Unit;
 import com.bloodliviykot.tools.DataBase.Entity;
 import com.bloodliviykot.tools.widget.ButtonID;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Created by Kot on 03.11.2016.
@@ -36,6 +40,8 @@ public class ChooseCategories
   private Cursor cursor;
   private SimpleCursorAdapter list_adapter;
   private Transact.TREND trend;
+  Map<Long, Pair<Double, Unit>> chooses = new TreeMap<>();
+  private int result = RESULT_CANCELED;
 
   @Override
   protected void onCreate(Bundle savedInstanceState)
@@ -44,6 +50,9 @@ public class ChooseCategories
     setContentView(R.layout.choose_categories_list);
     Bundle extras = getIntent().getExtras();
     trend = (Transact.TREND)extras.get("TREND");
+    ArrayList<Planned.Chooses> arr_chooses = extras.getParcelableArrayList("chooses");
+    for(Planned.Chooses choose : arr_chooses)
+      chooses.put(choose._id_category, new Pair<>(choose.count, choose.unit));
 
     HorizontalScrollView horizontal_scroll = (HorizontalScrollView)findViewById(R.id.choose_categories_navigation_line);
     horizontal_scroll.post(new Runnable()
@@ -61,6 +70,14 @@ public class ChooseCategories
     list = (ListView)findViewById(R.id.choose_categories_list);
     tree = (Button)findViewById(R.id.choose_categories_tree);
     ok = (Button)findViewById(R.id.choose_categories_ok);
+    ok.setOnClickListener(new View.OnClickListener(){
+      @Override
+      public void onClick(View v)
+      {
+        result = RESULT_OK;
+        finish();
+      }
+    });
     oh = MySQLiteOpenHelper.getMySQLiteOpenHelper();
 
     //Установить цвет текста SearchView
@@ -161,9 +178,15 @@ public class ChooseCategories
   @Override
   public void finish()
   {
-    Intent ires = new Intent();
-    //ires.putExtra("PurchaseIsDeleted", purchase_is_deleted);
-    setResult(RESULT_OK, ires); //RESULT_CANCELED
+    Intent intent = new Intent();
+    if(result == RESULT_OK)
+    {
+      ArrayList<Planned.Chooses> arr_chooses = new ArrayList<Planned.Chooses>();
+      for(Map.Entry<Long, Pair<Double, Unit>> entry : chooses.entrySet() )
+        arr_chooses.add(new Planned.Chooses(entry.getKey(), entry.getValue().first, entry.getValue().second));
+      intent.putParcelableArrayListExtra("chooses", arr_chooses);
+    }
+    setResult(result, intent); //RESULT_CANCELED
     super.finish();
   }
 
@@ -184,6 +207,7 @@ public class ChooseCategories
     public void bindView(View view, Context context, Cursor cursor)
     {
       String name = cursor.getString(cursor.getColumnIndex("name"));
+      long _id = cursor.getLong(cursor.getColumnIndex("_id"));
 
       ImageView iv_image = (ImageView)view.findViewById(R.id.choose_categories_list_item_enter);
       TextView tv_name   = (TextView)view.findViewById(R.id.choose_categories_list_item_name);
@@ -191,7 +215,58 @@ public class ChooseCategories
       TextView tv_unit   = (TextView)view.findViewById(R.id.choose_categories_list_item_unit);
       CheckBox ch_chose  = (CheckBox)view.findViewById(R.id.choose_categories_list_item_choose);
 
+      ch_chose.setOnCheckedChangeListener(null);
       tv_name.setText(name);
+      if(chooses.containsKey(_id))
+      {
+        Pair<Double, Unit> count_unit = chooses.get(_id);
+        tv_count.setText(count_unit.first.toString());
+        tv_unit.setText(count_unit.second.getName());
+        ch_chose.setChecked(true);
+      }
+      else
+      {
+        tv_count.setText("");
+        tv_unit.setText("");
+        ch_chose.setChecked(false);
+      }
+      ch_chose.setOnCheckedChangeListener(new CheckedChangeListener(_id, tv_count, tv_unit));
+    }
+
+    private class CheckedChangeListener
+      implements CompoundButton.OnCheckedChangeListener
+    {
+      private long _id;
+      TextView tv_count;
+      TextView tv_unit;
+      public CheckedChangeListener(long _id, TextView tv_count, TextView tv_unit)
+      {
+        this._id = _id;
+        this.tv_count = tv_count;
+        this.tv_unit = tv_unit;
+      }
+      @Override
+      public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+      {
+        if(isChecked)
+        {
+          Pair<Double, Unit> count_unit = null;
+          try
+          {
+            count_unit = new Pair<>(1.0, Unit.getUnitFromId(1));
+          } catch(Entity.EntityException e)
+          {     }
+          chooses.put(_id, count_unit);
+          tv_count.setText(count_unit.first.toString());
+          tv_unit.setText(count_unit.second.getName());
+        }
+        else
+        {
+          chooses.remove(_id);
+          tv_count.setText("");
+          tv_unit.setText("");
+        }
+      }
     }
 
   }
