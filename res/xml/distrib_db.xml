@@ -271,6 +271,7 @@
     <Category trend="0" name="Продукты"      name_lower_case="продукты"></Category>
     <Category trend="0" name="Бензин"        name_lower_case="бензин"></Category>
     <Category trend="0" name="Мясное"        name_lower_case="мясное"></Category>
+    <Category trend="0" name="Meet"          name_lower_case="meet"></Category>
 
     <AllParents _id="1" _id_parent="4" remote="1"></AllParents>
     <AllParents _id="1" _id_parent="10" remote="2"></AllParents>
@@ -288,6 +289,7 @@
     <AllParents _id="6" _id_parent="8" remote="2"></AllParents>
     <AllParents _id="7" _id_parent="8" remote="1"></AllParents>
     <AllParents _id="10" _id_parent="8" remote="1"></AllParents>
+    <AllParents _id="11" _id_parent="8" remote="1"></AllParents>
 
 
 

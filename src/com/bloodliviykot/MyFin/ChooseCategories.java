@@ -72,6 +72,32 @@ public class ChooseCategories
     cursor = oh.db.rawQuery(oh.getQuery(EQ.ALL_CATEGORIES_LIKE), new String[]{new Long(trend.id_db).toString(), "%"});
     list_adapter = new ChooseItemAdapter(cursor);
     list.setAdapter(list_adapter);
+    FilterProviderListener filter_provider_listener = new FilterProviderListener();
+    list_adapter.setFilterQueryProvider(filter_provider_listener);
+    search.setOnQueryTextListener(filter_provider_listener);
+
+  }
+
+  private class FilterProviderListener
+    implements FilterQueryProvider, SearchView.OnQueryTextListener
+  {
+    @Override
+    public Cursor runQuery(CharSequence constraint)
+    {
+      return oh.db.rawQuery(oh.getQuery(EQ.ALL_CATEGORIES_LIKE),
+                            new String[]{new Long(trend.id_db).toString(), "%" + constraint.toString().toLowerCase() + "%"});
+    }
+    @Override
+    public boolean onQueryTextSubmit(String query)
+    {
+      return false;
+    }
+    @Override
+    public boolean onQueryTextChange(String newText)
+    {
+      list_adapter.getFilter().filter(newText);
+      return true;
+    }
   }
 
   private void buildScrollPath(Long _id_parent)
