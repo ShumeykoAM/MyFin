@@ -253,7 +253,9 @@ public class ChooseCategories
           Pair<Double, Unit> count_unit = null;
           try
           {
+            //Количество и единицы измерения взять из запланированного или последнего документа
             count_unit = new Pair<>(1.0, Unit.getUnitFromId(1));
+
           } catch(Entity.EntityException e)
           {     }
           chooses.put(_id, count_unit);

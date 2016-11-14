@@ -114,7 +114,7 @@ public class Document
     if(sum != null)
       values.put("sum"         , this.sum.getLongValue());
     values.put  ("count"       , this.count);
-    values.put  ("id_unit"     , this.getId());
+    values.put  ("id_unit"     , this.unit.getId());
     return values;
   }
   @Override

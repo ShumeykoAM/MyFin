@@ -92,7 +92,7 @@ SELECT AllParents._id
   LIMIT 1;
 
 --PLANNED
-SELECT Document._id, Category.name, Document.count, Document.id_unit
+SELECT Document._id, Category.name, Document.count, Document.id_unit, Category._id AS CATEGORY_ID
   FROM Category, Document
   WHERE Category._id=Document._id_category AND Document._id_transact IS NULL;
 
@@ -114,3 +114,8 @@ SELECT Category._id, Category.name
   FROM Category, AllParents
   WHERE AllParents._id=? AND Category._id=AllParents._id_parent
   ORDER BY AllParents.remote DESC;
+
+--PLANNED_FROM_CATEGORY
+SELECT Document._id
+  FROM Document
+  WHERE Document._id_category=? AND Document._id_transact IS NULL;

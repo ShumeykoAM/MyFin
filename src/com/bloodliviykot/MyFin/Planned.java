@@ -13,9 +13,11 @@ import android.view.View;
 import android.widget.*;
 import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
+import com.bloodliviykot.MyFin.DB.entities.Category;
 import com.bloodliviykot.MyFin.DB.entities.Document;
 import com.bloodliviykot.MyFin.DB.entities.Transact;
 import com.bloodliviykot.MyFin.DB.entities.Unit;
+import com.bloodliviykot.tools.Common.Money;
 import com.bloodliviykot.tools.DataBase.Entity;
 
 import java.util.ArrayList;
@@ -120,12 +122,21 @@ public class Planned
     for(boolean cursor_status = cursor.moveToFirst(); cursor_status; cursor_status = cursor.moveToNext())
       try
       {
-        chooses.add(new Chooses(cursor.getLong(cursor.getColumnIndex("_id")), cursor.getDouble(cursor.getColumnIndex("count")),
+        chooses.add(new Chooses(cursor.getLong(cursor.getColumnIndex("CATEGORY_ID")), cursor.getDouble(cursor.getColumnIndex("count")),
           Unit.getUnitFromId(cursor.getLong(cursor.getColumnIndex("id_unit")))));
       } catch(Entity.EntityException e)
       {      }
     intent.putParcelableArrayListExtra("chooses", chooses);
     startActivityForResult(intent, R.layout.choose_categories_list); //Запуск активности с onActivityResult
+  }
+
+  private Document getPlanDocumentFromCategoryId(Long _id_category) throws Entity.EntityException
+  {
+    Cursor cursor = oh.db.rawQuery(oh.getQuery(EQ.PLANNED_FROM_CATEGORY), new String[]{_id_category.toString()});
+    if(cursor.moveToFirst())
+      return Document.getDocumentFromId(cursor.getLong(cursor.getColumnIndex("_id")));
+    else
+      throw new Entity.EntityException();
   }
 
   @Override
@@ -141,7 +152,33 @@ public class Planned
           for(Planned.Chooses choose : arr_chooses)
             chooses.put(choose._id_category, new Pair<>(choose.count, choose.unit));
           //Перезапишем запланированные документы
-
+          long _id;
+          for(boolean cursor_status = cursor.moveToFirst(); cursor_status; cursor_status = cursor.moveToNext())
+            if(!chooses.containsKey(_id = cursor.getLong(cursor.getColumnIndex("CATEGORY_ID"))))
+              try
+              {
+                getPlanDocumentFromCategoryId(_id).delete();
+              } catch(Entity.EntityException e)
+              {   }
+          for(Map.Entry<Long, Pair<Double, Unit>> entry : chooses.entrySet() )
+          {
+            try
+            {
+              getPlanDocumentFromCategoryId(entry.getKey()).setCount(entry.getValue().first).
+                setUnit(entry.getValue().second).update();
+            } catch(Entity.EntityException e)
+            {
+              try
+              {
+                Document document = new Document(null, Category.getCategoryFromId(entry.getKey()), null,
+                  new Money(0), entry.getValue().first, entry.getValue().second);
+                document.insert();
+              } catch(Entity.EntityException e1)
+              {     }
+            }
+          }
+          cursor.requery();
+          list_adapter.notifyDataSetChanged();
         }
         break;
     }
