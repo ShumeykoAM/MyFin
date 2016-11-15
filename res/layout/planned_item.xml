@@ -12,21 +12,14 @@
             android:id="@+id/planned_item_name"
             android:layout_centerVertical="true" android:layout_alignParentLeft="true"
             android:layout_toLeftOf="@+id/planned_item_count"/>
-    <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/planned_item_choose"
-            android:layout_alignWithParentIfMissing="false"
-            android:layout_centerVertical="true" android:layout_alignParentRight="true"
-            android:paddingTop="20dp" android:paddingBottom="20dp"
-            />
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="шт."
             android:id="@+id/planned_item_unit"
-            android:layout_toLeftOf="@+id/planned_item_choose" android:layout_centerVertical="true"
-            android:paddingTop="8dp" android:paddingRight="4dp"/>
+            android:layout_centerVertical="true"
+            android:paddingTop="8dp" android:paddingRight="4dp"
+            android:layout_toLeftOf="@+id/planned_item_choose"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,4 +27,10 @@
             android:text="4"
             android:id="@+id/planned_item_count" android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/planned_item_unit"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/planned_item_choose" android:layout_centerVertical="true"
+            android:layout_alignParentRight="true" android:src="@drawable/ic_basket_full"
+            android:paddingLeft="10dp"/>
 </RelativeLayout>

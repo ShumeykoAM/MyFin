@@ -20,9 +20,7 @@ import com.bloodliviykot.MyFin.DB.entities.Unit;
 import com.bloodliviykot.tools.Common.Money;
 import com.bloodliviykot.tools.DataBase.Entity;
 
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Created by Kot on 23.09.2016.
@@ -37,6 +35,7 @@ public class Planned
   private MySQLiteOpenHelper oh;
   private Button add_debit;
   private Button add_credit;
+  private Set<Long> chose_state = new TreeSet<>();
 
   @Override
   protected void onCreate(Bundle savedInstanceState)
@@ -197,20 +196,17 @@ public class Planned
     @Override
     public void bindView(View view, Context context, Cursor cursor)
     {
+      long _id = cursor.getLong(cursor.getColumnIndex("_id"));
       TextView name = (TextView)view.findViewById(R.id.planned_item_name);
       TextView count = (TextView)view.findViewById(R.id.planned_item_count);
-      view.setOnTouchListener(new OnTouch(count, cursor.getLong(cursor.getColumnIndex("_id"))));
-      /*view.setOnClickListener(new View.OnClickListener(){
-        @Override
-        public void onClick(View v)
-        {
-
-        }
-      });
-      */
-
+      view.setOnTouchListener(new OnTouch(count, _id));
       TextView unit = (TextView)view.findViewById(R.id.planned_item_unit);
-      CheckBox choose = (CheckBox)view.findViewById(R.id.planned_item_choose);
+      ImageView choose = (ImageView)view.findViewById(R.id.planned_item_choose);
+      choose.setOnClickListener(new OnChoose(_id, choose));
+      if(chose_state.contains(_id))
+        choose.setImageResource(R.drawable.ic_basket_full);
+      else
+        choose.setImageResource(R.drawable.ic_basket_empty);
 
       name.setText(cursor.getString(cursor.getColumnIndex("name")));
       count.setText(new Double(cursor.getDouble(cursor.getColumnIndex("count"))).toString());
@@ -264,6 +260,31 @@ public class Planned
             break;
         }
         return true;
+      }
+    }
+    private class OnChoose
+      implements View.OnClickListener
+    {
+      private long _id;
+      private ImageView iv;
+      public OnChoose(long _id, ImageView iv)
+      {
+        this._id = _id;
+        this.iv = iv;
+      }
+      @Override
+      public void onClick(View v)
+      {
+        if(chose_state.contains(_id))
+        {
+          chose_state.remove(_id);
+          iv.setImageResource(R.drawable.ic_basket_empty);
+        }
+        else
+        {
+          chose_state.add(_id);
+          iv.setImageResource(R.drawable.ic_basket_full);
+        }
       }
     }
   }

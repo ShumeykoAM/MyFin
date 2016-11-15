@@ -143,7 +143,7 @@ public class Document
     if(!cursor.isNull(cursor.getColumnIndex("sum")))
       this.sum      = new Money(cursor.getLong(cursor.getColumnIndex("sum")));
     this.count    = cursor.getDouble(cursor.getColumnIndex("count"));
-    this.unit     = Unit.getUnitFromId(cursor.getLong(cursor.getColumnIndex("count")));
+    this.unit     = Unit.getUnitFromId(cursor.getLong(cursor.getColumnIndex("id_unit")));
   }
   @Override
   protected void saveOriginal()
