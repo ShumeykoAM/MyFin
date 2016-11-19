@@ -38,6 +38,7 @@ public class ChooseCategories
 
   private MySQLiteOpenHelper oh;
   private Cursor cursor;
+  private FilterProviderListener filter_provider_listener;
   private SimpleCursorAdapter list_adapter;
   private Transact.TREND trend;
   Map<Long, Pair<Double, Unit>> chooses = new TreeMap<>();
@@ -85,96 +86,124 @@ public class ChooseCategories
     AutoCompleteTextView search_tv = (AutoCompleteTextView)search.findViewById(autoCompleteTextViewID);
     search_tv.setTextColor(getResources().getColor(R.color.grey));
 
-    buildScrollPath(null);
-    cursor = oh.db.rawQuery(oh.getQuery(EQ.ALL_CATEGORIES_LIKE), new String[]{new Long(trend.id_db).toString(), "%"});
+    filter_provider_listener = new FilterProviderListener();
+    filter_provider_listener.buildScrollPath(null);
     list_adapter = new ChooseItemAdapter(cursor);
     list.setAdapter(list_adapter);
-    FilterProviderListener filter_provider_listener = new FilterProviderListener();
     list_adapter.setFilterQueryProvider(filter_provider_listener);
     search.setOnQueryTextListener(filter_provider_listener);
-
   }
 
   private class FilterProviderListener
     implements FilterQueryProvider, SearchView.OnQueryTextListener
   {
+    Long _id_parent = null;
+    String constraint = "";
+
+    public void setIdParent(Long _id_parent)
+    {
+      this._id_parent = _id_parent;
+    }
+
     @Override
     public Cursor runQuery(CharSequence constraint)
     {
-      return oh.db.rawQuery(oh.getQuery(EQ.ALL_CATEGORIES_LIKE),
-                            new String[]{new Long(trend.id_db).toString(), "%" + constraint.toString().toLowerCase() + "%"});
+      this.constraint = constraint.toString();
+      return getCursor();
     }
+
     @Override
     public boolean onQueryTextSubmit(String query)
     {
       return false;
     }
+
     @Override
     public boolean onQueryTextChange(String newText)
     {
       list_adapter.getFilter().filter(newText);
       return true;
     }
-  }
 
-  private void buildScrollPath(Long _id_parent)
-  {
-    //Удалить дочерние
-    boolean is_first = true;
-    for(ButtonID bb : navigation_buttons)
+    private Cursor getCursor()
     {
-      if(is_first)
-      {
-        is_first = false;
-        continue;
-      }
-      navigation_linear.removeView(bb);
+      Cursor cursor;
+      if(_id_parent == null)
+        cursor = oh.db.rawQuery(oh.getQuery(EQ.ALL_CATEGORIES_LIKE), new String[]{new Long(trend.id_db).toString(), "%" + constraint.toString().toLowerCase() + "%"});
+      else
+        cursor = oh.db.rawQuery(oh.getQuery(EQ.SUB_CATEGORIES_LIKE), new String[]{_id_parent.toString(), "%" + constraint.toString().toLowerCase() + "%"});
+      return cursor;
     }
-    navigation_buttons.clear();
 
-    if(trend == Transact.TREND.DEBIT)
-      root.setBackgroundResource(R.drawable.ic_arrow_all_debit);
-    else if(trend == Transact.TREND.CREDIT)
-      root.setBackgroundResource(R.drawable.ic_arrow_all_credit);
-    ButtonID next_button;
-    if(_id_parent != null)
+    public void buildScrollPath(Long _id_parent)
     {
-      Cursor cursor_parents = oh.db.rawQuery(oh.getQuery(EQ.ALL_PARENTS), new String[]{_id_parent.toString()});
-      for(boolean cursor_status = cursor_parents.moveToFirst();
-          cursor_status;
-          cursor_status = cursor_parents.moveToNext())
+      filter_provider_listener.setIdParent(_id_parent);
+      cursor = getCursor();
+      if(list_adapter != null)
       {
-        navigation_buttons.add(next_button = (ButtonID)(getLayoutInflater().inflate(R.layout.arrow_button, navigation_linear, false)));
-        next_button.setText(cursor_parents.getString(cursor_parents.getColumnIndex("name")));
-        next_button.setID(cursor_parents.getLong(cursor_parents.getColumnIndex("_id")));
+        list_adapter.changeCursor(cursor);
+        list_adapter.notifyDataSetChanged();
       }
-      try
+      //Удалить дочерние
+      boolean is_first = true;
+      for(ButtonID bb : navigation_buttons)
       {
-        Category category = Category.getCategoryFromId(_id_parent);
-        navigation_buttons.add(next_button = (ButtonID)(getLayoutInflater().inflate(R.layout.arrow_button, navigation_linear, false)));
-        next_button.setText(category.getName());
-        next_button.setID(category.getId());
-      }catch(Entity.EntityException e)
-      {     }
-    }
-    for(Button bb : navigation_buttons)
-      navigation_linear.addView(bb);
-    navigation_buttons.add(0, root);
-    Button navigation_last = navigation_buttons.get(navigation_buttons.size() - 1);
-    LinearLayout.LayoutParams button_params = (LinearLayout.LayoutParams)navigation_last.getLayoutParams();
-    button_params.rightMargin = 0;
-    navigation_last.setLayoutParams(button_params);
-    for(Button bb : navigation_buttons)
-      bb.setOnClickListener(new View.OnClickListener(){
-        @Override
-        public void onClick(View v)
+        if(is_first)
         {
-          Long _id = ((ButtonID)v).getID();
-            buildScrollPath(_id);
+          is_first = false;
+          continue;
         }
-      });
-  }
+        navigation_linear.removeView(bb);
+      }
+      navigation_buttons.clear();
 
+      if(trend == Transact.TREND.DEBIT)
+        root.setBackgroundResource(R.drawable.ic_arrow_all_debit);
+      else if(trend == Transact.TREND.CREDIT)
+        root.setBackgroundResource(R.drawable.ic_arrow_all_credit);
+      ButtonID next_button;
+      if(_id_parent != null)
+      {
+        Cursor cursor_parents = oh.db.rawQuery(oh.getQuery(EQ.ALL_PARENTS), new String[]{_id_parent.toString()});
+        for(boolean cursor_status = cursor_parents.moveToFirst(); cursor_status; cursor_status = cursor_parents.moveToNext())
+        {
+          navigation_buttons.add(next_button = (ButtonID)(getLayoutInflater().inflate(R.layout.arrow_button, navigation_linear, false)));
+          next_button.setText(cursor_parents.getString(cursor_parents.getColumnIndex("name")));
+          next_button.setID(cursor_parents.getLong(cursor_parents.getColumnIndex("_id")));
+        }
+        try
+        {
+          Category category = Category.getCategoryFromId(_id_parent);
+          navigation_buttons.add(next_button = (ButtonID)(getLayoutInflater().inflate(R.layout.arrow_button, navigation_linear, false)));
+          next_button.setText(category.getName());
+          next_button.setID(category.getId());
+        } catch(Entity.EntityException e)
+        {     }
+      }
+      for(Button bb : navigation_buttons)
+        navigation_linear.addView(bb);
+      navigation_buttons.add(0, root);
+      for(Button bb : navigation_buttons)
+      {
+        LinearLayout.LayoutParams button_params = (LinearLayout.LayoutParams)bb.getLayoutParams();
+        if(bb == navigation_buttons.get(navigation_buttons.size() - 1))
+          button_params.rightMargin = 0;
+        else
+          button_params.rightMargin = -10;
+        bb.setLayoutParams(button_params);
+      }
+      for(Button bb : navigation_buttons)
+        bb.setOnClickListener(new View.OnClickListener()
+        {
+          @Override
+          public void onClick(View v)
+          {
+            Long _id = ((ButtonID)v).getID();
+            buildScrollPath(_id);
+          }
+        });
+    }
+  }
   @Override
   public void finish()
   {
@@ -231,6 +260,17 @@ public class ChooseCategories
         ch_chose.setChecked(false);
       }
       ch_chose.setOnCheckedChangeListener(new CheckedChangeListener(_id, tv_count, tv_unit));
+      Cursor cursor_child = oh.db.rawQuery(oh.getQuery(EQ.EXIST_SUB_CATEGORY), new String[]{new Long(_id).toString()});
+      if(cursor_child.getCount() != 0)
+      {
+        iv_image.setOnClickListener(new OnClickEntryTree(_id));
+        iv_image.setImageResource(R.drawable.ic_enter);
+      }
+      else
+      {
+        iv_image.setOnClickListener(null);
+        iv_image.setImageResource(R.drawable.ic_void);
+      }
     }
 
     private class CheckedChangeListener
@@ -271,6 +311,20 @@ public class ChooseCategories
       }
     }
 
+    private class OnClickEntryTree
+      implements View.OnClickListener
+    {
+      private long _id;
+      public OnClickEntryTree(long _id)
+      {
+        this._id = _id;
+      }
+      @Override
+      public void onClick(View v)
+      {
+        filter_provider_listener.buildScrollPath(_id);
+      }
+    }
   }
 
 }

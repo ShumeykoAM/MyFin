@@ -105,7 +105,7 @@ SELECT Category._id, Category.name
 --SUB_CATEGORIES_LIKE Все подкатегории указанного родителя c указанным трендом и указанной подстрокй, включая под под и т.д.
 SELECT Category._id, Category.name
   FROM Category, AllParents
-  WHERE AllParents._id_parent=? AND Category.trend=? AND
+  WHERE AllParents._id_parent=? AND
         Category._id=AllParents._id AND Category.name_lower_case LIKE ?
   ORDER BY Category.name_lower_case ASC;
 
@@ -115,7 +115,7 @@ SELECT Category._id, Category.name
   WHERE AllParents._id=? AND Category._id=AllParents._id_parent
   ORDER BY AllParents.remote DESC;
 
---PLANNED_FROM_CATEGORY
+--PLANNED_FROM_CATEGORY Запланированный документ для указанной категории
 SELECT Document._id
   FROM Document
   WHERE Document._id_category=? AND Document._id_transact IS NULL;
