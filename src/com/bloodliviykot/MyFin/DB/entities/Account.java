@@ -2,19 +2,18 @@ package com.bloodliviykot.MyFin.DB.entities;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.os.Parcel;
+import android.os.Parcelable;
 import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.R;
 import com.bloodliviykot.tools.Common.Money;
 import com.bloodliviykot.tools.DataBase.Entity;
-
-import java.io.Serializable;
 
 /**
  * Created by Kot on 25.09.2016.
  */
 public class Account
   extends Entity
-  implements Serializable
 {
   //Доступные иконки для счетов
   public enum E_IC_TYPE_RESOURCE
@@ -41,41 +40,50 @@ public class Account
     }
   }
 
-  public Currency getCurrency(){return currency;}
+  private Fields f;
+  private Fields original;
+  private void init()
+  {
+    f = new Fields();
+    original = new Fields();
+  }
+
+  public Currency getCurrency(){return f.currency;}
   public void setCurrency(Currency currency) throws EntityException
   {
     if(currency == null || currency.getId() == 0)
       throw new EntityException();
-    this.currency = currency;
+    f.currency = currency;
   }
-  public CoUser getCoUser(){return co_user;}
-  public void setCoUser(CoUser co_user){this.co_user = co_user;}
-  public E_IC_TYPE_RESOURCE getIcon(){return icon;}
+  public CoUser getCoUser(){return f.co_user;}
+  public void setCoUser(CoUser co_user){f.co_user = co_user;}
+  public E_IC_TYPE_RESOURCE getIcon(){return f.icon;}
   public void setIcon(E_IC_TYPE_RESOURCE icon) throws EntityException
   {
     if(icon == null)
       throw new EntityException();
-    this.icon = icon;
+    f.icon = icon;
   }
-  public String getName(){return name;}
+  public String getName(){return f.name;}
   public void setName(String name) throws EntityException
   {
     if(name == null)
       throw new EntityException();
-    this.name = name;
+    f.name = name;
   }
-  public Money getBalance(){return balance;}
-  public void setBalance(Money balance){this.balance = balance;}
+  public Money getBalance(){return f.balance;}
+  public void setBalance(Money balance){f.balance = balance;}
 
   public Account(Currency currency, CoUser co_user, E_IC_TYPE_RESOURCE icon, String name, Money balance) throws EntityException
   {
+    init();
     if(currency == null || currency.getId() == 0 || icon == null || name == null || balance == null)
       throw new EntityException();
-    this.currency = currency;
-    this.co_user  = co_user ;
-    this.icon     = icon    ;
-    this.name     = name    ;
-    this.balance  = balance ;
+    f.currency = currency;
+    f.co_user  = co_user ;
+    f.icon     = icon    ;
+    f.name     = name    ;
+    f.balance  = balance ;
   }
   private Account(long _id) throws EntityException
   {
@@ -95,65 +103,67 @@ public class Account
   protected ContentValues getContentValues() throws EntityException
   {
     ContentValues values = new ContentValues();
-    if(currency.getId() == 0)
+    if(f.currency.getId() == 0)
       throw new EntityException();
-    values.put("_id_currency" , this.currency.getId());
-    if(this.co_user != null)
-      values.put("_id_co_user", this.co_user.getId());
-    values.put("id_icon"      , this.icon.id_db     );
-    values.put("name"         , this.name           );
-    values.put("balance"      , this.balance.getLongValue());
+    values.put("_id_currency" , f.currency.getId());
+    if(f.co_user != null)
+      values.put("_id_co_user", f.co_user.getId());
+    values.put("id_icon"      , f.icon.id_db     );
+    values.put("name"         , f.name           );
+    values.put("balance"      , f.balance.getLongValue());
     return values;
   }
   @Override
   protected ContentValues getContentValuesChange()
   {
     ContentValues values = new ContentValues();
-    compareInsert(values, original.currency.getId(), currency.getId(), "_id_currency");
-    compareInsert(values, original.co_user != null ? original.co_user.getId() : null, co_user != null ? co_user.getId() : null, "_id_co_user");
-    compareInsert(values, original.icon.id_db, icon.id_db, "id_icon");
-    compareInsert(values, original.name    , name    , "name");
-    compareInsert(values, original.balance.getLongValue() , balance.getLongValue() , "balance");
+    compareInsert(values, original.currency.getId(), f.currency.getId(), "_id_currency");
+    compareInsert(values, original.co_user != null ? original.co_user.getId() : null, f.co_user != null ? f.co_user.getId() : null, "_id_co_user");
+    compareInsert(values, original.icon.id_db, f.icon.id_db, "id_icon");
+    compareInsert(values, original.name, f.name    , "name");
+    compareInsert(values, original.balance.getLongValue(), f.balance.getLongValue() , "balance");
     return values;
   }
   @Override
   protected void initFromCursor(Cursor cursor) throws EntityException
   {
-    this.currency = Currency.getCurrency(cursor.getLong(cursor.getColumnIndex("_id_currency")));
+    init();
+    f.currency = Currency.getCurrency(cursor.getLong(cursor.getColumnIndex("_id_currency")));
     if(!cursor.isNull(cursor.getColumnIndex("_id_co_user")))
-      this.co_user = CoUser.getCoUserFromId(cursor.getLong(cursor.getColumnIndex("_id_co_user")));
-    this.icon = E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(cursor.getLong(cursor.getColumnIndex("id_icon")));
-    this.name = cursor.getString(cursor.getColumnIndex("name"));
-    this.balance = new Money(cursor.getLong(cursor.getColumnIndex("balance")));
+      f.co_user = CoUser.getCoUserFromId(cursor.getLong(cursor.getColumnIndex("_id_co_user")));
+    f.icon = E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(cursor.getLong(cursor.getColumnIndex("id_icon")));
+    f.name = cursor.getString(cursor.getColumnIndex("name"));
+    f.balance = new Money(cursor.getLong(cursor.getColumnIndex("balance")));
   }
   @Override
   protected void saveOriginal()
   {
-    if(original == null)
-      original = new Original();
-    original.currency = currency;
-    original.co_user  = co_user ;
-    original.icon     = icon    ;
-    original.name     = name    ;
-    original.balance  = balance ;
+    original.currency = f.currency;
+    original.co_user  = f.co_user ;
+    original.icon     = f.icon    ;
+    original.name     = f.name    ;
+    original.balance  = f.balance ;
   }
 
   //Поля записи
-  private Currency           currency;
-  private CoUser             co_user ;
-  private E_IC_TYPE_RESOURCE icon    ;
-  private String             name    ;
-  private Money              balance ;
-
-  //Оригинальные (как были втавлены\извлечены из базы)
-  private static class Original
+  public static class Fields
+    implements Parcelable
   {
-    Currency           currency;
-    CoUser             co_user ;
-    E_IC_TYPE_RESOURCE icon    ;
-    String             name    ;
-    Money              balance ;
+    public Currency           currency;
+    public CoUser             co_user;
+    public E_IC_TYPE_RESOURCE icon;
+    public String             name;
+    public Money              balance;
+
+    // Parcelable
+    @Override
+    public int describeContents()
+    { return 0; }
+    @Override
+    public void writeToParcel(Parcel dest, int flags)
+    {
+      //dest.writeParcelable(currency);
+    }
   }
-  Original original;
 
 }

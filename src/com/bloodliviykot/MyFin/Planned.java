@@ -45,7 +45,18 @@ public class Planned
 
     oh = MySQLiteOpenHelper.getMySQLiteOpenHelper();
     list_planned = (ListView)findViewById(R.id.planned_list_view);
-    (add_debit = (Button)findViewById(R.id.planned_add_debit)).setOnClickListener(this);
+    (add_debit = (Button)findViewById(R.id.planned_add_debit)).setOnClickListener(new View.OnClickListener()
+    {
+      @Override
+      public void onClick(View v)
+      {
+        DDocumentParams document_params = new DDocumentParams();
+        Bundle params = new Bundle();
+        params.putString("Regime", "New");
+        document_params.setArguments(params);
+        document_params.show(getFragmentManager(), null);
+      }
+    });
     (add_credit = (Button)findViewById(R.id.planned_add_credit)).setOnClickListener(this);
 
 

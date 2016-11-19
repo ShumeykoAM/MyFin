@@ -27,6 +27,8 @@ public class AccountsDNew
   extends DialogFragment //!!! внимание, наследники DialogFragment должны иметь конструктор без параметров
   implements View.OnClickListener
 {
+  public AccountsDNew()
+  {   }
   public interface I_ResultHandlerAccountsDNew
   {
     void resultHandler(Bundle result_values);
@@ -74,7 +76,11 @@ public class AccountsDNew
     else
     {
       regime_new = false;
-      account = (Account)params.getSerializable("Account");
+      try
+      {
+        account = Account.getAccountFromId(params.getLong("_id_Account"));
+      } catch(Entity.EntityException e)
+      {     }
       icon.setSelection(account.getIcon().id);
       name.setText(account.getName());
       balance.setText(account.getBalance().toString());
@@ -132,7 +138,7 @@ public class AccountsDNew
           Toast.makeText(Common.application_context, "Ошибка", Toast.LENGTH_SHORT).show();
           return;
         }
-        result_values.putSerializable("Account", account);
+        result_values.putLong("_id_Account", account.getId());
         boolean need_call_activity = true;
         try
         {

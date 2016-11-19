@@ -4,14 +4,11 @@ import android.database.Cursor;
 import android.database.MatrixCursor;
 import com.bloodliviykot.tools.DataBase.Entity;
 
-import java.io.Serializable;
-
 /**
  * Created by Kot on 30.10.2016.
  */
 //Объекты данного класса не хранятся в БД
 public class Unit
-  implements Serializable
 {
   public long getId()
   {

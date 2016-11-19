@@ -5,14 +5,11 @@ import android.database.Cursor;
 import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.tools.DataBase.Entity;
 
-import java.io.Serializable;
-
 /**
  * Created by Kot on 22.10.2016.
  */
 public class Category
   extends Entity
-  implements Serializable
 {
 
   public Transact.TREND getTrend()

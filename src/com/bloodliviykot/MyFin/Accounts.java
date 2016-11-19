@@ -52,24 +52,28 @@ public class Accounts
   {
     if(result_values.containsKey("Button") && result_values.getString("Button").equals("Ok"))
     {
-      Account account = (Account)result_values.getSerializable("Account");
-      if(cursor.requery())
+      try
       {
-        list_accounts.post(new Runnable()
+        Account account = Account.getAccountFromId(result_values.getLong("_id_Account"));
+        if(cursor.requery())
         {
-          @Override
-          public void run()
+          list_accounts.post(new Runnable()
           {
-            list_adapter.notifyDataSetChanged();
-            for(boolean result = cursor.moveToFirst(); result; result = cursor.moveToNext())
-              if(cursor.getLong(cursor.getColumnIndex("_id")) == account.getId())
-              {
-                list_accounts.smoothScrollToPosition(cursor.getPosition());
-                break;
-              }
-          }
-        });
-      }
+            @Override
+            public void run()
+            {
+              list_adapter.notifyDataSetChanged();
+              for(boolean result = cursor.moveToFirst(); result; result = cursor.moveToNext())
+                if(cursor.getLong(cursor.getColumnIndex("_id")) == account.getId())
+                {
+                  list_accounts.smoothScrollToPosition(cursor.getPosition());
+                  break;
+                }
+            }
+          });
+        }
+      } catch(Entity.EntityException e)
+      {     }
     }
   }
 
@@ -86,16 +90,11 @@ public class Accounts
   public void onItemClick(AdapterView<?> parent, View view, int position, long id)
   {
     AccountsDNew accounts_d_new = new AccountsDNew();
-    try
-    {
-      Account account = Account.getAccountFromId(id);
-      Bundle params = new Bundle();
-      params.putString("Regime", "Edit");
-      params.putSerializable("Account", account);
-      accounts_d_new.setArguments(params);
-      accounts_d_new.show(getFragmentManager(), null);
-    } catch(Entity.EntityException e)
-    {    }
+    Bundle params = new Bundle();
+    params.putString("Regime", "Edit");
+    params.putLong("_id_Account", id);
+    accounts_d_new.setArguments(params);
+    accounts_d_new.show(getFragmentManager(), null);
   }
 
   //Переопределим SimpleCursorAdapter что бы форматировать данные из базы нужным образом

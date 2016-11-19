@@ -4,14 +4,11 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import com.bloodliviykot.tools.DataBase.Entity;
 
-import java.io.Serializable;
-
 /**
  * Created by Kot on 30.10.2016.
  */
 public class Event
   extends Entity
-  implements Serializable
 {
 
   public static Event getEventFromId(long id)

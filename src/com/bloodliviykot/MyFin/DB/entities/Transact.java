@@ -7,14 +7,11 @@ import com.bloodliviykot.tools.Common.DateTime;
 import com.bloodliviykot.tools.Common.Money;
 import com.bloodliviykot.tools.DataBase.Entity;
 
-import java.io.Serializable;
-
 /**
  * Created by Kot on 05.10.2016.
  */
 public class Transact
   extends Entity
-  implements Serializable
 {
   //Типы транзакций
   public enum TYPE_TRANSACTION

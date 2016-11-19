@@ -6,14 +6,11 @@ import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.tools.Common.Money;
 import com.bloodliviykot.tools.DataBase.Entity;
 
-import java.io.Serializable;
-
 /**
  * Created by Kot on 30.10.2016.
  */
 public class Document
   extends Entity
-  implements Serializable
 {
 
   public Transact getTransact()
