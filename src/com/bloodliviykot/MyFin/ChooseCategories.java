@@ -254,7 +254,7 @@ public class ChooseCategories
         tv_count.setText(count_unit.first.toString());
         tv_unit.setText(count_unit.second.getName());
         ch_chose.setChecked(true);
-        CountUnitParams count_unit_params = new CountUnitParams(_id, tv_count, tv_unit);
+        CountUnitParams count_unit_params = new CountUnitParams(_id, tv_count, tv_unit, name);
         tv_count.setOnClickListener(count_unit_params);
         tv_unit.setOnClickListener(count_unit_params);
       }
@@ -263,8 +263,10 @@ public class ChooseCategories
         tv_count.setText("");
         tv_unit.setText("");
         ch_chose.setChecked(false);
+        tv_count.setOnClickListener(null);
+        tv_unit.setOnClickListener(null);
       }
-      ch_chose.setOnCheckedChangeListener(new CheckedChangeListener(_id, tv_count, tv_unit));
+      ch_chose.setOnCheckedChangeListener(new CheckedChangeListener(_id, tv_count, tv_unit, name));
       Cursor cursor_child = oh.db.rawQuery(oh.getQuery(EQ.EXIST_SUB_CATEGORY), new String[]{new Long(_id).toString()});
       if(cursor_child.getCount() != 0)
       {
@@ -282,13 +284,16 @@ public class ChooseCategories
       implements CompoundButton.OnCheckedChangeListener
     {
       private long _id;
-      TextView tv_count;
-      TextView tv_unit;
-      public CheckedChangeListener(long _id, TextView tv_count, TextView tv_unit)
+      private TextView tv_count;
+      private TextView tv_unit;
+      private String name;
+
+      public CheckedChangeListener(long _id, TextView tv_count, TextView tv_unit, String name)
       {
         this._id = _id;
         this.tv_count = tv_count;
         this.tv_unit = tv_unit;
+        this.name = name;
       }
       @Override
       public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
@@ -306,12 +311,17 @@ public class ChooseCategories
           chooses.put(_id, count_unit);
           tv_count.setText(count_unit.first.toString());
           tv_unit.setText(count_unit.second.getName());
+          CountUnitParams count_unit_params = new CountUnitParams(_id, tv_count, tv_unit, name);
+          tv_count.setOnClickListener(count_unit_params);
+          tv_unit.setOnClickListener(count_unit_params);
         }
         else
         {
           chooses.remove(_id);
           tv_count.setText("");
           tv_unit.setText("");
+          tv_count.setOnClickListener(null);
+          tv_unit.setOnClickListener(null);
         }
       }
     }
@@ -337,11 +347,13 @@ public class ChooseCategories
       private TextView tv_count;
       private TextView tv_unit;
       private long _id;
-      public CountUnitParams(long _id, TextView tv_count, TextView tv_unit)
+      private String name;
+      public CountUnitParams(long _id, TextView tv_count, TextView tv_unit, String name)
       {
         this._id = _id;
         this.tv_count = tv_count;
         this.tv_unit = tv_unit;
+        this.name = name;
       }
       @Override
       public void onClick(View v)
@@ -350,15 +362,17 @@ public class ChooseCategories
         Pair<Double, Unit> count_unit = chooses.get(_id);
         Bundle params = new Bundle();
         params.putParcelable("count_unit", new Planned.Chooses(_id, count_unit.first, count_unit.second));
+        params.putString("name", name);
         choose_category_params.setArguments(params);
         choose_category_params.show(getFragmentManager(), null);
-
       }
     }
   }
   @Override
   public void resultHandler(Bundle result_values)
   {
+    Planned.Chooses count_unit = result_values.getParcelable("count_unit");
+
 
   }
 

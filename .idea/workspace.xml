@@ -116,20 +116,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="445e4891-3518-4b84-be65-084c2993ce99" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DChooseCategoryParams.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/bloodliviykot/tools/widget/DialogFragmentEx.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/d_choose_category_params.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/d_choose_category_params_unit_item.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Accounts.java" afterPath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Accounts.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/ChooseCategories.java" afterPath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/ChooseCategories.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DDocumentParams.java" afterPath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DDocumentParams.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/d_document_params.xml" afterPath="$PROJECT_DIR$/res/layout/d_document_params.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/styles.xml" afterPath="$PROJECT_DIR$/res/values/styles.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DChooseCategoryParams.java" afterPath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DChooseCategoryParams.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/d_choose_category_params.xml" afterPath="$PROJECT_DIR$/res/layout/d_choose_category_params.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\Projects\OurBudget\trunk\client\res\layout\accounts_d_new.xml" afterPath="$PROJECT_DIR$/res/layout/d_accounts_new.xml" />
-      <change type="MOVED" beforePath="D:\Projects\OurBudget\trunk\client\res\layout\accounts_d_new_currency_item.xml" afterPath="$PROJECT_DIR$/res/layout/d_accounts_new_currency_item.xml" />
-      <change type="MOVED" beforePath="D:\Projects\OurBudget\trunk\client\res\layout\accounts_d_new_image_item.xml" afterPath="$PROJECT_DIR$/res/layout/d_accounts_new_image_item.xml" />
-      <change type="MOVED" beforePath="D:\Projects\OurBudget\trunk\client\src\com\bloodliviykot\MyFin\AccountsDNew.java" afterPath="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DAccountsNew.java" />
     </list>
     <ignored path="MyFin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -168,11 +158,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ChooseCategories.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ChooseCategories.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/ChooseCategories.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.26677316">
-              <caret line="344" column="24" selection-start-line="344" selection-start-column="7" selection-end-line="344" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="295" column="0" selection-start-line="295" selection-start-column="0" selection-end-line="295" selection-end-column="0" />
               <folding>
                 <element signature="class#2757:2903" expanded="false" />
                 <element signature="class#FilterProviderListener#0;class#ChooseCategories#0" expanded="false" />
@@ -181,16 +171,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DChooseCategoryParams.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DChooseCategoryParams.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DChooseCategoryParams.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.19009584">
+              <caret line="28" column="40" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="class#2286:2593" expanded="false" />
+                <element signature="class#2415:2722" expanded="false" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="d_choose_category_params.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/d_choose_category_params.xml">
+          <provider editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="39" column="33" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer">
+            <state />
           </provider>
         </entry>
       </file>
@@ -258,14 +261,14 @@
         <option value="$PROJECT_DIR$/res/layout/d_document_params.xml" />
         <option value="$PROJECT_DIR$/res/layout/d_choose_cetegory_params_unit_item.xml" />
         <option value="$PROJECT_DIR$/res/values/styles.xml" />
-        <option value="$PROJECT_DIR$/res/layout/d_choose_category_params.xml" />
         <option value="$PROJECT_DIR$/res/layout/d_choose_category_params_unit_item.xml" />
-        <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/ChooseCategories.java" />
-        <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DChooseCategoryParams.java" />
         <option value="$PROJECT_DIR$/src/com/bloodliviykot/tools/widget/DialogFragmentEx.java" />
         <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DAccountsNew.java" />
         <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/Accounts.java" />
         <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DDocumentParams.java" />
+        <option value="$PROJECT_DIR$/res/layout/d_choose_category_params.xml" />
+        <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/ChooseCategories.java" />
+        <option value="$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DChooseCategoryParams.java" />
       </list>
     </option>
   </component>
@@ -917,7 +920,7 @@
       <workItem from="1479149723536" duration="13498000" />
       <workItem from="1479322091620" duration="5632000" />
       <workItem from="1479550699295" duration="22120000" />
-      <workItem from="1479625879405" duration="16523000" />
+      <workItem from="1479625879405" duration="19808000" />
     </task>
     <task id="LOCAL-00001">
       <created>1478710417404</created>
@@ -929,7 +932,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="593817000" />
+    <option name="totallyTimeSpent" value="597102000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -944,7 +947,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1732224" sideWeight="0.5321101" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1505295" sideWeight="0.5321101" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874617" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32721713" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1017,17 +1020,11 @@
           <properties />
           <option name="timeStamp" value="734" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/ChooseCategories.java</url>
-          <line>362</line>
-          <properties />
-          <option name="timeStamp" value="766" />
-        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="769" />
+      <option name="time" value="774" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="ЬнАшт">
@@ -1214,14 +1211,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/android/sdk/sources/android-15/com/android/internal/os/ZygoteInit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53833866">
-          <caret line="787" column="0" selection-start-line="787" selection-start-column="0" selection-end-line="787" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/tools/DataBase/Entity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1389,17 +1378,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/d_choose_category_params.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/d_choose_category_params_unit_item.xml">
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1448,7 +1426,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="732" column="0" selection-start-line="732" selection-start-column="0" selection-end-line="732" selection-end-column="0" />
           <folding>
-            <element signature="e#27792#27793#0" expanded="true" />
+            <element signature="e#27792#27793#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1458,7 +1436,7 @@
         <state vertical-scroll-proportion="0.75559103">
           <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1487,24 +1465,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DChooseCategoryParams.java">
-      <provider selected="true" editor-type-id="text-editor">
+    <entry file="file://$PROJECT_DIR$/res/layout/d_choose_category_params.xml">
+      <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="class#2286:2593" expanded="false" />
-          </folding>
+          <caret line="39" column="33" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
+          <folding />
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/ChooseCategories.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26677316">
-          <caret line="344" column="24" selection-start-line="344" selection-start-column="7" selection-end-line="344" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="295" column="0" selection-start-line="295" selection-start-column="0" selection-end-line="295" selection-end-column="0" />
           <folding>
             <element signature="class#2757:2903" expanded="false" />
             <element signature="class#FilterProviderListener#0;class#ChooseCategories#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/android/sdk/sources/android-15/com/android/internal/os/ZygoteInit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="787" column="0" selection-start-line="787" selection-start-column="0" selection-end-line="787" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/bloodliviykot/MyFin/DChooseCategoryParams.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19009584">
+          <caret line="28" column="40" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#2415:2722" expanded="false" />
           </folding>
         </state>
       </provider>
