@@ -1,7 +1,6 @@
 package com.bloodliviykot.MyFin;
 
 import android.annotation.SuppressLint;
-import android.app.DialogFragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,17 +9,15 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import com.bloodliviykot.tools.widget.DialogFragmentEx;
 
 /**
  * Created by Kot on 16.11.2016.
  */
 @SuppressLint("ValidFragment")
 public class DDocumentParams
-  extends DialogFragment //!!! внимание, наследники DialogFragment должны иметь конструктор без параметров
+  extends DialogFragmentEx<DialogFragmentEx.I_ResultHandler, Bundle>
 {
-  public DDocumentParams()
-  {     }
-
   private EditText price;
 
   @Override

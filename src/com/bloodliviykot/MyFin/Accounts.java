@@ -10,13 +10,14 @@ import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
 import com.bloodliviykot.MyFin.DB.entities.Account;
 import com.bloodliviykot.tools.DataBase.Entity;
+import com.bloodliviykot.tools.widget.DialogFragmentEx;
 
 /**
  * Created by Kot on 23.09.2016.
  */
 public class Accounts
   extends Activity
-  implements AccountsDNew.I_ResultHandlerAccountsDNew, AdapterView.OnItemClickListener, View.OnClickListener
+  implements DialogFragmentEx.I_ResultHandler<Bundle>, AdapterView.OnItemClickListener, View.OnClickListener
 {
   private MySQLiteOpenHelper oh;
   private ListView list_accounts;
@@ -80,7 +81,7 @@ public class Accounts
   @Override
   public void onClick(View v)
   {
-    AccountsDNew accounts_d_new = new AccountsDNew();
+    DAccountsNew accounts_d_new = new DAccountsNew();
     Bundle params = new Bundle();
     params.putString("Regime", "New");
     accounts_d_new.setArguments(params);
@@ -89,7 +90,7 @@ public class Accounts
   @Override
   public void onItemClick(AdapterView<?> parent, View view, int position, long id)
   {
-    AccountsDNew accounts_d_new = new AccountsDNew();
+    DAccountsNew accounts_d_new = new DAccountsNew();
     Bundle params = new Bundle();
     params.putString("Regime", "Edit");
     params.putLong("_id_Account", id);

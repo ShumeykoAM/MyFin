@@ -15,6 +15,7 @@ import com.bloodliviykot.MyFin.DB.entities.Transact;
 import com.bloodliviykot.MyFin.DB.entities.Unit;
 import com.bloodliviykot.tools.DataBase.Entity;
 import com.bloodliviykot.tools.widget.ButtonID;
+import com.bloodliviykot.tools.widget.DialogFragmentEx;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ import java.util.TreeMap;
  */
 public class ChooseCategories
   extends Activity
+  implements DialogFragmentEx.I_ResultHandler<Bundle>
 {
   private LinearLayout navigation_linear;
   private ButtonID root;
@@ -71,7 +73,8 @@ public class ChooseCategories
     list = (ListView)findViewById(R.id.choose_categories_list);
     tree = (Button)findViewById(R.id.choose_categories_tree);
     ok = (Button)findViewById(R.id.choose_categories_ok);
-    ok.setOnClickListener(new View.OnClickListener(){
+    ok.setOnClickListener(new View.OnClickListener()
+    {
       @Override
       public void onClick(View v)
       {
@@ -92,6 +95,20 @@ public class ChooseCategories
     list.setAdapter(list_adapter);
     list_adapter.setFilterQueryProvider(filter_provider_listener);
     search.setOnQueryTextListener(filter_provider_listener);
+  }
+  @Override
+  public void finish()
+  {
+    Intent intent = new Intent();
+    if(result == RESULT_OK)
+    {
+      ArrayList<Planned.Chooses> arr_chooses = new ArrayList<Planned.Chooses>();
+      for(Map.Entry<Long, Pair<Double, Unit>> entry : chooses.entrySet() )
+        arr_chooses.add(new Planned.Chooses(entry.getKey(), entry.getValue().first, entry.getValue().second));
+      intent.putParcelableArrayListExtra("chooses", arr_chooses);
+    }
+    setResult(result, intent); //RESULT_CANCELED
+    super.finish();
   }
 
   private class FilterProviderListener
@@ -204,21 +221,6 @@ public class ChooseCategories
         });
     }
   }
-  @Override
-  public void finish()
-  {
-    Intent intent = new Intent();
-    if(result == RESULT_OK)
-    {
-      ArrayList<Planned.Chooses> arr_chooses = new ArrayList<Planned.Chooses>();
-      for(Map.Entry<Long, Pair<Double, Unit>> entry : chooses.entrySet() )
-        arr_chooses.add(new Planned.Chooses(entry.getKey(), entry.getValue().first, entry.getValue().second));
-      intent.putParcelableArrayListExtra("chooses", arr_chooses);
-    }
-    setResult(result, intent); //RESULT_CANCELED
-    super.finish();
-  }
-
 
   private class ChooseItemAdapter
     extends SimpleCursorAdapter
@@ -252,6 +254,9 @@ public class ChooseCategories
         tv_count.setText(count_unit.first.toString());
         tv_unit.setText(count_unit.second.getName());
         ch_chose.setChecked(true);
+        CountUnitParams count_unit_params = new CountUnitParams(_id, tv_count, tv_unit);
+        tv_count.setOnClickListener(count_unit_params);
+        tv_unit.setOnClickListener(count_unit_params);
       }
       else
       {
@@ -325,6 +330,36 @@ public class ChooseCategories
         filter_provider_listener.buildScrollPath(_id);
       }
     }
+
+    private class CountUnitParams
+      implements View.OnClickListener
+    {
+      private TextView tv_count;
+      private TextView tv_unit;
+      private long _id;
+      public CountUnitParams(long _id, TextView tv_count, TextView tv_unit)
+      {
+        this._id = _id;
+        this.tv_count = tv_count;
+        this.tv_unit = tv_unit;
+      }
+      @Override
+      public void onClick(View v)
+      {
+        DChooseCategoryParams choose_category_params = new DChooseCategoryParams();
+        Pair<Double, Unit> count_unit = chooses.get(_id);
+        Bundle params = new Bundle();
+        params.putParcelable("count_unit", new Planned.Chooses(_id, count_unit.first, count_unit.second));
+        choose_category_params.setArguments(params);
+        choose_category_params.show(getFragmentManager(), null);
+
+      }
+    }
+  }
+  @Override
+  public void resultHandler(Bundle result_values)
+  {
+
   }
 
 }

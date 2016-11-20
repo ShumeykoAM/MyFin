@@ -10,7 +10,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_alignParentBottom="false"
             android:layout_alignParentLeft="false"
             android:layout_alignWithParentIfMissing="false"
@@ -33,7 +33,6 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Цена"
                     android:id="@+id/d_document_params_l1" android:layout_centerVertical="true"
                     android:layout_alignParentLeft="true"
@@ -51,10 +50,10 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/d_document_params_price_currency"
-                    android:layout_alignTop="@+id/d_document_params_l1" android:layout_alignParentRight="true"
-                    android:layout_marginLeft="4dp" android:text="руб."/>
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="4dp" android:text="руб." android:layout_centerVertical="true"/>
         </RelativeLayout>
         <RelativeLayout
                 android:layout_width="match_parent"
@@ -63,7 +62,6 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="за"
                     android:id="@+id/d_document_params_l2" android:layout_centerVertical="true"
                     android:layout_alignParentLeft="true"
@@ -94,7 +92,6 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Кол-во"
                     android:id="@+id/d_document_params_l3" android:layout_centerVertical="true"
                     android:layout_alignParentLeft="true"
@@ -125,11 +122,10 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Стоимость"
                     android:id="@+id/d_document_params_l4"
                     android:layout_alignParentLeft="true"
-                    android:layout_marginRight="4dp"/>
+                    android:layout_marginRight="4dp" android:layout_centerVertical="true"/>
             <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -142,7 +138,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="руб."
                     android:id="@+id/d_document_params_cost_currency"
                     android:layout_centerVertical="true" android:layout_alignParentRight="true"

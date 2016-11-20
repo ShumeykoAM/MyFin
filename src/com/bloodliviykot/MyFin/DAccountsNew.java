@@ -1,9 +1,6 @@
 package com.bloodliviykot.MyFin;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.DialogFragment;
-import android.app.Fragment;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -18,21 +15,16 @@ import com.bloodliviykot.MyFin.DB.entities.Account;
 import com.bloodliviykot.MyFin.DB.entities.Currency;
 import com.bloodliviykot.tools.Common.Money;
 import com.bloodliviykot.tools.DataBase.Entity;
+import com.bloodliviykot.tools.widget.DialogFragmentEx;
 
 /**
  * Created by Shumeiko on 26.09.2016.
  */
 @SuppressLint("ValidFragment")
-public class AccountsDNew
-  extends DialogFragment //!!! внимание, наследники DialogFragment должны иметь конструктор без параметров
+public class DAccountsNew
+  extends DialogFragmentEx<DialogFragmentEx.I_ResultHandler, Bundle>
   implements View.OnClickListener
 {
-  public AccountsDNew()
-  {   }
-  public interface I_ResultHandlerAccountsDNew
-  {
-    void resultHandler(Bundle result_values);
-  }
   private Spinner icon;
   private EditText name, balance;
   private Spinner currency;
@@ -49,7 +41,7 @@ public class AccountsDNew
   {
     getDialog().setTitle("Создать счет");
     //getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-    final View v = inflater.inflate(R.layout.accounts_d_new, null);
+    final View v = inflater.inflate(R.layout.d_accounts_new, null);
     icon = (Spinner)v.findViewById(R.id.accounts_d_new_icon);
     name = (EditText)v.findViewById(R.id.accounts_d_new_name);
     balance = (EditText)v.findViewById(R.id.accounts_d_new_balance);
@@ -139,24 +131,7 @@ public class AccountsDNew
           return;
         }
         result_values.putLong("_id_Account", account.getId());
-        boolean need_call_activity = true;
-        try
-        {
-          Fragment target = getTargetFragment();
-          if(target != null)
-          {
-            ((I_ResultHandlerAccountsDNew)target).resultHandler(result_values);
-            need_call_activity = false;
-          }
-        }catch(ClassCastException e2)
-        {      }
-        if(need_call_activity)
-          try
-          {
-            Activity a = getActivity();
-            ((I_ResultHandlerAccountsDNew)getActivity()).resultHandler(result_values);
-          } catch(ClassCastException e1)
-          {      }
+        handleResult(result_values);
         dismiss();
       }
     }
@@ -184,14 +159,14 @@ public class AccountsDNew
   {
     ImageAdapter()
     {
-      super(Common.application_context, R.layout.accounts_d_new_image_item, Account.E_IC_TYPE_RESOURCE.values());
+      super(Common.application_context, R.layout.d_accounts_new_image_item, Account.E_IC_TYPE_RESOURCE.values());
     }
 
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent)
     {
       if(convertView == null)
-        convertView = View.inflate(Common.application_context, R.layout.accounts_d_new_image_item, null);
+        convertView = View.inflate(Common.application_context, R.layout.d_accounts_new_image_item, null);
       ImageView image = (ImageView)convertView.findViewById(R.id.accounts_d_new_image_item_icon);
       image.setImageResource(Account.E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(position).R_drawable);
       image.setBackgroundColor(getResources().getColor(R.color.black));
@@ -202,7 +177,7 @@ public class AccountsDNew
     public View getView(int position, View convertView, ViewGroup parent)
     {
       if(convertView == null)
-        convertView = View.inflate(Common.application_context, R.layout.accounts_d_new_image_item, null);
+        convertView = View.inflate(Common.application_context, R.layout.d_accounts_new_image_item, null);
       ImageView image = (ImageView)convertView.findViewById(R.id.accounts_d_new_image_item_icon);
       image.setImageResource(Account.E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(position).R_drawable);
       image.setBackgroundColor(getResources().getColor(R.color.black));
@@ -216,7 +191,7 @@ public class AccountsDNew
   {
     CurrencyAdapter(Cursor cursor)
     {
-      super(Common.application_context, R.layout.accounts_d_new_currency_item,
+      super(Common.application_context, R.layout.d_accounts_new_currency_item,
         cursor, new String[]{},
         new int[]{R.id.accounts_d_new_currency_item_symbol, R.id.accounts_d_new_currency_item_full_name});
     }
@@ -225,7 +200,7 @@ public class AccountsDNew
     public View getDropDownView(int position, View convertView, ViewGroup parent)
     {
       if(convertView == null)
-        convertView = View.inflate(Common.application_context, R.layout.accounts_d_new_currency_item, null);
+        convertView = View.inflate(Common.application_context, R.layout.d_accounts_new_currency_item, null);
       TextView symbol = (TextView)convertView.findViewById(R.id.accounts_d_new_currency_item_symbol);
       TextView full_name = (TextView)convertView.findViewById(R.id.accounts_d_new_currency_item_full_name);
       cursor_currencies.moveToPosition(position);
@@ -238,7 +213,7 @@ public class AccountsDNew
     public View getView(int position, View convertView, ViewGroup parent)
     {
       if(convertView == null)
-        convertView = View.inflate(Common.application_context, R.layout.accounts_d_new_currency_item, null);
+        convertView = View.inflate(Common.application_context, R.layout.d_accounts_new_currency_item, null);
       TextView symbol = (TextView)convertView.findViewById(R.id.accounts_d_new_currency_item_symbol);
       TextView full_name = (TextView)convertView.findViewById(R.id.accounts_d_new_currency_item_full_name);
       cursor_currencies.moveToPosition(position);
