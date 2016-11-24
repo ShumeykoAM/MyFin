@@ -119,3 +119,10 @@ SELECT Category._id, Category.name
 SELECT Document._id
   FROM Document
   WHERE Document._id_category=? AND Document._id_transact IS NULL;
+
+--PLANNED_OR_LAST_DOCUMENT
+SELECT Document.count, Document.id_unit
+  FROM Document, Transact
+  WHERE Document._id_category=? AND (Document._id_transact IS NULL OR Document._id_transact = Transact._id)
+  ORDER BY Document._id_transact IS NULL DESC, Transact.date_time DESC
+  LIMIT 1;

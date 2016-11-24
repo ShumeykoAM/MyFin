@@ -303,9 +303,16 @@ public class ChooseCategories
           Pair<Double, Unit> count_unit = null;
           try
           {
-            //Количество и единицы измерения взять из запланированного или последнего документа
-            count_unit = new Pair<>(1.0, Unit.getUnitFromId(1));
-
+            //Количество и единицы измерения бнрем из запланированного или последнего документа
+            Cursor last = oh.db.rawQuery(oh.getQuery(EQ.PLANNED_OR_LAST_DOCUMENT), new String[]{new Long(_id).toString()} );
+            double count = 1.0;
+            Unit unit = Unit.getUnitFromId(1);
+            if(last.moveToFirst())
+            {
+              count = last.getDouble(last.getColumnIndex("count"));
+              unit = Unit.getUnitFromId(last.getLong(last.getColumnIndex("id_unit")));
+            }
+            count_unit = new Pair<>(count, unit);
           } catch(Entity.EntityException e)
           {     }
           chooses.put(_id, count_unit);
@@ -371,9 +378,11 @@ public class ChooseCategories
   @Override
   public void resultHandler(Bundle result_values)
   {
-    Planned.Chooses count_unit = result_values.getParcelable("count_unit");
-
-
+    Planned.Chooses result_count_unit = result_values.getParcelable("count_unit");
+    chooses.remove(result_count_unit._id_category);
+    Pair<Double, Unit> count_unit = new Pair<>(result_count_unit.count, result_count_unit.unit);
+    chooses.put(result_count_unit._id_category, count_unit);
+    list_adapter.notifyDataSetInvalidated();
   }
 
 }

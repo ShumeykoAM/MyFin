@@ -22,6 +22,8 @@ public class DChooseCategoryParams
   extends DialogFragmentEx<DialogFragmentEx.I_ResultHandler, Bundle>
   implements View.OnClickListener
 {
+  private Cursor cursor_unit;
+
   private TextView name;
   private EditText count;
   private Spinner unit;
@@ -39,7 +41,7 @@ public class DChooseCategoryParams
     unit = (Spinner)v.findViewById(R.id.d_choose_cat_params_unit);
     (ok = (Button)v.findViewById(R.id.d_choose_cat_params_ok)).setOnClickListener(this);
     name = (TextView)v.findViewById(R.id.d_choose_cat_params_name);
-    Cursor cursor_unit = Unit.getCursor();
+    cursor_unit = Unit.getCursor();
     SimpleCursorAdapter adapter_unit = new SimpleCursorAdapter(v.getContext(), R.layout.d_choose_category_params_unit_item,
       cursor_unit, new String[]{"name"}, new int[]{R.id.d_choose_cat_params_unit_item});
     unit.setAdapter(adapter_unit);
@@ -79,8 +81,9 @@ public class DChooseCategoryParams
       Planned.Chooses count_unit = null;
       try
       {
+        cursor_unit.moveToPosition(unit.getSelectedItemPosition());
         count_unit = new Planned.Chooses(_id, Double.parseDouble(count.getText().toString()),
-          Unit.getUnitFromId(unit.getId()));
+          Unit.getUnitFromId(cursor_unit.getLong(cursor_unit.getColumnIndex("_id"))));
       } catch(Entity.EntityException e)
       {     }
       result_values.putParcelable("count_unit", count_unit);
