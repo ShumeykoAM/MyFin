@@ -19,6 +19,7 @@ import com.bloodliviykot.MyFin.DB.entities.Transact;
 import com.bloodliviykot.MyFin.DB.entities.Unit;
 import com.bloodliviykot.tools.Common.Money;
 import com.bloodliviykot.tools.DataBase.Entity;
+import com.bloodliviykot.tools.widget.DialogFragmentEx;
 
 import java.util.*;
 
@@ -27,7 +28,7 @@ import java.util.*;
  */
 public class Planned
   extends Activity
-  implements View.OnClickListener
+  implements View.OnClickListener, DialogFragmentEx.I_ResultHandler<Bundle>
 {
   private Cursor cursor;
   private ListView list_planned;
@@ -72,12 +73,12 @@ public class Planned
   public static class Chooses
     implements Parcelable
   {
-    public final long _id_category;
+    public final long _id;
     public final double count;
     public final Unit unit;
-    public Chooses(long _id_category, double count, Unit unit)
+    public Chooses(long _id, double count, Unit unit)
     {
-      this._id_category = _id_category;
+      this._id = _id;
       this.count = count;
       this.unit = unit;
     }
@@ -85,7 +86,7 @@ public class Planned
     //Parcelable
     public Chooses(Parcel in) throws Entity.EntityException
     {
-      this._id_category = in.readLong();
+      this._id = in.readLong();
       this.count = in.readDouble();
       this.unit = Unit.getUnitFromId(in.readLong());
     }
@@ -114,7 +115,7 @@ public class Planned
     @Override
     public void writeToParcel(Parcel dest, int flags)
     {
-      dest.writeLong(_id_category);
+      dest.writeLong(_id);
       dest.writeDouble(count);
       dest.writeLong(unit.getId());
     }
@@ -160,7 +161,7 @@ public class Planned
           Map<Long, Pair<Double, Unit>> chooses = new TreeMap<>();
           ArrayList<Planned.Chooses> arr_chooses = data.getExtras().getParcelableArrayList("chooses");
           for(Planned.Chooses choose : arr_chooses)
-            chooses.put(choose._id_category, new Pair<>(choose.count, choose.unit));
+            chooses.put(choose._id, new Pair<>(choose.count, choose.unit));
           //Перезапишем запланированные документы
           long _id;
           for(boolean cursor_status = cursor.moveToFirst(); cursor_status; cursor_status = cursor.moveToNext())
@@ -218,14 +219,21 @@ public class Planned
         choose.setImageResource(R.drawable.ic_basket_full);
       else
         choose.setImageResource(R.drawable.ic_basket_empty);
-
-      name.setText(cursor.getString(cursor.getColumnIndex("name")));
-      count.setText(new Double(cursor.getDouble(cursor.getColumnIndex("count"))).toString());
+      String s_name = cursor.getString(cursor.getColumnIndex("name"));
+      Double d_count = new Double(cursor.getDouble(cursor.getColumnIndex("count")));
+      Unit u_unit = null;
       try
       {
-        unit.setText(Unit.getUnitFromId(cursor.getLong(cursor.getColumnIndex("id_unit"))).getName());
+        u_unit = Unit.getUnitFromId(cursor.getLong(cursor.getColumnIndex("id_unit")));
       } catch(Entity.EntityException e)
       {   }
+
+      name.setText(s_name);
+      count.setText(d_count.toString());
+      unit.setText(u_unit.getName());
+      CountUnitParams count_unit_params = new CountUnitParams(_id, s_name, d_count, u_unit);
+      count.setOnClickListener(count_unit_params);
+      unit.setOnClickListener(count_unit_params);
     }
     private class OnTouch
       implements View.OnTouchListener
@@ -298,5 +306,54 @@ public class Planned
         }
       }
     }
+    private class CountUnitParams
+      implements View.OnClickListener
+    {
+      private long _id;
+      private String s_name;
+      private Double d_count;
+      private Unit u_unit;
+
+      private int cursor_position;
+      private String name;
+      public CountUnitParams(long _id, String s_name, Double d_count, Unit u_unit)
+      {
+        this._id = _id;
+        this.s_name = s_name;
+        this.d_count = d_count;
+        this.u_unit = u_unit;
+      }
+      @Override
+      public void onClick(View v)
+      {
+        Toast.makeText(Common.application_context, "Здесь надо диалог со стоимостью выводить наверное", Toast.LENGTH_LONG).show();
+
+        if(cursor.moveToPosition(cursor_position))
+        {
+          DChooseCategoryParams choose_category_params = new DChooseCategoryParams();
+          Bundle params = new Bundle();
+          params.putParcelable("count_unit", new Planned.Chooses(_id, d_count, u_unit));
+          params.putString("name", s_name);
+          choose_category_params.setArguments(params);
+          choose_category_params.show(getFragmentManager(), null);
+        }
+      }
+    }
+  }
+  @Override
+  public void resultHandler(Bundle result_values)
+  {
+    Planned.Chooses result_count_unit = result_values.getParcelable("count_unit");
+    Pair<Double, Unit> count_unit = new Pair<>(result_count_unit.count, result_count_unit.unit);
+    try
+    {
+      if(Document.getDocumentFromId(result_count_unit._id).setCount(result_count_unit.count).setUnit(result_count_unit.unit).update())
+      {
+        cursor.requery();
+        list_adapter.notifyDataSetChanged();
+      }
+      Document document = Document.getDocumentFromId(result_count_unit._id);
+    } catch(Entity.EntityException e)
+    {    }
   }
 }

@@ -47,7 +47,7 @@ public class DChooseCategoryParams
     unit.setAdapter(adapter_unit);
     Bundle params = getArguments();
     Planned.Chooses count_unit = params.getParcelable("count_unit");
-    _id = count_unit._id_category;
+    _id = count_unit._id;
     count.setText(new Double(count_unit.count).toString());
     name.setText(params.getString("name"));
     int position = 0;

@@ -55,7 +55,7 @@ public class ChooseCategories
     trend = (Transact.TREND)extras.get("TREND");
     ArrayList<Planned.Chooses> arr_chooses = extras.getParcelableArrayList("chooses");
     for(Planned.Chooses choose : arr_chooses)
-      chooses.put(choose._id_category, new Pair<>(choose.count, choose.unit));
+      chooses.put(choose._id, new Pair<>(choose.count, choose.unit));
 
     HorizontalScrollView horizontal_scroll = (HorizontalScrollView)findViewById(R.id.choose_categories_navigation_line);
     horizontal_scroll.post(new Runnable()
@@ -254,7 +254,7 @@ public class ChooseCategories
         tv_count.setText(count_unit.first.toString());
         tv_unit.setText(count_unit.second.getName());
         ch_chose.setChecked(true);
-        CountUnitParams count_unit_params = new CountUnitParams(_id, tv_count, tv_unit, name);
+        CountUnitParams count_unit_params = new CountUnitParams(_id, name);
         tv_count.setOnClickListener(count_unit_params);
         tv_unit.setOnClickListener(count_unit_params);
       }
@@ -318,7 +318,7 @@ public class ChooseCategories
           chooses.put(_id, count_unit);
           tv_count.setText(count_unit.first.toString());
           tv_unit.setText(count_unit.second.getName());
-          CountUnitParams count_unit_params = new CountUnitParams(_id, tv_count, tv_unit, name);
+          CountUnitParams count_unit_params = new CountUnitParams(_id, name);
           tv_count.setOnClickListener(count_unit_params);
           tv_unit.setOnClickListener(count_unit_params);
         }
@@ -351,15 +351,11 @@ public class ChooseCategories
     private class CountUnitParams
       implements View.OnClickListener
     {
-      private TextView tv_count;
-      private TextView tv_unit;
       private long _id;
       private String name;
-      public CountUnitParams(long _id, TextView tv_count, TextView tv_unit, String name)
+      public CountUnitParams(long _id, String name)
       {
         this._id = _id;
-        this.tv_count = tv_count;
-        this.tv_unit = tv_unit;
         this.name = name;
       }
       @Override
@@ -379,10 +375,10 @@ public class ChooseCategories
   public void resultHandler(Bundle result_values)
   {
     Planned.Chooses result_count_unit = result_values.getParcelable("count_unit");
-    chooses.remove(result_count_unit._id_category);
+    chooses.remove(result_count_unit._id);
     Pair<Double, Unit> count_unit = new Pair<>(result_count_unit.count, result_count_unit.unit);
-    chooses.put(result_count_unit._id_category, count_unit);
-    list_adapter.notifyDataSetInvalidated();
+    chooses.put(result_count_unit._id, count_unit);
+    list_adapter.notifyDataSetChanged();
   }
 
 }
