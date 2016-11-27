@@ -102,7 +102,6 @@ public class Category
   @Override
   public long insert()
   {
-    Common.assertNeedTest();
     final long[] _id_inserted = {-1};
     if(! new SQLTransaction(new I_Transaction()
     {
@@ -173,7 +172,7 @@ public class Category
     original.name_lower_case = name_lower_case;
   }
 
-  private Long              _id_parent      ;  //Хранить ссылку на сам объект не будем так как это загрузит все дерево категорий
+  private Long              _id_parent      ;  //непосредственного родителя
   private Transact.TREND    trend           ;
   private String            name            ;
   private String            name_lower_case ;

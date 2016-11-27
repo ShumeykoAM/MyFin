@@ -92,8 +92,9 @@ public class DAddEditCategory
           {
             Bundle result_values = new Bundle();
             result_values.putLong("_id", _id);
-            handleResult(result_values);
+            result_values.putString("name", category.getName());
             dismiss();
+            handleResult(result_values);
           }
         } catch(Entity.EntityException e)
         {  }

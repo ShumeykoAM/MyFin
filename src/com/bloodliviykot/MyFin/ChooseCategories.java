@@ -419,6 +419,18 @@ public class ChooseCategories
     else if(R_layout == R.layout.d_add_edit_category)
     {
       long _id_category = result_values.getLong("_id");
+      try
+      {
+        Pair<Double, Unit> count_unit = new Pair<>(1.0, Unit.getUnitFromId(1));
+        chooses.put(_id_category, count_unit);
+        DChooseCategoryParams choose_category_params = new DChooseCategoryParams();
+        Bundle params = new Bundle();
+        params.putParcelable("count_unit", new Planned.Chooses(_id_category, count_unit.first, count_unit.second));
+        params.putString("name", result_values.getString("name"));
+        choose_category_params.setArguments(params);
+        choose_category_params.show(getFragmentManager(), null);
+      } catch(Entity.EntityException e)
+      {     }
       cursor.requery();
       list_adapter.notifyDataSetChanged();
     }

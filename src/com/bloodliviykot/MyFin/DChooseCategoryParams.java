@@ -90,8 +90,8 @@ public class DChooseCategoryParams
       } catch(Entity.EntityException e)
       {     }
       result_values.putParcelable("count_unit", count_unit);
-      handleResult(result_values);
       dismiss();
+      handleResult(result_values);
     }
   }
 

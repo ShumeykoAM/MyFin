@@ -136,8 +136,8 @@ public class DAccountsNew
           return;
         }
         result_values.putLong("_id_Account", account.getId());
-        handleResult(result_values);
         dismiss();
+        handleResult(result_values);
       }
     }
     else
