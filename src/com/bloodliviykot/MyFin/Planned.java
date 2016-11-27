@@ -341,7 +341,7 @@ public class Planned
     }
   }
   @Override
-  public void resultHandler(Bundle result_values)
+  public void resultHandler(int R_layout, Bundle result_values)
   {
     Planned.Chooses result_count_unit = result_values.getParcelable("count_unit");
     Pair<Double, Unit> count_unit = new Pair<>(result_count_unit.count, result_count_unit.unit);

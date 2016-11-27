@@ -5,6 +5,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 import com.bloodliviykot.tools.Common.MyDecimalFormat;
 
 import java.lang.reflect.Method;
@@ -119,5 +120,22 @@ public class Common
     }
 
   }
+
+  public static void assertNeedTest()
+  {
+    Throwable t = new Throwable();
+    StackTraceElement trace[] = t.getStackTrace();
+    // Глубина стэка должна быть больше 1-го, поскольку интересующий
+    // нас элемент стэка находится под индексом 1 массива элементов
+    // Элемент с индексом 0 - это текущий метод
+    if (trace.length > 1)
+    {
+      StackTraceElement element = trace[1];
+      String message = "Метод " + element.getClassName() + "." + element.getMethodName() +
+        " в строке " + element.getLineNumber() + " файла " + element.getFileName() + " еще не проверен";
+      Toast.makeText(Common.application_context, message, Toast.LENGTH_LONG).show();
+    }
+  }
+
 
 }

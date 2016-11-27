@@ -34,7 +34,7 @@ public class Transact
   public enum TREND
   {
     CREDIT     (0), //расход
-    DEBIT      (1), //Приход
+    DEBIT      (1), //приход
     CONVERSION (2); //конверсия
 
     public final long id_db;

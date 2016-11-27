@@ -22,7 +22,7 @@ import com.bloodliviykot.tools.widget.DialogFragmentEx;
  */
 @SuppressLint("ValidFragment")
 public class DAccountsNew
-  extends DialogFragmentEx<DialogFragmentEx.I_ResultHandler, Bundle>
+  extends DialogFragmentEx<DialogFragmentEx.I_ResultHandler<Bundle>, Bundle>
   implements View.OnClickListener
 {
   private Spinner icon;
@@ -36,12 +36,17 @@ public class DAccountsNew
   private CurrencyAdapter adapter_currency;
   private boolean regime_new;
 
+  public DAccountsNew()
+  {
+    super(R.layout.d_accounts_new);
+  }
+
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
   {
     getDialog().setTitle("Создать счет");
     //getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-    final View v = inflater.inflate(R.layout.d_accounts_new, null);
+    final View v = inflater.inflate(getR_layout(), null);
     icon = (Spinner)v.findViewById(R.id.accounts_d_new_icon);
     name = (EditText)v.findViewById(R.id.accounts_d_new_name);
     balance = (EditText)v.findViewById(R.id.accounts_d_new_balance);

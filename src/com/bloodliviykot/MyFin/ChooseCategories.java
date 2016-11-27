@@ -27,7 +27,7 @@ import java.util.TreeMap;
  */
 public class ChooseCategories
   extends Activity
-  implements DialogFragmentEx.I_ResultHandler<Bundle>
+  implements DialogFragmentEx.I_ResultHandler<Bundle>, View.OnClickListener
 {
   private LinearLayout navigation_linear;
   private ButtonID root;
@@ -68,7 +68,7 @@ public class ChooseCategories
     });
     navigation_linear = (LinearLayout)findViewById(R.id.choose_categories_navigation_linear);
     root = (ButtonID)navigation_linear.findViewById(R.id.arrow_button);
-    add_new = (Button)findViewById(R.id.choose_categories_add_new);
+    (add_new = (Button)findViewById(R.id.choose_categories_add_new)).setOnClickListener(this);
     search = (SearchView)findViewById(R.id.choose_categories_search);
     list = (ListView)findViewById(R.id.choose_categories_list);
     tree = (Button)findViewById(R.id.choose_categories_tree);
@@ -109,6 +109,40 @@ public class ChooseCategories
     }
     setResult(result, intent); //RESULT_CANCELED
     super.finish();
+  }
+
+  @Override
+  public void onClick(View v)
+  {
+    if(v == add_new)
+    {
+      Boolean is_root = false;
+      long _id;
+      if(navigation_buttons.size() == 1)
+      {
+        Cursor cursor_cat = oh.db.rawQuery(oh.getQuery(EQ.ROOT_CATEGORY), new String[]{new Long(trend.id_db).toString()});
+        cursor_cat.moveToFirst();
+        _id = cursor_cat.getLong(cursor_cat.getColumnIndex("_id"));
+        is_root = true;
+      }
+      else
+      {
+        _id = navigation_buttons.get(navigation_buttons.size()-1).getID();
+      }
+      try
+      {
+        Category parent = Category.getCategoryFromId(_id);
+        DAddEditCategory add_edit_category = new DAddEditCategory();
+        Bundle params = new Bundle();
+        params.putString("name_parent", parent.getName());
+        params.putBoolean("is_root", is_root);
+        params.putLong("trend", trend.id_db);
+        params.putLong("_id_parent", _id);
+        add_edit_category.setArguments(params);
+        add_edit_category.show(getFragmentManager(), null);
+      } catch(Entity.EntityException e)
+      {   }
+    }
   }
 
   private class FilterProviderListener
@@ -372,13 +406,22 @@ public class ChooseCategories
     }
   }
   @Override
-  public void resultHandler(Bundle result_values)
+  public void resultHandler(int R_layout, Bundle result_values)
   {
-    Planned.Chooses result_count_unit = result_values.getParcelable("count_unit");
-    chooses.remove(result_count_unit._id);
-    Pair<Double, Unit> count_unit = new Pair<>(result_count_unit.count, result_count_unit.unit);
-    chooses.put(result_count_unit._id, count_unit);
-    list_adapter.notifyDataSetChanged();
+    if(R_layout == R.layout.d_choose_category_params)
+    {
+      Planned.Chooses result_count_unit = result_values.getParcelable("count_unit");
+      chooses.remove(result_count_unit._id);
+      Pair<Double, Unit> count_unit = new Pair<>(result_count_unit.count, result_count_unit.unit);
+      chooses.put(result_count_unit._id, count_unit);
+      list_adapter.notifyDataSetChanged();
+    }
+    else if(R_layout == R.layout.d_add_edit_category)
+    {
+      long _id_category = result_values.getLong("_id");
+      cursor.requery();
+      list_adapter.notifyDataSetChanged();
+    }
   }
 
 }

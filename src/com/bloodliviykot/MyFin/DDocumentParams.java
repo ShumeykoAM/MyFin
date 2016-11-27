@@ -16,16 +16,21 @@ import com.bloodliviykot.tools.widget.DialogFragmentEx;
  */
 @SuppressLint("ValidFragment")
 public class DDocumentParams
-  extends DialogFragmentEx<DialogFragmentEx.I_ResultHandler, Bundle>
+  extends DialogFragmentEx<DialogFragmentEx.I_ResultHandler<Bundle>, Bundle>
 {
   private EditText price;
+
+  public DDocumentParams()
+  {
+    super(R.layout.d_document_params);
+  }
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
   {
     //getDialog().setTitle("Заголовок");
     getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-    final View v = inflater.inflate(R.layout.d_document_params, null);
+    final View v = inflater.inflate(getR_layout(), null);
     price = (EditText)v.findViewById(R.id.d_document_params_price);
     //icon = (Spinner)v.findViewById(R.id.accounts_d_new_icon);
 

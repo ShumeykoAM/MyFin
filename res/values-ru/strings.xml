@@ -14,5 +14,7 @@
     <string name="currencies_d_new_code_currency">Код валюты</string>
     <string name="accounts_d_new_currency_another">Другая</string>
     <string name="tab_categories">Категории</string>
+    <string name="category_debit">приходная</string>
+    <string name="category_credit">расходная</string>
 
 </resources>

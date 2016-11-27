@@ -8,7 +8,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 import com.bloodliviykot.MyFin.Common;
+import com.bloodliviykot.MyFin.DB.entities.Category;
 import com.bloodliviykot.MyFin.DB.entities.Currency;
+import com.bloodliviykot.MyFin.DB.entities.Transact;
 import com.bloodliviykot.MyFin.R;
 import com.bloodliviykot.tools.DataBase.Entity;
 import com.bloodliviykot.tools.DataBase.SQLReader;
@@ -76,6 +78,7 @@ public class MySQLiteOpenHelper
   private static final String USE_PARENT_ID = "ИД_родителя";
   private void fillDistributive(SQLiteDatabase db)
   {
+    categoriesDistributive();
     try
     {
       //Заполним дистрибутивное содержание данных в БД из distrib_db.xml
@@ -140,6 +143,18 @@ public class MySQLiteOpenHelper
       e.printStackTrace();
     }
     currenciesDistributive();
+  }
+  void categoriesDistributive()
+  {
+    //Есть две всея родительские категории
+    try
+    {
+      Category credit = new Category(null, Transact.TREND.CREDIT, Common.application_context.getString(R.string.category_credit));
+      credit.insert();
+      Category debit = new Category(null, Transact.TREND.DEBIT, Common.application_context.getString(R.string.category_debit));
+      debit.insert();
+    } catch(Entity.EntityException e)
+    {    }
   }
   void currenciesDistributive()
   {

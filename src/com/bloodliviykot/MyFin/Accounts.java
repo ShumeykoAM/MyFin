@@ -49,7 +49,7 @@ public class Accounts
 
   //Обработчик результата диалога AccountsDNew
   @Override
-  public void resultHandler(Bundle result_values)
+  public void resultHandler(int R_layout, Bundle result_values)
   {
     if(result_values.containsKey("Button") && result_values.getString("Button").equals("Ok"))
     {

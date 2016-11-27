@@ -100,6 +100,7 @@ SELECT Document._id, Category.name, Document.count, Document.id_unit, Category._
 SELECT Category._id, Category.name
   FROM Category
   WHERE Category.trend=? AND Category.name_lower_case LIKE ?
+        AND EXISTS (SELECT 1 FROM AllParents WHERE AllParents._id = Category._id LIMIT 1)
   ORDER BY Category.name_lower_case ASC;
 
 --SUB_CATEGORIES_LIKE Все подкатегории указанного родителя c указанным трендом и указанной подстрокй, включая под под и т.д.
@@ -107,12 +108,14 @@ SELECT Category._id, Category.name
   FROM Category, AllParents
   WHERE AllParents._id_parent=? AND
         Category._id=AllParents._id AND Category.name_lower_case LIKE ?
+        AND EXISTS (SELECT 1 FROM AllParents WHERE AllParents._id = Category._id LIMIT 1)
   ORDER BY Category.name_lower_case ASC;
 
 --ALL_PARENTS Все родительские категории указанной категории начиная с корневой
 SELECT Category._id, Category.name
   FROM Category, AllParents
   WHERE AllParents._id=? AND Category._id=AllParents._id_parent
+        AND EXISTS (SELECT 1 FROM AllParents WHERE AllParents._id = Category._id LIMIT 1)
   ORDER BY AllParents.remote DESC;
 
 --PLANNED_FROM_CATEGORY Запланированный документ для указанной категории
@@ -126,3 +129,24 @@ SELECT Document.count, Document.id_unit
   WHERE Document._id_category=? AND (Document._id_transact IS NULL OR Document._id_transact = Transact._id)
   ORDER BY Document._id_transact IS NULL DESC, Transact.date_time DESC
   LIMIT 1;
+
+--ROOT_CATEGORY
+SELECT Category._id
+  FROM Category
+  WHERE Category.trend=? AND NOT EXISTS (SELECT 1 FROM AllParents WHERE AllParents._id = Category._id LIMIT 1);
+
+--IMMEDIATE_PARENT
+SELECT AllParents._id_parent
+  FROM AllParents
+  WHERE AllParents._id=? AND AllParents.remote=1;
+
+--INSERT_ALL_PARENT_RELATIVES (id категории и Id_parent категории)
+INSERT INTO AllParents (_id, _id_parent, remote)
+  SELECT ?, AllParents._id_parent, AllParents.remote+1
+  FROM AllParents
+  WHERE AllParents._id=?;
+
+--COUNT_PARENTS
+SELECT COUNT(_id) AS count
+  FROM AllParents
+  WHERE AllParents._id=?;

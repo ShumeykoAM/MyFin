@@ -9,17 +9,27 @@ import android.app.Fragment;
  * Created by Kot on 20.11.2016.
  */
 @SuppressLint("ValidFragment")
-public abstract class DialogFragmentEx<Handler extends DialogFragmentEx.I_ResultHandler, PARAM>
+public abstract class DialogFragmentEx<Handler extends DialogFragmentEx.I_ResultHandler<PARAM>, PARAM>
   extends DialogFragment //!!! внимание, наследники DialogFragment должны иметь конструктор без параметров
 {
-  public DialogFragmentEx(){super();}
+  public DialogFragmentEx(int R_layout)
+  {
+    super();
+    this.R_layout = R_layout;
+  }
   //Обработчик результата
   public interface I_ResultHandler<PARAM>
   {
-    void resultHandler(PARAM result_values);
+    void resultHandler(int R_layout, PARAM result_values);
+  }
+  public int getR_layout()
+  {
+    return R_layout;
   }
 
-  public void handleResult(PARAM result_values)
+  //
+  private int R_layout;
+  protected void handleResult(PARAM result_values)
   {
     boolean need_call_activity = true;
     try
@@ -28,7 +38,7 @@ public abstract class DialogFragmentEx<Handler extends DialogFragmentEx.I_Result
       Fragment target = getTargetFragment();
       if(target != null)
       {
-        ((Handler)target).resultHandler(result_values);
+        ((Handler)target).resultHandler(R_layout, result_values);
         need_call_activity = false;
       }
     }catch(ClassCastException e2)
@@ -38,7 +48,7 @@ public abstract class DialogFragmentEx<Handler extends DialogFragmentEx.I_Result
       {
         //Иначе пытаемся вызвать обработчик родительской активности
         Activity a = getActivity();
-        ((Handler)getActivity()).resultHandler(result_values);
+        ((Handler)getActivity()).resultHandler(R_layout, result_values);
       } catch(ClassCastException e1)
       {      }
   }

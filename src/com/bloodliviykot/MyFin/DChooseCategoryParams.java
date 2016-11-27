@@ -19,7 +19,7 @@ import com.bloodliviykot.tools.widget.DialogFragmentEx;
  */
 @SuppressLint("ValidFragment")
 public class DChooseCategoryParams
-  extends DialogFragmentEx<DialogFragmentEx.I_ResultHandler, Bundle>
+  extends DialogFragmentEx<DialogFragmentEx.I_ResultHandler<Bundle>, Bundle>
   implements View.OnClickListener
 {
   private Cursor cursor_unit;
@@ -30,13 +30,16 @@ public class DChooseCategoryParams
   private Button ok;
   private long _id;
 
-  public DChooseCategoryParams(){}
+  public DChooseCategoryParams()
+  {
+    super(R.layout.d_choose_category_params);
+  }
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
   {
     //getDialog().setTitle("Заголовок");
     getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-    final View v = inflater.inflate(R.layout.d_choose_category_params, null);
+    final View v = inflater.inflate(getR_layout(), null);
     count = (EditText)v.findViewById(R.id.d_choose_cat_params_count);
     unit = (Spinner)v.findViewById(R.id.d_choose_cat_params_unit);
     (ok = (Button)v.findViewById(R.id.d_choose_cat_params_ok)).setOnClickListener(this);
