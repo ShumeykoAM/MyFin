@@ -36,6 +36,7 @@ public class Planned
   private MySQLiteOpenHelper oh;
   private Button add_debit;
   private Button add_credit;
+  private Button pay_documents;
   private Set<Long> chose_state = new TreeSet<>();
 
   @Override
@@ -46,20 +47,9 @@ public class Planned
 
     oh = MySQLiteOpenHelper.getMySQLiteOpenHelper();
     list_planned = (ListView)findViewById(R.id.planned_list_view);
-    (add_debit = (Button)findViewById(R.id.planned_add_debit)).setOnClickListener(new View.OnClickListener()
-    {
-      @Override
-      public void onClick(View v)
-      {
-        DDocumentParams document_params = new DDocumentParams();
-        Bundle params = new Bundle();
-        params.putString("Regime", "New");
-        document_params.setArguments(params);
-        document_params.show(getFragmentManager(), null);
-      }
-    });
+    (add_debit = (Button)findViewById(R.id.planned_add_debit)).setOnClickListener(this);
     (add_credit = (Button)findViewById(R.id.planned_add_credit)).setOnClickListener(this);
-
+    (pay_documents = (Button)findViewById(R.id.planned_add_pay)).setOnClickListener(this);
 
     cursor = oh.db.rawQuery(oh.getQuery(EQ.PLANNED), null);
     list_adapter = new PlannedItemAdapter(R.layout.planned_item, cursor,
@@ -124,21 +114,38 @@ public class Planned
   @Override
   public void onClick(View v)
   {
-    Intent intent = new Intent(Common.application_context, ChooseCategories.class);
-    if(add_credit == v)
-      intent.putExtra("TREND", Transact.TREND.CREDIT);
-    else// if(add_debit == v)
-      intent.putExtra("TREND", Transact.TREND.DEBIT);
-    ArrayList<Chooses> chooses = new ArrayList<Chooses>();
-    for(boolean cursor_status = cursor.moveToFirst(); cursor_status; cursor_status = cursor.moveToNext())
-      try
-      {
-        chooses.add(new Chooses(cursor.getLong(cursor.getColumnIndex("CATEGORY_ID")), cursor.getDouble(cursor.getColumnIndex("count")),
-          Unit.getUnitFromId(cursor.getLong(cursor.getColumnIndex("id_unit")))));
-      } catch(Entity.EntityException e)
-      {      }
-    intent.putParcelableArrayListExtra("chooses", chooses);
-    startActivityForResult(intent, R.layout.choose_categories_list); //Запуск активности с onActivityResult
+    if(v == add_credit)
+    {
+      Intent intent = new Intent(Common.application_context, ChooseCategories.class);
+      if(add_credit == v)
+        intent.putExtra("TREND", Transact.TREND.CREDIT);
+      else// if(add_debit == v)
+        intent.putExtra("TREND", Transact.TREND.DEBIT);
+      ArrayList<Chooses> chooses = new ArrayList<Chooses>();
+      for(boolean cursor_status = cursor.moveToFirst(); cursor_status; cursor_status = cursor.moveToNext())
+        try
+        {
+          chooses.add(new Chooses(cursor.getLong(cursor.getColumnIndex("CATEGORY_ID")), cursor.getDouble(cursor.getColumnIndex("count")), Unit.getUnitFromId(cursor.getLong(cursor.getColumnIndex("id_unit")))));
+        } catch(Entity.EntityException e)
+        {
+        }
+      intent.putParcelableArrayListExtra("chooses", chooses);
+      startActivityForResult(intent, R.layout.choose_categories_list); //Запуск активности с onActivityResult
+    }
+    else if(v == add_debit)
+    {
+      DDocumentParams document_params = new DDocumentParams();
+      Bundle params = new Bundle();
+      params.putString("Regime", "New");
+      document_params.setArguments(params);
+      document_params.show(getFragmentManager(), null);
+    }
+    else if(v == pay_documents)
+    {
+
+
+
+    }
   }
 
   private Document getPlanDocumentFromCategoryId(Long _id_category) throws Entity.EntityException
