@@ -21,7 +21,7 @@
             <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
                       android:id="@+id/d_tran_params_date" android:inputType="text"
                       android:singleLine="true" android:gravity="center_vertical|center_horizontal"
-                      android:text="15.03.2016"/>
+                      android:text="15.03.2016" android:imeOptions="flagNoExtractUi"/>
         </LinearLayout>
         <LinearLayout
                 android:orientation="vertical"
@@ -33,7 +33,7 @@
                     android:layout_height="wrap_content"
                     android:text="время"/>
             <EditText
-                    android:layout_width="match_parent"
+                    android:layout_width="match_parent" android:imeOptions="flagNoExtractUi"
                     android:layout_height="wrap_content"
                     android:id="@+id/d_tran_params_time" android:inputType="text" android:singleLine="true"
                     android:gravity="center_vertical|center_horizontal" android:text="15:23"/>
@@ -49,7 +49,7 @@
             <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
                       android:id="@+id/d_tran_params_cost" android:inputType="numberDecimal"
                       android:numeric="decimal" android:singleLine="true" android:text="23"
-                      android:gravity="center_vertical|right"/>
+                      android:gravity="center_vertical|right" android:imeOptions="flagNoExtractUi"/>
         </LinearLayout>
         <LinearLayout android:orientation="vertical" android:layout_width="wrap_content"
                       android:layout_height="wrap_content" android:layout_alignParentTop="true"

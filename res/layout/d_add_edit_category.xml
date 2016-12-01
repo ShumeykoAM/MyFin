@@ -23,7 +23,8 @@
                       android:layout_centerVertical="true"
                       android:gravity="center_vertical"
                       android:layout_alignParentRight="true" android:inputType="text"
-                      android:layout_toRightOf="@+id/d_add_edit_catcat_params_l1"/>
+                      android:layout_toRightOf="@+id/d_add_edit_catcat_params_l1"
+                      android:imeOptions="flagNoExtractUi"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                       android:text="Название" android:id="@+id/d_add_edit_catcat_params_l1"
                       android:layout_alignParentLeft="true"

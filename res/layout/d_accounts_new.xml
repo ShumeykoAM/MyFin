@@ -39,7 +39,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/accounts_d_new_name"/>
             <EditText
-                    android:layout_width="fill_parent"
+                    android:layout_width="fill_parent" android:imeOptions="flagNoExtractUi"
                     android:layout_height="wrap_content"
                     android:id="@+id/accounts_d_new_name" android:inputType="text" android:singleLine="true"/>
         </LinearLayout>
@@ -61,7 +61,7 @@
                     android:text="@string/accounts_d_new_balance"
                     />
             <EditText
-                    android:layout_width="match_parent"
+                    android:layout_width="match_parent" android:imeOptions="flagNoExtractUi"
                     android:layout_height="wrap_content"
                     android:id="@+id/accounts_d_new_balance"
                     android:inputType="numberDecimal" android:numeric="decimal" android:singleLine="true"/>
