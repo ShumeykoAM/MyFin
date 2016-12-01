@@ -142,9 +142,11 @@ public class Planned
     }
     else if(v == pay_documents)
     {
-
-
-
+      DTransactionParams transaction_params = new DTransactionParams();
+      Bundle params = new Bundle();
+      params.putBoolean("IsNew", true);
+      transaction_params.setArguments(params);
+      transaction_params.show(getFragmentManager(), null);
     }
   }
 

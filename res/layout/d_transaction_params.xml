@@ -8,17 +8,16 @@
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/" android:baselineAligned="false">
+            android:baselineAligned="false">
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/" android:layout_weight="60">
+                android:layout_weight="60">
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="дата"
-                    android:id="@+id/"/>
+                    android:text="дата"/>
             <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
                       android:id="@+id/d_tran_params_date" android:inputType="text"
                       android:singleLine="true" android:gravity="center_vertical|center_horizontal"
@@ -28,11 +27,11 @@
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="40" android:id="@+id/">
+                android:layout_weight="40">
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="время" android:id="@+id/"/>
+                    android:text="время"/>
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -40,8 +39,7 @@
                     android:gravity="center_vertical|center_horizontal" android:text="15:23"/>
         </LinearLayout>
     </LinearLayout>
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-                    android:id="@+id/">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
         <LinearLayout android:orientation="vertical" android:layout_width="wrap_content"
                       android:layout_height="wrap_content" android:layout_alignParentTop="true"
                       android:layout_alignParentLeft="true" android:longClickable="false"
@@ -65,7 +63,7 @@
     <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/">
+            android:id="@+id/d_tran_params_enother_Layout">
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
@@ -75,8 +73,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="В другой валюте"
-                    android:id="@+id/"/>
+                    android:text="В другой валюте"/>
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -94,14 +91,13 @@
                      android:spinnerMode="dropdown"/>
         </LinearLayout>
     </RelativeLayout>
-    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:id="@+id/">
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
         <LinearLayout android:orientation="vertical" android:layout_width="wrap_content"
                       android:layout_height="wrap_content" android:layout_alignParentTop="true"
                       android:layout_alignParentRight="true" android:id="@+id/linearLayout5"
                       android:layout_alignParentLeft="true">
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                      android:text="Счет списания" android:id="@+id/"/>
+                      android:text="Счет списания"/>
             <Spinner android:layout_width="wrap_content" android:layout_height="wrap_content"
                      android:id="@+id/d_tran_params_account" android:layout_gravity="right"
                      android:spinnerMode="dropdown"/>
@@ -110,8 +106,7 @@
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/">
+            android:layout_height="wrap_content">
         <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
