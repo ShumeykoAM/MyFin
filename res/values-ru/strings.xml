@@ -22,5 +22,7 @@
     <string name="d_tran_params_date">дата</string>
     <string name="d_tran_params_account_debiting">счет списания</string>
     <string name="d_tran_params_account_credited">счет зачисления</string>
+    <string name="yesterday">вчера</string>
+    <string name="today">сегодня</string>
 
 </resources>

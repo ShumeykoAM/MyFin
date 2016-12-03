@@ -8,9 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import com.bloodliviykot.tools.Common.DateTime;
 import com.bloodliviykot.tools.widget.DialogFragmentEx;
-
-import java.util.Date;
 
 /**
  * Created by Shumeiko on 01.12.2016.
@@ -20,7 +19,17 @@ public class DTransactionParams
   extends DialogFragmentEx<DialogFragmentEx.I_ResultHandler<Bundle>, Bundle>
   implements View.OnClickListener, DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener
 {
-  public static final int YEAR_CORRECTOR = 1900;
+
+  public DTransactionParams()
+  {
+    super(R.layout.d_transaction_params);
+  }
+  public DTransactionParams(DateTime date_time)
+  {
+    super(R.layout.d_transaction_params);
+    this.date_time = date_time;
+
+  }
 
   private EditText date, time;
   private EditText cost;
@@ -32,10 +41,7 @@ public class DTransactionParams
   private Spinner account;
   private Button cancel, ok;
 
-  public DTransactionParams()
-  {
-    super(R.layout.d_transaction_params);
-  }
+  private DateTime date_time; private static final String DATE_TIME = "date_time";
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -55,7 +61,24 @@ public class DTransactionParams
     (cancel = (Button)v.findViewById(R.id.d_tran_params_cancel)).setOnClickListener(this);
     (ok = (Button)v.findViewById(R.id.d_tran_params_ok)).setOnClickListener(this);
 
+    if(savedInstanceState != null)
+    {
+      date_time = new DateTime(savedInstanceState.getLong(DATE_TIME));
+
+    }
+
+    date.setText(date_time.getSDate());
+    time.setText(date_time.getSTime());
+
     return v;
+  }
+
+  @Override
+  public void onSaveInstanceState(Bundle outState)
+  {
+    outState.putLong(DATE_TIME, date_time.getTimeInMillis());
+
+    super.onSaveInstanceState(outState);
   }
 
   @Override
@@ -63,16 +86,14 @@ public class DTransactionParams
   {
     if(v == date)
     {
-      Date date = new Date(/*date_time*/);
-      DatePickerDialog dpd = new DatePickerDialog(v.getContext(), this, date.getYear() + YEAR_CORRECTOR,
-        date.getMonth(), date.getDate());
+      DatePickerDialog dpd = new DatePickerDialog(v.getContext(), this, date_time.getYear(),
+        date_time.getMonth(), date_time.getDayOfMonth());
       dpd.show();
     }
     else if(v == time)
     {
-      Date date = new Date(/*date_time*/);
-      TimePickerDialog tpd = new TimePickerDialog(v.getContext(), this, date.getHours(),
-        date.getMinutes(), false);
+      TimePickerDialog tpd = new TimePickerDialog(v.getContext(), this, date_time.getHours(),
+        date_time.getMinutes(), !date_time.isAMPMFormat());
       tpd.show();
     }
     else if(v == cancel)
@@ -88,25 +109,14 @@ public class DTransactionParams
   @Override
   public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
   {
-    /*
-    Date date = new Date(date_time);
-    date.setYear(year - YEAR_CORRECTOR);
-    date.setMonth(monthOfYear);
-    date.setDate(dayOfMonth);
-    date_time = date.getTime();
-    updateView();
-    */
+    date_time.setDT(year, monthOfYear, dayOfMonth, date_time.getHours(), date_time.getMinutes());
+    date.setText(date_time.getSDate());
   }
 
   @Override
   public void onTimeSet(TimePicker view, int hourOfDay, int minute)
   {
-    /*
-    Date date = new Date(date_time);
-    date.setHours(hourOfDay);
-    date.setMinutes(minute);
-    date_time = date.getTime();
-    updateView();
-    */
+    date_time.setDT(date_time.getYear(), date_time.getMonth(), date_time.getDayOfMonth(), hourOfDay, minute);
+    time.setText(date_time.getSTime());
   }
 }

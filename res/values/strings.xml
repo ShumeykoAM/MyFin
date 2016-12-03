@@ -22,4 +22,6 @@
     <string name="d_tran_params_account_debiting">account debiting</string>
     <string name="d_tran_params_account_credited">account credited</string>
     <string name="button_cancel">Cancel</string>
+    <string name="yesterday">yesterday</string>
+    <string name="today">today</string>
 </resources>

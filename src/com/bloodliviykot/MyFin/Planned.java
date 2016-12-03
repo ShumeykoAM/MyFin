@@ -17,6 +17,7 @@ import com.bloodliviykot.MyFin.DB.entities.Category;
 import com.bloodliviykot.MyFin.DB.entities.Document;
 import com.bloodliviykot.MyFin.DB.entities.Transact;
 import com.bloodliviykot.MyFin.DB.entities.Unit;
+import com.bloodliviykot.tools.Common.DateTime;
 import com.bloodliviykot.tools.Common.Money;
 import com.bloodliviykot.tools.DataBase.Entity;
 import com.bloodliviykot.tools.widget.DialogFragmentEx;
@@ -39,6 +40,8 @@ public class Planned
   private Button pay_documents;
   private Set<Long> chose_state = new TreeSet<>();
 
+  private static final String TAG_CHOOSES = "chooses";
+
   @Override
   protected void onCreate(Bundle savedInstanceState)
   {
@@ -58,6 +61,25 @@ public class Planned
     list_adapter.changeCursor(cursor);
     list_planned.setAdapter(list_adapter);
 
+  }
+
+  @Override
+  protected void onSaveInstanceState(Bundle outState)
+  {
+    long chooses[] = new long[chose_state.size()];
+    int i = 0;
+    for(Long id : chose_state)
+      chooses[i++] = id;
+    outState.putLongArray(TAG_CHOOSES, chooses);
+    super.onSaveInstanceState(outState);
+  }
+  @Override
+  protected void onRestoreInstanceState(Bundle savedInstanceState)
+  {
+    chose_state.clear();
+    if(savedInstanceState != null && savedInstanceState.containsKey(TAG_CHOOSES))
+      for(long id : savedInstanceState.getLongArray(TAG_CHOOSES))
+        chose_state.add(id);
   }
 
   public static class Chooses
@@ -127,8 +149,7 @@ public class Planned
         {
           chooses.add(new Chooses(cursor.getLong(cursor.getColumnIndex("CATEGORY_ID")), cursor.getDouble(cursor.getColumnIndex("count")), Unit.getUnitFromId(cursor.getLong(cursor.getColumnIndex("id_unit")))));
         } catch(Entity.EntityException e)
-        {
-        }
+        {     }
       intent.putParcelableArrayListExtra("chooses", chooses);
       startActivityForResult(intent, R.layout.choose_categories_list); //Запуск активности с onActivityResult
     }
@@ -142,7 +163,7 @@ public class Planned
     }
     else if(v == pay_documents)
     {
-      DTransactionParams transaction_params = new DTransactionParams();
+      DTransactionParams transaction_params = new DTransactionParams(new DateTime());
       Bundle params = new Bundle();
       params.putBoolean("IsNew", true);
       transaction_params.setArguments(params);
