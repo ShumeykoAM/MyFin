@@ -8,28 +8,26 @@
         <activity android:name=".Main"
                   android:label="@string/app_name"
                   android:theme="@android:style/Theme.NoTitleBar"
-                  android:configChanges="keyboardHidden|orientation|screenSize"
-                  android:windowSoftInputMode="adjustPan|adjustResize|stateHidden">
+                  android:windowSoftInputMode="adjustPan|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity android:name=".Accounts"
-                  android:configChanges="keyboardHidden|orientation|screenSize"
-                  android:windowSoftInputMode="adjustPan|adjustResize|stateHidden">
+                  android:windowSoftInputMode="adjustPan|adjustResize">
         </activity>
-        <activity android:name=".Register" android:configChanges="keyboardHidden|orientation|screenSize"
-                  android:windowSoftInputMode="adjustPan|adjustResize|stateHidden">
+        <activity android:name=".Register"
+                  android:windowSoftInputMode="adjustPan|adjustResize">
         </activity>
-        <activity android:name=".Planned" android:configChanges="keyboardHidden|orientation|screenSize"
-                  android:windowSoftInputMode="adjustPan|adjustResize|stateHidden">
+        <activity android:name=".Planned"
+                  android:windowSoftInputMode="adjustPan|adjustResize">
         </activity>
-        <activity android:name=".Categories" android:configChanges="keyboardHidden|orientation|screenSize"
-                  android:windowSoftInputMode="adjustPan|adjustResize|stateHidden">
+        <activity android:name=".Categories"
+                  android:windowSoftInputMode="adjustPan|adjustResize">
         </activity>
-        <activity android:name=".ChooseCategories" android:configChanges="keyboardHidden|orientation|screenSize"
-                  android:windowSoftInputMode="adjustPan|adjustResize|stateHidden"
+        <activity android:name=".ChooseCategories"
+                  android:windowSoftInputMode="adjustPan|adjustResize"
                   android:theme="@android:style/Theme.NoTitleBar">
         </activity>
     </application>
