@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+    <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:id="@+id/d_tran_params_date_l">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/d_tran_params_date"/>
+            <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:id="@+id/d_tran_params_date" android:inputType="text"
+                      android:singleLine="true" android:gravity="center_vertical|center_horizontal"
+                      android:text="15.03.2016" android:imeOptions="flagNoExtractUi" android:focusable="false"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/d_tran_params_date_l" android:id="@+id/d_tran_params_time_l">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/d_tran_params_time"/>
+            <EditText
+                    android:layout_width="wrap_content" android:imeOptions="flagNoExtractUi"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/d_tran_params_time" android:inputType="text" android:singleLine="true"
+                    android:gravity="center_vertical|center_horizontal" android:text="15:23" android:focusable="false"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" android:layout_alignParentTop="true"
+                      android:layout_alignParentRight="true" android:layout_toRightOf="@+id/d_tran_params_time_l">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:text="@string/d_tran_params_account_debiting"/>
+            <Spinner android:layout_width="fill_parent" android:layout_height="wrap_content"
+                     android:id="@+id/d_tran_params_account" android:layout_gravity="right"
+                     android:spinnerMode="dropdown"/>
+        </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" android:baselineAligned="false" android:gravity="right">
+        <!-- LinearLayout "@+id/d_tran_params_gone_Layout" (ниже) нужна для выравнивания когда нету других валют  -->
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" android:layout_weight="50" android:visibility="gone"
+                android:id="@+id/d_tran_params_gone_Layout" android:measureWithLargestChild="true">
+        </LinearLayout>
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                        android:layout_weight="50" android:orientation="vertical">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:text="@string/d_tran_params_total_amount"/>
+            <RelativeLayout android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+
+                          android:gravity="bottom" android:orientation="horizontal">
+                <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:id="@+id/d_tran_params_cost" android:inputType="numberDecimal"
+                          android:numeric="decimal" android:singleLine="true" android:text="23"
+                          android:gravity="bottom|right" android:imeOptions="flagNoExtractUi"
+                          android:layout_centerVertical="true" android:layout_alignParentLeft="true"
+                          android:layout_alignParentTop="false"
+                          android:layout_toLeftOf="@+id/d_tran_params_cost_L"
+                          android:layout_alignBottom="@+id/d_tran_params_cost_L"/>
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:layout_alignParentRight="true"
+                        android:id="@+id/d_tran_params_cost_L">
+                    <Spinner android:layout_width="120dp" android:layout_height="wrap_content"
+                             android:id="@+id/d_tran_params_cost_currency_s" android:layout_gravity="right"
+                             android:spinnerMode="dropdown" android:layout_alignParentLeft="false"
+                             android:layout_alignParentTop="true"
+                             android:layout_alignParentRight="true"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="$"
+                            android:id="@+id/d_tran_params_cost_currency_t" android:layout_marginLeft="5dp"/>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/d_tran_params_another_Layout" android:layout_weight="50"
+                android:orientation="vertical">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/d_tran_params_in_other_currencies"/>
+            <RelativeLayout android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:gravity="bottom">
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="6547"
+                        android:id="@+id/d_tran_params_another_cost" android:layout_gravity="center_horizontal"
+                        android:inputType="numberDecimal" android:gravity="bottom|right"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="false"
+                        android:layout_toLeftOf="@+id/d_tran_params_another_L"
+                        android:layout_alignBottom="@+id/d_tran_params_another_L"/>
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:layout_alignParentRight="true"
+                        android:id="@+id/d_tran_params_another_L">
+                    <Spinner android:layout_width="120dp" android:layout_height="wrap_content"
+                             android:id="@+id/d_tran_params_another_cost_currency_s" android:layout_gravity="right"
+                             android:spinnerMode="dropdown"
+                             android:layout_alignParentTop="true"
+                             android:layout_alignParentRight="true"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="руб."
+                            android:id="@+id/d_tran_params_another_cost_currency_t" android:layout_marginLeft="5dp"/>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+        <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/button_ok"
+                android:id="@+id/d_tran_params_ok"
+                android:layout_weight="1"/>
+        <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/d_tran_params_cancel"
+                android:text="@string/button_cancel" android:layout_weight="1"/>
+    </LinearLayout>
+</LinearLayout>

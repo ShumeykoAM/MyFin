@@ -17,11 +17,11 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="дата"/>
+                    android:text="@string/d_tran_params_date"/>
             <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
                       android:id="@+id/d_tran_params_date" android:inputType="text"
                       android:singleLine="true" android:gravity="center_vertical|center_horizontal"
-                      android:text="15.03.2016" android:imeOptions="flagNoExtractUi"/>
+                      android:text="15.03.2016" android:imeOptions="flagNoExtractUi" android:focusable="false"/>
         </LinearLayout>
         <LinearLayout
                 android:orientation="vertical"
@@ -31,78 +31,104 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="время"/>
+                    android:text="@string/d_tran_params_time"/>
             <EditText
                     android:layout_width="match_parent" android:imeOptions="flagNoExtractUi"
                     android:layout_height="wrap_content"
                     android:id="@+id/d_tran_params_time" android:inputType="text" android:singleLine="true"
-                    android:gravity="center_vertical|center_horizontal" android:text="15:23"/>
+                    android:gravity="center_vertical|center_horizontal" android:text="15:23" android:focusable="false"/>
         </LinearLayout>
     </LinearLayout>
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content"
-                      android:layout_height="wrap_content" android:layout_alignParentTop="true"
-                      android:layout_alignParentLeft="true" android:longClickable="false"
-                      android:layout_toLeftOf="@+id/linearLayout7">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                      android:text="Общая сумма" android:id="@+id/textView"/>
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                  android:orientation="vertical">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="@string/d_tran_params_total_amount"/>
+        <RelativeLayout android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:longClickable="false"
+                      android:orientation="horizontal" android:gravity="bottom">
             <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
                       android:id="@+id/d_tran_params_cost" android:inputType="numberDecimal"
                       android:numeric="decimal" android:singleLine="true" android:text="23"
-                      android:gravity="center_vertical|right" android:imeOptions="flagNoExtractUi"/>
-        </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content"
-                      android:layout_height="wrap_content" android:layout_alignParentTop="true"
-                      android:id="@+id/linearLayout7" android:layout_alignParentRight="true"
-                      android:gravity="bottom">
-            <Spinner android:layout_width="140dp" android:layout_height="wrap_content"
-                     android:id="@+id/d_tran_params_cost_currency" android:layout_gravity="right"
-                     android:spinnerMode="dropdown"/>
-        </LinearLayout>
-    </RelativeLayout>
-    <RelativeLayout
+                      android:imeOptions="flagNoExtractUi"
+                      android:layout_alignParentLeft="true"
+                      android:layout_alignParentTop="false"
+                      android:layout_toLeftOf="@+id/d_tran_params_cost_L"
+                      android:layout_alignParentBottom="false" android:gravity="center_vertical|right"
+                      android:layout_alignBottom="@+id/d_tran_params_cost_L"/>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:layout_alignParentRight="true"
+                    android:id="@+id/d_tran_params_cost_L">
+                <Spinner android:layout_width="120dp" android:layout_height="wrap_content"
+                         android:id="@+id/d_tran_params_cost_currency_s" android:layout_gravity="right"
+                         android:spinnerMode="dropdown" android:layout_alignParentLeft="false"
+                         android:layout_alignParentTop="false"
+                         android:layout_alignParentRight="true"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="$"
+                        android:id="@+id/d_tran_params_cost_currency_t" android:layout_marginLeft="5dp"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/d_tran_params_enother_Layout">
-        <LinearLayout
-                android:orientation="vertical"
+            android:id="@+id/d_tran_params_another_Layout" android:orientation="vertical">
+        <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-                android:longClickable="false" android:layout_toLeftOf="@+id/linearLayout6">
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="В другой валюте"/>
+                android:text="@string/d_tran_params_in_other_currencies"/>
+        <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:longClickable="false"
+                android:orientation="horizontal">
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="6547"
-                    android:id="@+id/d_tran_params_enother_cost" android:layout_gravity="center_horizontal"
-                    android:inputType="numberDecimal" android:gravity="center_vertical|right"/>
-        </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content"
-                      android:layout_height="wrap_content" android:layout_alignParentTop="true"
-                      android:id="@+id/linearLayout6" android:layout_alignParentRight="true"
-                      android:gravity="bottom">
-            <Spinner android:layout_width="140dp" android:layout_height="wrap_content"
-                     android:id="@+id/d_tran_params_enother_cost_currency" android:layout_gravity="right"
-                     android:spinnerMode="dropdown"/>
-        </LinearLayout>
-    </RelativeLayout>
-    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content"
-                      android:layout_height="wrap_content" android:layout_alignParentTop="true"
-                      android:layout_alignParentRight="true" android:id="@+id/linearLayout5"
-                      android:layout_alignParentLeft="true">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                      android:text="Счет списания"/>
-            <Spinner android:layout_width="wrap_content" android:layout_height="wrap_content"
-                     android:id="@+id/d_tran_params_account" android:layout_gravity="right"
-                     android:spinnerMode="dropdown"/>
-        </LinearLayout>
-    </RelativeLayout>
+                    android:id="@+id/d_tran_params_another_cost" android:layout_gravity="center_horizontal"
+                    android:inputType="numberDecimal" android:gravity="center_vertical|right"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="false"
+                    android:layout_toLeftOf="@+id/d_tran_params_another_L"
+                    android:layout_alignBottom="@+id/d_tran_params_another_L"/>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:layout_alignParentRight="true"
+                    android:id="@+id/d_tran_params_another_L">
+                <Spinner android:layout_width="120dp" android:layout_height="wrap_content"
+                         android:id="@+id/d_tran_params_another_cost_currency_s" android:layout_gravity="right"
+                         android:spinnerMode="dropdown" android:layout_alignParentLeft="false"
+                         android:layout_alignParentTop="true"
+                         android:layout_alignParentRight="true"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="руб."
+                        android:id="@+id/d_tran_params_another_cost_currency_t" android:layout_alignTop="@+id/d_tran_params_another_cost"
+                        android:layout_alignParentRight="true"
+                        android:layout_toRightOf="@+id/d_tran_params_another_cost"
+                        android:layout_marginLeft="5dp"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent"
+                  android:layout_height="wrap_content">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="@string/d_tran_params_account_debiting"/>
+        <Spinner android:layout_width="fill_parent" android:layout_height="wrap_content"
+                 android:id="@+id/d_tran_params_account" android:layout_gravity="right"
+                 android:spinnerMode="dropdown"/>
+    </LinearLayout>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
@@ -110,13 +136,13 @@
         <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/d_tran_params_cansel"
-                android:text="@string/button_cancel" android:layout_weight="1"/>
-        <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
                 android:text="@string/button_ok"
                 android:id="@+id/d_tran_params_ok"
                 android:layout_weight="1"/>
+        <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/d_tran_params_cancel"
+                android:text="@string/button_cancel" android:layout_weight="1"/>
     </LinearLayout>
 </LinearLayout>

@@ -10,10 +10,16 @@
     <string name="accounts_d_new_balance">Баланс</string>
     <string name="accounts_d_new_currency">Валюта</string>
     <string name="button_ok">Ok</string>
-    <string name="button_cancel">Отмена</string>
     <string name="currencies_d_new_code_currency">Код валюты</string>
     <string name="accounts_d_new_currency_another">Another</string>
     <string name="tab_categories">Categories</string>
     <string name="category_debit">debit</string>
     <string name="category_credit">credit</string>
+    <string name="d_tran_params_date">date</string>
+    <string name="d_tran_params_time">time</string>
+    <string name="d_tran_params_total_amount">total amount</string>
+    <string name="d_tran_params_in_other_currencies">in other currencies</string>
+    <string name="d_tran_params_account_debiting">account debiting</string>
+    <string name="d_tran_params_account_credited">account credited</string>
+    <string name="button_cancel">Cancel</string>
 </resources>
