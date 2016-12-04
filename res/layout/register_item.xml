@@ -38,7 +38,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="14:23"
-                            android:id="@+id/register_item_time" android:layout_gravity="left|center_horizontal"/>
+                            android:id="@+id/register_item_time" android:layout_gravity="left|center_horizontal"
+                            android:layout_marginRight="5dp"/>
                     <ImageView android:layout_width="18dp" android:layout_height="18dp"
                                android:id="@+id/register_item_trend"
                                android:src="@drawable/ic_debit" android:layout_gravity="center_vertical"
@@ -153,7 +154,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="14:23"
-                            android:id="@+id/register_remittance_time" android:layout_gravity="left|center_horizontal"/>
+                            android:id="@+id/register_remittance_time" android:layout_gravity="left|center_horizontal"
+                            android:layout_marginRight="5dp"/>
                     <ImageView
                             android:layout_width="18dp"
                             android:layout_height="18dp"

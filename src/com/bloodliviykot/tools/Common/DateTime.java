@@ -1,5 +1,7 @@
 package com.bloodliviykot.tools.Common;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import com.bloodliviykot.MyFin.Common;
 import com.bloodliviykot.MyFin.R;
 
@@ -13,6 +15,7 @@ import java.util.TimeZone;
  */
 public class DateTime
   extends GregorianCalendar
+  implements Parcelable
 {
   public static final int YEAR_CORRECTOR = 1900;
   public static final long SECONDS_IN_DAY = 86400000L;
@@ -103,5 +106,30 @@ public class DateTime
   public final void setDT(int year, int month, int day, int hourOfDay, int minute)
   {
     super.set(year, month, day, hourOfDay, minute);
+  }
+
+  //Parcelable -----------------------------------------------------------------------------------------------
+  public static final Parcelable.Creator CREATOR = new Parcelable.Creator()
+  {
+    @Override
+    public DateTime createFromParcel(Parcel source)
+    {
+      return new DateTime(source.readLong());
+    }
+    @Override
+    public DateTime[] newArray(int size)
+    {
+      return new DateTime[size];
+    }
+  };
+  @Override
+  public int describeContents()
+  {
+    return 0;
+  }
+  @Override
+  public void writeToParcel(Parcel dest, int flags)
+  {
+    dest.writeLong(getTimeInMillis());
   }
 }

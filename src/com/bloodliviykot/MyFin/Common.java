@@ -3,6 +3,7 @@ package com.bloodliviykot.MyFin;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -137,5 +138,33 @@ public class Common
     }
   }
 
+  //Для выделения всего текста в EditText при фокусировке
+  public static View.OnFocusChangeListener getOnFocusChangeListener()
+  {
+    return on_focus_change_listener;
+  }
+  private static final View.OnFocusChangeListener on_focus_change_listener = new View.OnFocusChangeListener()
+  {
+    @Override
+    public void onFocusChange(View v, boolean hasFocus)
+    {
+      try
+      {
+        final EditText edit_text = (EditText)v;
+        edit_text.post(new Runnable()
+        {
+          @Override
+          public void run()
+          {
+            if(hasFocus)
+              edit_text.selectAll();
+            else
+              edit_text.setSelection(0);
+          }
+        });
+      } catch(Throwable e)
+      {      }
+    }
+  };
 
 }

@@ -32,6 +32,7 @@ public enum EQ
   IMMEDIATE_PARENT,             //Непосредственный родитель
   INSERT_ALL_PARENT_RELATIVES,  //Создать все ссылки родительской категории для дочерней с remote+1
   COUNT_PARENTS,                //Количество родительских категорий
+  CURRENCIES_OF_ACCOUNTS,       //Все разнообразие валют по существующим счетам кроме указанной валюты
 
   EQ_COUNT;
   public final int value;

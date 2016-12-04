@@ -150,3 +150,9 @@ INSERT INTO AllParents (_id, _id_parent, remote)
 SELECT COUNT(_id) AS count
   FROM AllParents
   WHERE AllParents._id=?;
+
+--CURRENCIES_OF_ACCOUNTS Все разнообразие валют по существующим счетам кроме указанной валюты
+SELECT distinct Currency._id, Currency.symbol
+  FROM Currency, Account
+  WHERE Currency._id=Account._id_currency AND Currency._id!=?
+  ORDER BY Currency.prim DESC;

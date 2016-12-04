@@ -49,7 +49,7 @@ public class DAccountsNew
     final View v = inflater.inflate(getR_layout(), null);
     icon = (Spinner)v.findViewById(R.id.accounts_d_new_icon);
     name = (EditText)v.findViewById(R.id.accounts_d_new_name);
-    balance = (EditText)v.findViewById(R.id.accounts_d_new_balance);
+    (balance = (EditText)v.findViewById(R.id.accounts_d_new_balance)).setOnFocusChangeListener(Common.getOnFocusChangeListener());
     currency = (Spinner)v.findViewById(R.id.accounts_d_new_currency);
     b_ok     = (Button)v.findViewById(R.id.accounts_d_new_ok);     b_ok.setOnClickListener(this);
     b_cancel = (Button)v.findViewById(R.id.accounts_d_new_cansel); b_cancel.setOnClickListener(this);

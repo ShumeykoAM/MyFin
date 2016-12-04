@@ -40,7 +40,7 @@ public class DChooseCategoryParams
     //getDialog().setTitle("Заголовок");
     getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
     final View v = inflater.inflate(getR_layout(), null);
-    count = (EditText)v.findViewById(R.id.d_choose_cat_params_count);
+    (count = (EditText)v.findViewById(R.id.d_choose_cat_params_count)).setOnFocusChangeListener(Common.getOnFocusChangeListener());
     unit = (Spinner)v.findViewById(R.id.d_choose_cat_params_unit);
     (ok = (Button)v.findViewById(R.id.d_choose_cat_params_ok)).setOnClickListener(this);
     name = (TextView)v.findViewById(R.id.d_choose_cat_params_name);

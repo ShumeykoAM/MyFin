@@ -1,9 +1,13 @@
 package com.bloodliviykot.tools.Common;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by Kot on 08.10.2016.
  */
 public class Money
+  implements Parcelable
 {
   private long value;
   public Money(double value)
@@ -37,4 +41,30 @@ public class Money
   {
     return value == money.value;
   }
+
+  //Parcelable -----------------------------------------------------------------------------------------------
+  public static final Parcelable.Creator CREATOR = new Parcelable.Creator()
+  {
+    @Override
+    public Money createFromParcel(Parcel source)
+    {
+      return new Money(source.readLong());
+    }
+    @Override
+    public Money[] newArray(int size)
+    {
+      return new Money[size];
+    }
+  };
+  @Override
+  public int describeContents()
+  {
+    return 0;
+  }
+  @Override
+  public void writeToParcel(Parcel dest, int flags)
+  {
+    dest.writeLong(getLongValue());
+  }
+
 }
