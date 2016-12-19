@@ -56,9 +56,9 @@ public class DateTime
     DateTime today = new DateTime(normalize_cur_time);
     DateTime dt = new DateTime(getTimeInMillis() / SECONDS_IN_DAY * SECONDS_IN_DAY);
     if( dt.compareTo(yesterday) == 0)
-      result = Common.application_context.getString(R.string.yesterday);
+      result = Common.context.getString(R.string.yesterday);
     else if(dt.compareTo(today) == 0)
-      result = Common.application_context.getString(R.string.today);
+      result = Common.context.getString(R.string.today);
     else
     {
       DateFormat date_format = SimpleDateFormat.getDateInstance();

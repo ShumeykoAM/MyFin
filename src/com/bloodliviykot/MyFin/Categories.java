@@ -46,7 +46,7 @@ public class Categories
 
     public CategoriesItemAdapter(int layout, TreeListView.TreeCursor cursor, String[] from, int[] to)
     {
-      super(Common.application_context, layout, cursor, from, to);
+      super(Common.context, layout, cursor, from, to);
     }
 
     private abstract class OnClickListenerExpand

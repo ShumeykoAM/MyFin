@@ -51,8 +51,8 @@ public class MySQLiteOpenHelper
   private MySQLiteOpenHelper()
   {
     //Здесь создается или открывается БД
-    super(Common.application_context, DBName, null, VersionDB);
-    sql_reader = new SQLReader(Common.application_context.getResources());
+    super(Common.context, DBName, null, VersionDB);
+    sql_reader = new SQLReader(Common.context.getResources());
     db = getWritableDatabase();
   }
   //Создаем таблицы базы
@@ -85,7 +85,7 @@ public class MySQLiteOpenHelper
       Stack<Long> stack_id = new Stack<Long>();
       ContentValues values = new ContentValues();
       long _id = 0;
-      XmlPullParser xpp = Common.application_context.getResources().getXml(R.xml.distrib_db);
+      XmlPullParser xpp = Common.context.getResources().getXml(R.xml.distrib_db);
       while (xpp.getEventType() != XmlPullParser.END_DOCUMENT)
       {
         switch (xpp.getEventType())
@@ -149,9 +149,9 @@ public class MySQLiteOpenHelper
     //Есть две всея родительские категории
     try
     {
-      Category credit = new Category(null, Transact.TREND.CREDIT, Common.application_context.getString(R.string.category_credit));
+      Category credit = new Category(null, Transact.TREND.CREDIT, Common.context.getString(R.string.category_credit));
       credit.insert();
-      Category debit = new Category(null, Transact.TREND.DEBIT, Common.application_context.getString(R.string.category_debit));
+      Category debit = new Category(null, Transact.TREND.DEBIT, Common.context.getString(R.string.category_debit));
       debit.insert();
     } catch(Entity.EntityException e)
     {    }

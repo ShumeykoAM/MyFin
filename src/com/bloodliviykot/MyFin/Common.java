@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
  */
 public class Common
 {
-  public static Context application_context = null;
+  public static Context context = null;
   public static final MyDecimalFormat FORMAT_MONEY = new MyDecimalFormat();
 
   //+//Программно скрыть spinner выпадающий выпавший список
@@ -134,7 +134,7 @@ public class Common
       StackTraceElement element = trace[1];
       String message = "Метод " + element.getClassName() + "." + element.getMethodName() +
         " в строке " + element.getLineNumber() + " файла " + element.getFileName() + " еще не проверен";
-      Toast.makeText(Common.application_context, message, Toast.LENGTH_LONG).show();
+      Toast.makeText(Common.context, message, Toast.LENGTH_LONG).show();
     }
   }
 

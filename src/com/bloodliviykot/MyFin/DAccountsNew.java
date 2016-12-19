@@ -132,7 +132,7 @@ public class DAccountsNew
         {   }
         if( (regime_new ? account.insert() == -1 : !account.update()) )
         {
-          Toast.makeText(Common.application_context, "Ошибка", Toast.LENGTH_SHORT).show();
+          Toast.makeText(Common.context, "Ошибка", Toast.LENGTH_SHORT).show();
           return;
         }
         result_values.putLong("_id_Account", account.getId());
@@ -148,12 +148,12 @@ public class DAccountsNew
   {
     if(name.getText().toString().equals(""))
     {
-      Toast.makeText(Common.application_context, "Не задано имя счета!", Toast.LENGTH_SHORT).show();
+      Toast.makeText(Common.context, "Не задано имя счета!", Toast.LENGTH_SHORT).show();
       return false;
     }
     if(balance.getText().toString().equals(""))
     {
-      Toast.makeText(Common.application_context, "Не задан баланс счета!", Toast.LENGTH_SHORT).show();
+      Toast.makeText(Common.context, "Не задан баланс счета!", Toast.LENGTH_SHORT).show();
       return false;
     }
     return true;
@@ -164,14 +164,14 @@ public class DAccountsNew
   {
     ImageAdapter()
     {
-      super(Common.application_context, R.layout.d_accounts_new_image_item, Account.E_IC_TYPE_RESOURCE.values());
+      super(Common.context, R.layout.d_accounts_new_image_item, Account.E_IC_TYPE_RESOURCE.values());
     }
 
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent)
     {
       if(convertView == null)
-        convertView = View.inflate(Common.application_context, R.layout.d_accounts_new_image_item, null);
+        convertView = View.inflate(Common.context, R.layout.d_accounts_new_image_item, null);
       ImageView image = (ImageView)convertView.findViewById(R.id.accounts_d_new_image_item_icon);
       image.setImageResource(Account.E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(position).R_drawable);
       image.setBackgroundColor(getResources().getColor(R.color.black));
@@ -182,7 +182,7 @@ public class DAccountsNew
     public View getView(int position, View convertView, ViewGroup parent)
     {
       if(convertView == null)
-        convertView = View.inflate(Common.application_context, R.layout.d_accounts_new_image_item, null);
+        convertView = View.inflate(Common.context, R.layout.d_accounts_new_image_item, null);
       ImageView image = (ImageView)convertView.findViewById(R.id.accounts_d_new_image_item_icon);
       image.setImageResource(Account.E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(position).R_drawable);
       image.setBackgroundColor(getResources().getColor(R.color.black));
@@ -196,7 +196,7 @@ public class DAccountsNew
   {
     CurrencyAdapter(Cursor cursor)
     {
-      super(Common.application_context, R.layout.d_accounts_new_currency_item,
+      super(Common.context, R.layout.d_accounts_new_currency_item,
         cursor, new String[]{},
         new int[]{R.id.accounts_d_new_currency_item_symbol, R.id.accounts_d_new_currency_item_full_name});
     }
@@ -205,7 +205,7 @@ public class DAccountsNew
     public View getDropDownView(int position, View convertView, ViewGroup parent)
     {
       if(convertView == null)
-        convertView = View.inflate(Common.application_context, R.layout.d_accounts_new_currency_item, null);
+        convertView = View.inflate(Common.context, R.layout.d_accounts_new_currency_item, null);
       TextView symbol = (TextView)convertView.findViewById(R.id.accounts_d_new_currency_item_symbol);
       TextView full_name = (TextView)convertView.findViewById(R.id.accounts_d_new_currency_item_full_name);
       cursor_currencies.moveToPosition(position);
@@ -218,7 +218,7 @@ public class DAccountsNew
     public View getView(int position, View convertView, ViewGroup parent)
     {
       if(convertView == null)
-        convertView = View.inflate(Common.application_context, R.layout.d_accounts_new_currency_item, null);
+        convertView = View.inflate(Common.context, R.layout.d_accounts_new_currency_item, null);
       TextView symbol = (TextView)convertView.findViewById(R.id.accounts_d_new_currency_item_symbol);
       TextView full_name = (TextView)convertView.findViewById(R.id.accounts_d_new_currency_item_full_name);
       cursor_currencies.moveToPosition(position);

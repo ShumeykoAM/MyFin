@@ -138,7 +138,7 @@ public class Planned
   {
     if(v == add_credit)
     {
-      Intent intent = new Intent(Common.application_context, ChooseCategories.class);
+      Intent intent = new Intent(Common.context, ChooseCategories.class);
       if(add_credit == v)
         intent.putExtra("TREND", Transact.TREND.CREDIT);
       else// if(add_debit == v)
@@ -163,7 +163,15 @@ public class Planned
     }
     else if(v == pay_documents)
     {
-      DTransactionParams transaction_params = new DTransactionParams(new DateTime(), new Money(0));
+      DTransactionParams transaction_params = null;
+      try
+      {
+        transaction_params = new DTransactionParams(new DateTime(), new Money(0));
+      } catch(DTransactionParams.NotAccountException e)
+      {
+        //Значит нету ни одного счета
+        
+      }
       Bundle params = new Bundle();
       params.putBoolean("IsNew", true);
       transaction_params.setArguments(params);
@@ -232,7 +240,7 @@ public class Planned
 
     public PlannedItemAdapter(int layout, Cursor cursor, String[] from, int[] to)
     {
-      super(Common.application_context, layout, cursor, from, to);
+      super(Common.context, layout, cursor, from, to);
 
     }
     @Override
@@ -356,7 +364,7 @@ public class Planned
       @Override
       public void onClick(View v)
       {
-        Toast.makeText(Common.application_context, "Здесь надо диалог со стоимостью выводить наверное", Toast.LENGTH_LONG).show();
+        Toast.makeText(Common.context, "Здесь надо диалог со стоимостью выводить наверное", Toast.LENGTH_LONG).show();
 
         if(cursor.moveToPosition(cursor_position))
         {

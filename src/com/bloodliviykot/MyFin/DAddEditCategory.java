@@ -87,7 +87,7 @@ public class DAddEditCategory
           long _id;
           Category category = new Category(_id_parent, trend, et_name.getText().toString());
           if((_id = category.insert() )== -1)
-            Toast.makeText(Common.application_context, "Такая категория уже есть", Toast.LENGTH_LONG).show();
+            Toast.makeText(Common.context, "Такая категория уже есть", Toast.LENGTH_LONG).show();
           else
           {
             Bundle result_values = new Bundle();

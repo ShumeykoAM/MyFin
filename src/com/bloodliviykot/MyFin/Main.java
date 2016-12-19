@@ -55,7 +55,7 @@ public class Main
   }
   private void setGlobalVars()
   {
-    Common.application_context = getApplicationContext();
+    Common.context = getApplicationContext();
 
   }
 }

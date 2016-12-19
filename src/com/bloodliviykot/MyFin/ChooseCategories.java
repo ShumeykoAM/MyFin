@@ -262,7 +262,7 @@ public class ChooseCategories
 
     public ChooseItemAdapter(Cursor c)
     {
-      super(Common.application_context, R.layout.choose_categories_list_item, c, new String[]{},
+      super(Common.context, R.layout.choose_categories_list_item, c, new String[]{},
         new int[]{R.id.choose_categories_list_item_enter, R.id.choose_categories_list_item_name,
                   R.id.choose_categories_list_item_count, R.id.choose_categories_list_item_unit,
                   R.id.choose_categories_list_item_choose});

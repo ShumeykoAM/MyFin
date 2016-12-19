@@ -92,7 +92,7 @@ public class Register
 
     public TransactionPayedItemAdapter(int layout, Cursor cursor, String[] from, int[] to)
     {
-      super(Common.application_context, layout, cursor, from, to);
+      super(Common.context, layout, cursor, from, to);
 
     }
 

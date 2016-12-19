@@ -105,7 +105,7 @@ public class Accounts
 
     public AccountsItemAdapter(int layout, Cursor cursor, String[] from, int[] to)
     {
-      super(Common.application_context, layout, cursor, from, to);
+      super(Common.context, layout, cursor, from, to);
 
     }
     @Override

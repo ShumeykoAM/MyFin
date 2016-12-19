@@ -25,15 +25,27 @@ public class DTransactionParams
   extends DialogFragmentEx<DialogFragmentEx.I_ResultHandler<Bundle>, Bundle>
   implements View.OnClickListener, DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener
 {
-
+  public class NotAccountException extends Exception {  }
+  
   //!!! внимание, наследники DialogFragment должны иметь конструктор без параметров
-  public DTransactionParams()
+  public DTransactionParams() throws NotAccountException
   {
     super(R.layout.d_transaction_params);
+    oh = MySQLiteOpenHelper.getMySQLiteOpenHelper();
+    Cursor cursor = oh.db.rawQuery(oh.getQuery(EQ.COUNT_CURRENCIES_ALL_ACCOUNTS), new String[]{});
+    try
+    {
+      if(!cursor.moveToFirst() || cursor.getInt(cursor.getColumnIndex("count")) == 0)
+        throw new NotAccountException();
+    }
+    finally
+    {
+      cursor.close();
+    }
   }
-  public DTransactionParams(DateTime date_time, Money total_amount)
+  public DTransactionParams(DateTime date_time, Money total_amount) throws NotAccountException
   {
-    super(R.layout.d_transaction_params);
+    this(); //Вызовем другой конструктор
     this.date_time    = date_time;
     this.total_amount = total_amount;
   }
@@ -51,12 +63,13 @@ public class DTransactionParams
 
   private DateTime date_time; private static final String DATE_TIME = "date_time";
   private Money total_amount; private static final String TOTAL_AMOUNT = "total_amount";
-  MySQLiteOpenHelper oh;
+  private MySQLiteOpenHelper oh;
+  private Cursor cursor_currencies_all_acc, cursor_other_currencies;
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
   {
-    getDialog().setTitle("Оплатит продукты");
+    getDialog().setTitle("Оплатить продукты");
     //getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
     final View v = inflater.inflate(getR_layout(), null);
     (date = (EditText)v.findViewById(R.id.d_tran_params_date)).setOnClickListener(this);
@@ -73,7 +86,7 @@ public class DTransactionParams
     (ok = (Button)v.findViewById(R.id.d_tran_params_ok)).setOnClickListener(this);
     cost.setOnFocusChangeListener(Common.getOnFocusChangeListener());
 
-    oh = MySQLiteOpenHelper.getMySQLiteOpenHelper();
+    
     if(savedInstanceState != null)
     {
       date_time = savedInstanceState.getParcelable(DATE_TIME);
@@ -84,6 +97,14 @@ public class DTransactionParams
     time.setText(date_time.getSTime());
 
     cost.setText(total_amount.toString());
+    cursor_currencies_all_acc = oh.db.rawQuery(oh.getQuery(EQ.CURRENCIES_ALL_ACCOUNTS), new String[]{"0"});
+    cost_currency_s.setAdapter(new SimpleCursorAdapter(Common.context, R.layout.d_spinner_currency_item,
+      cursor_currencies_all_acc, new String[]{"symbol"}, new int[]{R.id.d_spinner_currency_item}));
+    //cost_currency_s.setOnItemClickListener
+    if(cursor_currencies_all_acc.moveToFirst())
+      cost_currency_t.setText(cursor_currencies_all_acc.getString(cursor_currencies_all_acc.getColumnIndex("symbol")));
+    
+    //cursor_other_currencies
 
     prepareFieldsCosts();
 
@@ -152,7 +173,7 @@ public class DTransactionParams
   {
     //Если валют по счетам несколько, то для общей суммы выводим спиннер иначе текст с единственной валютой
     //  если счетов вообще нет, то сразу надо вывести окно для ввода нового счета
-    Cursor cursor_currencies_of_acc = oh.db.rawQuery(oh.getQuery(EQ.CURRENCIES_OF_ACCOUNTS), new String[]{"0"});
+    Cursor cursor_currencies_of_acc = oh.db.rawQuery(oh.getQuery(EQ.CURRENCIES_ALL_ACCOUNTS), new String[]{"0"});
     int count_currencies = cursor_currencies_of_acc.getCount();
     if(count_currencies == 0)
     {
@@ -160,23 +181,22 @@ public class DTransactionParams
     }
     else if(count_currencies == 1)
     {
-      cost_currency_s.setVisibility(View.GONE);
-      another_layout.setVisibility(View.GONE);
+      //cost_currency_s.setVisibility(View.GONE);
+      //another_layout.setVisibility(View.GONE);
 
     }
     else if(count_currencies == 2)
     {
-      cost_currency_t.setVisibility(View.GONE);
+      //cost_currency_t.setVisibility(View.GONE);
 
 
     }
     else
     {
-      Cursor cursor_another_of_acc = oh.db.rawQuery(oh.getQuery(EQ.CURRENCIES_OF_ACCOUNTS), new String[]{"0"});
-      cost_currency_t.setVisibility(View.GONE);
+      //Cursor cursor_another_of_acc = oh.db.rawQuery(oh.getQuery(EQ.CURRENCIES_ALL_ACCOUNTS), new String[]{"0"});
+      //cost_currency_t.setVisibility(View.GONE);
 
     }
-
 
 
     //Если валюта одна, то скрываем пункт в другой валюте,

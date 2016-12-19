@@ -151,8 +151,13 @@ SELECT COUNT(_id) AS count
   FROM AllParents
   WHERE AllParents._id=?;
 
---CURRENCIES_OF_ACCOUNTS Все разнообразие валют по существующим счетам кроме указанной валюты
+--CURRENCIES_ALL_ACCOUNTS Все разнообразие валют по существующим счетам кроме указанной валюты
 SELECT distinct Currency._id, Currency.symbol
   FROM Currency, Account
-  WHERE Currency._id=Account._id_currency AND Currency._id!=?
+  WHERE Account._id_co_user IS NULL AND Currency._id=Account._id_currency AND Currency._id!=?
   ORDER BY Currency.prim DESC;
+
+--COUNT_CURRENCIES_ALL_ACCOUNTS
+SELECT COUNT(DISTINCT Account._id_currency) AS count
+  FROM Account
+  WHERE Account._id_co_user IS NULL;
