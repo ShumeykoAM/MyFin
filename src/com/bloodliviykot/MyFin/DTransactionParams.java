@@ -9,10 +9,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
+import com.bloodliviykot.MyFin.DB.entities.Account;
 import com.bloodliviykot.tools.Common.DateTime;
 import com.bloodliviykot.tools.Common.Money;
 import com.bloodliviykot.tools.widget.DialogFragmentEx;
@@ -23,7 +23,8 @@ import com.bloodliviykot.tools.widget.DialogFragmentEx;
 @SuppressLint("ValidFragment")
 public class DTransactionParams
   extends DialogFragmentEx<DialogFragmentEx.I_ResultHandler<Bundle>, Bundle>
-  implements View.OnClickListener, DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener
+  implements View.OnClickListener, DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener,
+  AdapterView.OnItemSelectedListener
 {
   public class NotAccountException extends Exception {  }
   
@@ -35,7 +36,7 @@ public class DTransactionParams
     Cursor cursor = oh.db.rawQuery(oh.getQuery(EQ.COUNT_CURRENCIES_ALL_ACCOUNTS), new String[]{});
     try
     {
-      if(!cursor.moveToFirst() || cursor.getInt(cursor.getColumnIndex("count")) == 0)
+      if(!cursor.moveToFirst() || (count_currencies = cursor.getInt(cursor.getColumnIndex("count"))) == 0)
         throw new NotAccountException();
     }
     finally
@@ -52,20 +53,23 @@ public class DTransactionParams
 
   private EditText date, time;
   private EditText cost;
-  private Spinner cost_currency_s;
+  private Spinner cost_currency_s; private static final String CURRENCY_SELECTED = "currency_selected";
   private TextView cost_currency_t;
   private LinearLayout another_layout;
+  private LinearLayout linearLayout_gone;
   private TextView  another_cost;
   private Spinner another_cost_currency_s;
   private TextView another_cost_currency_t;
-  private Spinner account;
+  private Spinner account_s; private static final String ACCOUNT_SELECTED = "account_selected"; private Integer account_selected = null;
+  private AccountsItemAdapter account_adapter;
   private Button cancel, ok;
 
   private DateTime date_time; private static final String DATE_TIME = "date_time";
   private Money total_amount; private static final String TOTAL_AMOUNT = "total_amount";
   private MySQLiteOpenHelper oh;
-  private Cursor cursor_currencies_all_acc, cursor_other_currencies;
-
+  private Cursor c_currencies_all_acc, c_other_currencies, c_accounts;
+  private int count_currencies;
+  
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
   {
@@ -78,55 +82,72 @@ public class DTransactionParams
     cost_currency_s = (Spinner)v.findViewById(R.id.d_tran_params_cost_currency_s);
     cost_currency_t = (TextView)v.findViewById(R.id.d_tran_params_cost_currency_t);
     another_layout = (LinearLayout)v.findViewById(R.id.d_tran_params_another_Layout);
+    linearLayout_gone = (LinearLayout)v.findViewById(R.id.d_tran_params_gone_Layout);
     another_cost = (TextView)v.findViewById(R.id.d_tran_params_another_cost);
     another_cost_currency_s = (Spinner)v.findViewById(R.id.d_tran_params_another_cost_currency_s);
     another_cost_currency_t = (TextView)v.findViewById(R.id.d_tran_params_another_cost_currency_t);
-    account = (Spinner)v.findViewById(R.id.d_tran_params_account);
+    account_s = (Spinner)v.findViewById(R.id.d_tran_params_account);
     (cancel = (Button)v.findViewById(R.id.d_tran_params_cancel)).setOnClickListener(this);
     (ok = (Button)v.findViewById(R.id.d_tran_params_ok)).setOnClickListener(this);
-    cost.setOnFocusChangeListener(Common.getOnFocusChangeListener());
-
+    c_currencies_all_acc = oh.db.rawQuery(oh.getQuery(EQ.CURRENCIES_ALL_ACCOUNTS), new String[]{"0"});
+    cost_currency_s.setAdapter(new SimpleCursorAdapter(Common.context, R.layout.d_spinner_currency_item,
+      c_currencies_all_acc, new String[]{"symbol"}, new int[]{R.id.d_spinner_currency_item}));
+    account_adapter = new AccountsItemAdapter(null);
+    account_s.setAdapter(account_adapter);
     
     if(savedInstanceState != null)
     {
       date_time = savedInstanceState.getParcelable(DATE_TIME);
       total_amount = savedInstanceState.getParcelable(TOTAL_AMOUNT);
+      if(count_currencies != 1)
+        cost_currency_s.setSelection(savedInstanceState.getInt(CURRENCY_SELECTED));
+      account_selected = savedInstanceState.getInt(ACCOUNT_SELECTED);
     }
-
+    if(count_currencies == 1)
+      prepareFieldsCosts();
+    else
+    {
+      cost_currency_s.setOnItemSelectedListener(this);
+    }
     date.setText(date_time.getSDate());
     time.setText(date_time.getSTime());
-
     cost.setText(total_amount.toString());
-    cursor_currencies_all_acc = oh.db.rawQuery(oh.getQuery(EQ.CURRENCIES_ALL_ACCOUNTS), new String[]{"0"});
-    cost_currency_s.setAdapter(new SimpleCursorAdapter(Common.context, R.layout.d_spinner_currency_item,
-      cursor_currencies_all_acc, new String[]{"symbol"}, new int[]{R.id.d_spinner_currency_item}));
-    //cost_currency_s.setOnItemClickListener
-    if(cursor_currencies_all_acc.moveToFirst())
-      cost_currency_t.setText(cursor_currencies_all_acc.getString(cursor_currencies_all_acc.getColumnIndex("symbol")));
-    
-    //cursor_other_currencies
-
-    prepareFieldsCosts();
-
-    //Клавиатуру для конкретного view можно корректно вызвать только так
-    cost.post(new Runnable(){
-      @Override
-      public void run()
-      {
-        InputMethodManager imm = (InputMethodManager)
-          cost.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.showSoftInput(cost, InputMethodManager.SHOW_IMPLICIT);
-        cost.requestFocus();
-      }
-    });
     return v;
   }
-
+  @Override
+  public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+  {
+    if(parent == cost_currency_s)
+    {
+      prepareFieldsCosts();
+      if(account_selected != null)
+      {
+        account_s.setSelection(account_selected);
+        account_selected = null;
+      }
+    }
+    if(parent == another_cost_currency_s)
+      calcAnotherCurrency(id);
+  }
+  private void calcAnotherCurrency(Long _id_another)
+  {
+    //Пересчитаем по курсу
+    another_cost.setText(_id_another.toString());
+    //....
+    
+  }
+  @Override
+  public void onNothingSelected(AdapterView<?> parent)
+  {   }
+  
   @Override
   public void onSaveInstanceState(Bundle outState)
   {
     outState.putParcelable(DATE_TIME, date_time);
     outState.putParcelable(TOTAL_AMOUNT, total_amount);
+    if(count_currencies != 1)
+      outState.putInt(CURRENCY_SELECTED, cost_currency_s.getSelectedItemPosition());
+    outState.putInt(ACCOUNT_SELECTED, account_s.getSelectedItemPosition());
     super.onSaveInstanceState(outState);
   }
 
@@ -171,39 +192,79 @@ public class DTransactionParams
 
   private void prepareFieldsCosts()
   {
-    //Если валют по счетам несколько, то для общей суммы выводим спиннер иначе текст с единственной валютой
-    //  если счетов вообще нет, то сразу надо вывести окно для ввода нового счета
-    Cursor cursor_currencies_of_acc = oh.db.rawQuery(oh.getQuery(EQ.CURRENCIES_ALL_ACCOUNTS), new String[]{"0"});
-    int count_currencies = cursor_currencies_of_acc.getCount();
-    if(count_currencies == 0)
-    {
-
-    }
-    else if(count_currencies == 1)
-    {
-      //cost_currency_s.setVisibility(View.GONE);
-      //another_layout.setVisibility(View.GONE);
-
-    }
-    else if(count_currencies == 2)
-    {
-      //cost_currency_t.setVisibility(View.GONE);
-
-
-    }
-    else
-    {
-      //Cursor cursor_another_of_acc = oh.db.rawQuery(oh.getQuery(EQ.CURRENCIES_ALL_ACCOUNTS), new String[]{"0"});
-      //cost_currency_t.setVisibility(View.GONE);
-
-    }
-
-
     //Если валюта одна, то скрываем пункт в другой валюте,
     //  если валют две, то выводим общую стоимость в другой валюте и прячем спиннер другой валюты
     //  если валют три и более, то выводим общую стоимость в другой валюте и показываем спиннер другой валюты
-
+    
+    Long _id;
+    //Если валют по счетам несколько, то для общей суммы выводим спиннер иначе текст с единственной валютой
+    if(count_currencies == 1)
+    {
+      c_currencies_all_acc.moveToFirst();
+      _id = c_currencies_all_acc.getLong(c_currencies_all_acc.getColumnIndex("_id"));
+      cost_currency_s.setVisibility(View.GONE);
+      cost_currency_t.setVisibility(View.VISIBLE);
+      another_layout.setVisibility(View.GONE);
+      if(linearLayout_gone != null)
+        linearLayout_gone.setVisibility(View.VISIBLE);
+      cost_currency_t.setText(c_currencies_all_acc.getString(c_currencies_all_acc.getColumnIndex("symbol")));
+    }
+    else
+    {
+      _id = cost_currency_s.getSelectedItemId();
+      cost_currency_s.setVisibility(View.VISIBLE);
+      cost_currency_t.setVisibility(View.GONE);
+      another_layout.setVisibility(View.VISIBLE);
+      if(linearLayout_gone != null)
+        linearLayout_gone.setVisibility(View.GONE);
+      c_other_currencies = c_currencies_all_acc = oh.db.rawQuery(oh.getQuery(EQ.CURRENCIES_ALL_ACCOUNTS),
+        new String[]{_id.toString()});
+      if(count_currencies == 2)
+      {
+        another_cost_currency_t.setVisibility(View.VISIBLE);
+        another_cost_currency_s.setVisibility(View.GONE);
+        if(c_other_currencies.moveToFirst())
+          another_cost_currency_t.setText(c_other_currencies.getString(c_other_currencies.getColumnIndex("symbol")));
+        calcAnotherCurrency(c_other_currencies.getLong(c_other_currencies.getColumnIndex("_id")));
+      }
+      else
+      {
+        another_cost_currency_t.setVisibility(View.GONE);
+        another_cost_currency_s.setVisibility(View.VISIBLE);
+        another_cost_currency_s.setAdapter(new SimpleCursorAdapter(Common.context, R.layout.d_spinner_currency_item,
+          c_other_currencies, new String[]{"symbol"}, new int[]{R.id.d_spinner_currency_item}));
+        another_cost_currency_s.setOnItemSelectedListener(this);
+      }
+    }
+    c_accounts = oh.db.rawQuery(oh.getQuery(EQ.ACCOUNTS_FOR_CURRENCY),
+      new String[]{_id.toString()});
+    account_adapter.changeCursor(c_accounts);
+  
   }
-
+  
+  //Переопределим SimpleCursorAdapter что бы форматировать данные из базы нужным образом
+  private class AccountsItemAdapter
+    extends SimpleCursorAdapter
+  {
+    public AccountsItemAdapter(Cursor cursor)
+    {
+      super(Common.context, R.layout.d_spinner_account, cursor, new String[]{},
+        new int[]{R.id.d_spinner_account_item_image, R.id.d_spinner_account_item_name});
+    }
+    @Override
+    public void bindView(View view, Context context, Cursor cursor)
+    {
+      Account.E_IC_TYPE_RESOURCE icon = Account.E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(
+        (int)cursor.getLong(cursor.getColumnIndex("id_icon")));
+      String name = cursor.getString(cursor.getColumnIndex("name"));
+      
+      //Сопоставляем
+      ImageView iv_image  = (ImageView)view.findViewById(R.id.d_spinner_account_item_image);
+      TextView tv_name    = (TextView)view.findViewById(R.id.d_spinner_account_item_name);
+      iv_image.setImageResource(icon.R_drawable);
+      tv_name.setText(name);
+    }
+    
+  }
 
 }

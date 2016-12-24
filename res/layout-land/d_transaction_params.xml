@@ -19,7 +19,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/d_tran_params_date"/>
+                    android:text="@string/d_tran_params_date" android:layout_marginLeft="4dp"/>
             <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
                       android:id="@+id/d_tran_params_date" android:inputType="text"
                       android:singleLine="true" android:gravity="center_vertical|center_horizontal"
@@ -34,7 +34,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/d_tran_params_time"/>
+                    android:text="@string/d_tran_params_time" android:layout_marginLeft="4dp"/>
             <EditText
                     android:layout_width="wrap_content" android:imeOptions="flagNoExtractUi"
                     android:layout_height="wrap_content"
@@ -45,24 +45,28 @@
                       android:layout_height="wrap_content" android:layout_alignParentTop="true"
                       android:layout_alignParentRight="true" android:layout_toRightOf="@+id/d_tran_params_time_l">
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                      android:text="@string/d_tran_params_account_debiting"/>
+                      android:text="@string/d_tran_params_account_debiting" android:layout_marginLeft="4dp"/>
             <Spinner android:layout_width="fill_parent" android:layout_height="wrap_content"
                      android:id="@+id/d_tran_params_account" android:layout_gravity="right"
                      android:spinnerMode="dropdown"/>
         </LinearLayout>
     </RelativeLayout>
     <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" android:baselineAligned="false" android:gravity="right">
         <!-- LinearLayout "@+id/d_tran_params_gone_Layout" (ниже) нужна для выравнивания когда нету других валют  -->
         <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" android:layout_weight="50" android:visibility="gone"
-                android:id="@+id/d_tran_params_gone_Layout" android:measureWithLargestChild="true">
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent" android:visibility="gone"
+                android:id="@+id/d_tran_params_gone_Layout" android:measureWithLargestChild="true"
+                android:layout_weight="50">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:text="@string/d_tran_params_total_amount" android:visibility="invisible"/>
         </LinearLayout>
-        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-                        android:layout_weight="50" android:orientation="vertical">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="vertical" android:layout_weight="50"
+                      android:layout_marginLeft="4dp">
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                       android:text="@string/d_tran_params_total_amount"/>
             <RelativeLayout android:layout_width="wrap_content"
@@ -89,18 +93,19 @@
                              android:layout_alignParentRight="true"/>
                     <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="50dp"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="$"
-                            android:id="@+id/d_tran_params_cost_currency_t" android:layout_marginLeft="5dp"/>
+                            android:id="@+id/d_tran_params_cost_currency_t" android:layout_marginLeft="5dp"
+                            android:gravity="bottom" android:layout_marginRight="8dp"/>
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>
         <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/d_tran_params_another_Layout" android:layout_weight="50"
-                android:orientation="vertical">
+                android:id="@+id/d_tran_params_another_Layout"
+                android:orientation="vertical" android:visibility="visible" android:layout_weight="50">
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -131,10 +136,11 @@
                              android:layout_alignParentRight="true"/>
                     <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="50dp"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="руб."
-                            android:id="@+id/d_tran_params_another_cost_currency_t" android:layout_marginLeft="5dp"/>
+                            android:id="@+id/d_tran_params_another_cost_currency_t" android:layout_marginLeft="5dp"
+                            android:gravity="bottom" android:layout_marginRight="8dp"/>
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>

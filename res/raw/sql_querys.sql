@@ -157,7 +157,13 @@ SELECT distinct Currency._id, Currency.symbol
   WHERE Account._id_co_user IS NULL AND Currency._id=Account._id_currency AND Currency._id!=?
   ORDER BY Currency.prim DESC;
 
---COUNT_CURRENCIES_ALL_ACCOUNTS
+--COUNT_CURRENCIES_ALL_ACCOUNTS Список всего разнообразия валют по существующим счетам
 SELECT COUNT(DISTINCT Account._id_currency) AS count
   FROM Account
   WHERE Account._id_co_user IS NULL;
+
+-- ACCOUNTS_FOR_CURRENCY все счета для указанной валюты
+SELECT Account._id, Account.id_icon, Account.name, Account.balance
+FROM Account
+  WHERE Account._id_co_user IS NULL AND Account._id_currency=?
+  ORDER BY Account.id_icon;

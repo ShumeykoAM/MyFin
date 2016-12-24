@@ -34,7 +34,8 @@ public enum EQ
   COUNT_PARENTS,                //Количество родительских категорий
   CURRENCIES_ALL_ACCOUNTS,      //Все разнообразие валют по существующим счетам кроме указанной валюты
   COUNT_CURRENCIES_ALL_ACCOUNTS,//Количество разнообразных валют
-
+  ACCOUNTS_FOR_CURRENCY,        //все счета для указанной валюты
+  
   EQ_COUNT;
   public final int value;
   private EQ()

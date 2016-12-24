@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/accounts_d_new_image_item_icon" android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
-            android:src="@drawable/ic_credit_card"/>
+            android:src="@drawable/ic_credit_card" android:layout_marginRight="8dp"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
