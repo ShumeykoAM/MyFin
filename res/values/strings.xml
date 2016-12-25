@@ -24,4 +24,6 @@
     <string name="button_cancel">Cancel</string>
     <string name="yesterday">yesterday</string>
     <string name="today">today</string>
+    <string name="err_not_set_total_amount">Not specified the total amount!</string>
+    <string name="err_cart_is_empty">Cart is empty!</string>
 </resources>

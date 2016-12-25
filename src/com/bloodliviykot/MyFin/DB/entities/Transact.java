@@ -108,7 +108,7 @@ public class Transact
   public Transact(Account account, DateTime date_time, TYPE_TRANSACTION type_transaction, Money sum, TREND trend, Account correlative_account, Money correlative_sum) throws EntityException
   {
     if(account == null || account.getId() == 0 || date_time == null || type_transaction == null || sum == null ||
-      trend == null || correlative_account != null && correlative_account.getId() == 0 || correlative_sum == null)
+      trend == null || correlative_account != null && (correlative_account.getId() == 0 || correlative_sum == null) )
       throw new EntityException();
     this.account              = account            ;
     this.date_time            = date_time          ;
@@ -145,7 +145,7 @@ public class Transact
       values.put("_id_correlative_account", correlative_account.getId());
     if(correlative_sum != null)
       values.put("correlative_sum", correlative_sum.getLongValue());
-    return null;
+    return values;
   }
   @Override
   protected ContentValues getContentValuesChange()

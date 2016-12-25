@@ -13,13 +13,12 @@ import android.view.View;
 import android.widget.*;
 import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
-import com.bloodliviykot.MyFin.DB.entities.Category;
-import com.bloodliviykot.MyFin.DB.entities.Document;
-import com.bloodliviykot.MyFin.DB.entities.Transact;
-import com.bloodliviykot.MyFin.DB.entities.Unit;
+import com.bloodliviykot.MyFin.DB.entities.*;
 import com.bloodliviykot.tools.Common.DateTime;
 import com.bloodliviykot.tools.Common.Money;
 import com.bloodliviykot.tools.DataBase.Entity;
+import com.bloodliviykot.tools.DataBase.I_Transaction;
+import com.bloodliviykot.tools.DataBase.SQLTransaction;
 import com.bloodliviykot.tools.widget.DialogFragmentEx;
 
 import java.util.*;
@@ -163,6 +162,11 @@ public class Planned
     }
     else if(v == pay_documents)
     {
+      if(chose_state.size() == 0)
+      {
+        Toast.makeText(Common.context, getString(R.string.err_cart_is_empty), Toast.LENGTH_SHORT).show();
+        return;
+      }
       DTransactionParams transaction_params = null;
       try
       {
@@ -381,17 +385,54 @@ public class Planned
   @Override
   public void resultHandler(int R_layout, Bundle result_values)
   {
-    Planned.Chooses result_count_unit = result_values.getParcelable("count_unit");
-    Pair<Double, Unit> count_unit = new Pair<>(result_count_unit.count, result_count_unit.unit);
-    try
+    if(R_layout == R.layout.d_choose_category_params)
     {
-      if(Document.getDocumentFromId(result_count_unit._id).setCount(result_count_unit.count).setUnit(result_count_unit.unit).update())
+      Planned.Chooses result_count_unit = result_values.getParcelable("count_unit");
+      Pair<Double, Unit> count_unit = new Pair<>(result_count_unit.count, result_count_unit.unit);
+      try
       {
-        cursor.requery();
-        list_adapter.notifyDataSetChanged();
-      }
-      Document document = Document.getDocumentFromId(result_count_unit._id);
-    } catch(Entity.EntityException e)
-    {    }
+        if(Document.getDocumentFromId(result_count_unit._id).setCount(result_count_unit.count).setUnit(result_count_unit.unit).update())
+        {
+          cursor.requery();
+          list_adapter.notifyDataSetChanged();
+        }
+        Document document = Document.getDocumentFromId(result_count_unit._id);
+      } catch(Entity.EntityException e)
+      {      }
+    }
+    else if(R_layout == R.layout.d_transaction_params)
+    {
+      DateTime date_time = result_values.getParcelable("date_time");
+      Money total_amount = result_values.getParcelable("total_amount");
+      Long id_currency = result_values.getLong("id_currency");
+      Long id_account = result_values.getLong("id_account");
+      new SQLTransaction(new I_Transaction(){
+        @Override
+        public boolean trnFunc()
+        {
+          boolean result = true;
+          try
+          {
+            Transact transact = new Transact(Account.getAccountFromId(id_account), date_time, Transact.TYPE_TRANSACTION.PAYED,
+              total_amount, Transact.TREND.CREDIT, null, null);
+            result = transact.insert() != -1;
+            for(Long _id : chose_state)
+              result = result && Document.getDocumentFromId(_id).setTransact(transact).update();
+          } catch(Entity.EntityException e)
+          {
+            result = false;
+          }
+          if(result)
+          {
+            chose_state.clear();
+            cursor.requery();
+            list_adapter.notifyDataSetChanged();
+          }
+          return result;
+        }
+      }).runTransaction();
+      
+    }
+    
   }
 }

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
@@ -103,6 +104,21 @@ public class DTransactionParams
         cost_currency_s.setSelection(savedInstanceState.getInt(CURRENCY_SELECTED));
       account_selected = savedInstanceState.getInt(ACCOUNT_SELECTED);
     }
+    else
+    {
+      cost.setOnFocusChangeListener(Common.getOnFocusChangeListener());
+      //Клавиатуру для конкретного view можно корректно вызвать только так
+      cost.post(new Runnable(){
+        @Override
+        public void run()
+        {
+          InputMethodManager imm = (InputMethodManager)
+            cost.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+          imm.showSoftInput(cost, InputMethodManager.SHOW_IMPLICIT);
+          cost.requestFocus();
+        }
+      });
+    }
     if(count_currencies == 1)
       prepareFieldsCosts();
     else
@@ -168,11 +184,28 @@ public class DTransactionParams
     }
     else if(v == cancel)
     {
-
+      dismiss();
     }
     else if(v == ok)
     {
-
+      total_amount = new Money(cost.getText().toString());
+      if(total_amount.equals(Money.NULL_MONEY))
+      {
+        Toast.makeText(Common.context, getString(R.string.err_not_set_total_amount), Toast.LENGTH_SHORT).show();
+        return;
+      }
+      Bundle result_values = new Bundle();
+      result_values.putParcelable("date_time", date_time);
+      result_values.putParcelable("total_amount", total_amount);
+      long id_currency;
+      if(count_currencies == 1)
+        id_currency = cost_currency_s.getSelectedItemId();
+      else
+        id_currency = c_currencies_all_acc.getLong(c_currencies_all_acc.getColumnIndex("_id"));
+      result_values.putLong("id_currency", id_currency);
+      result_values.putLong("id_account", account_s.getSelectedItemId());
+      dismiss();
+      handleResult(result_values);
     }
 
   }

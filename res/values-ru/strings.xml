@@ -24,5 +24,7 @@
     <string name="d_tran_params_account_credited">счет зачисления</string>
     <string name="yesterday">вчера</string>
     <string name="today">сегодня</string>
+    <string name="err_not_set_total_amount">Не задана общая сумма!</string>
+    <string name="err_cart_is_empty">Корзина пуста!</string>
 
 </resources>

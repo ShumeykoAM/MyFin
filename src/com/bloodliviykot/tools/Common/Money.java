@@ -9,6 +9,8 @@ import android.os.Parcelable;
 public class Money
   implements Parcelable
 {
+  public static final Money NULL_MONEY = new Money(0);
+  
   private long value;
   public Money(double value)
   {
