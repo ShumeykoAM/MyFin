@@ -7,7 +7,7 @@ import android.os.Parcelable;
  * Created by Kot on 08.10.2016.
  */
 public class Money
-  implements Parcelable
+  implements Parcelable, Cloneable
 {
   public static final Money NULL_MONEY = new Money(0);
   
@@ -24,7 +24,11 @@ public class Money
   {
     this(Double.parseDouble(new MyDecimalFormat().clearFormat(format_string)));
   }
-
+  public Money(Money money)
+  {
+    this.value = money.value;
+  }
+  
   public long getLongValue()
   {
     return value;
@@ -42,6 +46,21 @@ public class Money
   public boolean equals(Money money)
   {
     return value == money.value;
+  }
+  public Money sub(Money subtrahend)
+  {
+    value -= subtrahend.value;
+    return this;
+  }
+  public Money add(Money second_term)
+  {
+    value += second_term.value;
+    return this;
+  }
+  @Override
+  public Money clone()
+  {
+    return new Money(this);
   }
 
   //Parcelable -----------------------------------------------------------------------------------------------

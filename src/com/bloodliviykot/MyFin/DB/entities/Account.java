@@ -2,8 +2,6 @@ package com.bloodliviykot.MyFin.DB.entities;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import android.os.Parcel;
-import android.os.Parcelable;
 import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.R;
 import com.bloodliviykot.tools.Common.Money;
@@ -72,7 +70,7 @@ public class Account
     f.name = name;
   }
   public Money getBalance(){return f.balance;}
-  public void setBalance(Money balance){f.balance = balance;}
+  public Account setBalance(Money balance){f.balance = balance; return this;}
 
   public Account(Currency currency, CoUser co_user, E_IC_TYPE_RESOURCE icon, String name, Money balance) throws EntityException
   {
@@ -138,32 +136,32 @@ public class Account
   @Override
   protected void saveOriginal()
   {
-    original.currency = f.currency;
-    original.co_user  = f.co_user ;
-    original.icon     = f.icon    ;
-    original.name     = f.name    ;
-    original.balance  = f.balance ;
+    original = f.clone();
   }
 
   //Поля записи
   public static class Fields
-    implements Parcelable
+    implements Cloneable
   {
     public Currency           currency;
     public CoUser             co_user;
     public E_IC_TYPE_RESOURCE icon;
     public String             name;
     public Money              balance;
-
-    // Parcelable
+  
     @Override
-    public int describeContents()
-    { return 0; }
-    @Override
-    public void writeToParcel(Parcel dest, int flags)
+    public Fields clone()
     {
-      //dest.writeParcelable(currency);
+      Fields result = new Fields();
+      result.currency = currency;
+      result.co_user = co_user;
+      result.icon = icon;
+      result.name = new String(name);
+      result.balance = balance.clone();
+      return result;
     }
+  
+
   }
 
 }

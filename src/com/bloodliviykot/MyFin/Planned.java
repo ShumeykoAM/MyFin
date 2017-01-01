@@ -413,11 +413,13 @@ public class Planned
           boolean result = true;
           try
           {
-            Transact transact = new Transact(Account.getAccountFromId(id_account), date_time, Transact.TYPE_TRANSACTION.PAYED,
+            Account account;
+            Transact transact = new Transact(account = Account.getAccountFromId(id_account), date_time, Transact.TYPE_TRANSACTION.PAYED,
               total_amount, Transact.TREND.CREDIT, null, null);
             result = transact.insert() != -1;
             for(Long _id : chose_state)
               result = result && Document.getDocumentFromId(_id).setTransact(transact).update();
+            result = result && account.setBalance(account.getBalance().sub(total_amount)).update();
           } catch(Entity.EntityException e)
           {
             result = false;
