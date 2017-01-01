@@ -32,7 +32,7 @@ SELECT Document._id, Document._id_transact, Document._id_category, Document._id_
 
 -- Другие запросы
 -- ACCOUNTS
-SELECT Account._id, Account.id_icon, Account.name, Account.balance
+SELECT Account._id, Account._id_currency, Account.id_icon, Account.name, Account.balance
   FROM Account
   WHERE Account._id_co_user IS NULL
   ORDER BY Account.id_icon;

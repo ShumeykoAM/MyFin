@@ -9,6 +9,8 @@ import android.widget.*;
 import com.bloodliviykot.MyFin.DB.EQ;
 import com.bloodliviykot.MyFin.DB.MySQLiteOpenHelper;
 import com.bloodliviykot.MyFin.DB.entities.Account;
+import com.bloodliviykot.MyFin.DB.entities.Currency;
+import com.bloodliviykot.tools.Common.Money;
 import com.bloodliviykot.tools.DataBase.Entity;
 import com.bloodliviykot.tools.widget.DialogFragmentEx;
 
@@ -39,7 +41,7 @@ public class Accounts
     cursor = oh.db.rawQuery(oh.getQuery(EQ.ACCOUNTS), null);
     list_adapter = new AccountsItemAdapter(R.layout.accounts_item, cursor,
       new String[]{},
-      new int[]{R.id.accounts_d_new_image_item_icon, R.id.account_item_name, R.id.account_item_balance});
+      new int[]{R.id.accounts_d_new_image_item_icon, R.id.account_item_name, R.id.account_item_balance, R.id.account_item_currency});
     list_adapter.changeCursor(cursor);
     list_accounts.setAdapter(list_adapter);
     list_accounts.setOnItemClickListener(this);
@@ -111,18 +113,25 @@ public class Accounts
     @Override
     public void bindView(View view, Context context, Cursor cursor)
     {
-      Account.E_IC_TYPE_RESOURCE icon = Account.E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(
-        (int)cursor.getLong(cursor.getColumnIndex("id_icon")));
-      String name = cursor.getString(cursor.getColumnIndex("name"));
-      double balance = cursor.getDouble(cursor.getColumnIndex("balance"));
-
-      //Сопоставляем
-      ImageView iv_image  = (ImageView)view.findViewById(R.id.accounts_d_new_image_item_icon);
-      TextView tv_name    = (TextView)view.findViewById(R.id.account_item_name);
-      TextView tv_balance = (TextView)view.findViewById(R.id.account_item_balance);
-      iv_image.setImageResource(icon.R_drawable);
-      tv_name.setText(name);
-      tv_balance.setText(new Double(balance).toString());
+      try
+      {
+        Account.E_IC_TYPE_RESOURCE icon = Account.E_IC_TYPE_RESOURCE.getE_IC_TYPE_RESOURCE(
+          (int)cursor.getLong(cursor.getColumnIndex("id_icon")));
+        String name = cursor.getString(cursor.getColumnIndex("name"));
+        Money balance = new Money(cursor.getLong(cursor.getColumnIndex("balance")));
+        Currency currency = Currency.getCurrency(cursor.getLong(cursor.getColumnIndex("_id_currency")));
+  
+        //Сопоставляем
+        ImageView iv_image  = (ImageView)view.findViewById(R.id.accounts_d_new_image_item_icon);
+        TextView tv_name    = (TextView)view.findViewById(R.id.account_item_name);
+        TextView tv_balance = (TextView)view.findViewById(R.id.account_item_balance);
+        TextView tv_currency = (TextView)view.findViewById(R.id.account_item_currency);
+        iv_image.setImageResource(icon.R_drawable);
+        tv_name.setText(name);
+        tv_balance.setText(balance.toString());
+        tv_currency.setText(currency.getSymbol());
+      } catch(Entity.EntityException e)
+      {      }
     }
 
   }

@@ -107,33 +107,39 @@ public class Register
       ImageView icon_from;
       TextView name_from ;
       TextView sum_from  ;
+      TextView currency_from;
       TextView date      ;
       TextView time      ;
       if(tp.trend == Transact.TREND.CONVERSION)
       {
         item.setVisibility(View.GONE);
         remittance.setVisibility(View.VISIBLE);
-        icon_from = (ImageView)view.findViewById(R.id.register_remittance_icon_from);
-        name_from = (TextView)view.findViewById(R.id.register_remittance_from);
-        sum_from  = (TextView)view.findViewById(R.id.register_remittance_sum_from);
-        date      = (TextView)view.findViewById(R.id.register_remittance_date);
-        time      = (TextView)view.findViewById(R.id.register_remittance_time);
+        icon_from     = (ImageView)view.findViewById(R.id.register_remittance_icon_from);
+        name_from     = (TextView)view.findViewById(R.id.register_remittance_from);
+        sum_from      = (TextView)view.findViewById(R.id.register_remittance_sum_from);
+        currency_from = (TextView)view.findViewById(R.id.register_remittance_currency_from);
+        date          = (TextView)view.findViewById(R.id.register_item_date);
+        date          = (TextView)view.findViewById(R.id.register_remittance_date);
+        time          = (TextView)view.findViewById(R.id.register_remittance_time);
         ImageView icon_to = (ImageView)view.findViewById(R.id.register_remittance_icon_to);
         TextView name_to = (TextView)view.findViewById(R.id.register_remittance_to);
         TextView sum_to = (TextView)view.findViewById(R.id.register_remittance_sum_to);
+        TextView currency_to = (TextView)view.findViewById(R.id.register_remittance_currency_to);
         icon_to.setImageResource(tp.corr_co_user_name == null ? tp.corr_acc_icon.R_drawable : R.drawable.ic_group);
         name_to.setText(tp.corr_co_user_name == null ? tp.corr_acc_name : tp.corr_co_user_name);
-        sum_to.setText("+" + tp.correlative_sum.toString() + tp.corr_symbol);
+        sum_to.setText("+" + tp.correlative_sum.toString());
+        currency_to.setText(tp.corr_symbol);
       }
       else
       {
         item.setVisibility(View.VISIBLE);
         remittance.setVisibility(View.GONE);
-        icon_from = (ImageView)view.findViewById(R.id.register_item_icon);
-        name_from = (TextView)view.findViewById(R.id.register_item_name);
-        sum_from  = (TextView)view.findViewById(R.id.register_item_sum);
-        date      = (TextView)view.findViewById(R.id.register_item_date);
-        time      = (TextView)view.findViewById(R.id.register_item_time);
+        icon_from     = (ImageView)view.findViewById(R.id.register_item_icon);
+        name_from     = (TextView)view.findViewById(R.id.register_item_name);
+        sum_from      = (TextView)view.findViewById(R.id.register_item_sum);
+        currency_from = (TextView)view.findViewById(R.id.register_item_currency);
+        date          = (TextView)view.findViewById(R.id.register_item_date);
+        time          = (TextView)view.findViewById(R.id.register_item_time);
         ImageView trend_icon = (ImageView)view.findViewById(R.id.register_item_trend);
         TextView content = (TextView)view.findViewById(R.id.register_item_contents);
         int R_drawable_trend_icon = tp.trend == Transact.TREND.CREDIT ? R.drawable.ic_credit : R.drawable.ic_debit;
@@ -142,7 +148,8 @@ public class Register
       }
       icon_from.setImageResource(tp.co_user_name == null ? tp.account_icon.R_drawable : R.drawable.ic_group);
       name_from.setText(tp.co_user_name == null ? tp.account_name : tp.co_user_name);
-      sum_from.setText(plus_minus + tp.sum.toString() + tp.symbol);
+      sum_from.setText(plus_minus + tp.sum.toString());
+      currency_from.setText(tp.symbol);
       date.setText(tp.date_time.getSDate());
       time.setText(tp.date_time.getSTime());
     }
