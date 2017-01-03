@@ -1,0 +1,9 @@
+﻿
+https://www.assembla.com можно создавать бесплатные, иногда фиксация не проходит если файлы большие,
+  но зато удалось настроить зеркалирование (инструкция в софте)
+
+логин  KotBarsic
+пароль BloodKot32
+
+Название моего пространства University32BGTU 
+  путь для svn https://subversion.assembla.com/svn/university32bgtu
