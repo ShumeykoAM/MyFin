@@ -7,34 +7,55 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/linearLayout4">
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Добавить подкатегорию в продукты"
-                android:id="@+id/d_add_edit_cat_title"
-                />
+        <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Добавить подкатегорию в продукты"
+                    android:id="@+id/d_add_edit_cat_title"
+                    android:layout_centerVertical="true" android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@+id/d_add_edit_cat_choose_parent"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_path"
+                    android:id="@+id/d_add_edit_cat_choose_parent" android:layout_alignParentLeft="false"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"/>
+        </RelativeLayout>
         <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                 >
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:text="Название" android:id="@+id/d_add_edit_catcat_params_l1"
+                      android:layout_alignParentLeft="true"/>
             <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
                       android:id="@+id/d_add_edit_cat_name" android:numeric="decimal"
                       android:singleLine="true"
-                      android:layout_centerVertical="true"
                       android:gravity="center_vertical"
                       android:layout_alignParentRight="true" android:inputType="text"
-                      android:layout_toRightOf="@+id/d_add_edit_catcat_params_l1"
-                      android:imeOptions="flagNoExtractUi"/>
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                      android:text="Название" android:id="@+id/d_add_edit_catcat_params_l1"
-                      android:layout_alignParentLeft="true"
-                      android:layout_centerVertical="true" android:layout_marginRight="8dp"/>
+                      android:imeOptions="flagNoExtractUi" android:layout_alignParentLeft="true"
+                      android:layout_below="@+id/d_add_edit_catcat_params_l1"/>
         </RelativeLayout>
-        <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/button_ok"
-                android:id="@+id/d_add_edit_cat_ok"
-                />
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_ok"
+                    android:id="@+id/d_add_edit_cat_ok"
+                    android:layout_weight="50"/>
+            <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_cancel"
+                    android:id="@+id/d_add_edit_cat_cancel" android:layout_weight="50"/>
+        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

@@ -22,6 +22,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import static com.bloodliviykot.MyFin.DAddEditCategory.ID_PARENT;
+import static com.bloodliviykot.MyFin.DAddEditCategory.NAME_CATEGORY;
+
 /**
  * Created by Kot on 03.11.2016.
  */
@@ -37,6 +40,7 @@ public class ChooseCategories
   private Button tree;
   private Button ok;
   private List<ButtonID> navigation_buttons = new ArrayList<ButtonID>();
+  private AutoCompleteTextView search_tv;
 
   private MySQLiteOpenHelper oh;
   private Cursor cursor;
@@ -86,7 +90,7 @@ public class ChooseCategories
 
     //Установить цвет текста SearchView
     int autoCompleteTextViewID = getResources().getIdentifier("android:id/search_src_text", null, null);
-    AutoCompleteTextView search_tv = (AutoCompleteTextView)search.findViewById(autoCompleteTextViewID);
+    search_tv = (AutoCompleteTextView)search.findViewById(autoCompleteTextViewID);
     search_tv.setTextColor(getResources().getColor(R.color.grey));
 
     filter_provider_listener = new FilterProviderListener();
@@ -116,32 +120,23 @@ public class ChooseCategories
   {
     if(v == add_new)
     {
-      Boolean is_root = false;
       long _id;
       if(navigation_buttons.size() == 1)
       {
         Cursor cursor_cat = oh.db.rawQuery(oh.getQuery(EQ.ROOT_CATEGORY), new String[]{new Long(trend.id_db).toString()});
         cursor_cat.moveToFirst();
         _id = cursor_cat.getLong(cursor_cat.getColumnIndex("_id"));
-        is_root = true;
       }
       else
       {
         _id = navigation_buttons.get(navigation_buttons.size()-1).getID();
       }
-      try
-      {
-        Category parent = Category.getCategoryFromId(_id);
-        DAddEditCategory add_edit_category = new DAddEditCategory();
-        Bundle params = new Bundle();
-        params.putString("name_parent", parent.getName());
-        params.putBoolean("is_root", is_root);
-        params.putLong("trend", trend.id_db);
-        params.putLong("_id_parent", _id);
-        add_edit_category.setArguments(params);
-        add_edit_category.show(getFragmentManager(), null);
-      } catch(Entity.EntityException e)
-      {   }
+      DAddEditCategory add_edit_category = new DAddEditCategory();
+      Bundle params = new Bundle();
+      params.putLong(ID_PARENT, _id);
+      params.putString(NAME_CATEGORY, search_tv.getText().toString());
+      add_edit_category.setArguments(params);
+      add_edit_category.show(getFragmentManager(), null);
     }
   }
 

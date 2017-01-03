@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MyFin</string>
+    <string name="app_name" translatable="false">MyFin</string>
     <string name="tab_accounts">Счета</string>
     <string name="tab_register">Log</string>
     <string name="tab_transactions">Транзакции</string>
@@ -9,7 +9,7 @@
     <string name="accounts_d_new_name">Название</string>
     <string name="accounts_d_new_balance">Баланс</string>
     <string name="accounts_d_new_currency">Валюта</string>
-    <string name="button_ok">Ok</string>
+    <string name="button_ok" translatable="false">Ok</string>
     <string name="currencies_d_new_code_currency">Код валюты</string>
     <string name="accounts_d_new_currency_another">Another</string>
     <string name="tab_categories">Categories</string>
@@ -26,4 +26,8 @@
     <string name="today">today</string>
     <string name="err_not_set_total_amount">Not specified the total amount!</string>
     <string name="err_cart_is_empty">Cart is empty!</string>
+    <string name="button_path" translatable="false">...</string>
+    <string name="add_subcategory_of">Add subcategory of</string>
+    <string name="add_expenditure_category">Add expenditure category.</string>
+    <string name="add_a_profit_category">Add a profit category.</string>
 </resources>

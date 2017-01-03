@@ -38,8 +38,8 @@ public abstract class DialogFragmentEx<Handler extends DialogFragmentEx.I_Result
       Fragment target = getTargetFragment();
       if(target != null)
       {
-        ((Handler)target).resultHandler(R_layout, result_values);
         need_call_activity = false;
+        ((Handler)target).resultHandler(R_layout, result_values);
       }
     }catch(ClassCastException e2)
     {      }

@@ -167,3 +167,6 @@ SELECT Account._id, Account.id_icon, Account.name, Account.balance
 FROM Account
   WHERE Account._id_co_user IS NULL AND Account._id_currency=?
   ORDER BY Account.id_icon;
+
+--IS_ROOT_CATEGORY вернет 1 если это одна из двух корневых категорий
+SELECT NOT EXISTS(SELECT _id FROM AllParents WHERE AllParents._id = ?) AS is_root;

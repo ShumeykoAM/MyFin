@@ -4,9 +4,7 @@
     <string name="accounts_d_new_currency">Валюта</string>
     <string name="accounts_d_new_icon">Иконка</string>
     <string name="accounts_d_new_name">Название</string>
-    <string name="app_name">MyFin</string>
     <string name="button_cancel">Отмена</string>
-    <string name="button_ok">Ok</string>
     <string name="tab_accounts">Счета</string>
     <string name="tab_planned">План</string>
     <string name="tab_register">Журнал</string>
@@ -26,5 +24,8 @@
     <string name="today">сегодня</string>
     <string name="err_not_set_total_amount">Не задана общая сумма!</string>
     <string name="err_cart_is_empty">Корзина пуста!</string>
+    <string name="add_subcategory_of">Добавить подкатегорию в</string>
+    <string name="add_expenditure_category">Добавить расходную категорию.</string>
+    <string name="add_a_profit_category">Добавить приходную категорию.</string>
 
 </resources>

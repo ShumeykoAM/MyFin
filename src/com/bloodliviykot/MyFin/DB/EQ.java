@@ -35,6 +35,7 @@ public enum EQ
   CURRENCIES_ALL_ACCOUNTS,      //Все разнообразие валют по существующим счетам кроме указанной валюты
   COUNT_CURRENCIES_ALL_ACCOUNTS,//Количество разнообразных валют
   ACCOUNTS_FOR_CURRENCY,        //все счета для указанной валюты
+  IS_ROOT_CATEGORY,             //вернет 1 если это одна из двух корневых категорий
   
   EQ_COUNT;
   public final int value;
