@@ -30,4 +30,8 @@
     <string name="add_subcategory_of">Add subcategory of</string>
     <string name="add_expenditure_category">Add expenditure category.</string>
     <string name="add_a_profit_category">Add a profit category.</string>
+    <string name="price">Price</string>
+    <string name="of">of</string>
+    <string name="amount">Amount</string>
+    <string name="cost">Cost</string>
 </resources>

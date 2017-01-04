@@ -27,5 +27,9 @@
     <string name="add_subcategory_of">Добавить подкатегорию в</string>
     <string name="add_expenditure_category">Добавить расходную категорию.</string>
     <string name="add_a_profit_category">Добавить приходную категорию.</string>
+    <string name="price">Цена</string>
+    <string name="of">за</string>
+    <string name="amount">Количество</string>
+    <string name="cost">Стоимость</string>
 
 </resources>

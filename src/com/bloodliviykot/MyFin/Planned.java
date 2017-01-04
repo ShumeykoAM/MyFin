@@ -138,10 +138,7 @@ public class Planned
     if(v == add_credit)
     {
       Intent intent = new Intent(Common.context, ChooseCategories.class);
-      if(add_credit == v)
-        intent.putExtra("TREND", Transact.TREND.CREDIT);
-      else// if(add_debit == v)
-        intent.putExtra("TREND", Transact.TREND.DEBIT);
+      intent.putExtra("TREND", Transact.TREND.CREDIT);
       ArrayList<Chooses> chooses = new ArrayList<Chooses>();
       for(boolean cursor_status = cursor.moveToFirst(); cursor_status; cursor_status = cursor.moveToNext())
         try
@@ -154,11 +151,7 @@ public class Planned
     }
     else if(v == add_debit)
     {
-      DDocumentParams document_params = new DDocumentParams();
-      Bundle params = new Bundle();
-      params.putString("Regime", "New");
-      document_params.setArguments(params);
-      document_params.show(getFragmentManager(), null);
+
     }
     else if(v == pay_documents)
     {
@@ -368,16 +361,13 @@ public class Planned
       @Override
       public void onClick(View v)
       {
-        Toast.makeText(Common.context, "Здесь надо диалог со стоимостью выводить наверное", Toast.LENGTH_LONG).show();
-
         if(cursor.moveToPosition(cursor_position))
         {
-          DChooseCategoryParams choose_category_params = new DChooseCategoryParams();
+          DDocumentParams document_params = new DDocumentParams();
           Bundle params = new Bundle();
-          params.putParcelable("count_unit", new Planned.Chooses(_id, d_count, u_unit));
-          params.putString("name", s_name);
-          choose_category_params.setArguments(params);
-          choose_category_params.show(getFragmentManager(), null);
+  
+          document_params.setArguments(params);
+          document_params.show(getFragmentManager(), null);
         }
       }
     }
@@ -433,7 +423,10 @@ public class Planned
           return result;
         }
       }).runTransaction())
+      {
         Register.notifyAllDataSetInvalidated();
+        Accounts.notifyAllDataSetInvalidated();
+      }
       
     }
     
