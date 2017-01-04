@@ -231,7 +231,7 @@ public class Planned
             }
           }
           cursor.requery();
-          list_adapter.notifyDataSetChanged();
+          list_adapter.notifyDataSetInvalidated();
         }
         break;
     }
@@ -312,7 +312,7 @@ public class Planned
               if(Document.getDocumentFromId(_id).setCount(Double.parseDouble(count.getText().toString())).update())
               {
                 cursor.requery();
-                list_adapter.notifyDataSetChanged();
+                list_adapter.notifyDataSetInvalidated();
               }
             } catch(Entity.EntityException e)
             {
@@ -394,7 +394,7 @@ public class Planned
         if(Document.getDocumentFromId(result_count_unit._id).setCount(result_count_unit.count).setUnit(result_count_unit.unit).update())
         {
           cursor.requery();
-          list_adapter.notifyDataSetChanged();
+          list_adapter.notifyDataSetInvalidated();
         }
         Document document = Document.getDocumentFromId(result_count_unit._id);
       } catch(Entity.EntityException e)
@@ -406,7 +406,7 @@ public class Planned
       Money total_amount = result_values.getParcelable("total_amount");
       Long id_currency = result_values.getLong("id_currency");
       Long id_account = result_values.getLong("id_account");
-      new SQLTransaction(new I_Transaction(){
+      if(new SQLTransaction(new I_Transaction(){
         @Override
         public boolean trnFunc()
         {
@@ -428,11 +428,12 @@ public class Planned
           {
             chose_state.clear();
             cursor.requery();
-            list_adapter.notifyDataSetChanged();
+            list_adapter.notifyDataSetInvalidated();
           }
           return result;
         }
-      }).runTransaction();
+      }).runTransaction())
+        Register.notifyAllDataSetInvalidated();
       
     }
     

@@ -65,7 +65,7 @@ public class Accounts
             @Override
             public void run()
             {
-              list_adapter.notifyDataSetChanged();
+              list_adapter.notifyDataSetInvalidated();
               for(boolean result = cursor.moveToFirst(); result; result = cursor.moveToNext())
                 if(cursor.getLong(cursor.getColumnIndex("_id")) == account.getId())
                 {

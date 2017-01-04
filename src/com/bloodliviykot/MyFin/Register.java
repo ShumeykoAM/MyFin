@@ -26,6 +26,23 @@ public class Register
   private Cursor cursor;
   private SimpleCursorAdapter list_adapter;
 
+  private static boolean need_notifyDataSetInvalidated = false;
+  public static void notifyAllDataSetInvalidated()
+  {
+    need_notifyDataSetInvalidated = true;
+  }
+  @Override
+  protected void onResume()
+  {
+    super.onResume();
+    if(need_notifyDataSetInvalidated && cursor != null && list_adapter != null)
+    {
+      need_notifyDataSetInvalidated = false;
+      cursor.requery();
+      list_adapter.notifyDataSetInvalidated();
+    }
+  }
+  
   @Override
   protected void onCreate(Bundle savedInstanceState)
   {
