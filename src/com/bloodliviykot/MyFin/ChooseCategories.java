@@ -427,7 +427,7 @@ public class ChooseCategories
       } catch(Entity.EntityException e)
       {     }
       cursor.requery();
-      list_adapter.notifyDataSetChanged();
+      list_adapter.notifyDataSetInvalidated();
     }
   }
 
