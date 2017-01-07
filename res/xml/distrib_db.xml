@@ -260,8 +260,8 @@
 
     <Category trend="0" name="Курица kurica"    name_lower_case="курица kurica"></Category>
     <Category trend="0" name="Кура miratorg" name_lower_case="кура miratorg">
-        <Document _id_transact="1" _id_category="ИД_родителя" sum="43425" count="2.6" id_unit="4"></Document>
-        <Document _id_category="ИД_родителя" sum="43425" count="7.4" id_unit="2"></Document>
+        <Document _id_transact="1" _id_category="ИД_родителя" of_id_unit="4" count="2.6" id_unit="4"></Document>
+        <Document _id_category="ИД_родителя" of_id_unit="2" count="7.4" id_unit="2"></Document>
     </Category>
     <Category trend="0" name="хлеб broad"    name_lower_case="хлеб broad"></Category>
 

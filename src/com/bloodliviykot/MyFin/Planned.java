@@ -217,7 +217,7 @@ public class Planned
               try
               {
                 Document document = new Document(null, Category.getCategoryFromId(entry.getKey()), null,
-                  new Money(0), entry.getValue().first, entry.getValue().second);
+                  null, null, null, entry.getValue().first, entry.getValue().second);
                 document.insert();
               } catch(Entity.EntityException e1)
               {     }
@@ -365,7 +365,7 @@ public class Planned
         {
           DDocumentParams document_params = new DDocumentParams();
           Bundle params = new Bundle();
-  
+          params.putLong(DDocumentParams.ID, _id);
           document_params.setArguments(params);
           document_params.show(getFragmentManager(), null);
         }

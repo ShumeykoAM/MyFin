@@ -8,7 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
+import android.widget.*;
+import com.bloodliviykot.MyFin.DB.entities.Document;
+import com.bloodliviykot.MyFin.DB.entities.Unit;
+import com.bloodliviykot.tools.DataBase.Entity;
 import com.bloodliviykot.tools.widget.DialogFragmentEx;
 
 /**
@@ -18,8 +21,18 @@ import com.bloodliviykot.tools.widget.DialogFragmentEx;
 public class DDocumentParams
   extends DialogFragmentEx<DialogFragmentEx.I_ResultHandler<Bundle>, Bundle>
 {
+  public static final String ID = "_id";
+  private TextView name_category;
   private EditText price;
+  private EditText of;
+  private Spinner of_unit;
+  private EditText amount;
+  private Spinner amount_unit;
+  private EditText cost;
+  private Button b_ok;
+  private Button b_cancel;
 
+  private Document document;
   public DDocumentParams()
   {
     super(R.layout.d_document_params);
@@ -31,9 +44,35 @@ public class DDocumentParams
     //getDialog().setTitle("Заголовок");
     getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
     final View v = inflater.inflate(getR_layout(), null);
+    name_category = (TextView)v.findViewById(R.id.d_document_params_name_category);
     price = (EditText)v.findViewById(R.id.d_document_params_price);
-    //icon = (Spinner)v.findViewById(R.id.accounts_d_new_icon);
+    of = (EditText)v.findViewById(R.id.d_document_params_of);
+    of_unit = (Spinner)v.findViewById(R.id.d_document_params_of_unit);
+    amount = (EditText)v.findViewById(R.id.d_document_params_amount);
+    amount_unit = (Spinner)v.findViewById(R.id.d_document_params_amount_unit);
+    cost = (EditText)v.findViewById(R.id.d_document_params_cost);
+    b_ok = (Button)v.findViewById(R.id.d_document_params_ok);
+    b_cancel = (Button)v.findViewById(R.id.d_document_params_cancel);
 
+    Bundle params = getArguments();
+    try
+    {
+      document = Document.getDocumentFromId(params.getLong("_id"));
+      name_category.setText(document.getCategory().getName());
+      price.setText(document.getPrice() != null ? document.getPrice().toString() : null);
+      of.setText(new Double(document.getOf()).toString());
+  
+      SimpleCursorAdapter adapter_unit = new SimpleCursorAdapter(v.getContext(), R.layout.unit_item1,
+        Unit.getCursor(), new String[]{"name"}, new int[]{R.id.unit_item1});
+      of_unit.setAdapter(adapter_unit);
+      
+      
+      
+    }
+    catch(Entity.EntityException e)
+    {
+      dismiss();
+    }
     //Клавиатуру для конкретного view можно корректно вызвать только так
     price.post(new Runnable()
     {

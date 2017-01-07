@@ -83,7 +83,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/d_document_params_of_unit" android:layout_gravity="center_horizontal"
                     android:layout_centerVertical="true" android:layout_alignParentRight="true"
-                    android:layout_marginLeft="4dp" android:layout_alignBottom="@+id/d_document_params_ll_price"/>
+                    android:layout_marginLeft="4dp" android:layout_alignBottom="@+id/d_document_params_ll_price"
+                    android:spinnerMode="dropdown"/>
         </RelativeLayout>
         <LinearLayout
                 android:orientation="horizontal"
@@ -124,7 +125,7 @@
                         android:id="@+id/d_document_params_amount_unit"
                         android:layout_marginLeft="4dp"
                         android:minWidth="90dp"
-                />
+                        android:spinnerMode="dropdown"/>
             </LinearLayout>
             <LinearLayout
                     android:orientation="vertical"

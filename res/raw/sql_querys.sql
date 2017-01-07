@@ -25,8 +25,8 @@ SELECT Category._id, Category.trend, Category.name, Category.name_lower_case
   WHERE Category._id=?;
 
 --DOCUMENT
-SELECT Document._id, Document._id_transact, Document._id_category, Document._id_event, Document.sum,
-  Document.count, Document.id_unit
+SELECT Document._id, Document._id_transact, Document._id_category, Document._id_event, Document.price,
+  Document.of, Document.of_id_unit, Document.count, Document.id_unit
   FROM Document
   WHERE Document._id=?;
 
@@ -170,3 +170,19 @@ FROM Account
 
 --IS_ROOT_CATEGORY вернет 1 если это одна из двух корневых категорий
 SELECT NOT EXISTS(SELECT _id FROM AllParents WHERE AllParents._id = ?) AS is_root;
+
+
+--Дерево категорий еще доделать конечно же надо
+--Дерево исключая один узел
+--WITH RECURSIVE category_tree(id, name, path, dscr)
+--AS (
+--  SELECT id, title, ("-" || CAST(id AS TEXT) || "-"),                        0                       AS dscr
+--    FROM test_table
+--    WHERE pid IS NULL AND test_table.id<>dscr
+--  UNION ALL
+--    SELECT test_table.id, test_table.title, path || ("-" || CAST(test_table.id AS TEXT) || "-"), dscr
+--      FROM category_tree
+--      INNER JOIN test_table ON test_table.pid=category_tree.id
+--      WHERE test_table.id<>dscr
+--)
+--SELECT * FROM category_tree ORDER BY path;
