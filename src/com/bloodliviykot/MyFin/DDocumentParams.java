@@ -62,8 +62,8 @@ public class DDocumentParams
       price.setText(document.getPrice() != null ? document.getPrice().toString() : null);
       of.setText(new Double(document.getOf()).toString());
   
-      SimpleCursorAdapter adapter_unit = new SimpleCursorAdapter(v.getContext(), R.layout.unit_item1,
-        Unit.getCursor(), new String[]{"name"}, new int[]{R.id.unit_item1});
+      SimpleCursorAdapter adapter_unit = new SimpleCursorAdapter(v.getContext(), R.layout.d_choose_category_params_unit_item,
+        Unit.getCursor(), new String[]{"name"}, new int[]{R.id.d_choose_cat_params_unit_item});
       of_unit.setAdapter(adapter_unit);
       
       
