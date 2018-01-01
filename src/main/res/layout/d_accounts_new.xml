@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent">
+
+    <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true" android:id="@+id/accounts_d_new_relativeLayout1">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:id="@+id/linearLayout">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/accounts_d_new_icon"
+                    />
+            <Spinner
+                    android:layout_width="151dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/accounts_d_new_icon"
+                    android:spinnerMode="dropdown"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="0dp" android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/linearLayout">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/accounts_d_new_name"/>
+            <EditText
+                    android:layout_width="fill_parent" android:imeOptions="flagNoExtractUi"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/accounts_d_new_name" android:inputType="text" android:singleLine="true"/>
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" android:layout_below="@+id/accounts_d_new_relativeLayout1"
+            android:id="@+id/relativeLayout">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@+id/linearLayout3" android:longClickable="false">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/accounts_d_new_balance"
+                    />
+            <EditText
+                    android:layout_width="match_parent" android:imeOptions="flagNoExtractUi"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/accounts_d_new_balance"
+                    android:inputType="numberDecimal" android:numeric="decimal" android:singleLine="true"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true" android:id="@+id/linearLayout3">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/accounts_d_new_currency"/>
+            <Spinner
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/accounts_d_new_currency"
+                    android:layout_gravity="right" android:spinnerMode="dropdown"/>
+        </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" android:layout_below="@+id/relativeLayout">
+        <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/accounts_d_new_cansel"
+                android:text="@string/button_cancel" android:layout_weight="1"/>
+        <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/button_ok"
+                android:id="@+id/accounts_d_new_ok"
+                android:layout_weight="1"/>
+    </LinearLayout>
+</RelativeLayout>

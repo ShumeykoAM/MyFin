@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:gravity="center_vertical"
+                android:id="@+id/accounts_d_new_image_item_symbol">
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Российский рубль"
+            android:id="@+id/accounts_d_new_currency_item_full_name"
+            android:layout_centerVertical="true"
+            style="@style/spinner_item"
+            android:layout_toRightOf="@+id/accounts_d_new_currency_item_symbol"/>
+    <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="руб."
+            android:id="@+id/accounts_d_new_currency_item_symbol" android:layout_alignTop="@+id/accounts_d_new_currency_item_full_name"
+            android:layout_alignParentLeft="true" style="@style/spinner_item"/>
+</RelativeLayout>

@@ -1,0 +1,17 @@
+### Intellij ###
+
+.ideaDataSources/
+dataSources/
+.idea/
+*.iml
+*.iws
+*.ipr
+*.ids
+
+### Gradle ###
+
+.gradle
+**/build/
+
+### Android ###
+build/

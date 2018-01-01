@@ -1,0 +1,53 @@
+apply plugin: 'idea'
+apply plugin: 'com.android.application'
+
+buildscript {
+
+  repositories {
+    //mavenCentral() //Не работает из за лицензии, надо https на http заменить
+    maven {
+      url "http://repo1.maven.org/maven2"
+    }
+  }
+
+  dependencies {
+    classpath 'com.android.tools.build:gradle:2.3.0'
+  }
+  
+}
+
+android {
+  compileSdkVersion 15
+  buildToolsVersion "25.0.2"
+
+  defaultConfig {
+    applicationId "com.bloodliviykot"
+    minSdkVersion 15
+    targetSdkVersion 15
+    versionCode 1
+    versionName "1.0"
+    jackOptions {
+      enabled true
+    }
+  }
+  sourceSets {
+    main {
+      java.srcDirs = ['src/main/java']
+      res {
+        srcDirs = ['src/main/res',/* тут можно несколько групп сделать по ходу'src/main/presentations/layouts'*/]
+      }
+    }
+  }
+  compileOptions {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+  }
+}
+
+idea.project.ipr {
+  withXml { provider ->
+    provider.node.component
+            .find { it.@name == 'VcsDirectoryMappings' }
+            .mapping.@vcs = 'Git'
+  }
+}
