@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_vertical|center_horizontal">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+    >
+        <TextView
+                android:id="@+id/d_document_params_name_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="12dp" android:text="Название категории"
+                android:layout_marginBottom="10dp">
+        </TextView>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+        >
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
+                    android:baselineAligned="false" android:background="@drawable/polygon"
+                    android:layout_marginBottom="5dp">
+                <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
+                        android:baselineAligned="false" android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp">
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:layout_weight="50"
+                            android:layout_marginRight="10dp">
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/price"
+                                android:layout_marginLeft="5dp"/>
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/d_document_params_price"
+                                android:numeric="decimal"
+                                android:singleLine="true" android:inputType="numberDecimal"
+                                android:gravity="center_vertical|right"
+                                android:nextFocusDown="@+id/d_document_params_amount"
+                                android:nextFocusForward="@+id/d_document_params_amount"
+                                android:nextFocusRight="@+id/d_document_params_amount" android:text="434.54"
+                                android:imeOptions="flagNoExtractUi"
+                                android:maxLength="12"
+                                android:nextFocusLeft="@+id/d_document_params_cost"
+                                android:nextFocusUp="@+id/d_document_params_cost"
+                                android:textIsSelectable="false"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:layout_weight="50"
+                            android:layout_marginLeft="10dp"
+                    >
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/cost"
+                                android:layout_marginLeft="5dp"/>
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/d_document_params_cost"
+                                android:numeric="decimal" android:singleLine="true" android:inputType="numberDecimal"
+                                android:gravity="center_vertical|right"
+                                android:text="45543"
+                                android:imeOptions="flagNoExtractUi" android:maxLength="12"
+                                android:nextFocusLeft="@+id/d_document_params_amount"
+                                android:nextFocusUp="@+id/d_document_params_amount"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <RelativeLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp">
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="false"
+                            android:layout_toLeftOf="@+id/d_document_params_of_unit"
+                            android:layout_alignParentBottom="false" android:focusableInTouchMode="false"
+                            android:id="@+id/d_document_params_ll_of">
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/of"
+                                android:layout_marginLeft="5dp"/>
+                        <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/d_document_params_of"
+                                android:numeric="decimal" android:singleLine="true"
+                                android:inputType="numberDecimal"
+                                android:gravity="center_vertical|right"
+                                android:text="0.880" android:imeOptions="flagNoExtractUi"
+                                android:maxLength="7"/>
+                    </LinearLayout>
+                    <Spinner
+                            android:layout_width="135dp"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/d_document_params_of_unit" android:layout_gravity="center_horizontal"
+                            android:spinnerMode="dropdown" android:layout_alignParentTop="false"
+                            android:layout_alignParentLeft="false"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignBottom="@+id/d_document_params_ll_of"/>
+                </RelativeLayout>
+            </LinearLayout>
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:layout_marginTop="2dp"
+                    android:layout_marginLeft="5dp" android:layout_marginRight="5dp">
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_toLeftOf="@+id/d_document_params_amount_unit"
+                        android:id="@+id/d_document_params_ll_amount">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/amount"
+                            android:layout_marginLeft="5dp"/>
+                    <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/d_document_params_amount"
+                            android:numeric="decimal" android:singleLine="true"
+                            android:inputType="numberDecimal"
+                            android:gravity="center_vertical|right"
+                            android:nextFocusLeft="@+id/d_document_params_price"
+                            android:nextFocusUp="@+id/d_document_params_price" android:text="1234567"
+                            android:imeOptions="flagNoExtractUi" android:maxLength="11"
+                            android:nextFocusDown="@+id/d_document_params_cost"
+                            android:nextFocusForward="@+id/d_document_params_cost"
+                            android:nextFocusRight="@+id/d_document_params_cost"/>
+                </LinearLayout>
+                <Spinner
+                        android:layout_width="135dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/d_document_params_amount_unit"
+                        android:spinnerMode="dropdown" android:layout_alignParentRight="true"
+                        android:layout_alignBottom="@+id/d_document_params_ll_amount"/>
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+        >
+            <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_ok"
+                    android:id="@+id/d_document_params_ok"
+                    android:layout_weight="50"/>
+            <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_cancel"
+                    android:id="@+id/d_document_params_cancel"
+                    android:layout_weight="50"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

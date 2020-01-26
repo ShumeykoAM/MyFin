@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">MyFin</string>
+    <string name="tab_accounts">Счета</string>
+    <string name="tab_register">Log</string>
+    <string name="tab_transactions">Транзакции</string>
+    <string name="tab_planned">План</string>
+    <string name="accounts_d_new_icon">Иконка</string>
+    <string name="accounts_d_new_name">Название</string>
+    <string name="accounts_d_new_balance">Баланс</string>
+    <string name="accounts_d_new_currency">Валюта</string>
+    <string name="button_ok" translatable="false">Ok</string>
+    <string name="currencies_d_new_code_currency">Код валюты</string>
+    <string name="accounts_d_new_currency_another">Another</string>
+    <string name="tab_categories">Categories</string>
+    <string name="category_debit">debit</string>
+    <string name="category_credit">credit</string>
+    <string name="d_tran_params_date">date</string>
+    <string name="d_tran_params_time">time</string>
+    <string name="d_tran_params_total_amount">total amount</string>
+    <string name="d_tran_params_in_other_currencies">in other currencies</string>
+    <string name="d_tran_params_account_debiting">account debiting</string>
+    <string name="d_tran_params_account_credited">account credited</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="yesterday">yesterday</string>
+    <string name="today">today</string>
+    <string name="err_not_set_total_amount">Not specified the total amount!</string>
+    <string name="err_cart_is_empty">Cart is empty!</string>
+    <string name="button_path" translatable="false">...</string>
+    <string name="add_subcategory_of">Add subcategory of</string>
+    <string name="add_expenditure_category">Add expenditure category.</string>
+    <string name="add_a_profit_category">Add a profit category.</string>
+    <string name="price">Price</string>
+    <string name="of">of</string>
+    <string name="amount">Amount</string>
+    <string name="cost">Cost</string>
+</resources>

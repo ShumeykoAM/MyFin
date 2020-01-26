@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" android:orientation="vertical">
+
+    <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/choose_categories_navigation_line"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentTop="true" android:layout_marginBottom="5dp">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent" android:id="@+id/choose_categories_navigation_linear">
+            <include layout="@layout/arrow_button"></include>
+        </LinearLayout>
+    </HorizontalScrollView>
+    <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/choose_categories_navigation_line" android:id="@+id/choose_categories_search_line"
+            android:layout_marginBottom="5dp">
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/choose_categories_add_new" android:layout_alignParentTop="false"
+                android:layout_alignParentLeft="true" android:layout_marginRight="10dp"
+                android:layout_centerVertical="true" android:background="@drawable/ic_add"/>
+        <SearchView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/choose_categories_search"
+                android:layout_alignParentTop="false"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/choose_categories_add_new"/>
+    </RelativeLayout>
+    <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/choose_categories_list" android:layout_alignParentLeft="true"
+            android:layout_below="@+id/choose_categories_search_line" android:layout_above="@+id/choose_categories_buttons_line"
+            android:layout_marginBottom="5dp"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_alignParentLeft="false"
+            android:layout_alignParentTop="false"
+            android:id="@+id/choose_categories_buttons_line"
+            android:layout_alignWithParentIfMissing="false" android:layout_alignParentBottom="true">
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Дерево"
+                android:id="@+id/choose_categories_tree" android:layout_weight="1"/>
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ok"
+                android:id="@+id/choose_categories_ok" android:layout_weight="1"/>
+    </LinearLayout>
+</RelativeLayout>
